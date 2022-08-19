@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>LC3</title>
+</head>
+<body>
+    <nav>
+        <div class="header">
+            LC3-Emulator
+        </div>
+    </nav>
+    <div class="controls">
+        <input type="file" name="rom" id="rom">
+        <div id="root"></div>
+
+        <button id="run" disabled>Run</button>
+        <button id="step" disabled>Step</button>
+        <button id="stop">Stop</button>
+    </div>
+
+    <div class="registers">
+        <table>
+            <tr>
+                <th>R0</th>
+                <th>R1</th>
+                <th>R2</th>
+                <th>R3</th>
+                <th>R4</th>
+                <th>R5</th>
+                <th>R6</th>
+                <th>R7</th>
+                <th>RPc</th>
+                <th>RCond</th>
+            </tr>
+            <tr>
+                <td id="r0">0</td>
+                <td id="r1">0</td>
+                <td id="r2">0</td>
+                <td id="r3">0</td>
+                <td id="r4">0</td>
+                <td id="r5">0</td>
+                <td id="r6">0</td>
+                <td id="r7">0</td>
+                <td id="r8">0</td>
+                <td id="r9">0</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="debug">
+        <h1 id="pc"></h1>
+    </div>
+
+    <div id="output-container">
+        <div id="output">  </div>
+        <div id="current">  </div>
+    </div>
+    <div id="disassembly">  </div>
+
+    <script type="module">
+        import init, { loadimage, step } from "./pkg/lc3_core.js";
+
+        async function main() {
+            let initt = await init();
+            console.log(initt);
+        }
+        main();
+
+        globalThis.outputbuffer = "";
+        globalThis.debugbuffer = "";
+        globalThis.isRunning = false;
+        globalThis.keys = 0;
+    
+        document.addEventListener("keypress", (event) => {
+            globalThis.keys = event.keyCode;
+        })
+
+        var rom = new Uint8Array();
+        let run_button = document.getElementById("run");
+        let step_button = document.getElementById("step");
+
+        run_button.addEventListener("click", () => {
+            console.log(rom);
+            globalThis.isRunning = true;
+            loadimage(rom);
+
+            setInterval(() => {
+                if(globalThis.isRunning) {
+                    step();
+                }
+            }, 1);
+        });
+
+        step_button.addEventListener("click", () => {
+            step();
+        });
+
+        document.getElementById("stop").addEventListener("click", () => {
+            globalThis.isRunning = !globalThis.isRunning;
+        });
+
+
+        // let file_upload = document.getElementById("rom").files[0]
+
+        function load_rom(file_upload) {
+            var file = file_upload.target.files[0];
+            if (file.type === "") {
+                console.log("Loading rom file");
+            }
+            var reader = new FileReader();
+            
+            reader.onload = function(anotherEvent) {
+                rom = Array.from(new Uint8Array(reader.result));
+            }
+            reader.readAsArrayBuffer(file);
+
+            run_button.disabled = false;
+            step_button.disabled = false;
+        }
+
+        document.getElementById("rom").addEventListener("change", load_rom, false);
+                
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+* {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+body {
+    background-color: rgb(95, 95, 95);
+    margin: 0px;
+}
+
+.header {
+    /* position: absolute; */
+    background-color: #000;
+    color: #FFF;
+    font-size: 2em;
+    width: 80%;
+    padding: 20px 10%;
+    margin-bottom: 20px;
+}
+
+button, input {
+    background-color: rgb(0, 94, 138);
+    color: white;
+    padding: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+input {
+    width: 120px;
+}
+
+input::-webkit-file-upload-button {
+    display: none;
+}
+
+.registers {
+    padding-right: 10em;
+    /* padding-right: 10px; */
+    float: right;
+    display: inline-block;
+}
+
+.controls {
+    margin-left: 10%;
+    display: inline-block;
+}
+
+table {
+    border: 1px solid;
+    border-collapse: separate;
+    border-radius: 10px;
+    border-color: #FFF;
+}
+
+td, th {
+    padding: 10px;
+    width: 50px;
+    border-color: #FFF;
+}
+
+td:nth-child(even) {
+    border-left: none;
+    background-color: rgb(228, 228, 228);
+}
+
+td:nth-child(odd) {
+    border-left: none;
+    background-color: rgb(255, 255, 255);
+}
+
+th {
+    color: #FFF;
+    background-color: rgb(49, 49, 49);
+}
+
+.debug {
+    margin-left: 10px;
+    color: #FFF;
+}
+
+#output-container {
+    background-color: rgb(49, 49, 49);
+    color:  white;
+    float: left;
+    width: 45%;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo, monospace;
+    height: 30em;
+    min-height: 30em;
+    overflow-y: scroll;
+
+    margin: 10px;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+#current {
+    background-color: rgb(49, 49, 49);
+    color:  white;
+    display: inline-block;
+    width: 40%;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo, monospace;
+}
+
+#disassembly {
+    background-color: rgb(0, 74, 109);
+    color:  white;
+    /* float: right; */
+    width: 45%;
+    display: inline-block;
+    height: 30em;
+    overflow:auto;
+    overflow-y: scroll;
+    line-height: 2em;
+
+    margin: 10px;
+    /* margin-left: 20px; */
+    border-radius: 10px;
+}
