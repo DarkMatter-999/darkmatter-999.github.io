@@ -1,0 +1,12 @@
+{
+  "name": "lc3_core",
+  "version": "0.1.0",
+  "files": [
+    "lc3_core_bg.wasm",
+    "lc3_core.js",
+    "lc3_core.d.ts"
+  ],
+  "module": "lc3_core.js",
+  "types": "lc3_core.d.ts",
+  "sideEffects": false
+}
