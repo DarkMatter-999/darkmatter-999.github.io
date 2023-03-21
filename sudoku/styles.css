@@ -1,0 +1,79 @@
+body {
+    text-align: center;
+    font-family: "Playful", sans-serif;
+    font-weight: bold;
+    background-color: rgb(179, 219, 255);
+}
+
+#error {
+    color: rgb(255, 51, 0);
+    font-size: 30px;
+    margin: 10px;
+}
+
+#board {
+    height: 450px;
+    width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#digits {
+    width: 450px;
+    height: 50px;
+    /* background-color: white; */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 48px;
+    height: 48px;
+    border: 1px rgb(47, 141, 158) solid;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.tileStart {
+    background-color: rgb(206, 233, 255);
+}
+
+.number {
+    width: 44px;
+    height: 44px;
+    border: 1px black solid;
+    margin: 2px;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.number:hover {
+    background-color: rgb(164, 196, 255);
+}
+
+.numberselected {
+    background-color: rgb(182, 208, 255);
+}
+
+.horizontal-line {
+    border-bottom: 1px solid black;
+}
+
+.vertical-line {
+    border-right: 1px solid black;
+}

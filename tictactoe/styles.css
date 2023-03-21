@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(179, 219, 255);
+    font-family: "Permanent Marker", cursive;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    border: 2px solid rgb(0, 40, 114);
+    box-shadow: 0 0 0 2px;
+    line-height: 100px;
+    font-size: 75px;
+    cursor: pointer;
+}
+
+.cellContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    margin: 20px auto;
+    text-align: center;
+}
+
+.game {
+    text-align: center;
+}
+
+.game button {
+    color: white;
+    background-color: #0f5877;
+    border: none;
+    font-size: larger;
+    border-radius: 15px;
+    padding: 20px;
+}
