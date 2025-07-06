@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Projects &#8211; Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/dm_project/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 14:10:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Projects &#8211; Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WhyMDB (IMDB Clone)</title>
+		<link>/dm_project/whymdb-imdb-clone/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 06 Jul 2025 13:18:51 +0000</pubDate>
+				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=936</guid>
+
+					<description><![CDATA[An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.
+
+]]></description>
+										<content:encoded><![CDATA[
+<p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.<br></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>PyLeo</title>
+		<link>/dm_project/pyleo/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 06 Jul 2025 13:18:24 +0000</pubDate>
+				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=934</guid>
+
+					<description><![CDATA[A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.
+]]></description>
+										<content:encoded><![CDATA[
+<p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.<br></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Little Vulkan Engine</title>
+		<link>/dm_project/little-vulkan-engine/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 06 Jul 2025 13:17:48 +0000</pubDate>
+				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=932</guid>
+
+					<description><![CDATA[A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.
+]]></description>
+										<content:encoded><![CDATA[
+<p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.<br></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>RayTracer</title>
+		<link>/dm_project/raytracer/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 06 Jul 2025 13:17:13 +0000</pubDate>
+				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=926</guid>
+
+					<description><![CDATA[A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.]]></description>
+										<content:encoded><![CDATA[
+<p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
