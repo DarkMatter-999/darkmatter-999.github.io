@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dm-project-plugin/project-block",
+  "version": "0.1.0",
+  "title": "Project Block",
+  "category": "text",
+  "textdomain": "dm-project-plugin",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "id": {
+      "type": "number",
+      "default": 0
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "thumbnail": {
+      "type": "string",
+      "default": ""
+    },
+    "thumbnailUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "excerpt": {
+      "type": "string",
+      "default": ""
+    },
+    "link": {
+      "type": "string",
+      "default": ""
+    },
+    "externalLink": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<ruleset name="myplugin">
+	<description>Best practices sniffs for WordPress plugins</description>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="Generic.Functions.CallTimePassByReference" />
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="text-domain-1" />
+				<element value="text-domain-2" />
+			</property>
+		</properties>
+	</rule>
+
+	<arg name="extensions" value="php" />
+	<arg name="severity" value="1" />
+
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>assets/build/</exclude-pattern>
+</ruleset>

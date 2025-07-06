@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@wordpress/scripts": "^30.17.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build --webpack-src-dir=./assets/src/blocks/ --output-path=./assets/build/blocks/",
+    "start": "wp-scripts start --webpack-src-dir=./assets/src/blocks/ --output-path=./assets/build/blocks/",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js"
+  }
+}
