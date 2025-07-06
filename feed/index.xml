@@ -12,7 +12,7 @@
 	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
-	<lastBuildDate>Tue, 13 May 2025 16:28:27 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -32,7 +32,7 @@
 		<link>/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
 					<comments>/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 13 May 2025 16:28:27 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blog]]></category>
@@ -245,7 +245,7 @@ register_block_pattern(
 		<link>/wordpress-block-themes-introduction/</link>
 					<comments>/wordpress-block-themes-introduction/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 12 May 2025 14:58:01 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blog]]></category>
@@ -460,7 +460,7 @@ Text Domain: my-block-theme
 		<link>/wordpress-block-editor-widgets/</link>
 					<comments>/wordpress-block-editor-widgets/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blog]]></category>
@@ -593,7 +593,7 @@ registerBlockType('mytheme/custom-widget', {
 		<link>/wordpress-block-editor-formatting-toolbar-api/</link>
 					<comments>/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 08 May 2025 14:34:35 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blog]]></category>
@@ -717,7 +717,7 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
 					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blogging]]></category>
@@ -879,7 +879,7 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
 					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[digital-marketing]]></category>
@@ -1155,7 +1155,7 @@ function myplugin_render_latest_post() {
 		<link>/wordpress-block-editor-nested-blocks/</link>
 					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[ai]]></category>
@@ -1336,7 +1336,7 @@ registerBlockType('myplugin/section', {
 		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
 					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[digital-marketing]]></category>
@@ -1553,7 +1553,7 @@ edit({ attributes, setAttributes }) {
 		<link>/wordpress-block-editor-block-supports-explained/</link>
 					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blogging]]></category>
@@ -1715,7 +1715,7 @@ wp.hooks.addFilter(
 		<link>/wordpress-block-editor-block-filters-explained/</link>
 					<comments>/wordpress-block-editor-block-filters-explained/#respond</comments>
 		
-		<dc:creator><![CDATA[admin]]></dc:creator>
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<category><![CDATA[blogging]]></category>

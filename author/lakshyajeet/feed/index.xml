@@ -12,7 +12,7 @@
 	<atom:link href="/author/lakshyajeet/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
-	<lastBuildDate>Fri, 14 Mar 2025 15:03:40 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,1600 +28,203 @@
 	<height>32</height>
 </image> 
 	<item>
-		<title>User Roles in WordPress</title>
-		<link>/user-roles-in-wordpress/</link>
-					<comments>/user-roles-in-wordpress/#respond</comments>
+		<title>WordPress Block Themes: Block Themes and Block Patterns Explained</title>
+		<link>/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
+					<comments>/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Fri, 14 Mar 2025 15:03:40 +0000</pubDate>
+		<pubDate>Tue, 13 May 2025 16:28:27 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[digital-marketing]]></category>
 		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=612</guid>
+		<category><![CDATA[writing]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=898</guid>
 
-					<description><![CDATA[When working with WordPress, user roles play a vital role in determining who can access specific parts of the website, and what actions they can perform. For many WordPress administrators, its crucial to define granular access levels based on the types of content being managed on the site. Whether we are managing blog posts, products [&#8230;]]]></description>
+					<description><![CDATA[As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]]]></description>
 										<content:encoded><![CDATA[
-<p>When working with WordPress, user roles play a vital role in determining who can access specific parts of the website, and what actions they can perform. For many WordPress administrators, its crucial to define granular access levels based on the types of content being managed on the site. Whether we are managing blog posts, products or events, its important to customize the roles and capabilities to ensure that the right people have access to the right tools. In this post, we’ll explore how to set up custom user roles for custom post types and taxonomies in WordPress, with a focus on managing events.</p>
+<p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where <strong>Block Themes</strong> and <strong>Block Patterns</strong> play a central role in how our sites look and function.</p>
 
 
 
-<h2 class="wp-block-heading">Setting Up Custom Post Types and Taxonomies</h2>
+<p>Let’s dive into what Block Themes and Block Patterns are, how they differ, and how we can use them to create more flexible and beautiful websites.</p>
 
 
 
-<p>Let&#8217;s assume we already have a CPT, <strong>Event</strong> setup with its taxonomy, <strong>Event Type</strong>.</p>
+<h2 class="wp-block-heading">What Are WordPress Block Themes?</h2>
 
 
 
-<pre class="wp-block-syntaxhighlighter-code">function register() {
-    register_post_type(
-        'my_event', array(
-        //..
-        'capability_type' =&gt; array('event', 'events'),  // Define custom capabilities
-        'map_meta_cap' =&gt; true,  // Use meta capabilities
-    );
-    register_taxonomy(
-        'event-type',
-        'my_event',
-        //..
-        'capabilities' =&gt; array(  // Define custom capabilities
-                'manage_terms' =&gt; 'manage_event_types',
-                'edit_terms' =&gt; 'edit_event_types',
-                'delete_terms' =&gt; 'delete_event_types',
-                'assign_terms' =&gt; 'assign_event_types',
-            )
-    );
-}
-add_action('init', 'register');</pre>
+<p><strong>Block Themes</strong> are a new type of WordPress theme that are built entirely with blocks. These themes leverage the power of the Gutenberg block editor to allow us to customize every part of our site—from headers and footers to templates and content areas—without writing custom PHP templates.</p>
 
 
 
-<h2 class="wp-block-heading"><strong>Customizing User Roles and Permissions</strong></h2>
-
-
-
-<p>Now that we have our custom post types and taxonomies, the next step is to define custom user roles that can manage these types. WordPress comes with default roles, but we can create a new role (<strong>Event Manager</strong>) with specific permissions related to our custom post types.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function get_all_event_caps() {
-    $capabilities = array();
-    $post_types = array('my_event');
-
-    foreach($post_types as $post_type) {
-        $post_type_object = get_post_type_object($post_type);
-
-        // Check if the post type object is valid.
-        if (! $post_type_object instanceof WP_Post_Type) {
-            continue;
-        }
-
-        // Remove default post capabilities.
-        $post_type_caps = (array) $post_type_object-&gt;cap;  // Get capabilities for the post type
-
-        // Remove default post capabilities
-        unset($post_type_caps['edit_post']);
-        unset($post_type_caps['read_post']);
-        unset($post_type_caps['delete_post']);
-        unset($post_type_caps['create_posts']);
-
-        $capabilities = array_merge($capabilities, array_values($post_type_caps));   
-    }
-
-    $taxonomies = array('event-type');
-
-    foreach($taxonomies as $taxonomy) {
-        $taxonomy_object = get_taxonomy($taxonomy);
-
-        // Check if the taxonomy object is valid.
-        if (! $taxonomy_object instanceof WP_Taxonomy) {
-            continue;
-        }
-
-        $taxonomy_caps = (array) $taxonomy_object-&gt;cap;
-        $capabilities = array_merge($capabilities, array_values($taxonomy_caps)); 
-    }
-
-    return $capabilities;
-}</pre>
-
-
-
-<p>Before assigning the permission we make a helper function to help us get all the permissions required for the Event Manager.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function event_add_roles() {
-    $capabilities = get_all_event_caps();
-    
-    // Add each capability to the 'administrator' role.
-    $admin_role = get_role('administrator');
-
-    foreach($capabilities as $capability) {
-        $admin_role-&gt;add_cap($capability);
-    }
-
-    $capabilities = array_fill_keys($capabilities, true);
-
-    add_role('event-manager', 'Event Manager', $capabilities);
-}
-add_action('init', 'event_add_roles');
-
-function event_remove_roles() {
-    $capabilities = get_all_event_caps();
-    $admin_role = get_role('administrator');
-
-    foreach($capabilities as $capability) {
-        $admin_role-&gt;remove_cap($capability);
-    }
-    
-    // Remove the 'Event Manager' role.
-    remove_role('event-manager');
-}</pre>
+<h3 class="wp-block-heading">Key Features of Block Themes:</h3>
 
 
 
 <ul class="wp-block-list">
-<li><strong><code>get_all_event_caps()</code></strong>: This function retrieves all the necessary capabilities for our custom post types and taxonomies. </li>
+<li>Fully compatible with Full Site Editing (FSE)</li>
 
 
 
-<li><strong><code>event_add_roles()</code></strong>: This creates a custom role called &#8220;Event Manager&#8221; and assigns it the necessary capabilities for managing events and event types. </li>
+<li>Use of <code>theme.json</code> for global settings and styles</li>
 
 
 
-<li><strong><code>event_remove_roles()</code></strong>: This function removes the custom &#8220;Event Manager&#8221; role and its capabilities.</li>
+<li>All templates and parts are created using blocks (<code>.html</code> files)</li>
+
+
+
+<li>High design flexibility without needing a child theme</li>
 </ul>
 
 
 
-<h2 class="wp-block-heading">Conclusion</h2>
+<h3 class="wp-block-heading">A Basic Structure of a Block Theme:</h3>
 
 
 
-<p>Custom user roles in WordPress help maintain a secure and efficient management system, especially when dealing with multiple types of content. By defining custom post types and taxonomies along with appropriate capabilities, we can ensure that users have the right level of access based on their specific role, this approach provides the flexibility to keep our WordPress site organized and secure.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/user-roles-in-wordpress/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Rewrite API: A practical usecase</title>
-		<link>/rewrite-api-a-practical-usecase/</link>
-					<comments>/rewrite-api-a-practical-usecase/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Thu, 13 Mar 2025 17:09:51 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=602</guid>
-
-					<description><![CDATA[As we know, the Rewrite API in WordPress, allows us to control the structure and handling of URLs for our content. Whether we want to create custom URLs for our post types, taxonomies, or even specific pages, this API comes in handy. In this blog post, we will walk through how to leverage the Rewrite [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As we know, the Rewrite API in WordPress, allows us to control the structure and handling of URLs for our content. Whether we want to create custom URLs for our post types, taxonomies, or even specific pages, this API comes in handy. In this blog post, we will walk through how to leverage the Rewrite API to create custom permalink structures for a custom post type and its taxonomy.</p>
+<pre class="wp-block-code"><code>my-block-theme/
+├── block-templates/
+│   ├── index.html
+│   └── single.html
+├── block-template-parts/
+│   ├── header.html
+│   └── footer.html
+├── patterns/
+│   └── test.html
+├── styles/
+│   └── style.css
+├── functions.php
+├── style.css
+├── theme.json</code></pre>
 
 
 
-<h2 class="wp-block-heading">Adding Custom Rewrite Rules</h2>
+<p>Example of <code>theme.json</code> in a Block Theme:</p>
 
 
 
-<p>We have a custom post type called <code>my_event</code>, which is used to represent different events. We also have a custom taxonomy called <code>event_type</code> that categorizes the events. We will set up custom permalinks to display events in a structured format, including both the event type and a unique identifier for the event.</p>
-
-
-
-<p>First, we need to tell WordPress how to interpret custom URLs for our events. In the code snippet below, we define a custom rewrite rule that includes both the event type and a unique event identifier in the URL.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function event_rewrite_rule() {
-    // Add rewrite tag for event type.
-    add_rewrite_tag('%event_type%', '([^&amp;]+)', 'event_type=');
-
-    // Add custom rewrite rule.
-    add_rewrite_rule(
-        '^event/([^/]+)/([^/]+)-([0-9]+)/?',
-        'index.php?event_type=$matches[1]&amp;post_type=my_event&amp;name=$matches[2]&amp;p=$matches[3]',
-        'top'
-    );
-}
-
-add_action('init', 'event_rewrite_rule');</pre>
-
-
-
-<h2 class="wp-block-heading">Customizing Permalink Structure for Events</h2>
-
-
-
-<p>We need to customize the permalink structure for the <code>my_event</code> post type to include both the event type and the event ID.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function custom_event_permalink() {
-    global $wp_rewrite;
-
-    $args = $wp_rewrite-&gt;extra_permastructs['my_event'];
-
-    // Remove the default permalink structure
-    remove_permastruct('my_event');
-    unset($args['struct']);
-
-    $args['with_front'] = false;
-
-    // Define the new permalink structure.
-    add_permastruct('my_event', 'event/%event_type%/%my_event%-%post_id%', $args);
-}
-
-add_action('init', 'custom_event_permalink', 11); // 11 ensures this runs after other rules.</pre>
-
-
-
-<h2 class="wp-block-heading">Modifying Permalink for Each Event</h2>
-
-
-
-<p>To ensure that each event&#8217;s permalink reflects its event type, we need to modify the URL generation process for individual events.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function event_permalink($permalink, $post) {
-    if ('my_event' !== $post-&gt;post_type) {
-        return $permalink;
-    }
-
-    $type = wp_get_object_terms($post-&gt;ID, 'event-type');
-
-    $type = wp_list_sort($type, array('term_id' =&gt; 'ASC'));
-
-    if (!is_wp_error($type) &amp;&amp; !empty($type) &amp;&amp; is_object($type[0])) {
-        $type_slug = $type[0]-&gt;slug;
-    } else {
-        $type_slug = 'hello'; // Default slug if no event type is found.
-    }
-
-    // Replace placeholders with values.
-    $permalink = str_replace(
-        ['%event_type%', '%post_id%'],
-        [$type_slug, $post-&gt;ID],
-        $permalink
-    );
-
-    return $permalink;
-}
-add_filter('post_type_link', 'event_permalink', 10, 2);</pre>
-
-
-
-<h2 class="wp-block-heading">Filtering Events by Event Type</h2>
-
-
-
-<p>Finally, we want to make sure that WordPress can filter events by the <code>event_type</code> taxonomy on the front end and in the admin panel. This will allow for custom filtering based on the event type slug in the URL.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function add_event_type_query_var($vars) {
-    $vars[] = 'event_type';
-    return $vars;
-}
-
-add_filter('query_vars', 'add_event_type_query_var');
-
-function filter_events_by_event_type($query) {
-    if (is_admin() &amp;&amp; !$query-&gt;is_main_query()) {
-        return;
-    }
-
-    $event_type = get_query_var('event_type');
-    if (!empty($event_type)) {
-        $tax_query = $query-&gt;get('tax_query');
-        if (!is_array($tax_query)) {
-            $tax_query = array();
+<pre class="wp-block-syntaxhighlighter-code">{
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#0073aa",
+          "name": "Primary"
         }
-        $tax_query['relation'] = 'AND';
-        $tax_query[] = array(
-            'taxonomy' =&gt; 'event-type',
-            'field' =&gt; 'slug',
-            'terms' =&gt; $event_type,
-        );
-        $query-&gt;set('tax_query', $tax_query);
+      ]
     }
-}
-
-add_action('pre_get_posts', 'filter_events_by_event_type');</pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>With this, using the WordPress Rewrite API, we have successfully created a custom URL structure for our <code>my_event</code> post type and filtered events based on their <code>event_type</code> taxonomy. This provides a clean, SEO-friendly URL structure for our custom events and ensures the filtering works seamlessly on both the front end and back end.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/rewrite-api-a-practical-usecase/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Introduction to WordPress Rewrite API</title>
-		<link>/introduction-to-wordpress-rewrite-api/</link>
-					<comments>/introduction-to-wordpress-rewrite-api/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Wed, 12 Mar 2025 16:11:27 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=592</guid>
-
-					<description><![CDATA[The Rewrite API is a method to help developer manipulate URL structures also known as permalinks for custom post types, taxonomies. It is a critical component of WordPress and used extensively to create user-friendly and SEO-Optimized permalinks. How Rewrite API works? The Rewrite API allows developers to add their own rewrite rules and tie them [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>The Rewrite API is a method to help developer manipulate URL structures also known as permalinks for custom post types, taxonomies. It is a critical component of WordPress and used extensively to create user-friendly and SEO-Optimized permalinks.</p>
-
-
-
-<h2 class="wp-block-heading">How Rewrite API works?</h2>
-
-
-
-<p>The Rewrite API allows developers to add their own rewrite rules and tie them to a specific query variables. When a user visits a URL, WordPress looks through these rewrite rules to determine which content to display, based on the matched pattern.</p>
-
-
-
-<p><strong>Rewrite Rules</strong>: These are patterns that define the URL structure for our content. They are added through the <code>add_rewrite_rule()</code> function. </p>
-
-
-
-<p><strong>Query Vars</strong>: Query variables are part of the URL, typically in the form of key-value pairs, used to retrieve specific content. Developers can define custom query variables using <code>add_rewrite_tag()</code>. </p>
-
-
-
-<p><strong>Flush Rewrite Rules</strong>: After making changes to rewrite rules, we need to flush them to apply the new settings. This is done through the <code>flush_rewrite_rules()</code> function.</p>
-
-
-
-<h2 class="wp-block-heading">Using Rewrite API</h2>
-
-
-
-<h3 class="wp-block-heading">Creating Custom Permalinks for CPT</h3>
-
-
-
-<p>It is one of the most common use case of Rewrite API. When registering a CPT we can use the <code>rewrite</code> parameter to add rewrite rules.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function my_custom_post_type() {
-    $args = array(
-        'public' =&gt; true,
-        'rewrite' =&gt; array('slug' =&gt; 'my-custom-posts'),
-        'label'  =&gt; 'Custom Posts'
-    );
-    register_post_type('custom_post', $args);
-}
-add_action('init', 'my_custom_post_type');</pre>
-
-
-
-<p>Similarly for Custom Taxonomies we can use:</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function my_custom_post_type() {
-    $args = array(
-        'public' =&gt; true,
-        'rewrite' =&gt; array('slug' =&gt; 'my-custom-posts'),
-        'label'  =&gt; 'Custom Posts'
-    );
-    register_post_type('custom_post', $args);
-}
-add_action('init', 'my_custom_post_type');</pre>
-
-
-
-<h2 class="wp-block-heading">Redirecting URLs</h2>
-
-
-
-<p>Another practical application of the Rewrite API is for handling redirects. For example, if we need to redirect URLs  we can use the <code>add_rewrite_rule()</code> function to create redirects.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function custom_redirect() {
-    add_rewrite_rule('^old-page/?$', 'index.php?pagename=new-page', 'top');
-}
-add_action('init', 'custom_redirect');</pre>
-
-
-
-<h2 class="wp-block-heading">Adding Custom Query Variables</h2>
-
-
-
-<p>We might need custom query variables to handle specific requests from our URL. With the Rewrite API, we can define these variables using <code>add_rewrite_tag()</code>.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function add_custom_query_var($vars) {
-    $vars[] = 'my_custom_var';
-    return $vars;
-}
-add_filter('query_vars', 'add_custom_query_var');</pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>The Rewrite API in WordPress is an essential tool for developers looking to create custom URL structures, improve SEO, and redirect users from outdated content. By understanding how to utilize the Rewrite API, we gain full control over how WordPress handles permalinks, allowing us to customize our website.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/introduction-to-wordpress-rewrite-api/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Dashboard Widgets in WordPress</title>
-		<link>/dashboard-widgets-in-wordpress/</link>
-					<comments>/dashboard-widgets-in-wordpress/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Tue, 11 Mar 2025 15:20:19 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=582</guid>
-
-					<description><![CDATA[As WordPress developers we know how powerful and flexible it is, one of the feature that allows us to streamline our workflows and improve user experience is the WordPress dashboard. By customizing the dashboard with widgets we can have users have quick access to various information and tasks. What are Dashboard Widgets? Dashboard widgets are [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As WordPress developers we know how powerful and flexible it is, one of the feature that allows us to streamline our workflows and improve user experience is the WordPress dashboard. By customizing the dashboard with widgets we can have users have quick access to various information and tasks. </p>
-
-
-
-<h2 class="wp-block-heading">What are Dashboard Widgets?</h2>
-
-
-
-<p>Dashboard widgets are small, customizable modules that appear on the WordPress admin screen. These widgets provide essential information about the various aspects of the site. The default WordPress dashboard comes with several built-in widgets, such as &#8220;At a Glance,&#8221; &#8220;Recent Drafts,&#8221; and &#8220;Quick Draft,&#8221; but as WordPress users, we can also add custom widgets to suit our needs.</p>
-
-
-
-<h2 class="wp-block-heading">How to Add Custom Widgets to Your WordPress Dashboard</h2>
-
-
-
-<p>Inside our plugin we can add Custom Dashboard widgets using the <code>wp_add_dashboard_widget()</code> </p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function custom_dashboard_widget() {
-    wp_add_dashboard_widget(
-        'custom_dashboard_widget', // Widget slug
-        'My Custom Widget',        // Widget title
-        'custom_dashboard_widget_html' // Function to display widget
-    );
-}
-
-function custom_dashboard_widget_html() {
-    echo '&lt;p&gt;This is a custom dashboard widget&lt;/p&gt;';
-}
-
-add_action('wp_dashboard_setup', 'custom_dashboard_widget');</pre>
-
-
-
-<p>The <code>wp_add_dashboard_widget()</code> function takes in a <strong>widget slug</strong>, <strong>title</strong>, and a <strong>callback function</strong> to display the widget.</p>
-
-
-
-<p>Similar to this we can add more advanced features to it as well.</p>
-
-
-
-<p>Example— &#8220;Widget for fetching the latest posts from a blog.&#8221;</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function latest_posts_dashboard_widget() {
-    wp_add_dashboard_widget(
-        'latest_posts_dashboard_widget',
-        'Latest Posts',                  
-        'latest_post_dashboard_widget_html'
-    );
-}
-
-function latest_post_dashboard_widget_html() {
-    $args = array(
-        'posts_per_page' =&gt; 5,
-        'post_status'    =&gt; 'publish',
-        'order'           =&gt; 'DESC',
-        'orderby'         =&gt; 'date',
-    );
-    
-    $query = new WP_Query($args);
-
-    if ($query-&gt;have_posts()) {
-        echo '&lt;ul&gt;';
-        
-        while ($query-&gt;have_posts()) {
-            $query-&gt;the_post();
-            echo '&lt;li&gt;&lt;a href="' . get_permalink() . '"&gt;' . get_the_title() . '&lt;/a&gt;&lt;/li&gt;';
+  },
+  "styles": {
+    "elements": {
+      "h1": {
+        "typography": {
+          "fontSize": "2.5rem"
         }
-        
-        echo '&lt;/ul&gt;';
-    } else {
-        echo '&lt;p&gt;No recent posts found.&lt;/p&gt;';
+      }
     }
-    
-    wp_reset_postdata();
-}
+  }
+}</pre>
 
-add_action('wp_dashboard_setup', 'latest_posts_dashboard_widget');</pre>
 
 
+<p>This file gives us centralized control over global styles like fonts, colors, and spacing—without editing any CSS.</p>
 
-<h2 class="wp-block-heading">Conclusion</h2>
 
 
+<h2 class="wp-block-heading">What Are WordPress Block Patterns?</h2>
 
-<p>Dashboard Widgets are one of the simplest and powerful way to customize and enhance the WP Admin interface. They provide us with quick access to important information, boost our productivity, and help streamline our workflows. Whether we&#8217;re managing a personal blog, running an e-commerce store, or handling multiple client websites, taking full advantage of dashboard widgets can make our jobs much easier.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/dashboard-widgets-in-wordpress/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Working with Transient API</title>
-		<link>/working-with-transient-api/</link>
-					<comments>/working-with-transient-api/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Mon, 10 Mar 2025 14:33:27 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[plugin development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=572</guid>
 
-					<description><![CDATA[As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website. Best Practices for Using Transient API Appropriate Expiration Time Transients are intended for temporary storage [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website.</p>
 
+<p><strong>Block Patterns</strong> are predefined collections of blocks that we can insert into pages or posts to speed up the design process. Think of them like reusable design sections—call to actions, hero sections, testimonials—that can be dropped in with one click.</p>
 
 
-<h2 class="wp-block-heading">Best Practices for Using Transient API</h2>
 
-
-
-<h3 class="wp-block-heading"><strong>Appropriate Expiration Time</strong></h3>
-
-
-
-<p>Transients are intended for temporary storage so its important to set correct expiration time based on how often the data changes. For example some event data might only change a few times a day so setting the transient to expire in an hour will be optimal. However if the expiration is too big the cached data may become stale.</p>
-
-
-
-<h3 class="wp-block-heading"><strong>Delete Transients When Appropriate</strong></h3>
-
-
-
-<p>It’s important to clear transients when data changes. We can use hooks to delete a transient when a new post/data modified. This ensures that the cache reflects the most current data.</p>
-
-
-
-<h3 class="wp-block-heading"><strong>Store Only the Necessary Data</strong></h3>
-
-
-
-<p>Transients should store only the data that is necessary for quick access. We usually store the post IDs, but if we needed additional data like custom fields, we could retrieve that data only when necessary, ensuring we don&#8217;t store excessive information in the cache.</p>
-
-
-
-<h3 class="wp-block-heading"><strong>Using Transients for Expensive Operations</strong></h3>
-
-
-
-<p>Use transients to cache results of expensive operations such as API calls, database queries, or other heavy computations. This reduces the need to repeat these operations on every page load and can significantly speed up our site.</p>
-
-
-
-<h2 class="wp-block-heading">Example: Using Transient API for Displaying Latest Events</h2>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function latest_events_shortcode() {
-    $args = array(
-        'post_type' =&gt; 'my_event',
-        'posts_per_page' =&gt; 5,
-        'orderby' =&gt; 'DESC'
-    );
-
-    // Check if the transient already exists
-    $latest = get_transient('latest_events');
-
-    // If the transient doesnt exist query the database and set a new transient
-    if ( ! $latest ) {
-        // Query the posts
-        $query = new WP_Query($args);
-
-        $events = array();
-
-        if ($query-&gt;have_posts()) {
-            while ($query-&gt;have_posts()) {
-                $query-&gt;the_post();
-                $events[] = get_the_ID();
-            }
-            wp_reset_postdata();
-        }
-
-        set_transient('latest_events', $events, 1 * HOUR_IN_SECONDS);
-        $latest = get_transient('latest_events');
-    }
-    ob_start();
-    if ($latest) {
-        foreach ($latest as $event) {
-            echo '&lt;h2&gt;' . get_the_title($event) . '&lt;/h2&gt;';
-        } 
-    } else {
-        echo 'No Events Found';
-    }
-    return ob_get_clean();
-}
-add_shortcode('latest', 'latest_events_shortcode');
-
-// Clear the transient when new event is saved or updated
-add_action('save_post_my_event', function () {
-    delete_transient('latest_events');
-});</pre>
-
-
-
-<ol class="wp-block-list">
-<li><strong>Checking the Transient</strong>: The function <code>get_transient('latest_events')</code> attempts to fetch the latest events from the cache.</li>
-
-
-
-<li><strong>Querying the Database</strong>: If the transient doesn&#8217;t exist we run a query to fetch the latest events and store the results in a transient.</li>
-
-
-
-<li><strong>Setting the Transient</strong>: We store the event IDs in the transient. </li>
-
-
-
-<li><strong>Displaying the Events</strong>: If the transient exists, we loop through the event IDs and display the titles of the events.</li>
-
-
-
-<li><strong>Cache Invalidation</strong>: The <code>delete_transient('latest_events')</code> action ensures that the cache is cleared when a new event is saved or an existing event is updated, so that the cache stays up to date.</li>
-</ol>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>The WordPress Transient API is a simple yet powerful tool that can help us optimize the performance of our websites by caching expensive queries or external API calls. </p>
-
-
-
-<p>By following best practices such as— setting appropriate expiration times, deleting expired transients and storing only important information we can improve the user experience by delivering content faster while reducing the load on our servers.</p>
-
-
-
-<p></p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/working-with-transient-api/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Transient API and HTTP API in WordPress</title>
-		<link>/transient-api-and-http-api-in-wordpress/</link>
-					<comments>/transient-api-and-http-api-in-wordpress/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Wed, 05 Mar 2025 14:14:42 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=561</guid>
-
-					<description><![CDATA[As developers, we frequently find ourselves interacting with various APIs to streamline our workflows, enhance performance and improve the overall user experience. Two of the tools that help us achieve this are the HTTP API and the Transients API. In this blog we will explore both of these, as to how we can incorporate them [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As developers, we frequently find ourselves interacting with various APIs to streamline our workflows, enhance performance and improve the overall user experience. Two of the tools that help us achieve this are the <strong>HTTP API</strong> and the <strong>Transients API</strong>. In this blog we will explore both of these, as to how we can incorporate them into our WordPress projects.</p>
-
-
-
-<h2 class="wp-block-heading">The Transients API</h2>
-
-
-
-<p>The Transients API allows us to store temporary data in the WordPress database with a fixed expiration time. This is perfect for data that doesn’t change frequently like API responses, settings or query results. When we store data as a transient, WordPress automatically delete it once it expires, reducing the need for manual data clean up.</p>
-
-
-
-<h3 class="wp-block-heading">Why Use Transients?</h3>
-
-
-
-<p>The Transients API is an excellent tool for improving query performance by reducing the number of database queries or even the external API calls. By caching data that does not change often we can reduce server load and speed up the page loads, and improve the overall user experience.</p>
-
-
-
-<p>Transients are especially useful for storing API responses, product listings, user preferences or <strong>any data that is expensive to fetch or compute but doesn’t change frequently</strong>.</p>
-
-
-
-<h3 class="wp-block-heading">Setting and Getting Transients</h3>
-
-
-
-<p>To work with transients we have a few key functions which we can use—</p>
+<h3 class="wp-block-heading">Why We Love Block Patterns:</h3>
 
 
 
 <ul class="wp-block-list">
-<li><code>set_transient( $transient, $value, $expiration )</code> – Used to store data as a transient.</li>
+<li>Reusable and modular</li>
 
 
 
-<li><code>get_transient( $transient )</code> – Retrieves the data stored in a transient.</li>
+<li>Speeds up page design</li>
 
 
 
-<li><code>delete_transient( $transient )</code> – Deletes a specific transient.</li>
+<li>Customizable after insertion</li>
+
+
+
+<li>Encourages consistent design</li>
 </ul>
 
 
 
-<pre class="wp-block-syntaxhighlighter-code">// Store data in a transient
-set_transient('my_transient', 'This is some data', 3600);
+<h3 class="wp-block-heading">Registering a Custom Block Pattern in a Theme:</h3>
 
-// Retrieve data from the transient
-$stored_data = get_transient('my_transient');
 
-if ($stored_data) {
-    echo "Transient data: $stored_data";
-} else {
-    echo "No transient data found.";
-}</pre>
 
+<p>We can register patterns by adding a PHP file in the <code>patterns/</code> directory and hooking into it in <code>functions.php</code>.</p>
 
 
-<h2 class="wp-block-heading">The HTTP API</h2>
 
-
-
-<p>The <strong>HTTP API</strong> in WordPress is a tool that simplifies making HTTP requests, such as GET, POST, PUT, and DELETE. When we need to fetch data from external sources or send data to external servers, the HTTP API is our go-to solution.</p>
-
-
-
-<h3 class="wp-block-heading">GET with Transient Caching</h3>
-
-
-
-<p>When working with external APIs we often face performance issues. Fetching data from remote servers can be slow and resource intensive, the problem becomes ever worse when the same data is being fetched repeatedly. This is where <strong>transient caching</strong> becomes invaluable.</p>
-
-
-
-<p>The <strong>Transients API</strong> allows us to store data for a specific period reducing the need for repeated HTTP requests. By combining the HTTP API with transient caching we can ensure that our application only fetches data from external sources when necessary which in turn helps to reduce latency and minimize the load on servers.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">$transient_key = 'external_api_data';
-$cached_data = get_transient($transient_key);
-
-if (false === $cached_data) {
-    // no cache is found so make the HTTP request
-    $response = wp_remote_get('https://api.example.com/data');
-    
-    if (is_wp_error($response)) {
-        $error = $response-&gt;get_error_message();
-        echo "Something went wrong: $error";
-    } else {
-        // Cache the response
-        $cached_data = wp_remote_retrieve_body($response);
-        set_transient($transient_key, $cached_data, 12 * HOUR_IN_SECONDS);
-        echo "Data fetched successfully: $cached_data";
-    }
-} else {
-    // Use cached data
-    echo "Using cached data: $cached_data";
-}</pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>The <strong>HTTP API</strong> and <strong>Transients API</strong> are two powerful tools that can help us build efficient and high performance WordPress applications. By understanding how to use them effectively—whether its caching GET requests or storing temporary data we can create better sites and all while reducing server load.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/transient-api-and-http-api-in-wordpress/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Handling Media with REST API</title>
-		<link>/handling-media-with-rest-api/</link>
-					<comments>/handling-media-with-rest-api/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Tue, 04 Mar 2025 15:15:17 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[theme development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wordpress theme]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=552</guid>
-
-					<description><![CDATA[As we have seen previously how easy it is to create and interact with WordPress using its REST API. This blog will explore how to use this REST API to handle media on our site. Using Default REST API Route To upload an image using the default media route, we can use a POST request [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As we have seen previously how easy it is to create and interact with WordPress using its REST API. This blog will explore how to use this REST API to handle media on our site.</p>
-
-
-
-<h2 class="wp-block-heading"><strong>Using Default REST API Route</strong></h2>
-
-
-
-<p>To upload an image using the default media route, we can use a <code>POST</code> request to the <code>/wp-json/wp/v2/media</code> endpoint.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">curl --user 'user:pass' -X POST http://wp.local/wp-json/wp/v2/media \
-    -H "Content-Type: image/png" \
-    -H "Content-Disposition: attachment; filename=\"filename.png\"" \
-    --data-binary @filename.png
-</pre>
-
-
-
-<p>Upon successful upload WordPress will process the image store it in the media library, and return the media data in a JSON response, which includes the media’s ID, URL, and other relevant metadata.</p>
-
-
-
-<h2 class="wp-block-heading">Custom Media Upload Handler with REST API</h2>
-
-
-
-<p>While WordPress provides a default endpoint for media uploads, its not uncommon to want to create a custom route for uploading media.</p>
-
-
-
-<h3 class="wp-block-heading">Defining the Custom Route and Handler</h3>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">function image_upload_route() {
-    register_rest_route('my/v1', '/upload-image', [
-        'methods' =&gt; 'POST',
-        'callback' =&gt; 'handle_image_upload',
-        'permission_callback' =&gt; '__return_true',
-    ]);
-}
-
-add_action('rest_api_init', 'image_upload_route');
-
-function handle_image_upload(WP_REST_Request $request) {
-    if (empty($_FILES['file'])) {
-        return new WP_REST_Response('No file uploaded', 400);
-    }
-
-    $file = $_FILES['file'];
-
-    // Validate file type
-    $allowed_mime_types = ['image/jpeg', 'image/png', 'image/gif'];
-    if (!in_array($file['type'], $allowed_mime_types)) {
-        return new WP_REST_Response('Invalid file type', 400);
-    }
-
-    include_once ABSPATH.'wp-admin/includes/file.php';
-    $upload = wp_handle_upload($file, array( 'test_form' =&gt; false ));
-
-    if (isset($upload['error'])) {
-        return new WP_REST_Response($upload['error'], 500);
-    }
-
-    // Create attachment in WordPress media library
-    $attachment = [
-        'post_mime_type' =&gt; $file['type'],
-        'post_title'     =&gt; sanitize_text_field($file['name']),
-        'post_content'   =&gt; '',
-        'post_status'    =&gt; 'inherit',
-    ];
-
-    $attachment_id = wp_insert_attachment($attachment, $upload['file']);
-
-    // Get the URL of the uploaded file
-    $attachment_url = wp_get_attachment_url($attachment_id);
-
-    // Return the response with attachment data
-    return new WP_REST_Response([
-        'id' =&gt; $attachment_id,
-        'url' =&gt; $attachment_url,
-        'mime_type' =&gt; $file['type'],
-        'name' =&gt; $file['name'],
-    ], 200);
-}</pre>
-
-
-
-<ul class="wp-block-list">
-<li><strong>Registering the Custom Route:</strong> We use <code>register_rest_route</code> to create a custom REST API route at <code>/wp-json/my/v1/upload-image</code>. This route is uses the <code>handle_image_upload()</code> function, which will handle the file upload logic.</li>
-
-
-
-<li><strong>Callback Function:</strong> Inside the callback function, we first check whether a file has been uploaded. </li>
-
-
-
-<li><strong>File Type Validation:</strong> We ensure that the uploaded file is one of the allowed image types (JPEG, PNG, or GIF). If the file type doesnt match we return an error message.</li>
-
-
-
-<li><strong>Handling the Upload:</strong> Using WordPress’s built-in <code>wp_handle_upload</code> function, we process the file. If the upload is successful, we move on to inserting it into the media library.</li>
-
-
-
-<li><strong>Inserting into the Media Library:</strong> We use <code>wp_insert_attachment</code> to insert the uploaded file into WordPress’s media library as an attachment. Then, we retrieve the URL of the uploaded file using <code>wp_get_attachment_url</code>.</li>
-
-
-
-<li><strong>Returning the Response:</strong> Finally, we send a JSON response back to the client with the attachment ID, URL, MIME type, and file name.</li>
-</ul>
-
-
-
-<h3 class="wp-block-heading">Uploading the Image with <code>curl</code></h3>
-
-
-
-<p>To upload an image using this custom handler we can again use <code>curl</code> but this time, we need to target the custom route (<code>/wp-json/my/v1/upload-image</code>).</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">curl -X POST http://wp.local/wp-json/my/v1/upload-image -F "file=@filename.png"</pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>In this post, we covered two ways of handling media uploads in WordPress using the REST API:</p>
-
-
-
-<ol class="wp-block-list">
-<li>Using WordPress’s default media route to upload files.</li>
-
-
-
-<li>Creating a custom media upload handler with our own logic.</li>
-</ol>
-
-
-
-<p>By leveraging the WordPress REST API, we can easily integrate media functionality into our applications giving us more control over how media files are handled and processed.</p>
-
-
-
-<p></p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/handling-media-with-rest-api/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WordPress REST API Internals</title>
-		<link>/wordpress-rest-api-internals/</link>
-					<comments>/wordpress-rest-api-internals/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Mon, 03 Mar 2025 16:00:02 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[plugin development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=536</guid>
-
-					<description><![CDATA[When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or simply extending the functionality of the site. This blog explores the internals how this works. The Request Flow The process begins as soon as a request is made to the WordPress site’s REST API [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or  simply extending the functionality of the site. This blog explores the internals how this works.</p>
-
-
-
-<h2 class="wp-block-heading">The Request Flow</h2>
-
-
-
-<p>The process begins as soon as a request is made to the WordPress site’s REST API endpoints.</p>
-
-
-
-<p>A client(browser, app or server) makes a request to the server on the server&#8217;s REST URL.</p>
-
-
-
-<p><code>parse_request</code> action the WordPress core routing system kicks into action. The <code>WP</code> class processes the incoming request and the <code>parse_request</code> action is triggered. This is where WordPress begins to understand that the request is for the REST API and determines the correct route.</p>
-
-
-
-<p>The <code>rest_api_loaded()</code> function is the entry point for the REST API, it checks if the request is for the REST API by checking the <code>rest_route</code> query variable. If a valid route is found it defines the <code>REST_REQUEST</code> constant which tells WordPress that it should proceed with processing it as a REST API request.</p>
-
-
-
-<p>WordPress calls the <code>rest_get_server()</code> function which returns an instance of the <code>WP_REST_Server</code> class. This class handles the core tasks of routing, authentication and response generation. There is also a function which allows developers to replace the default server class with a custom implementation using the <code>wp_rest_server_class</code> filter.</p>
-
-
-
-<p>Now, the <code>rest_api_init</code> action is triggered. This is one of the most important hooks in the REST API. It’s the perfect place to register custom routes with <code>register_rest_route()</code> or create custom REST fields using <code>register_rest_field()</code> or perform any other setup.</p>
-
-
-
-<p>The <code>WP_REST_Server</code>’s <code>serve_request()</code> method is the main component of the REST API request processing. It is here WordPress checks the user’s authentication status, sets important HTTP headers (such as CORS) and applies various filters that enable developers to modify request processing.</p>
-
-
-
-<p>A new <code>WP_REST_Request</code> object is created which holds all relevant details about the incoming request, such as HTTP method, query parameters, request body, headers, file uploads, etc.</p>
-
-
-
-<p>The <code>check_authentication()</code> method ensures that the request is coming from a valid, authenticated source. This is where custom authentication mechanisms (like JWT tokens or API keys) can be applied. If authentication fails, the request is rejected with an appropriate error message.</p>
-
-
-
-<p>Finally, the request is dispatched using the <code>dispatch()</code> method. This method matches the incoming request to one of the registered routes and executes the associated callback function. If the route doesn’t exist, a 404 error is returned.</p>
-
-
-
-<h2 class="wp-block-heading">The Response Flow</h2>
-
-
-
-<p>After WordPress has successfully matched the request to a route and executed the relevant callback it needs to handle the response.</p>
-
-
-
-<p>The callback function responsible for handling the route is executed. This function processes the request accesses any necessary data, performs database queries and prepares the data to be returned in the response.</p>
-
-
-
-<p>The <code>respond_to_request()</code> method is used to construct the final response. Before this method, several filters are applied to allow developers to modify the request or return a custom response.</p>
-
-
-
-<p>If the route has a defined <code>permission_callback</code>, this function is executed to ensure the current user has the appropriate permissions to access the route. If the callback returns <code>false</code> or a <code>WP_Error</code>, the request is rejected with a suitable error message.</p>
-
-
-
-<p>WordPress ensures that the response data is properly formatted as a <code>WP_REST_Response</code> object. This function is crucial because it handles potential errors and ensures the response is in a valid JSON format with the correct HTTP status code.</p>
-
-
-
-<p>WordPress then checks for any filters like <code>rest_post_dispatch</code>, which can be used to adjust the final <code>WP_REST_Response</code> object before it’s sent to the client. You can modify the status code, add custom headers, or tweak the response data.</p>
-
-
-
-<p>Headers such as <code>Content-Type</code>, <code>Cache-Control</code>, and any CORS-related headers are set. Also the appropriate HTTP status code is set.</p>
-
-
-
-<p>The response data is then encoded into a JSON format using <code>wp_json_encode()</code>, and it’s sent to the client as the final output.</p>
-
-
-
-<p>Finally, WordPress calls <code>die()</code> to terminate the execution, ensuring no further code is run after the response is sent.</p>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360" alt="" class="wp-image-550" /></figure>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>Understanding the request-response flow in the WordPress REST API is essential for anyone looking to work with it at a deeper level. Whether building a plugin, developing custom functionality, having a solid grasp of this flow will make our development process smoother and more efficient.</p>
-
-
-
-<p></p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/wordpress-rest-api-internals/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WP-CLI Custom Commands</title>
-		<link>/wp-cli-custom-commands/</link>
-					<comments>/wp-cli-custom-commands/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Fri, 28 Feb 2025 15:04:02 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[plugin development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=524</guid>
-
-					<description><![CDATA[As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow. Setting Up Our Custom Commands [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow.</p>
-
-
-
-<h3 class="wp-block-heading">Setting Up Our Custom Commands</h3>
-
-
-
-<p>Before we can create custom commands, we need to make sure that the WordPress environment is set up fine. For WP-CLI to work we have define the <code>WP_CLI</code> constant and ensure its available.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">if (defined('WP_CLI') &amp;&amp; WP_CLI) {
-    class Custom {
-        // Our custom commands will go here
-    }
-
-    WP_CLI::add_command('example', 'Custom');
-}</pre>
-
-
-
-<h3 class="wp-block-heading">Defining Custom Commands</h3>
-
-
-
-<p>Within our <code class="">Custom</code> class we can define multiple commands. Each command is a method within the class. </p>
-
-
-
-<p>We can start with a simple command that greets a user.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">class Custom {
-    /**
-     * Prints a greeting.
-     *
-     * ## OPTIONS
-     *
-     * &lt;name&gt;
-     * : The name of the person to greet.
-     *
-     * [--type=&lt;type&gt;]
-     * : Whether or not to greet the person with success or error.
-     * ---
-     * default: success
-     * options:
-     *   - success
-     *   - error
-     * ---
-     *
-     * ## EXAMPLES
-     *
-     *     wp example hello Newman
-     *
-     * @when after_wp_load
-     */
-    function hello($args, $assoc_args) {
-        list($name) = $args;
-
-        // Print the message with type
-        $type = $assoc_args['type'];
-        WP_CLI::$type("Hello, $name!");
-    }
-}</pre>
-
-
-
-<p>In this example, we have created a method called <code>hello</code>.<br>This command greets the user. It accepts a name as an argument and an optional <code>--type</code> argument to determine if the message should be displayed as a success or error.</p>
-
-
-
-<h3 class="wp-block-heading">Fetching Blog Posts</h3>
-
-
-
-<p>We can add another command to fetch blog posts. This command fetches the latest blog posts using WordPress&#8217;s REST API. It retrieves posts and formats them into a table to display the title and link.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">class Custom {
-    // ...
-
-    function blog($args, $assoc_args) {
-        $response = wp_remote_get(rest_url('/wp/v2/posts'));
-        $posts = json_decode(wp_remote_retrieve_body($response));
-
-        $output = array();
-
-        foreach ($posts as $post) {
-            $output[] = array(
-                'title' =&gt; $post-&gt;title-&gt;rendered,
-                'link' =&gt; $post-&gt;link
-            );
-        }
-
-        WP_CLI\utils\format_items('table', $output, array('title', 'link'));
-    }
-}</pre>
-
-
-
-<h3 class="wp-block-heading">Exporting Data</h3>
-
-
-
-<p>This command exports custom post types as a formatted output. It queries for all <code>my_event</code> post types retrieves relevant details like title, content, and link and displays them in a specified format.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">class Custom {
-    // ...
-
-    function export_event($args, $assoc_args) {
-        $args = array(
-            'post_type' =&gt; 'my_event',
-            'posts_per_page' =&gt; -1,
-        );
-        $query = new WP_Query($args);
-
-        if ($query-&gt;have_posts()) {
-            $posts = array();
-            while ($query-&gt;have_posts()) {
-                $query-&gt;the_post();
-
-                $posts[] = array(
-                    'id' =&gt; get_the_ID(),
-                    'title' =&gt; get_the_title(),
-                    'content' =&gt; get_the_content(),
-                    'link' =&gt; get_the_permalink(),
-                );
-            }
-
-            WP_CLI\utils\format_items($assoc_args['format'], $posts, array('id', 'title', 'content', 'link'));
-        }
-    }
-}</pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>Custom WP-CLI commands offer a powerful way to extend the functionality of WP-CLI. By creating custom commands we can streamline our workflow, automate repetitive tasks, and enhance our productivity. Whether it&#8217;s greeting users, fetching blog posts, or exporting custom post types, the possibilities with custom commands are endless.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>/wp-cli-custom-commands/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Working with the WP_Rest_Controller Class</title>
-		<link>/working-with-the-wp_rest_controller-class/</link>
-					<comments>/working-with-the-wp_rest_controller-class/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Thu, 27 Feb 2025 14:41:53 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[development]]></category>
-		<category><![CDATA[plugin development]]></category>
-		<category><![CDATA[seo]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<category><![CDATA[wp]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=507</guid>
-
-					<description><![CDATA[As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The WP_REST_Controller class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints. What is WP_REST_Controller? The WP_REST_Controller class is an abstract class which provides basic structure [&#8230;]]]></description>
-										<content:encoded><![CDATA[
-<p>As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The <code class="">WP_REST_Controller</code> class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints.</p>
-
-
-
-<h2 class="wp-block-heading">What is <code>WP_REST_Controller</code>?</h2>
-
-
-
-<p>The <code class="">WP_REST_Controller</code> class is an abstract class which provides basic structure for creating REST API endpoints. It includes methods for registering and handling requests and responses. By extending this class we can create custom endpoints.</p>
-
-
-
-<h2 class="wp-block-heading">Extending <code>WP_REST_Controller</code></h2>
-
-
-
-<p>First we need to create a new class that will inherit <code>WP_REST_Controller</code> class, this class will define routes and handle the requests at custom end points.</p>
-
-
-
-<h3 class="wp-block-heading">Defining Custom controller class</h3>
+<h5 class="wp-block-heading">Example: <code>patterns/call-to-action.php</code></h5>
 
 
 
 <pre class="wp-block-syntaxhighlighter-code">&lt;?php
-use WP_REST_Controller;
-use WP_REST_Request;
-use WP_REST_Response;
-use WP_REST_Server;
-
-class Custom_REST_Controller extends WP_REST_Controller {
-    public function __construct() {
-        $this-&gt;namespace = 'namespace/v1';
-        $this-&gt;rest_base = 'our-endpoint';
-
-        add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-    }
-
-    public function register_routes() {
-        register_rest_route(
-            $this-&gt;namespace,
-            '/' . $this-&gt;rest_base,
-            array(
-                array(
-                    'methods'             =&gt; WP_REST_Server::READABLE,
-                    'callback'            =&gt; array( $this, 'get_items' ),
-                    'permission_callback' =&gt; array( $this, 'get_items_permissions_check' ),
-                    'args'                =&gt; $this-&gt;get_collection_params(),
-                ),
-                array(
-                    'methods'             =&gt; WP_REST_Server::CREATABLE,
-                    'callback'            =&gt; array( $this, 'create_item' ),
-                    'permission_callback' =&gt; array( $this, 'create_item_permissions_check' ),
-                    'args'                =&gt; $this-&gt;get_endpoint_args_for_item_schema( WP_REST_Server::CREATABLE ),
-                ),
-                'schema' =&gt; array( $this, 'get_public_item_schema' ),
-            )
-        );
-
-        register_rest_route(
-            $this-&gt;namespace,
-            '/' . $this-&gt;rest_base . '/(?P&lt;id&gt;[\d]+)',
-            array(
-                'args'   =&gt; array(
-                    'id' =&gt; array(
-                        'type' =&gt; 'integer',
-                    ),
-                ),
-                array(
-                    'methods'             =&gt; WP_REST_Server::READABLE,
-                    'callback'            =&gt; array( $this, 'get_item' ),
-                    'permission_callback' =&gt; array( $this, 'get_item_permissions_check' ),
-                    'args'                =&gt; array(
-                        'context' =&gt; $this-&gt;get_context_param( array( 'default' =&gt; 'view' ) ),
-                    ),
-                ),
-                array(
-                    'methods'             =&gt; WP_REST_Server::EDITABLE,
-                    'callback'            =&gt; array( $this, 'update_item' ),
-                    'permission_callback' =&gt; array( $this, 'update_item_permissions_check' ),
-                    'args'                =&gt; $this-&gt;get_endpoint_args_for_item_schema( WP_REST_Server::EDITABLE ),
-                ),
-                array(
-                    'methods'             =&gt; WP_REST_Server::DELETABLE,
-                    'callback'            =&gt; array( $this, 'delete_item' ),
-                    'permission_callback' =&gt; array( $this, 'delete_item_permissions_check' ),
-                ),
-                'schema' =&gt; array( $this, 'get_public_item_schema' ),
-            )
-        );
-    }
-
-    public function get_items( WP_REST_Request $request ) {
-        // Implement logic to retrieve items
-    }
-
-    public function get_item( WP_REST_Request $request ) {
-        // Implement logic to retrieve a single item
-    }
-
-    public function create_item( WP_REST_Request $request ) {
-        // Implement logic to create a new item
-    }
-
-    public function update_item( WP_REST_Request $request ) {
-        // Implement logic to update an item
-    }
-
-    public function delete_item( WP_REST_Request $request ) {
-        // Implement logic to delete an item
-    }
-
-    public function get_items_permissions_check( WP_REST_Request $request ) {
-        // Implement permission check logic
-    }
-
-    public function get_item_permissions_check( WP_REST_Request $request ) {
-        // Implement permission check logic
-    }
-
-    public function create_item_permissions_check( WP_REST_Request $request ) {
-        // Implement permission check logic
-    }
+register_block_pattern(
+    'mytheme/call-to-action',
+    array(
+        'title'       =&gt; __('Call to Action', 'mytheme'),
+        'description' =&gt; _x('A full-width call to action section.', 'Block pattern description', 'mytheme'),
+        'content'     =&gt; '&lt;!-- wp:group {"align":"full","backgroundColor":"primary","className":"cta"} --&gt;
+                            &lt;div class="wp-block-group alignfull cta has-primary-background-color"&gt;
+                              &lt;h2&gt;Ready to start your journey?&lt;/h2&gt;
+                              &lt;p&gt;Join us today and build your future.&lt;/p&gt;
+                              &lt;a class="wp-block-button__link" href="/signup"&gt;Get Started&lt;/a&gt;
+                            &lt;/div&gt;
+                          &lt;!-- /wp:group --&gt;',
+        'categories'  =&gt; array('call-to-action'),
+    )
+);</pre>
 
-    public function update_item_permissions_check( WP_REST_Request $request ) {
-        // Implement permission check logic
-    }
 
-    public function delete_item_permissions_check( WP_REST_Request $request ) {
-        // Implement permission check logic
-    }
 
-    public function prepare_item_for_response( $item, WP_REST_Request $request ) {
-        // Implement logic to prepare the item for the response
-    }
+<h2 class="wp-block-heading">Block Themes vs Classic Themes</h2>
 
-    public function get_collection_params() {
-        // Implement logic to get the collection parameters
-    }
-}</pre>
 
 
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Feature</th><th>Classic Themes</th><th>Block Themes</th></tr></thead><tbody><tr><td>Template Language</td><td>PHP</td><td>HTML + Gutenberg Blocks</td></tr><tr><td>Customizer Support</td><td>Yes</td><td>Limited</td></tr><tr><td>FSE Compatibility</td><td>No</td><td>Yes</td></tr><tr><td><code>theme.json</code> Support</td><td>No</td><td>Yes</td></tr><tr><td>Developer Focus</td><td>More code-heavy</td><td>Visual-first, block-based</td></tr></tbody></table></figure>
 
-<p>We need to register routes this will be done by implementing the <code>register_routes()</code> function. This function will hold all the routes and their parameters.</p>
 
 
+<h2 class="wp-block-heading">Best Practices When Using Block Themes and Patterns</h2>
 
-<h3 class="wp-block-heading">Implementing the methods</h3>
 
 
+<ul class="wp-block-list">
+<li>Use <code>theme.json</code> to manage styles globally.</li>
 
-<p>After defining the structure of our routes we need to make sure all our callbacks are defined. </p>
 
 
+<li>Keep templates modular—use template parts for headers, footers, etc.</li>
 
-<p>Eg— Sample function definition of <code>get_items</code> and <code>create_item</code>.</p>
 
 
+<li>Take advantage of WordPress’s native block patterns directory.</li>
 
-<pre class="wp-block-syntaxhighlighter-code">public function get_items( WP_REST_Request $request ) {
-    $args = array(
-        'post_type'      =&gt; 'custom-post-type',
-        'posts_per_page' =&gt; $request['per_page'],
-        'paged'          =&gt; $request['page'],
-        'orderby'        =&gt; $request['orderby'],
-        'order'          =&gt; $request['order'],
-    );
 
-    if ( ! empty( $request['search'] ) ) {
-        $args['s'] = $request['search'];
-    }
 
-    $query = new WP_Query( $args );
-    $posts = array();
-
-    if ( $query-&gt;have_posts() ) {
-        while ( $query-&gt;have_posts() ) {
-            $query-&gt;the_post();
-            $data    = $this-&gt;prepare_item_for_response( get_post(), $request );
-            $posts[] = $this-&gt;prepare_response_for_collection( $data );
-        }
-        wp_reset_postdata();
-    }
-
-    $response = rest_ensure_response( $posts );
-    return $response;
-}</pre>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">public function create_item( $request ) {
-    $title = sanitize_text_field( $request['title'] );
-    $content = wp_kses_post( $request['content'] );
-    $status = sanitize_text_field( $request['status'] );
-
-    $new_post = array(
-        'post_type' =&gt; 'custom-post-type',
-        'post_title' =&gt; $title,
-        'post_content' =&gt; $content,
-        'post_status' =&gt; $status,
-        'post_author' =&gt; get_current_user_id(),
-    );
-
-    $post_id = wp_insert_post( $new_post );
-
-    if ( is_wp_error( $post_id ) ) {
-        return $post_id;
-    }
-
-    return rest_ensure_response( $this-&gt;prepare_item_for_response( get_post( $post_id ), $request ) );
-}</pre>
-
-
-
-<h3 class="wp-block-heading">Implementing Permission callbacks</h3>
-
-
-
-<p>The <code>permission_callback</code> is used to ensure the correct permissions are in place before any data is retrieved or modified on every request.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">public function create_item_permissions_check( $request ) {
-    return is_user_logged_in() &amp;&amp; current_user_can( 'publish_posts' );
-}</pre>
-
-
-
-<h3 class="wp-block-heading">Preparing the Response</h3>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">public function prepare_item_for_response( $post, $request ) {
-    return array(
-        'id' =&gt; $post-&gt;ID,
-        'title' =&gt; $post-&gt;post_title,
-        'content' =&gt; $post-&gt;post_content,
-    );
-}</pre>
-
-
-
-<h3 class="wp-block-heading">Registering the Routes</h3>
-
-
-
-<p>The last thing we need to do before our routes are available is to register them using the <code>rest_api_init</code> hook.</p>
-
-
-
-<pre class="wp-block-syntaxhighlighter-code">add_action( 'rest_api_init', function() {
-    $controller = new Custom_REST_Controller();
-    $controller-&gt;register_routes();
-} );</pre>
+<li>Encourage team members to reuse patterns for brand consistency.</li>
+</ul>
 
 
 
@@ -1629,10 +232,1709 @@ class Custom_REST_Controller extends WP_REST_Controller {
 
 
 
-<p>The <code>WP_Rest_Controller</code> class provides a solid foundation for building custom REST API endpoints in WordPress. By extending this class, we can define custom routes and handle CRUD operations.</p>
+<p>Block Themes and Block Patterns aren’t just buzzwords—they&#8217;re the future of WordPress. Whether we’re building for clients or crafting our own sites, these tools give us greater flexibility, faster development, and more power over design—all while embracing a no-code/low-code philosophy.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/working-with-the-wp_rest_controller-class/feed/</wfw:commentRss>
+					<wfw:commentRss>/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Themes: Introduction</title>
+		<link>/wordpress-block-themes-introduction/</link>
+					<comments>/wordpress-block-themes-introduction/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 12 May 2025 14:58:01 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[writing]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=890</guid>
+
+					<description><![CDATA[In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of <strong>Block Themes</strong>. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of web design on WordPress.</p>
+
+
+
+<h2 class="wp-block-heading">What are WordPress Block Themes?</h2>
+
+
+
+<p>A WordPress Block Theme is a theme that fully embraces the <strong>Block Editor</strong>, also known as <strong>Gutenberg</strong>. Block Themes are designed to work with the block-based approach that WordPress introduced to content creation. Unlike traditional themes, which rely heavily on PHP templates and widget areas, Block Themes provide an entirely block-based approach to building and customizing a website.</p>
+
+
+
+<p>Essentially, a Block Theme uses blocks for all aspects of the site — including the header, footer, and sidebar. With this structure, everything on the website, from the smallest detail to the entire layout, is built using blocks. This creates a more unified and consistent experience when it comes to designing and customizing a website in WordPress.</p>
+
+
+
+<h2 class="wp-block-heading">How Block Themes Differ from Traditional Themes</h2>
+
+
+
+<p>Before Block Themes, WordPress used a theme structure that involved PHP files for templates, like <code>header.php</code>, <code>footer.php</code>, <code>single.php</code>, and others. These files were designed to output various sections of a webpage, which would then be styled using CSS and customized using widgets.</p>
+
+
+
+<p>In contrast, Block Themes shift the focus to <strong>blocks</strong> as the main building components for every part of a WordPress site. This has a few important differences:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Template Parts as Blocks</strong>: In traditional themes, elements like the header, footer, and sidebar are typically added through PHP code. In Block Themes, these elements are created as blocks. This gives users the ability to edit these parts directly in the WordPress Block Editor.</li>
+
+
+
+<li><strong>No PHP Template Files</strong>: Traditional themes heavily rely on PHP files like <code>index.php</code> or <code>page.php</code> for rendering. In Block Themes, most of the rendering is done through <strong>HTML templates</strong> powered by the block-based system.</li>
+
+
+
+<li><strong>Full-Site Editing</strong>: Block Themes are built for <strong>Full-Site Editing (FSE)</strong>, which allows users to edit their entire website (not just posts and pages) from the block editor. This includes editing headers, footers, and sidebars — everything becomes editable within the block editor environment.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Why Are WordPress Block Themes Important?</h2>
+
+
+
+<p>As WordPress evolves, so do the needs of developers and users alike. Block Themes represent the future of WordPress theming and offer several important advantages:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Simplified Design Process</strong>: With everything built as blocks, users can easily edit, move, or add new components to their website. No need to dive deep into PHP files or manage widgets — everything is in the editor.</li>
+
+
+
+<li><strong>Consistency Across the Site</strong>: Since the whole website structure is built with blocks, it ensures that the design remains consistent. For instance, the header block is the same across all pages, ensuring a uniform look and feel.</li>
+
+
+
+<li><strong>Improved Customization</strong>: With Block Themes, we can customize our entire site directly from the WordPress admin area, without needing to use custom code. This is great for non-developers and designers who want to focus more on content and layout.</li>
+
+
+
+<li><strong>Compatibility with the Block Editor</strong>: Block Themes are fully compatible with the Gutenberg Block Editor, making it easier to design content-heavy pages. Gutenberg continues to evolve, and using a Block Theme ensures we&#8217;re future-proofing our WordPress website.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">How to Create a Basic WordPress Block Theme</h2>
+
+
+
+<p>Creating a WordPress Block Theme requires some foundational knowledge of how blocks work in WordPress. Here&#8217;s a very basic example of how we can create a simple Block Theme.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1: Set Up Theme Folder</h3>
+
+
+
+<p>To begin creating a Block Theme, create a new folder in our <code>wp-content/themes</code> directory. Let’s call it <code>my-block-theme</code>.</p>
+
+
+
+<h3 class="wp-block-heading">Step 2: Create <code>style.css</code></h3>
+
+
+
+<p>Inside the <code>my-block-theme</code> folder, create a <code>style.css</code> file to define the theme’s meta information.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">/*
+Theme Name: My Block Theme
+Theme URI: https://example.com/my-block-theme
+Author: Your Name
+Author URI: https://example.com/
+Description: A simple Block-based WordPress theme.
+Version: 1.0
+Requires at least: 5.8
+Requires PHP: 7.4
+License: GPL2
+Text Domain: my-block-theme
+*/</pre>
+
+
+
+<h3 class="wp-block-heading">Step 3: Create <code>theme.json</code></h3>
+
+
+
+<p>To enable Full-Site Editing and block-based template structures, we need a <code>theme.json</code> file. This file allows us to define global styles and configurations for blocks.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "version": 2,
+  "settings": {
+    "custom": {
+      "spacing": {
+        "unit": "px"
+      }
+    }
+  }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 4: Define Templates Using Blocks</h3>
+
+
+
+<p>Now, we’ll need to define our theme’s templates. For a Block Theme, this is typically done with HTML files.</p>
+
+
+
+<p>For example, create a file called <code>index.html</code> inside our theme folder.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Block Theme&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Header Block --&gt;
+  &lt;div class="wp-block-site-header"&gt;
+    &lt;!-- Site Header Content Here --&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Main Content Block --&gt;
+  &lt;div class="wp-block-post-content"&gt;
+    &lt;!-- Main Content Here --&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer Block --&gt;
+  &lt;div class="wp-block-site-footer"&gt;
+    &lt;!-- Footer Content Here --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+
+
+<p>This basic structure defines the three key blocks: header, content, and footer.</p>
+
+
+
+<h3 class="wp-block-heading">Step 5: Activate the Theme</h3>
+
+
+
+<p>After we’ve set up these files, we can go to our WordPress dashboard and navigate to <strong>Appearance &gt; Themes</strong>. We should see our new Block Theme, “My Block Theme,” listed there. Activate it.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Block Themes represent the future of WordPress. They provide a more intuitive, flexible, and consistent approach to website design, making it easier for us to create and manage websites without needing to rely on complex PHP files or traditional theme structures.</p>
+
+
+
+<p>By adopting Block Themes, we&#8217;re not only improving the customization experience for ourselves but also ensuring that we stay ahead of the curve with WordPress’s growing block-based capabilities. As the Block Editor continues to evolve, the power and flexibility of Block Themes will only increase, making it an essential tool for WordPress developers and designers moving forward.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-themes-introduction/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Widgets</title>
+		<link>/wordpress-block-editor-widgets/</link>
+					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[business]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
+
+					<description><![CDATA[As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
+
+
+
+<h2 class="wp-block-heading">What Are Widgets in the WordPress Block Editor?</h2>
+
+
+
+<p>Traditionally, WordPress widgets were managed through the <strong>Appearance → Widgets</strong> menu in the dashboard. These were modular components—like recent posts, calendars, search bars, and more—that we could drag and drop into widget areas such as sidebars and footers.</p>
+
+
+
+<p>With the arrival of the <strong>Block Editor (Gutenberg)</strong>, widgets have been reimagined as blocks. This means we can now manage widgets using the same block-based system we use for posts and pages—bringing consistency and visual clarity to the editing experience.</p>
+
+
+
+<h2 class="wp-block-heading">Block-Based Widgets: Why It Matters</h2>
+
+
+
+<p>So why the block-based widget editor matters:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Visual Editing:</strong> We can now see what our widgets will look like as we edit them.</li>
+
+
+
+<li><strong>Block Flexibility:</strong> Any block—whether native or third-party—can be used as a widget.</li>
+
+
+
+<li><strong>Reusable Blocks:</strong> We can reuse widget content across the site.</li>
+
+
+
+<li><strong>Improved Customization:</strong> With group, column, and spacing blocks, layout possibilities have exploded.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Enabling Block Widgets in Classic Themes (Code Example)</h2>
+
+
+
+<p>If our theme doesn&#8217;t support block widgets yet, we can enable it using a simple snippet in our theme’s <code>functions.php</code> file:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function enable_block_widgets_support() {
+    add_theme_support('widgets-block-editor');
+}
+add_action('after_setup_theme', 'enable_block_widgets_support');</pre>
+
+
+
+<h2 class="wp-block-heading">Creating a Custom Widget Block (Advanced)</h2>
+
+
+
+<p>Want to build our own custom block to use as a widget? Here’s a basic boilerplate using JavaScript and the <code>@wordpress</code> packages:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// custom-widget-block.js
+const { registerBlockType } = wp.blocks;
+const { TextControl } = wp.components;
+
+registerBlockType('mytheme/custom-widget', {
+    title: 'Custom Widget',
+    icon: 'admin-generic',
+    category: 'widgets',
+    attributes: {
+        content: {
+            type: 'string',
+            default: '',
+        },
+    },
+    edit: (props) =&gt; {
+        const { attributes: { content }, setAttributes } = props;
+        return (
+            &lt;TextControl
+                label="Widget Content"
+                value={content}
+                onChange={(value) =&gt; setAttributes({ content: value })}
+            /&gt;
+        );
+    },
+    save: (props) =&gt; {
+        return &lt;div&gt;{props.attributes.content}&lt;/div&gt;;
+    },
+});</pre>
+
+
+
+<p>To register this block, we&#8217;d include it in our plugin or theme with proper setup via <code>block.json</code> and <code>webpack</code>/<code>wp-scripts</code>.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The Block Editor has turned widgets into something far more powerful and intuitive than the old drag-and-drop days. Whether we&#8217;re customizing a sidebar, footer, or creating custom blocks, the new widget system lets us manage our content visually, flexibly, and efficiently.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Formatting Toolbar API</title>
+		<link>/wordpress-block-editor-formatting-toolbar-api/</link>
+					<comments>/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 08 May 2025 14:34:35 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[writing]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=879</guid>
+
+					<description><![CDATA[As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the <strong>Formatting Toolbar API</strong>, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks.</p>
+
+
+
+<h2 class="wp-block-heading">What Is the Formatting Toolbar API?</h2>
+
+
+
+<p>The <strong>Formatting Toolbar API</strong> lets us add custom inline buttons (like bold, italic, links, etc) to the toolbar that appears when we highlight text inside a rich text block. This API is part of the <code>@wordpress/rich-text</code> and <code>@wordpress/format-library</code> packages.</p>
+
+
+
+<p>With this, we can introduce custom formats like highlighting text or adding special tooltips to create a more tailored content editing experience for our users.</p>
+
+
+
+<h2 class="wp-block-heading">Example: Adding a “Highlight” Button to the Toolbar</h2>
+
+
+
+<h3 class="wp-block-heading">1. Register the Format Type</h3>
+
+
+
+<p>We&#8217;ll use <code>registerFormatType</code> from <code>@wordpress/rich-text</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// my-custom-highlight.js
+import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
+import { RichTextToolbarButton } from '@wordpress/block-editor';
+import { Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { formatBold } from '@wordpress/icons';
+
+registerFormatType('my-plugin/highlight', {
+    title: __('Highlight', 'my-plugin'),
+    tagName: 'mark',
+    className: 'highlighted-text',
+    edit({ isActive, value, onChange }) {
+        return (
+            &lt;Fragment&gt;
+                &lt;RichTextToolbarButton
+                    icon={formatBold}
+                    title={__('Highlight', 'my-plugin')}
+                    onClick={() =&gt; {
+                        onChange(toggleFormat(value, {
+                            type: 'my-plugin/highlight',
+                        }));
+                    }}
+                    isActive={isActive}
+                /&gt;
+            &lt;/Fragment&gt;
+        );
+    },
+});</pre>
+
+
+
+<h3 class="wp-block-heading">2. Enqueue the Script</h3>
+
+
+
+<p>In our plugin or theme <code>functions.php</code>, enqueue the script using <code>enqueue_block_editor_assets</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_plugin_enqueue_formatting_toolbar() {
+    wp_enqueue_script(
+        'my-custom-highlight',
+        plugin_dir_url(__FILE__) . 'my-custom-highlight.js',
+        [ 'wp-rich-text', 'wp-element', 'wp-block-editor', 'wp-i18n' ],
+        false,
+        true
+    );
+}
+add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar');</pre>
+
+
+
+<h3 class="wp-block-heading">3. Add Some Styling</h3>
+
+
+
+<p>Add a custom style so the highlighting is visible.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">.mark.highlighted-text {
+    background-color: yellow;
+    padding: 0 2px;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The <strong>Formatting Toolbar API</strong> gives us a flexible way to extend the WordPress editing experience. Whether we&#8217;re adding highlights, tooltips, or custom shortcodes, this API is a powerful tool in our WordPress development toolkit.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
+		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
+
+					<description><![CDATA[As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
+
+
+
+<h2 class="wp-block-heading">Why Metaboxes and Notices Matter</h2>
+
+
+
+<p>Metaboxes allow us to collect custom meta information related to a post—think SEO descriptions, additional fields, or custom toggles. Meanwhile, notices give us the ability to alert users to something important—like a successful save, an error, or a prompt for further action.</p>
+
+
+
+<p>By integrating these features directly into the Gutenberg (Block) Editor, we maintain a native, modern, and seamless user experience.</p>
+
+
+
+<h2 class="wp-block-heading">Metaboxes</h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
+import { useBlockProps } from '@wordpress/block-editor';
+
+const Edit = () =&gt; {
+	const blockProps = useBlockProps();
+	const postType = useSelect(
+		(select) =&gt; select('core/editor').getCurrentPostType(),
+		[]
+	);
+
+	const [meta, setMeta] = useEntityProp('postType', postType, 'meta');
+	const metaFieldValue = meta.myguten_meta_block_field;
+
+	const updateMetaValue = (newValue) =&gt; {
+		setMeta({ ...meta, myguten_meta_block_field: newValue });
+	};
+
+	return (
+		&lt;div {...blockProps}&gt;
+			&lt;TextControl
+				label="Meta Block Field"
+				value={metaFieldValue}
+				onChange={updateMetaValue}
+			/&gt;
+		&lt;/div&gt;
+	);
+};
+
+registerBlockType('myguten/meta-block', {
+	edit: Edit,
+	save: () =&gt; null, // We save this data as post meta, not block content.
+});</pre>
+
+
+
+<ul class="wp-block-list">
+<li>We use <code>useEntityProp</code> to access and modify the post meta.</li>
+
+
+
+<li><code>TextControl</code> lets us render a simple input field.</li>
+
+
+
+<li>The block doesn&#8217;t save any content itself; instead, we save custom metadata using the <code>setMeta</code> function.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Registering Metakeys</h3>
+
+
+
+<p>Before this works, we need to make sure to <strong>register the meta key</strong> in PHP and set <code>'show_in_rest' =&gt; true</code> so it&#8217;s accessible from the block editor.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function myguten_register_post_meta() {
+	register_post_meta( 'post', 'myguten_meta_block_field', array(
+		'show_in_rest' =&gt; true,
+		'type'         =&gt; 'string',
+		'single'       =&gt; true,
+		'auth_callback' =&gt; function() {
+			return current_user_can( 'edit_posts' );
+		}
+	) );
+}
+add_action( 'init', 'myguten_register_post_meta' );</pre>
+
+
+
+<h2 class="wp-block-heading">Admin Notices</h2>
+
+
+
+<p>There are times when we want to alert the user—maybe something failed, or we want to show a confirmation. The Gutenberg editor provides a great way to <strong>hook into the notices system</strong>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { useSelect } from '@wordpress/data';
+import { store as noticesStore } from '@wordpress/notices';
+
+const ExampleComponent = () =&gt; {
+	const notices = useSelect((select) =&gt;
+		select(noticesStore).getNotices()
+	);
+	return (
+		&lt;ul&gt;
+			{notices.map((notice) =&gt; (
+				&lt;li key={notice.id}&gt;{notice.content}&lt;/li&gt;
+			))}
+		&lt;/ul&gt;
+	);
+};</pre>
+
+
+
+<p>By using <code>useSelect</code> and <code>noticesStore</code>, we can tap into WordPress’s internal notices system. This keeps our UI consistent with the rest of the editor and gives us a standardized way to deliver feedback to the user.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { useDispatch } from '@wordpress/data';
+import { store as noticesStore } from '@wordpress/notices';
+
+const { createSuccessNotice, createErrorNotice } = useDispatch(noticesStore);
+
+createSuccessNotice('Your meta field was updated successfully!');</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Dynamic and Static Blocks</title>
+		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
+					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
+
+					<description><![CDATA[When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
+
+
+
+<p>Understanding the difference between these two types is essential for us as WordPress developers to make informed decisions about performance, customization, and content rendering. In this post, we&#8217;ll explore what static and dynamic blocks are, when to use each, and how to create them.</p>
+
+
+
+<h2 class="wp-block-heading">What Are Static and Dynamic Blocks?</h2>
+
+
+
+<h3 class="wp-block-heading">Static Blocks</h3>
+
+
+
+<p>A <strong>static block</strong> is rendered entirely in JavaScript using React. When we add content to a static block, that content is saved directly into the post content as HTML. This means the content is stored &#8220;as is&#8221; in the database.</p>
+
+
+
+<p><strong>Use static blocks when:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>The content doesn&#8217;t need to change dynamically.</li>
+
+
+
+<li>The block only requires what the user sees in the editor.</li>
+
+
+
+<li>We want to optimize performance by avoiding PHP processing during page loads.</li>
+</ul>
+
+
+
+<p><strong>Example Use Cases:</strong> Headings, paragraphs, buttons, image galleries.</p>
+
+
+
+<h3 class="wp-block-heading">Dynamic Blocks</h3>
+
+
+
+<p>A <strong>dynamic block</strong> is rendered on the front end using PHP. The block’s output is generated every time the page loads, making it ideal for content that changes frequently or depends on server-side logic.</p>
+
+
+
+<p><strong>Use dynamic blocks when:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>The output needs to update frequently (e.g., latest posts, logged-in user data).</li>
+
+
+
+<li>We want to keep the post content clean and rely on server-side templates.</li>
+
+
+
+<li>We need advanced customization using PHP logic.</li>
+</ul>
+
+
+
+<p><strong>Example Use Cases:</strong> Latest posts, post metadata, contact forms, custom listings.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Static Block</h2>
+
+
+
+<h3 class="wp-block-heading">File Structure:</h3>
+
+
+
+<pre class="wp-block-preformatted"><code>my-plugin/<br>├── alert-box/<br>│   ├── block.json<br>│   ├── edit.js<br>│   └── index.js</code></pre>
+
+
+
+<h3 class="wp-block-heading">block.json</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "myplugin/alert-box",
+  "title": "Alert Box",
+  "category": "widgets",
+  "icon": "warning",
+  "editorScript": "file:./index.js"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">index.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import Edit from './edit';
+
+registerBlockType('myplugin/alert-box', {
+    attributes: {
+        content: {
+            type: 'string',
+            source: 'html',
+            selector: 'p'
+        }
+    },
+    edit: Edit,
+    save({ attributes }) {
+        return (
+            &lt;div className="alert-box"&gt;
+                &lt;p&gt;{attributes.content}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">edit.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
+
+export default function Edit({ attributes, setAttributes }) {
+    const blockProps = useBlockProps();
+
+    return (
+        &lt;div {...blockProps} className="alert-box"&gt;
+            &lt;RichText
+                tagName="p"
+                value={attributes.content}
+                onChange={(content) =&gt; setAttributes({ content })}
+                placeholder={__('Add your alert text here...', 'myplugin')}
+            /&gt;
+        &lt;/div&gt;
+    );
+}</pre>
+
+
+
+<p>This block is fully static. The <code>save</code> function defines exactly what gets stored and rendered.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Dynamic Block</h2>
+
+
+
+<p>Dynamic blocks require a PHP render callback. Here&#8217;s how we can make a dynamic block that shows the <strong>latest post title</strong>.</p>
+
+
+
+<h3 class="wp-block-heading">File Structure:</h3>
+
+
+
+<pre class="wp-block-preformatted">my-plugin/<br>├── latest-post/<br>│ ├── block.json<br>│ ├── index.js<br>│ └── render.php</pre>
+
+
+
+<h3 class="wp-block-heading">block.json</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "myplugin/latest-post",
+  "title": "Latest Post",
+  "category": "widgets",
+  "icon": "megaphone",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">index.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('myplugin/latest-post', {
+    edit() {
+        return &lt;p&gt;Latest post will be shown here on the frontend.&lt;/p&gt;;
+    },
+    save() {
+        // Returning null to indicate dynamic rendering
+        return null;
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">render.php</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+function myplugin_render_latest_post() {
+    $recent_posts = wp_get_recent_posts([
+        'numberposts' =&gt; 1,
+        'post_status' =&gt; 'publish',
+    ]);
+
+    if (empty($recent_posts)) {
+        return '&lt;p&gt;No posts found.&lt;/p&gt;';
+    }
+
+    $post = $recent_posts[0];
+    return sprintf('&lt;h3&gt;&lt;a href="%s"&gt;%s&lt;/a&gt;&lt;/h3&gt;', esc_url(get_permalink($post['ID'])), esc_html($post['post_title']));
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Choosing Between Static and Dynamic</h2>
+
+
+
+<p>When deciding whether to use a static or dynamic block, we should ask:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Does this block require real-time data or updates from the server?</strong> → Go dynamic.</li>
+
+
+
+<li><strong>Is the block mostly decorative or fixed content?</strong> → Use static.</li>
+
+
+
+<li><strong>Do we need to keep our post content clean from HTML bloat?</strong> → Dynamic blocks can help.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts</h2>
+
+
+
+<p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Nested Blocks</title>
+		<link>/wordpress-block-editor-nested-blocks/</link>
+					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[ai]]></category>
+		<category><![CDATA[gutenberg]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
+
+					<description><![CDATA[As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
+
+
+
+<h3 class="wp-block-heading">What Are Nested Blocks?</h3>
+
+
+
+<p>Nested blocks allow us to insert blocks <em>inside</em> other blocks. Think of them as sub-components. For instance, a custom “Team” block might contain multiple “Team Member” blocks. Or a “Testimonial Slider” block could hold several “Testimonial” blocks.</p>
+
+
+
+<p>In technical terms, we achieve this nesting by using WordPress&#8217;s <code>InnerBlocks</code> component inside a custom block.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Nested Blocks?</h3>
+
+
+
+<p>We use nested blocks when:</p>
+
+
+
+<ul class="wp-block-list">
+<li>We want reusable layout structures (e.g. columns, cards)</li>
+
+
+
+<li>We need to give users more flexibility while keeping them within a defined layout</li>
+
+
+
+<li>We want to group multiple blocks for styling or behavior</li>
+
+
+
+<li>We&#8217;re building container-like blocks (e.g. accordions, tabs, sliders)</li>
+</ul>
+
+
+
+<p>Nested blocks help balance flexibility with structure.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Block with Nested Blocks</h2>
+
+
+
+<h3 class="wp-block-heading">1. Register the Block</h3>
+
+
+
+<p>We can register our block in <code>block.json</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "my-plugin/section",
+  "title": "Section",
+  "category": "layout",
+  "icon": "editor-insertmore",
+  "description": "A custom section block that allows nested blocks inside.",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">2. Block Edit Function with <code>InnerBlocks</code></h3>
+
+
+
+<p>In our <code>index.js</code> file, we’ll use the <code>InnerBlocks</code> component to allow nesting</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
+
+registerBlockType('myplugin/section', {
+    edit: () =&gt; {
+        return (
+            &lt;div className="my-section-block"&gt;
+                &lt;InnerBlocks /&gt;
+            &lt;/div&gt;
+        );
+    },
+    save: () =&gt; {
+        return (
+            &lt;div className="my-section-block"&gt;
+                &lt;InnerBlocks.Content /&gt;
+            &lt;/div&gt;
+        );
+    },
+});</pre>
+
+
+
+<h3 class="wp-block-heading">Restricting Allowed Blocks (Optional)</h3>
+
+
+
+<p>Sometimes we want to restrict which blocks can be inserted inside our container. Here&#8217;s how we do that using the <code>allowedBlocks</code> prop.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
+    allowedBlocks={['core/paragraph', 'core/image', 'core/heading']}
+/&gt;</pre>
+
+
+
+<p>We can also add placeholders in the templates for better UX.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
+    template={[
+        ['core/heading', { placeholder: 'Section Heading' }],
+        ['core/paragraph', { placeholder: 'Add your text here...' }]
+    ]}
+/&gt;</pre>
+
+
+
+<h3 class="wp-block-heading">Gotchas and Best Practices</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Avoid infinite nesting</strong> &#8211; prevent blocks from nesting themselves inside themselves.</li>
+
+
+
+<li><strong>Use <code>templateLock</code></strong> if we want to lock the layout (<code>'all'</code>, <code>'insert'</code>, <code>'false'</code>).</li>
+
+
+
+<li><strong>Use proper CSS scoping</strong> to avoid styling conflicts across blocks.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Conclusion</h3>
+
+
+
+<p>Nested blocks are one of the most powerful tools in our WordPress development toolkit. They allow us to create structured, flexible, and user-friendly experiences for content editors. Whether we’re building reusable components or complex layout systems, mastering <code>InnerBlocks</code> will elevate our block development game.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Block Attributes and Controls</title>
+		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
+					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
+
+					<description><![CDATA[As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
+
+
+
+<p>In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. </p>
+
+
+
+<h2 class="wp-block-heading">What Are Block Attributes?</h2>
+
+
+
+<p>In simple terms, <strong>block attributes</strong> are the data fields that define the content or behavior of a block. Think of them as the settings or properties that make our block unique and functional.</p>
+
+
+
+<p>For example, a “Heading” block might have the following attributes:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>content</code>: The text of the heading.</li>
+
+
+
+<li><code>level</code>: The heading level (e.g., h2, h3).</li>
+
+
+
+<li><code>align</code>: Text alignment.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Defining Attributes in a Block</h3>
+
+
+
+<p>When we register a block using <code>registerBlockType</code>, we define the attributes in the configuration:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">registerBlockType('myplugin/alert-box', {
+  title: 'Alert Box',
+  icon: 'warning',
+  category: 'widgets',
+
+  attributes: {
+    message: {
+      type: 'string',
+      default: 'This is an alert box!',
+    },
+    backgroundColor: {
+      type: 'string',
+      default: '#ffcc00',
+    },
+  },
+
+  edit({ attributes, setAttributes }) {
+    const { message, backgroundColor } = attributes;
+
+    return (
+      &lt;div style={{ backgroundColor }}&gt;
+        &lt;RichText
+          tagName="p"
+          value={message}
+          onChange={(value) =&gt; setAttributes({ message: value })}
+        /&gt;
+      &lt;/div&gt;
+    );
+  },
+
+  save({ attributes }) {
+    return (
+      &lt;div style={{ backgroundColor: attributes.backgroundColor }}&gt;
+        &lt;RichText.Content tagName="p" value={attributes.message} /&gt;
+      &lt;/div&gt;
+    );
+  },
+});</pre>
+
+
+
+<h2 class="wp-block-heading">What Are Controls in the Block Editor?</h2>
+
+
+
+<p><strong>Controls</strong> are the UI elements we use to let users change a block’s attributes. These can include:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Text inputs</li>
+
+
+
+<li>Color pickers</li>
+
+
+
+<li>Toggle switches</li>
+
+
+
+<li>Dropdowns</li>
+</ul>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/05/image.png?w=271" alt="" class="wp-image-854" /></figure>
+
+
+
+<h3 class="wp-block-heading">Adding Inspector Controls</h3>
+
+
+
+<p>To let users modify attributes, we add UI controls using components from <code>@wordpress/components</code> inside the block&#8217;s <code>edit</code> function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { PanelBody, ColorPalette } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+
+edit({ attributes, setAttributes }) {
+  const { backgroundColor } = attributes;
+
+  const colors = [
+    { name: 'Yellow', color: '#ffcc00' },
+    { name: 'Red', color: '#ff4444' },
+    { name: 'Green', color: '#44ff44' },
+  ];
+
+  return (
+    &lt;&gt;
+      &lt;InspectorControls&gt;
+        &lt;PanelBody title="Background Color" initialOpen={true}&gt;
+          &lt;ColorPalette
+            colors={colors}
+            value={backgroundColor}
+            onChange={(color) =&gt; setAttributes({ backgroundColor: color })}
+          /&gt;
+        &lt;/PanelBody&gt;
+      &lt;/InspectorControls&gt;
+
+      &lt;div style={{ backgroundColor }}&gt;
+        &lt;RichText
+          tagName="p"
+          value={attributes.message}
+          onChange={(value) =&gt; setAttributes({ message: value })}
+        /&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">How Attributes and Controls Work Together</h2>
+
+
+
+<p>The relationship is simple but powerful:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Attributes</strong> hold the data.</li>
+
+
+
+<li><strong>Controls</strong> let users change that data.</li>
+
+
+
+<li><strong>The block</strong> reflects those changes live in the editor and in the saved content.</li>
+</ul>
+
+
+
+<p>This structure allows us to build dynamic blocks that are reusable and fully customizable from the editor.</p>
+
+
+
+<h2 class="wp-block-heading">Summary</h2>
+
+
+
+<p>In Gutenberg block development, <strong>attributes</strong> are the data model, and <strong>controls</strong> are the interface. When we define them thoughtfully and use them properly, we can create flexible and intuitive content editing experiences that our users love.</p>
+
+
+
+<p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Block Supports Explained</title>
+		<link>/wordpress-block-editor-block-supports-explained/</link>
+					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[blogging-tips]]></category>
+		<category><![CDATA[non-classe]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
+
+					<description><![CDATA[As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
+
+
+
+<p>In this blog, we&#8217;ll explore what <strong>Block Supports</strong> are, how to use them, and how can someone implement it in our own custom blocks.</p>
+
+
+
+<h3 class="wp-block-heading">What Are Block Supports?</h3>
+
+
+
+<p>Block Supports are built-in features provided by the WordPress Block Editor that we can <strong>opt into</strong> when developing our custom blocks. These supports allow us to <strong>enable additional UI controls</strong> — like typography, color, spacing, borders, and more — directly in the editor sidebar for our blocks.</p>
+
+
+
+<p>This means we don’t have to manually code UI panels or handle CSS ourselves for many of these features — WordPress does that for us when we enable supports.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Block Supports?</h3>
+
+
+
+<ul class="wp-block-list">
+<li>We save development time.</li>
+
+
+
+<li>We make our blocks consistent with core WordPress blocks.</li>
+
+
+
+<li>We give users a better editing experience with built-in controls.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">How to Use Block Supports in a Custom Block</h3>
+
+
+
+<p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// my-custom-block.js
+import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
+
+registerBlockType('myplugin/my-custom-block', {
+    title: __('My Custom Block', 'myplugin'),
+    icon: 'smiley',
+    category: 'design',
+    supports: {
+        color: {
+            text: true,
+            background: true,
+        },
+        spacing: {
+            margin: true,
+            padding: true,
+        },
+        typography: {
+            fontSize: true,
+            lineHeight: true,
+        },
+        border: true,
+        align: ['wide', 'full'],
+    },
+    edit({ attributes }) {
+        const blockProps = useBlockProps();
+
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    },
+    save({ attributes }) {
+        const blockProps = useBlockProps.save();
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
+
+
+
+<p>Here’s a quick overview of common supports:</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Support</th><th>Description</th></tr></thead><tbody><tr><td><code>color</code></td><td>Enables text/background color controls</td></tr><tr><td><code>typography</code></td><td>Adds font size and line-height controls</td></tr><tr><td><code>spacing</code></td><td>Adds padding and margin settings</td></tr><tr><td><code>border</code></td><td>Allows setting border radius, width, etc</td></tr><tr><td><code>align</code></td><td>Enables block alignment (wide/full)</td></tr><tr><td><code>html</code></td><td>Allows editing the block’s HTML</td></tr></tbody></table></figure>
+
+
+
+<p><strong>CSS Variables</strong>: When using block supports, the editor outputs inline styles or CSS variables. Always check the frontend for consistent rendering.</p>
+
+
+
+<p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// Disable color support for Paragraph block
+wp.hooks.addFilter(
+    'blocks.registerBlockType',
+    'myplugin/remove-paragraph-supports',
+    (settings, name) =&gt; {
+        if (name === 'core/paragraph') {
+            settings.supports = {
+                ...settings.supports,
+                color: false,
+            };
+        }
+        return settings;
+    }
+);</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Block supports are a powerful and underused part of the WordPress block development toolkit. By enabling them, we create more flexible, future-proof, and user-friendly blocks — without reinventing the wheel.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Block Filters Explained</title>
+		<link>/wordpress-block-editor-block-filters-explained/</link>
+					<comments>/wordpress-block-editor-block-filters-explained/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
+
+					<description><![CDATA[As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
+
+
+
+<p>That’s where <strong>block filters</strong> come in.</p>
+
+
+
+<p>In this blog, we’ll explore what block filters are, how we can use them to extend core or third-party blocks, and walk through real-world examples using code.</p>
+
+
+
+<h2 class="wp-block-heading">What Are Block Filters in WordPress?</h2>
+
+
+
+<p>Block filters are part of the <strong>WordPress hook system</strong> applied to Gutenberg blocks. They allow us to hook into various parts of a block’s lifecycle:</p>
+
+
+
+<ul class="wp-block-list">
+<li>When it&#8217;s registered</li>
+
+
+
+<li>When it&#8217;s rendered in the editor</li>
+
+
+
+<li>When it saves data</li>
+
+
+
+<li>And more</li>
+</ul>
+
+
+
+<p>This gives us fine-grained control without having to create a block from scratch.</p>
+
+
+
+<h2 class="wp-block-heading">Why Use Block Filters?</h2>
+
+
+
+<p>Here are a few scenarios where block filters are incredibly useful:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Adding custom class names to core blocks (like <code>core/paragraph</code>)</li>
+
+
+
+<li>Injecting custom attributes (eg-, adding alignment or tracking options)</li>
+
+
+
+<li>Replacing or wrapping a block’s default edit or save component</li>
+
+
+
+<li>Changing default settings or restricting block features</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Common Block Filters</h2>
+
+
+
+<p>Here are some of the most used filters:</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Filter</th><th>Description</th></tr></thead><tbody><tr><td><code>blocks.registerBlockType</code></td><td>Modify block settings when it&#8217;s registered</td></tr><tr><td><code>editor.BlockEdit</code></td><td>Override or wrap the block&#8217;s edit component</td></tr><tr><td><code>blocks.getSaveContent.extraProps</code></td><td>Inject extra props (eg-, class) into saved markup</td></tr><tr><td><code>blocks.getBlockDefaultClassName</code></td><td>Override default class names</td></tr><tr><td><code>blocks.getSaveElement</code></td><td>Modify the output of the block&#8217;s save function<br></td></tr></tbody></table></figure>
+
+
+
+<h3 class="wp-block-heading">1. Add a Custom Class to All Paragraph Blocks</h3>
+
+
+
+<p>Let’s say we want every <code>core/paragraph</code> block to get a custom class like <code>my-custom-paragraph</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+
+function addCustomClassName( props, blockType, attributes ) {
+    if ( blockType.name === 'core/paragraph' ) {
+        return {
+            ...props,
+            className: `${props.className || ''} my-custom-paragraph`,
+        };
+    }
+    return props;
+}
+
+addFilter(
+    'blocks.getSaveContent.extraProps',
+    'my-plugin/add-custom-class',
+    addCustomClassName
+);</pre>
+
+
+
+<h3 class="wp-block-heading">2. Modify Block Settings on Registration</h3>
+
+
+
+<p>What if we want to disable the &#8220;drop cap&#8221; feature from the paragraph block?</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+
+function modifyBlockSettings( settings, name ) {
+    if ( name === 'core/paragraph' ) {
+        return {
+            ...settings,
+            supports: {
+                ...settings.supports,
+                dropCap: false,
+            },
+        };
+    }
+    return settings;
+}
+
+addFilter(
+    'blocks.registerBlockType',
+    'my-plugin/modify-paragraph-settings',
+    modifyBlockSettings
+);</pre>
+
+
+
+<h3 class="wp-block-heading">3. Wrap the Block&#8217;s Edit Component</h3>
+
+
+
+<p>Need to inject UI or logic into a block&#8217;s editor UI? We can wrap the <code>edit</code> function using <code>editor.BlockEdit</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+const { createHigherOrderComponent } = wp.compose;
+const { Fragment } = wp.element;
+
+const withCustomEditWrapper = createHigherOrderComponent( ( BlockEdit ) =&gt; {
+    return ( props ) =&gt; {
+        if ( props.name === 'core/paragraph' ) {
+            return (
+                &lt;Fragment&gt;
+                    &lt;div style={{ border: '1px solid red', padding: '10px' }}&gt;
+                        &lt;strong&gt;Custom UI:&lt;/strong&gt; You’re editing a paragraph!
+                    &lt;/div&gt;
+                    &lt;BlockEdit { ...props } /&gt;
+                &lt;/Fragment&gt;
+            );
+        }
+        return &lt;BlockEdit { ...props } /&gt;;
+    };
+}, 'withCustomEditWrapper' );
+
+addFilter(
+    'editor.BlockEdit',
+    'my-plugin/custom-block-edit',
+    withCustomEditWrapper
+);</pre>
+
+
+
+<h2 class="wp-block-heading">Enqueuing the JavaScript</h2>
+
+
+
+<p>To make all this work, we’ll need to enqueue our JS file in the editor.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_plugin_enqueue_editor_assets() {
+    wp_enqueue_script(
+        'my-plugin-block-filters',
+        plugin_dir_url( __FILE__ ) . 'my-plugin.js',
+        array( 'wp-blocks', 'wp-hooks', 'wp-element', 'wp-compose', 'wp-editor' ),
+        '1.0.0',
+        true
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );</pre>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts</h2>
+
+
+
+<p>Block filters are a powerful tool in our WordPress development toolkit. They let us modify existing blocks in a clean, extensible way — without forking or rewriting them. Whether we&#8217;re improving the editorial experience or enforcing consistent branding, filters help us tailor Gutenberg to our needs.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
