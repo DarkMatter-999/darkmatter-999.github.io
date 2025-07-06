@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/blogging-tips/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:57 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WordPress Block Editor: Block Supports Explained</title>
+		<link>/wordpress-block-editor-block-supports-explained/</link>
+					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[blogging-tips]]></category>
+		<category><![CDATA[non-classe]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
+
+					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
+
+
+
+<p>In this blog, we&#8217;ll explore what <strong>Block Supports</strong> are, how to use them, and how can someone implement it in our own custom blocks.</p>
+
+
+
+<h3 class="wp-block-heading">What Are Block Supports?</h3>
+
+
+
+<p>Block Supports are built-in features provided by the WordPress Block Editor that we can <strong>opt into</strong> when developing our custom blocks. These supports allow us to <strong>enable additional UI controls</strong> — like typography, color, spacing, borders, and more — directly in the editor sidebar for our blocks.</p>
+
+
+
+<p>This means we don’t have to manually code UI panels or handle CSS ourselves for many of these features — WordPress does that for us when we enable supports.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Block Supports?</h3>
+
+
+
+<ul class="wp-block-list">
+<li>We save development time.</li>
+
+
+
+<li>We make our blocks consistent with core WordPress blocks.</li>
+
+
+
+<li>We give users a better editing experience with built-in controls.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">How to Use Block Supports in a Custom Block</h3>
+
+
+
+<p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// my-custom-block.js
+import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
+
+registerBlockType('myplugin/my-custom-block', {
+    title: __('My Custom Block', 'myplugin'),
+    icon: 'smiley',
+    category: 'design',
+    supports: {
+        color: {
+            text: true,
+            background: true,
+        },
+        spacing: {
+            margin: true,
+            padding: true,
+        },
+        typography: {
+            fontSize: true,
+            lineHeight: true,
+        },
+        border: true,
+        align: ['wide', 'full'],
+    },
+    edit({ attributes }) {
+        const blockProps = useBlockProps();
+
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    },
+    save({ attributes }) {
+        const blockProps = useBlockProps.save();
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
+
+
+
+<p>Here’s a quick overview of common supports:</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Support</th><th>Description</th></tr></thead><tbody><tr><td><code>color</code></td><td>Enables text/background color controls</td></tr><tr><td><code>typography</code></td><td>Adds font size and line-height controls</td></tr><tr><td><code>spacing</code></td><td>Adds padding and margin settings</td></tr><tr><td><code>border</code></td><td>Allows setting border radius, width, etc</td></tr><tr><td><code>align</code></td><td>Enables block alignment (wide/full)</td></tr><tr><td><code>html</code></td><td>Allows editing the block’s HTML</td></tr></tbody></table></figure>
+
+
+
+<p><strong>CSS Variables</strong>: When using block supports, the editor outputs inline styles or CSS variables. Always check the frontend for consistent rendering.</p>
+
+
+
+<p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// Disable color support for Paragraph block
+wp.hooks.addFilter(
+    'blocks.registerBlockType',
+    'myplugin/remove-paragraph-supports',
+    (settings, name) =&gt; {
+        if (name === 'core/paragraph') {
+            settings.supports = {
+                ...settings.supports,
+                color: false,
+            };
+        }
+        return settings;
+    }
+);</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Block supports are a powerful and underused part of the WordPress block development toolkit. By enabling them, we create more flexible, future-proof, and user-friendly blocks — without reinventing the wheel.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

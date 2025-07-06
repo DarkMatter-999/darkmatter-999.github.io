@@ -8,7 +8,7 @@
 	>
 
 <channel>
-	<title>Projects &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<atom:link href="/dm_project/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
@@ -22,7 +22,7 @@
 
 <image>
 	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>Projects &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<link>/</link>
 	<width>32</width>
 	<height>32</height>
@@ -35,11 +35,12 @@
 		<pubDate>Sun, 06 Jul 2025 13:18:51 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=936</guid>
 
-					<description><![CDATA[An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.
-
+					<description><![CDATA[<p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.</p>
+<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.<br></p>
+<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -53,10 +54,12 @@
 		<pubDate>Sun, 06 Jul 2025 13:18:24 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=934</guid>
 
-					<description><![CDATA[A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.
+					<description><![CDATA[<p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.</p>
+<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.<br></p>
+<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -70,10 +73,12 @@
 		<pubDate>Sun, 06 Jul 2025 13:17:48 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=932</guid>
 
-					<description><![CDATA[A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.
+					<description><![CDATA[<p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.</p>
+<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.<br></p>
+<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -87,9 +92,12 @@
 		<pubDate>Sun, 06 Jul 2025 13:17:13 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=926</guid>
 
-					<description><![CDATA[A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.]]></description>
+					<description><![CDATA[<p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
+<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
+<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		

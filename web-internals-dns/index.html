@@ -3,9 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>Web Internals: DNS &#8211; Lakshyajeet&#039;s Blog</title>
+	
+	<!-- This site is optimized with the Yoast SEO plugin v25.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<link rel="canonical" href="/web-internals-dns/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Web Internals: DNS - Lakshyajeet&#039;s Blog">
+	<meta property="og:description" content="In this day and age, when we browse the web it&#8217;s easy to forget the complex systems that work behind the scenes to make internet accessible. One such crucial component of the web is DNS or the Domain Name System. This post will dive into the internals of how a DNS works. Introduction to DNS [&hellip;]">
+	<meta property="og:url" content="/web-internals-dns/">
+	<meta property="og:site_name" content="Lakshyajeet&#039;s Blog">
+	<meta property="article:published_time" content="2025-01-28T14:57:38+00:00">
+	<meta property="article:modified_time" content="2025-07-06T15:58:59+00:00">
+	<meta property="og:image" content="/wp-content/uploads/2025/01/dns-1.png">
+	<meta property="og:image:width" content="600">
+	<meta property="og:image:height" content="600">
+	<meta property="og:image:type" content="image/png">
+	<meta name="author" content="lakshyajeet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="lakshyajeet">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="4 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"/web-internals-dns/#article","isPartOf":{"@id":"/web-internals-dns/"},"author":{"name":"lakshyajeet","@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"headline":"Web Internals: DNS","datePublished":"2025-01-28T14:57:38+00:00","dateModified":"2025-07-06T15:58:59+00:00","mainEntityOfPage":{"@id":"/web-internals-dns/"},"wordCount":785,"commentCount":0,"publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"image":{"@id":"/web-internals-dns/#primaryimage"},"thumbnailUrl":"/wp-content/uploads/2025/01/dns-1.png","keywords":["development","seo","theme development","wordpress","wordpress theme","wp"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["/web-internals-dns/#respond"]}]},{"@type":"WebPage","@id":"/web-internals-dns/","url":"/web-internals-dns/","name":"Web Internals: DNS - Lakshyajeet&#039;s Blog","isPartOf":{"@id":"/#website"},"primaryImageOfPage":{"@id":"/web-internals-dns/#primaryimage"},"image":{"@id":"/web-internals-dns/#primaryimage"},"thumbnailUrl":"/wp-content/uploads/2025/01/dns-1.png","datePublished":"2025-01-28T14:57:38+00:00","dateModified":"2025-07-06T15:58:59+00:00","breadcrumb":{"@id":"/web-internals-dns/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["/web-internals-dns/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"/web-internals-dns/#primaryimage","url":"/wp-content/uploads/2025/01/dns-1.png","contentUrl":"/wp-content/uploads/2025/01/dns-1.png","width":600,"height":600},{"@type":"BreadcrumbList","@id":"/web-internals-dns/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Blog","item":"/blog/"},{"@type":"ListItem","position":3,"name":"Web Internals: DNS"}]},{"@type":"WebSite","@id":"/#website","url":"/","name":"Lakshyajeet's Blog","description":"","publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc","name":"lakshyajeet","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","caption":"lakshyajeet"},"logo":{"@id":"/#/schema/person/image/"},"url":"/author/lakshyajeet/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<title>Web Internals: DNS - Lakshyajeet&#039;s Blog</title>
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Feed" href="/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Comments Feed" href="/comments/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Web Internals: DNS Comments Feed" href="/web-internals-dns/feed/">
@@ -83,7 +108,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/158">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.8.1">
-<link rel="canonical" href="/web-internals-dns/">
 <link rel="shortlink" href="/?p=158">
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fweb-internals-dns%2F">
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fweb-internals-dns%2F#038;format=xml">

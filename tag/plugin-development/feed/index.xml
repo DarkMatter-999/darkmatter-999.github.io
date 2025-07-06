@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/plugin-development/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WP-Cron: A Comprehensive Guide</title>
+		<link>/wp-cron-a-comprehensive-guide/</link>
+					<comments>/wp-cron-a-comprehensive-guide/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 17 Mar 2025 14:44:07 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=623</guid>
+
+					<description><![CDATA[<p>In WordPress, the wp-cron plays a crucial role in automating tasks that need to occur periodically. From publishing scheduled posts to clearing spam comments or checking for updates wp-cron makes it possible for WordPress to handle routine tasks without manual intervention. What is wp-cron? To put it simply, wp-cron is cron for WordPress. Cron jobs [&#8230;]</p>
+<p>The post <a href="/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>In WordPress, the <code>wp-cron</code> plays a crucial role in automating tasks that need to occur periodically. From publishing scheduled posts to clearing spam comments or checking for updates wp-cron makes it possible for WordPress to handle routine tasks without manual intervention.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>What is wp-cron?</strong></h2>
+
+
+
+<p>To put it simply, wp-cron is cron for WordPress. Cron jobs are scheduled tasks that run automatically based on a time interval. Unlike traditional cron systems, which are managed by the operating system, WordPress&#8217;s <code>wp-cron</code> system is triggered by website traffic. Each time someone visits our site, WordPress checks if any scheduled tasks are due to run and executes them.</p>
+
+
+
+<p>While this system is convenient, it does have its downsides. For example if our website doesn&#8217;t receive regular traffic, scheduled tasks may not run as expected. However, we can optimize wp-cron by customizing it for more control over when and how tasks are executed.</p>
+
+
+
+<h2 class="wp-block-heading">Customizing wp-cron</h2>
+
+
+
+<h3 class="wp-block-heading">1. Adding a custom schedule</h3>
+
+
+
+<p>We can create a custom cron schedule by using the <code>add_filter</code> function, we hook into the <code>cron_schedules</code> filter to add a new schedule with a 5-hour interval. This interval is defined in seconds (<code>5 * HOUR_IN_SECONDS</code>), making it easy to define custom timeframes for tasks.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function add_my_cron_schedule($schedules) {
+    $schedules['five_hours'] = array(
+        'interval' =&gt; 5 * HOUR_IN_SECONDS,
+        'display'  =&gt; esc_html__( 'Every Five Hours' ),
+    );
+    return $schedules;
+}
+add_filter('cron_schedules', 'add_my_cron_schedule');</pre>
+
+
+
+<h3 class="wp-block-heading">2. Define the cron job</h3>
+
+
+
+<p>The second function defines the cron job itself. In this example the <code>my_cron_job</code> function fetches data from an external API. We use <code>wp_remote_get</code> to make the HTTP request, retrieve the response body and then decode the JSON data. </p>
+
+
+
+<p>Finally, we store this data in the WordPress database using the <code>update_option</code> function, saving it under the option name <code>external_data</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_cron_job() {
+    // Random post ID.
+    $post_id = time() % 100;
+
+    // Fetch data from an external API.
+    $response = wp_remote_get('https://jsonplaceholder.typicode.com/posts/' . $post_id);
+    $body = wp_remote_retrieve_body($response);
+
+    $json = json_decode($body, true);
+    update_option('external_data', $json);
+}
+add_action('my_cron_event', 'my_cron_job');</pre>
+
+
+
+<h3 class="wp-block-heading">3. Schedule cron job</h3>
+
+
+
+<p>Next, we need to ensure that the cron job is scheduled to run at the custom interval. Using <code>wp_schedule_event</code>, we schedule the <code>my_cron_event</code> to run every 5 hours, which is defined by our custom <code>five_hours</code> interval. This job is triggered by the <code>init</code> hook, meaning it will run when WordPress initializes.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function schedule_cron_job() {
+    if ( ! wp_next_scheduled('my_cron_event') ) {
+        wp_schedule_event(time(), 'five_hours', 'my_cron_event');
+    }
+}
+add_action('init', 'schedule_cron_job');</pre>
+
+
+
+<h3 class="wp-block-heading">4. Display the fetched data</h3>
+
+
+
+<p>Finally, we add a <code>template_redirect</code> action to display the fetched data on the frontend. Here, we retrieve the stored data with <code>get_option</code> and use <code>print_r</code> to output it.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">add_action('template_redirect', function() {
+    $data = get_option('external_data');
+    print_r($data);
+});</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>By creating custom cron schedules, we can automate complex tasks and improve the efficiency of our site. Whether its fetching external data, cleaning up our database, or sending out email updates, wp-cron is an invaluable tool that helps keep our site running smoothly.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wp-cron-a-comprehensive-guide/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Working with Transient API</title>
+		<link>/working-with-transient-api/</link>
+					<comments>/working-with-transient-api/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 10 Mar 2025 14:33:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=572</guid>
+
+					<description><![CDATA[<p>As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website. Best Practices for Using Transient API Appropriate Expiration Time Transients are intended for temporary storage [&#8230;]</p>
+<p>The post <a href="/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website.</p>
+
+
+
+<h2 class="wp-block-heading">Best Practices for Using Transient API</h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Appropriate Expiration Time</strong></h3>
+
+
+
+<p>Transients are intended for temporary storage so its important to set correct expiration time based on how often the data changes. For example some event data might only change a few times a day so setting the transient to expire in an hour will be optimal. However if the expiration is too big the cached data may become stale.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Delete Transients When Appropriate</strong></h3>
+
+
+
+<p>It’s important to clear transients when data changes. We can use hooks to delete a transient when a new post/data modified. This ensures that the cache reflects the most current data.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Store Only the Necessary Data</strong></h3>
+
+
+
+<p>Transients should store only the data that is necessary for quick access. We usually store the post IDs, but if we needed additional data like custom fields, we could retrieve that data only when necessary, ensuring we don&#8217;t store excessive information in the cache.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Using Transients for Expensive Operations</strong></h3>
+
+
+
+<p>Use transients to cache results of expensive operations such as API calls, database queries, or other heavy computations. This reduces the need to repeat these operations on every page load and can significantly speed up our site.</p>
+
+
+
+<h2 class="wp-block-heading">Example: Using Transient API for Displaying Latest Events</h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function latest_events_shortcode() {
+    $args = array(
+        'post_type' =&gt; 'my_event',
+        'posts_per_page' =&gt; 5,
+        'orderby' =&gt; 'DESC'
+    );
+
+    // Check if the transient already exists
+    $latest = get_transient('latest_events');
+
+    // If the transient doesnt exist query the database and set a new transient
+    if ( ! $latest ) {
+        // Query the posts
+        $query = new WP_Query($args);
+
+        $events = array();
+
+        if ($query-&gt;have_posts()) {
+            while ($query-&gt;have_posts()) {
+                $query-&gt;the_post();
+                $events[] = get_the_ID();
+            }
+            wp_reset_postdata();
+        }
+
+        set_transient('latest_events', $events, 1 * HOUR_IN_SECONDS);
+        $latest = get_transient('latest_events');
+    }
+    ob_start();
+    if ($latest) {
+        foreach ($latest as $event) {
+            echo '&lt;h2&gt;' . get_the_title($event) . '&lt;/h2&gt;';
+        } 
+    } else {
+        echo 'No Events Found';
+    }
+    return ob_get_clean();
+}
+add_shortcode('latest', 'latest_events_shortcode');
+
+// Clear the transient when new event is saved or updated
+add_action('save_post_my_event', function () {
+    delete_transient('latest_events');
+});</pre>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Checking the Transient</strong>: The function <code>get_transient('latest_events')</code> attempts to fetch the latest events from the cache.</li>
+
+
+
+<li><strong>Querying the Database</strong>: If the transient doesn&#8217;t exist we run a query to fetch the latest events and store the results in a transient.</li>
+
+
+
+<li><strong>Setting the Transient</strong>: We store the event IDs in the transient. </li>
+
+
+
+<li><strong>Displaying the Events</strong>: If the transient exists, we loop through the event IDs and display the titles of the events.</li>
+
+
+
+<li><strong>Cache Invalidation</strong>: The <code>delete_transient('latest_events')</code> action ensures that the cache is cleared when a new event is saved or an existing event is updated, so that the cache stays up to date.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The WordPress Transient API is a simple yet powerful tool that can help us optimize the performance of our websites by caching expensive queries or external API calls. </p>
+
+
+
+<p>By following best practices such as— setting appropriate expiration times, deleting expired transients and storing only important information we can improve the user experience by delivering content faster while reducing the load on our servers.</p>
+
+
+
+<p></p>
+<p>The post <a href="/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/working-with-transient-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress REST API Internals</title>
+		<link>/wordpress-rest-api-internals/</link>
+					<comments>/wordpress-rest-api-internals/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 03 Mar 2025 16:00:02 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=536</guid>
+
+					<description><![CDATA[<p>When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or simply extending the functionality of the site. This blog explores the internals how this works. The Request Flow The process begins as soon as a request is made to the WordPress site’s REST API [&#8230;]</p>
+<p>The post <a href="/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or  simply extending the functionality of the site. This blog explores the internals how this works.</p>
+
+
+
+<h2 class="wp-block-heading">The Request Flow</h2>
+
+
+
+<p>The process begins as soon as a request is made to the WordPress site’s REST API endpoints.</p>
+
+
+
+<p>A client(browser, app or server) makes a request to the server on the server&#8217;s REST URL.</p>
+
+
+
+<p><code>parse_request</code> action the WordPress core routing system kicks into action. The <code>WP</code> class processes the incoming request and the <code>parse_request</code> action is triggered. This is where WordPress begins to understand that the request is for the REST API and determines the correct route.</p>
+
+
+
+<p>The <code>rest_api_loaded()</code> function is the entry point for the REST API, it checks if the request is for the REST API by checking the <code>rest_route</code> query variable. If a valid route is found it defines the <code>REST_REQUEST</code> constant which tells WordPress that it should proceed with processing it as a REST API request.</p>
+
+
+
+<p>WordPress calls the <code>rest_get_server()</code> function which returns an instance of the <code>WP_REST_Server</code> class. This class handles the core tasks of routing, authentication and response generation. There is also a function which allows developers to replace the default server class with a custom implementation using the <code>wp_rest_server_class</code> filter.</p>
+
+
+
+<p>Now, the <code>rest_api_init</code> action is triggered. This is one of the most important hooks in the REST API. It’s the perfect place to register custom routes with <code>register_rest_route()</code> or create custom REST fields using <code>register_rest_field()</code> or perform any other setup.</p>
+
+
+
+<p>The <code>WP_REST_Server</code>’s <code>serve_request()</code> method is the main component of the REST API request processing. It is here WordPress checks the user’s authentication status, sets important HTTP headers (such as CORS) and applies various filters that enable developers to modify request processing.</p>
+
+
+
+<p>A new <code>WP_REST_Request</code> object is created which holds all relevant details about the incoming request, such as HTTP method, query parameters, request body, headers, file uploads, etc.</p>
+
+
+
+<p>The <code>check_authentication()</code> method ensures that the request is coming from a valid, authenticated source. This is where custom authentication mechanisms (like JWT tokens or API keys) can be applied. If authentication fails, the request is rejected with an appropriate error message.</p>
+
+
+
+<p>Finally, the request is dispatched using the <code>dispatch()</code> method. This method matches the incoming request to one of the registered routes and executes the associated callback function. If the route doesn’t exist, a 404 error is returned.</p>
+
+
+
+<h2 class="wp-block-heading">The Response Flow</h2>
+
+
+
+<p>After WordPress has successfully matched the request to a route and executed the relevant callback it needs to handle the response.</p>
+
+
+
+<p>The callback function responsible for handling the route is executed. This function processes the request accesses any necessary data, performs database queries and prepares the data to be returned in the response.</p>
+
+
+
+<p>The <code>respond_to_request()</code> method is used to construct the final response. Before this method, several filters are applied to allow developers to modify the request or return a custom response.</p>
+
+
+
+<p>If the route has a defined <code>permission_callback</code>, this function is executed to ensure the current user has the appropriate permissions to access the route. If the callback returns <code>false</code> or a <code>WP_Error</code>, the request is rejected with a suitable error message.</p>
+
+
+
+<p>WordPress ensures that the response data is properly formatted as a <code>WP_REST_Response</code> object. This function is crucial because it handles potential errors and ensures the response is in a valid JSON format with the correct HTTP status code.</p>
+
+
+
+<p>WordPress then checks for any filters like <code>rest_post_dispatch</code>, which can be used to adjust the final <code>WP_REST_Response</code> object before it’s sent to the client. You can modify the status code, add custom headers, or tweak the response data.</p>
+
+
+
+<p>Headers such as <code>Content-Type</code>, <code>Cache-Control</code>, and any CORS-related headers are set. Also the appropriate HTTP status code is set.</p>
+
+
+
+<p>The response data is then encoded into a JSON format using <code>wp_json_encode()</code>, and it’s sent to the client as the final output.</p>
+
+
+
+<p>Finally, WordPress calls <code>die()</code> to terminate the execution, ensuring no further code is run after the response is sent.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360" alt="" class="wp-image-550" /></figure>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Understanding the request-response flow in the WordPress REST API is essential for anyone looking to work with it at a deeper level. Whether building a plugin, developing custom functionality, having a solid grasp of this flow will make our development process smoother and more efficient.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-rest-api-internals/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WP-CLI Custom Commands</title>
+		<link>/wp-cli-custom-commands/</link>
+					<comments>/wp-cli-custom-commands/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 28 Feb 2025 15:04:02 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=524</guid>
+
+					<description><![CDATA[<p>As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow. Setting Up Our Custom Commands [&#8230;]</p>
+<p>The post <a href="/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow.</p>
+
+
+
+<h3 class="wp-block-heading">Setting Up Our Custom Commands</h3>
+
+
+
+<p>Before we can create custom commands, we need to make sure that the WordPress environment is set up fine. For WP-CLI to work we have define the <code>WP_CLI</code> constant and ensure its available.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">if (defined('WP_CLI') &amp;&amp; WP_CLI) {
+    class Custom {
+        // Our custom commands will go here
+    }
+
+    WP_CLI::add_command('example', 'Custom');
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Defining Custom Commands</h3>
+
+
+
+<p>Within our <code class="">Custom</code> class we can define multiple commands. Each command is a method within the class. </p>
+
+
+
+<p>We can start with a simple command that greets a user.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">class Custom {
+    /**
+     * Prints a greeting.
+     *
+     * ## OPTIONS
+     *
+     * &lt;name&gt;
+     * : The name of the person to greet.
+     *
+     * [--type=&lt;type&gt;]
+     * : Whether or not to greet the person with success or error.
+     * ---
+     * default: success
+     * options:
+     *   - success
+     *   - error
+     * ---
+     *
+     * ## EXAMPLES
+     *
+     *     wp example hello Newman
+     *
+     * @when after_wp_load
+     */
+    function hello($args, $assoc_args) {
+        list($name) = $args;
+
+        // Print the message with type
+        $type = $assoc_args['type'];
+        WP_CLI::$type("Hello, $name!");
+    }
+}</pre>
+
+
+
+<p>In this example, we have created a method called <code>hello</code>.<br>This command greets the user. It accepts a name as an argument and an optional <code>--type</code> argument to determine if the message should be displayed as a success or error.</p>
+
+
+
+<h3 class="wp-block-heading">Fetching Blog Posts</h3>
+
+
+
+<p>We can add another command to fetch blog posts. This command fetches the latest blog posts using WordPress&#8217;s REST API. It retrieves posts and formats them into a table to display the title and link.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">class Custom {
+    // ...
+
+    function blog($args, $assoc_args) {
+        $response = wp_remote_get(rest_url('/wp/v2/posts'));
+        $posts = json_decode(wp_remote_retrieve_body($response));
+
+        $output = array();
+
+        foreach ($posts as $post) {
+            $output[] = array(
+                'title' =&gt; $post-&gt;title-&gt;rendered,
+                'link' =&gt; $post-&gt;link
+            );
+        }
+
+        WP_CLI\utils\format_items('table', $output, array('title', 'link'));
+    }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Exporting Data</h3>
+
+
+
+<p>This command exports custom post types as a formatted output. It queries for all <code>my_event</code> post types retrieves relevant details like title, content, and link and displays them in a specified format.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">class Custom {
+    // ...
+
+    function export_event($args, $assoc_args) {
+        $args = array(
+            'post_type' =&gt; 'my_event',
+            'posts_per_page' =&gt; -1,
+        );
+        $query = new WP_Query($args);
+
+        if ($query-&gt;have_posts()) {
+            $posts = array();
+            while ($query-&gt;have_posts()) {
+                $query-&gt;the_post();
+
+                $posts[] = array(
+                    'id' =&gt; get_the_ID(),
+                    'title' =&gt; get_the_title(),
+                    'content' =&gt; get_the_content(),
+                    'link' =&gt; get_the_permalink(),
+                );
+            }
+
+            WP_CLI\utils\format_items($assoc_args['format'], $posts, array('id', 'title', 'content', 'link'));
+        }
+    }
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Custom WP-CLI commands offer a powerful way to extend the functionality of WP-CLI. By creating custom commands we can streamline our workflow, automate repetitive tasks, and enhance our productivity. Whether it&#8217;s greeting users, fetching blog posts, or exporting custom post types, the possibilities with custom commands are endless.</p>
+<p>The post <a href="/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wp-cli-custom-commands/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Working with the WP_Rest_Controller Class</title>
+		<link>/working-with-the-wp_rest_controller-class/</link>
+					<comments>/working-with-the-wp_rest_controller-class/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 27 Feb 2025 14:41:53 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=507</guid>
+
+					<description><![CDATA[<p>As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The WP_REST_Controller class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints. What is WP_REST_Controller? The WP_REST_Controller class is an abstract class which provides basic structure [&#8230;]</p>
+<p>The post <a href="/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The <code class="">WP_REST_Controller</code> class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints.</p>
+
+
+
+<h2 class="wp-block-heading">What is <code>WP_REST_Controller</code>?</h2>
+
+
+
+<p>The <code class="">WP_REST_Controller</code> class is an abstract class which provides basic structure for creating REST API endpoints. It includes methods for registering and handling requests and responses. By extending this class we can create custom endpoints.</p>
+
+
+
+<h2 class="wp-block-heading">Extending <code>WP_REST_Controller</code></h2>
+
+
+
+<p>First we need to create a new class that will inherit <code>WP_REST_Controller</code> class, this class will define routes and handle the requests at custom end points.</p>
+
+
+
+<h3 class="wp-block-heading">Defining Custom controller class</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+use WP_REST_Controller;
+use WP_REST_Request;
+use WP_REST_Response;
+use WP_REST_Server;
+
+class Custom_REST_Controller extends WP_REST_Controller {
+    public function __construct() {
+        $this-&gt;namespace = 'namespace/v1';
+        $this-&gt;rest_base = 'our-endpoint';
+
+        add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+    }
+
+    public function register_routes() {
+        register_rest_route(
+            $this-&gt;namespace,
+            '/' . $this-&gt;rest_base,
+            array(
+                array(
+                    'methods'             =&gt; WP_REST_Server::READABLE,
+                    'callback'            =&gt; array( $this, 'get_items' ),
+                    'permission_callback' =&gt; array( $this, 'get_items_permissions_check' ),
+                    'args'                =&gt; $this-&gt;get_collection_params(),
+                ),
+                array(
+                    'methods'             =&gt; WP_REST_Server::CREATABLE,
+                    'callback'            =&gt; array( $this, 'create_item' ),
+                    'permission_callback' =&gt; array( $this, 'create_item_permissions_check' ),
+                    'args'                =&gt; $this-&gt;get_endpoint_args_for_item_schema( WP_REST_Server::CREATABLE ),
+                ),
+                'schema' =&gt; array( $this, 'get_public_item_schema' ),
+            )
+        );
+
+        register_rest_route(
+            $this-&gt;namespace,
+            '/' . $this-&gt;rest_base . '/(?P&lt;id&gt;[\d]+)',
+            array(
+                'args'   =&gt; array(
+                    'id' =&gt; array(
+                        'type' =&gt; 'integer',
+                    ),
+                ),
+                array(
+                    'methods'             =&gt; WP_REST_Server::READABLE,
+                    'callback'            =&gt; array( $this, 'get_item' ),
+                    'permission_callback' =&gt; array( $this, 'get_item_permissions_check' ),
+                    'args'                =&gt; array(
+                        'context' =&gt; $this-&gt;get_context_param( array( 'default' =&gt; 'view' ) ),
+                    ),
+                ),
+                array(
+                    'methods'             =&gt; WP_REST_Server::EDITABLE,
+                    'callback'            =&gt; array( $this, 'update_item' ),
+                    'permission_callback' =&gt; array( $this, 'update_item_permissions_check' ),
+                    'args'                =&gt; $this-&gt;get_endpoint_args_for_item_schema( WP_REST_Server::EDITABLE ),
+                ),
+                array(
+                    'methods'             =&gt; WP_REST_Server::DELETABLE,
+                    'callback'            =&gt; array( $this, 'delete_item' ),
+                    'permission_callback' =&gt; array( $this, 'delete_item_permissions_check' ),
+                ),
+                'schema' =&gt; array( $this, 'get_public_item_schema' ),
+            )
+        );
+    }
+
+    public function get_items( WP_REST_Request $request ) {
+        // Implement logic to retrieve items
+    }
+
+    public function get_item( WP_REST_Request $request ) {
+        // Implement logic to retrieve a single item
+    }
+
+    public function create_item( WP_REST_Request $request ) {
+        // Implement logic to create a new item
+    }
+
+    public function update_item( WP_REST_Request $request ) {
+        // Implement logic to update an item
+    }
+
+    public function delete_item( WP_REST_Request $request ) {
+        // Implement logic to delete an item
+    }
+
+    public function get_items_permissions_check( WP_REST_Request $request ) {
+        // Implement permission check logic
+    }
+
+    public function get_item_permissions_check( WP_REST_Request $request ) {
+        // Implement permission check logic
+    }
+
+    public function create_item_permissions_check( WP_REST_Request $request ) {
+        // Implement permission check logic
+    }
+
+    public function update_item_permissions_check( WP_REST_Request $request ) {
+        // Implement permission check logic
+    }
+
+    public function delete_item_permissions_check( WP_REST_Request $request ) {
+        // Implement permission check logic
+    }
+
+    public function prepare_item_for_response( $item, WP_REST_Request $request ) {
+        // Implement logic to prepare the item for the response
+    }
+
+    public function get_collection_params() {
+        // Implement logic to get the collection parameters
+    }
+}</pre>
+
+
+
+<p>We need to register routes this will be done by implementing the <code>register_routes()</code> function. This function will hold all the routes and their parameters.</p>
+
+
+
+<h3 class="wp-block-heading">Implementing the methods</h3>
+
+
+
+<p>After defining the structure of our routes we need to make sure all our callbacks are defined. </p>
+
+
+
+<p>Eg— Sample function definition of <code>get_items</code> and <code>create_item</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">public function get_items( WP_REST_Request $request ) {
+    $args = array(
+        'post_type'      =&gt; 'custom-post-type',
+        'posts_per_page' =&gt; $request['per_page'],
+        'paged'          =&gt; $request['page'],
+        'orderby'        =&gt; $request['orderby'],
+        'order'          =&gt; $request['order'],
+    );
+
+    if ( ! empty( $request['search'] ) ) {
+        $args['s'] = $request['search'];
+    }
+
+    $query = new WP_Query( $args );
+    $posts = array();
+
+    if ( $query-&gt;have_posts() ) {
+        while ( $query-&gt;have_posts() ) {
+            $query-&gt;the_post();
+            $data    = $this-&gt;prepare_item_for_response( get_post(), $request );
+            $posts[] = $this-&gt;prepare_response_for_collection( $data );
+        }
+        wp_reset_postdata();
+    }
+
+    $response = rest_ensure_response( $posts );
+    return $response;
+}</pre>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">public function create_item( $request ) {
+    $title = sanitize_text_field( $request['title'] );
+    $content = wp_kses_post( $request['content'] );
+    $status = sanitize_text_field( $request['status'] );
+
+    $new_post = array(
+        'post_type' =&gt; 'custom-post-type',
+        'post_title' =&gt; $title,
+        'post_content' =&gt; $content,
+        'post_status' =&gt; $status,
+        'post_author' =&gt; get_current_user_id(),
+    );
+
+    $post_id = wp_insert_post( $new_post );
+
+    if ( is_wp_error( $post_id ) ) {
+        return $post_id;
+    }
+
+    return rest_ensure_response( $this-&gt;prepare_item_for_response( get_post( $post_id ), $request ) );
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Implementing Permission callbacks</h3>
+
+
+
+<p>The <code>permission_callback</code> is used to ensure the correct permissions are in place before any data is retrieved or modified on every request.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">public function create_item_permissions_check( $request ) {
+    return is_user_logged_in() &amp;&amp; current_user_can( 'publish_posts' );
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Preparing the Response</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">public function prepare_item_for_response( $post, $request ) {
+    return array(
+        'id' =&gt; $post-&gt;ID,
+        'title' =&gt; $post-&gt;post_title,
+        'content' =&gt; $post-&gt;post_content,
+    );
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Registering the Routes</h3>
+
+
+
+<p>The last thing we need to do before our routes are available is to register them using the <code>rest_api_init</code> hook.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">add_action( 'rest_api_init', function() {
+    $controller = new Custom_REST_Controller();
+    $controller-&gt;register_routes();
+} );</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The <code>WP_Rest_Controller</code> class provides a solid foundation for building custom REST API endpoints in WordPress. By extending this class, we can define custom routes and handle CRUD operations.</p>
+<p>The post <a href="/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/working-with-the-wp_rest_controller-class/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress REST API: Creating and Retrieving Posts</title>
+		<link>/wordpress-rest-api-creating-and-retrieving-posts/</link>
+					<comments>/wordpress-rest-api-creating-and-retrieving-posts/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 25 Feb 2025 14:56:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=480</guid>
+
+					<description><![CDATA[<p>WordPress provides a robust and interactive way to extend its core functionality by providing the REST API. It enables us to perform create, update, read and delete operations on posts and custom posts types. Registering Custom Routes Before we start to create and read posts first we need to register routes to access this functionality.In [&#8230;]</p>
+<p>The post <a href="/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>WordPress provides a robust and interactive way to extend its core functionality by providing the REST API. It enables us to perform create, update, read and delete operations on posts and custom posts types.</p>
+
+
+
+<h2 class="wp-block-heading">Registering Custom Routes</h2>
+
+
+
+<p>Before we start to create and read posts first we need to register routes to access this functionality.<br>In this example we use—</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>GET <code>/my_event</code></strong>: To retrieve posts of a custom post type called &#8220;my_event&#8221;</li>
+
+
+
+<li><strong>POST <code>/my_event</code></strong>: To create new &#8220;my_event&#8221; posts via a POST request.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Registering the GET Route</h3>
+
+
+
+<p>We can register a route using the <code>register_rest_route()</code> function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_event_posts_route() {
+    register_rest_route( 'my/v1', '/my_event', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'my_event_posts',
+        'args' =&gt; array(
+            'page' =&gt; array(
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return is_numeric( $param ) &amp;&amp; $param &gt; 0;
+                },
+                'default' =&gt; 1,
+            ),
+            'per_page' =&gt; array(
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return is_numeric( $param ) &amp;&amp; $param &gt; 0;
+                },
+                'default' =&gt; 10,
+            ),
+        ),
+        'permission_callback' =&gt; '__return_true',
+    ));
+}
+add_action( 'rest_api_init', 'my_event_posts_route' );</pre>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Validation</strong>: We need to validate that the <code>page</code> and <code>per_page</code> parameters are numeric.</li>
+
+
+
+<li><strong>Permission Callback</strong>: We set the permission callback to <code>__return_true</code> to make this router publicly accessible which is okay for a GET route.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Registering the POST Route</h3>
+
+
+
+<p>By settings the <code>'methods'</code> parameter to <strong>POST</strong> we make sure that this route uses this HTTP method.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_create_event_post_route() {
+    register_rest_route( 'my/v1', '/my_event', array(
+        'methods' =&gt; 'POST',
+        'callback' =&gt; 'my_create_event_post',
+        'args' =&gt; array(
+            'title' =&gt; array(
+                'required' =&gt; true,
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return !empty( $param );
+                },
+            ),
+            'content' =&gt; array(
+                'required' =&gt; true,
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return !empty( $param );
+                },
+            ),
+            'status' =&gt; array(
+                'required' =&gt; true,
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return in_array( $param, ['publish', 'draft', 'pending'] );
+                }
+            ),
+            'nonce' =&gt; array(
+                'required' =&gt; true,
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return wp_verify_nonce( $param, 'my_create_event_nonce' );
+                },
+            ),
+        ),
+    ));
+}
+add_action( 'rest_api_init', 'my_create_event_post_route' );</pre>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Nonce Verification</strong>: We need  to a nonce field for verifying if requests are legitimate. (nonce can be generated on the client side)</li>
+
+
+
+<li><strong>Sanitization</strong>: We need to use <code>sanitize_text_field()</code> for the title and <code>sanitize_textarea_field()</code> for the content to ensure inputs are safe to work with.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Callback to handle GET requests</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_event_posts( $request ) {
+    $args = array(
+        'post_type' =&gt; 'my_event',
+        'posts_per_page' =&gt; $request-&gt;get_param('per_page'),
+        'paged' =&gt; $request-&gt;get_param('page'),
+    );
+
+    $query = new WP_Query( $args );
+
+    if ( $query-&gt;have_posts() ) {
+        $posts = array();
+        while ( $query-&gt;have_posts() ) {
+            $query-&gt;the_post();
+            $posts[] = array(
+                'id' =&gt; get_the_ID(),
+                'title' =&gt; get_the_title(),
+                'link' =&gt; get_permalink(),
+            );
+        }
+        wp_reset_postdata();
+
+        return new WP_REST_Response( array(
+            'posts' =&gt; $posts,
+            'pagination' =&gt; array(
+                'total_pages' =&gt; $query-&gt;max_num_pages,
+                'current_page' =&gt; $request-&gt;get_param('page'),
+                'per_page' =&gt; $request-&gt;get_param('per_page'),
+            ),
+        ), 200);
+    } else {
+        return new WP_REST_Response(array(), 404);
+    }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Callback Function to Handle POST Requests</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_create_event_post( $request ) {
+    // Ensure the user is logged in and has permission
+    if ( !is_user_logged_in() || !current_user_can('publish_posts') ) {
+        return new WP_Error(403, 'Unauthorized', array('status' =&gt; 403));
+    }
+
+    $title = sanitize_text_field( $request-&gt;get_param('title') );
+    $content = sanitize_textarea_field( $request-&gt;get_param('content') );
+    $status = sanitize_text_field( $request-&gt;get_param('status') );
+
+    $new_post = array(
+        'post_type' =&gt; 'my_event',
+        'post_title' =&gt; $title,
+        'post_content' =&gt; $content,
+        'post_status' =&gt; $status,
+        'post_date' =&gt; current_time('mysql'),
+        'post_category' =&gt; array(0)
+    );
+
+    $post_id = wp_insert_post( $new_post );
+
+    if ( !is_wp_error( $post_id ) ) {
+        $post = get_post( $post_id );
+        return new WP_REST_Response( $post, 201 );
+    } else {
+        return new WP_Error( 'post_creation_failed', 'Failed to create post', array( 'status' =&gt; 500 ) );
+    }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Nonce Generation on the Client side</h3>
+
+
+
+<p>We can generate the nonce on the client side using JavaScript</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">wp_localize_script( 'script-handle', 'my_event', array(
+    'nonce' =&gt; wp_create_nonce( 'my_create_event_nonce' )
+));</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Using the WordPress REST API to create and retrieve posts is a powerful way to interact with our WordPress site programmatically using the widely used JSON format. By incorporating these techniques we can build highly dynamic and responsive WordPress applications.</p>
+<p>The post <a href="/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-rest-api-creating-and-retrieving-posts/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Working with WordPress REST API</title>
+		<link>/working-with-wordpress-rest-api/</link>
+					<comments>/working-with-wordpress-rest-api/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 24 Feb 2025 16:05:21 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=472</guid>
+
+					<description><![CDATA[<p>When building WordPress applications, one of the most powerful tools that we have at our disposal is the REST API. REST APIs (Representational State Transfer API) provide a structured way to interact with a WordPress site enabling us to retrieve, create, update, and delete data remotely. What is REST API? A REST API is a [&#8230;]</p>
+<p>The post <a href="/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>When building WordPress applications, one of the most powerful tools that we have at our disposal is the <strong>REST API</strong>. REST APIs (Representational State Transfer API) provide a structured way to interact with a WordPress site enabling us to retrieve, create, update, and delete data remotely.</p>
+
+
+
+<h2 class="wp-block-heading">What is REST API?</h2>
+
+
+
+<p>A REST API is a set of conventions for interacting with a server. The WordPress REST API allows the developers to create custom routes that respond to HTTP requests providing a easy way to access the data.</p>
+
+
+
+<p>The REST API in WordPress allows us access to various site data such as posts, pages, or custom post types through simple endpoints.</p>
+
+
+
+<h2 class="wp-block-heading">Registering a Basic REST API Endpoint</h2>
+
+
+
+<p>We can register a route using the <code>register_rest_route</code> function. </p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function rest_endpoint() {
+    register_rest_route('my/v1', '/hello/', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'my_rest_api_callback',
+        'permission_callback' =&gt; '__return_true',
+    ));
+}
+add_action('rest_api_init', 'rest_endpoint');
+
+function my_rest_api_callback(WP_REST_Request $request) {
+    return new WP_REST_Response('Hello!', 200);
+}</pre>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>register_rest_route()</code></strong>: Registers a custom route (<code>my/v1/hello/</code>), which will respond to GET requests.</li>
+
+
+
+<li><strong><code>my_rest_api_callback()</code></strong>: This callback function is executed when the <code>/hello/</code> endpoint is hit. It returns a simple greeting message with a 200 HTTP status code.</li>
+
+
+
+<li><strong><code>permission_callback</code></strong>: We&#8217;ve used <code>__return_true</code> for simplicity, which means the endpoint is open to anyone. In a real-world scenario, you should implement appropriate permission checks to secure your API.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Adding Parameters to an Endpoint</h2>
+
+
+
+<p>We can use <code>$request-&gt;get_param()</code>function to retrieve the a parameter from the request. We can create dynamic responses based on the parameters passed by the user.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function rest_endpoint2() {
+    register_rest_route('my/v1', '/hello2/', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'my_rest_api_param_callback',
+        'permission_callback' =&gt; '__return_true',
+    ));
+}
+add_action('rest_api_init', 'rest_endpoint2');
+
+function my_rest_api_param_callback(WP_REST_Request $request) {
+    $name = $request-&gt;get_param('name');
+    return new WP_REST_Response("Hello, $name!", 200);
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Creating a Custom Endpoint for Custom Post Types</h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_event_posts_route() {
+    register_rest_route( 'my/v1', '/my_event', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'my_event_posts',
+        'args' =&gt; array(
+            'page' =&gt; array(
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return is_numeric( $param );
+                },
+                'default' =&gt; 1,
+            ),
+            'per_page' =&gt; array(
+                'validate_callback' =&gt; function( $param, $request, $key ) {
+                    return is_numeric( $param );
+                },
+                'default' =&gt; 10,
+            ),
+        ),
+    ));
+}
+add_action( 'rest_api_init', 'my_event_posts_route' );
+
+function my_event_posts( $request ) {
+    $args = array(
+        'post_type' =&gt; 'my_event',
+        'posts_per_page' =&gt; $request-&gt;get_param('per_page'),
+        'paged' =&gt; $request-&gt;get_param('page'),
+    );
+
+    $query = new WP_Query( $args );
+
+    if ( $query-&gt;have_posts() ) {
+        $posts = array();
+        while ( $query-&gt;have_posts() ) {
+            $query-&gt;the_post();
+            $posts[] = array(
+                'id' =&gt; get_the_ID(),
+                'title' =&gt; get_the_title(),
+                'link' =&gt; get_permalink(),
+            );
+        }
+        wp_reset_postdata();
+
+        return new WP_REST_Response( array(
+            'posts' =&gt; $posts,
+            'pagination' =&gt; array(
+                'total_pages' =&gt; $query-&gt;max_num_pages,
+                'current_page' =&gt; $request-&gt;get_param('page'),
+                'per_page' =&gt; $request-&gt;get_param('per_page'),
+            ),
+        ), 200);
+    } else {
+        return new WP_REST_Response(array(), 404);
+    }
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The WordPress REST API is an invaluable tool for extending WordPress. We can create powerful and flexible endpoints which allows external applications to interact with WordPress data. The REST API provides a structured and standardized way to do so.</p>
+<p>The post <a href="/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/working-with-wordpress-rest-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Plugin Development Basics: VII</title>
+		<link>/wordpress-plugin-development-basics-vii/</link>
+					<comments>/wordpress-plugin-development-basics-vii/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 20 Feb 2025 15:20:50 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=444</guid>
+
+					<description><![CDATA[<p>Like everything else in WordPress even the settings page is very customizable, custom settings and options can be added by a plugin. Settings menu allows us to provide a custom interface where users can input and save various configuration options from the WordPress admin dashboard. Adding the Settings Menu A top level menu can be [&#8230;]</p>
+<p>The post <a href="/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Like everything else in WordPress even the settings page is very customizable, custom settings and options can be added by a plugin. Settings menu allows us to provide a custom interface where users can input and save various configuration options from the WordPress admin dashboard.</p>
+
+
+
+<h2 class="wp-block-heading">Adding the Settings Menu</h2>
+
+
+
+<p>A top level menu can be added using the <code>add_menu_page()</code> and a sub menu can be added using the <code>add_submenu_page()</code>function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_settings_menu() {
+    // Add a top-level menu
+    add_menu_page(
+        'My Settings',           // Page title
+        'My Settings',           // Menu title
+        'manage_options',        // Capability
+        'my-settings',           // Menu slug
+        'my_settings_page',      // Function to call for the page content
+        'dashicons-admin-generic' // Icon
+    );
+    
+    // Add a submenu under the main menu
+    add_submenu_page(
+        'my-settings',           // Parent menu slug
+        'Settings',              // Page title
+        'Settings',              // Submenu title
+        'manage_options',        // Capability
+        'my-settings-options',   // Submenu slug
+        'my_settings_options_page' // Function to call for the submenu content
+    );
+}
+
+add_action('admin_menu', 'my_settings_menu');</pre>
+
+
+
+<p>These menus can be registered using the <code>admin_menu</code> hook.</p>
+
+
+
+<h2 class="wp-block-heading">Creating the Settings Page</h2>
+
+
+
+<p>Once the menu is added content for the menu can be added in simple HTML.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_settings_page() {
+    ?&gt;
+    &lt;div class="wrap"&gt;
+        &lt;h1&gt;My Settings&lt;/h1&gt;
+        &lt;p&gt;Welcome to the settings page.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;?php
+}
+
+function my_settings_options_page() {
+    ?&gt;
+    &lt;div class="wrap"&gt;
+        &lt;h1&gt;Settings Page&lt;/h1&gt;
+
+        &lt;form method="post" action="options.php"&gt;
+            &lt;?php
+            settings_fields('my_settings_group');
+            do_settings_sections('my-settings-options');
+            submit_button();
+            ?&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;?php
+}</pre>
+
+
+
+<p>In the form since we are using the Settings and Option API, use add the action to <code>option.php</code>, then we add the settings fields and sections, at last we add a submit button using the <code>submit_button()</code> function.</p>
+
+
+
+<h2 class="wp-block-heading">Registering the Settings</h2>
+
+
+
+<p>Now, we need to register our settings so WordPress knows how to handle them. To do this, we can use the <code>register_setting()</code> function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_register_settings() {
+    // Register our setting group
+    register_setting('my_settings_group', 'my_setting_option');
+
+    // Add a settings section
+    add_settings_section(
+        'my_settings_section',      // Section ID
+        'General Settings',         // Section Title
+        'my_settings_section_cb',   // Section Callback
+        'my-settings-options'       // Page where to show this section
+    );
+
+    // Add a setting field
+    add_settings_field(
+        'my_setting_option',        // Field ID
+        'Example Option',           // Field title
+        'my_setting_option_cb',     // Field callback to display the input
+        'my-settings-options',      // Page to display on
+        'my_settings_section'       // Section to display in
+    );
+}
+
+add_action('admin_init', 'my_register_settings');</pre>
+
+
+
+<ul class="wp-block-list">
+<li>The <code>register_setting()</code> function registers a setting group called <code>my_settings_group</code> and the option <code>my_setting_option</code>.</li>
+
+
+
+<li>The <code>add_settings_section()</code> function adds a section to group our settings.</li>
+
+
+
+<li>The <code>add_settings_field()</code> function adds a form field for the user to interact with.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Displaying the Form Fields</h2>
+
+
+
+<p>Next, we need to display the actual input fields for our settings. For this we use a callback function to render the input field for the <code>my_setting_option</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_settings_section_cb() {
+    echo '&lt;p&gt;Enter your settings below:&lt;/p&gt;';
+}
+
+function my_setting_option_cb() {
+    $option_value = get_option('my_setting_option');
+    ?&gt;
+    &lt;input type="text" name="my_setting_option" value="&lt;?php echo esc_attr($option_value); ?&gt;" /&gt;
+    &lt;p class="description"&gt;This is an example setting.&lt;/p&gt;
+    &lt;?php
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>We have successfully created a basic Settings page for our WordPress plugin. We can expand this plugin to include more settings, validation and styles all while using Settings API.</p>
+<p>The post <a href="/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-plugin-development-basics-vii/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Plugin Development Basics: VI</title>
+		<link>/wordpress-plugin-development-basics-vi/</link>
+					<comments>/wordpress-plugin-development-basics-vi/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 19 Feb 2025 14:45:56 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=430</guid>
+
+					<description><![CDATA[<p>When building for WordPress, AJAX is a term which we hear very often, this blog shows how to implement a autocomplete search tailored to a custom post type meta box using WordPress AJAX. Registering the Custom Post Type Firstly, we need to define our custom post types to make query against. Here, we will use [&#8230;]</p>
+<p>The post <a href="/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>When building for WordPress, AJAX is a term which we hear very often, this blog shows how to implement a autocomplete search tailored to a custom post type meta box using WordPress AJAX.</p>
+
+
+
+<h2 class="wp-block-heading">Registering the Custom Post Type</h2>
+
+
+
+<p>Firstly, we need to define our custom post types to make query against. Here, we will use two post types— my_event and my_event_type. We can register these post types using the <code>register_post_type()</code> function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_event_post_type() {
+    register_post_type('my_event', array(
+        'labels' =&gt; array(
+            'name' =&gt; 'Events',
+            'singular_name' =&gt; 'Event',
+        ),
+        // Use block editor
+        'show_in_rest' =&gt; true,
+		'supports'     =&gt; array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'revisions' ),
+        'public' =&gt; true,
+        'show_ui' =&gt; true,
+    ));
+}
+add_action('init', 'my_event_post_type');
+
+function my_event_types_post_type() {
+    register_post_type('my_event_types', array(
+        'labels' =&gt; array(
+            'name' =&gt; 'Event Types',
+            'singular_name' =&gt; 'Event Type',
+        ),
+        'show_in_rest' =&gt; true, // Ensure compatibility with the block editor.
+        'supports'     =&gt; array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'revisions' ),
+        'public' =&gt; true,
+        'show_ui' =&gt; true,
+    ));
+}
+add_action('init', 'my_event_types_post_type');</pre>
+
+
+
+<h2 class="wp-block-heading">Adding the Meta Box</h2>
+
+
+
+<p>Now that we have custom post types set up we need to allow users to select event types when editing a post.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function meta_box_event_types() {
+    add_meta_box(
+        'event-meta-types',
+        'Event Types',
+        'event_types_meta_box_html',
+        'my_event',
+        'side',
+    );
+}
+add_action( 'add_meta_boxes', 'meta_box_event_types' );</pre>
+
+
+
+<p>Next, we’ll need the HTML for the event type input field inside the meta box.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function event_types_meta_box_html(WP_Post $post) {
+    ?&gt;
+    &lt;div&gt;
+        &lt;label for="my-event-type"&gt;Event Type(s)&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="my-event-type" name="my-event-type" value="" /&gt;
+        &lt;div id="autocomplete-suggestions" style="display:none;"&gt;&lt;/div&gt;
+
+        &lt;ul id="selected-event-types" style="list-style-type: none; padding: 0;"&gt;&lt;/ul&gt;
+
+        &lt;input type="hidden" id="selected-event-types-json" name="selected-event-types-json" value="" /&gt;
+    &lt;/div&gt;
+    &lt;?php
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Handling the Autocomplete AJAX Request</h2>
+
+
+
+<p>When a user starts typing in the input field, we need to fetch relevant event types based on the search query. We can use WordPress&#8217;s AJAX functionality for this.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">add_action( 'wp_ajax_fetch_autocomplete_suggestions', 'fetch_autocomplete_suggestions' );
+
+function fetch_autocomplete_suggestions() {
+    if ( isset($_GET['query']) &amp;&amp; !empty($_GET['query']) ) {
+        $search_query = sanitize_text_field( $_GET['query'] );
+        $args = [
+            'post_type'      =&gt; 'my_event_types',
+            'posts_per_page' =&gt; 10,
+            's'               =&gt; $search_query,
+        ];
+
+        $query = new WP_Query($args);
+        $results = [];
+
+        if ($query-&gt;have_posts()) {
+            while ($query-&gt;have_posts()) {
+                $query-&gt;the_post();
+                $results[] = [
+                    'name' =&gt; get_the_title(),
+                    'id' =&gt; get_the_ID(),
+                ];
+            }
+            wp_reset_postdata();
+        }
+
+        echo json_encode($results);
+    }
+
+    wp_die();
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Enqueueing the JavaScript</h2>
+
+
+
+<p>We need to add JavaScript to handle the user input then send an AJAX request and finally display the suggestions.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function enqueue_event_types_script( $hook ) {
+    if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
+        wp_enqueue_media();
+        wp_enqueue_script(
+            'my-event',
+            plugin_dir_url( __FILE__ ) . 'autocomplete.js',
+            array(),
+            '1.0',
+            array()
+        );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'enqueue_event_types_script' );</pre>
+
+
+
+<h2 class="wp-block-heading">Frontend Javascript</h2>
+
+
+
+<p>Finally, we need write the Javascript on frontend for handling the search input, displaying autocomplete suggestions, and adding/removing selected event types.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('my-event-type').addEventListener('input', function() {
+        let searchTerm = this.value;
+        if (searchTerm.length &gt; 2) {
+            fetchAutocompleteSuggestions(searchTerm);
+        } else {
+            document.getElementById('autocomplete-suggestions').style.display = 'none';
+        }
+    });
+
+    function fetchAutocompleteSuggestions(query) {
+        fetch(ajaxurl + '?action=fetch_autocomplete_suggestions&amp;query=' + query)
+            .then(response =&gt; response.json())
+            .then(data =&gt; {
+                let suggestionsBox = document.getElementById('autocomplete-suggestions');
+                suggestionsBox.innerHTML = ''; // Clear previous suggestions
+                if (data.length &gt; 0) {
+                    data.forEach(type =&gt; {
+                        let div = document.createElement('div');
+                        div.textContent = type.name;
+                        div.addEventListener('click', function() {
+                            addSelectedType(type);
+                            suggestionsBox.style.display = 'none';
+                            document.getElementById('my-event-type').value = ''; // Clear input
+                        });
+                        suggestionsBox.appendChild(div);
+                    });
+                    suggestionsBox.style.display = 'block';
+                } else {
+                    suggestionsBox.style.display = 'none';
+                }
+            });
+    }
+
+    function addSelectedType(type) {
+        let selectedTypesList = document.getElementById('selected-event-types');
+        let selectedTypesJsonInput = document.getElementById('selected-event-types-json');
+        let listItem = document.createElement('li');
+        listItem.textContent = type.name;
+        listItem.dataset.id = type.id;
+
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.classList.add('remove-event-type');
+        removeBtn.addEventListener('click', function() {
+            selectedTypesList.removeChild(listItem);
+            updateSelectedTypesJson();
+        });
+        listItem.appendChild(removeBtn);
+        selectedTypesList.appendChild(listItem);
+
+        updateSelectedTypesJson();
+    }
+
+    function updateSelectedTypesJson() {
+        let selectedTypesList = document.getElementById('selected-event-types').children;
+        let selectedTypes = [];
+        Array.from(selectedTypesList).forEach(function(item) {
+            selectedTypes.push({
+                id: item.dataset.id,
+                name: item.textContent.replace('Remove', '').trim()
+            });
+        });
+        document.getElementById('selected-event-types-json').value = JSON.stringify(selectedTypes);
+    }
+});</pre>
+
+
+
+<p>Additionally, debounce function can be incorporated to avoid making too many requests to the backend.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>With these steps, we’ve successfully implemented a custom autocomplete search for selecting event types in WordPress using AJAX. </p>
+
+
+
+<p>This approach can be extended to any other custom post type or taxonomies and we can tweak it to fit different requirements.</p>
+<p>The post <a href="/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-plugin-development-basics-vi/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Plugin Development Basics: V</title>
+		<link>/wordpress-plugin-development-basics-v/</link>
+					<comments>/wordpress-plugin-development-basics-v/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 18 Feb 2025 14:10:20 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[plugin development]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[wp]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=416</guid>
+
+					<description><![CDATA[<p>As we have seen previously, WordPress is a great Content Management System. So far we have only covered the text side of the equation. wp.media is the main media management part of this. What is wp.media? wp.media is a JavaScript API provided by WordPress that gives us access to WordPress&#8217;s built-in media manager. It offers [&#8230;]</p>
+<p>The post <a href="/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we have seen previously, WordPress is a great Content Management System. So far we have only covered the text side of the equation. <code>wp.media</code> is the main media management part of this.</p>
+
+
+
+<h2 class="wp-block-heading">What is <code>wp.media</code>?</h2>
+
+
+
+<p><code>wp.media</code> is a JavaScript API provided by WordPress that gives us access to WordPress&#8217;s built-in media manager. It offers an easy to use interface for handling media file within WordPress. It includes everything like selecting, uploading and embedding media content in a site. This API is built on top of the Backbone.js library which is also used in the WordPress admin interface.</p>
+
+
+
+<h2 class="wp-block-heading">Why Use <code>wp.media</code>?</h2>
+
+
+
+<ul class="wp-block-list">
+<li>It is a built-in component and media library provides a familiar and consistent experience for users.</li>
+
+
+
+<li><code>wp.media</code> allows us to handle all types of media files, from images to audio and video and offers full control over these.</li>
+
+
+
+<li>We can extend the media library functionality with custom filters, custom post types and taxonomies making it useful for complex scenarios.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Setting Up the Plugin Environment</h2>
+
+
+
+<p>Once we have a basic plugin set up we can enqueue the scripts.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// Enqueue scripts
+function media_selector_plugin_enqueue_scripts() {
+    wp_enqueue_media();
+    wp_enqueue_script( 'media-selector-script', plugin_dir_url( __FILE__ ) . 'js/media-selector.js', array(), null, true );
+}</pre>
+
+
+
+<ul class="wp-block-list">
+<li>The <code>wp_enqueue_media()</code> function ensures the necessary media library scripts and styles are loaded.</li>
+
+
+
+<li>We hook our custom function into the <code>admin_enqueue_scripts</code> action to load the JavaScript file (<code>media-selector.js</code>).
+<ul class="wp-block-list">
+<li><code>$handle</code>: Name of the script.</li>
+
+
+
+<li><code>$src</code>: Full URL of the script, or path of the script relative to the WordPress root directory.</li>
+
+
+
+<li><code>$deps</code>: An array of registered script handles this script depends on.</li>
+
+
+
+<li><code>$ver</code>: String specifying script version number.</li>
+
+
+
+<li><code>$args</code>: An array of additional script loading strategies.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">document.addEventListener('DOMContentLoaded', function () {
+    let mediaUploader;
+
+    document.getElementById('media-selector-button').click(function(e) {
+        e.preventDefault();
+
+        // If the media uploader object exists, reopen the dialog
+        if (mediaUploader) {
+            mediaUploader.open();
+            return;
+        }
+
+        // Create the media uploader
+        mediaUploader = wp.media.frames.file_frame = wp.media({
+            title: 'Select Media',
+            button: {
+                text: 'Use this media',
+            },
+            multiple: false  // Set to true for multiple media selection
+        });
+
+        // When a file is selected, run a callback
+        mediaUploader.on('select', function() {
+            var attachment = mediaUploader.state().get('selection').first().toJSON();
+            console.log(attachment);
+        });
+
+        // Open the media uploader dialog
+        mediaUploader.open();
+    });
+});
+</pre>
+
+
+
+<ul class="wp-block-list">
+<li>When the user clicks the &#8220;Select Media&#8221; button the JS code triggers the <code>wp.media</code> modal.</li>
+
+
+
+<li>When the user selects a media we can retrieve information on it like URL and filename</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Using <code>wp.media</code> in plugin development for media handling is a must with respect to anything to do with media files in WordPress. It provides a simple yet powerful way to integrate media without needing any custom development and needing to reinventing the wheel.</p>
+<p>The post <a href="/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-plugin-development-basics-v/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

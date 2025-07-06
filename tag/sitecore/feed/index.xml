@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/sitecore/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</title>
+		<link>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</link>
+					<comments>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 17 Apr 2025 15:08:38 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[cms]]></category>
+		<category><![CDATA[headless]]></category>
+		<category><![CDATA[sitecore]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=790</guid>
+
+					<description><![CDATA[<p>As developers and content creators, we’re always looking for better ways to build fast, flexible, and scalable websites. One approach that’s been getting a lot of attention lately is the decoupled WordPress architecture. In a traditional WordPress setup, the front end (what visitors see) and the back end (where content is created) are tightly connected. [&#8230;]</p>
+<p>The post <a href="/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers and content creators, we’re always looking for better ways to build fast, flexible, and scalable websites. One approach that’s been getting a lot of attention lately is the <strong>decoupled WordPress architecture</strong>.</p>
+
+
+
+<p>In a traditional WordPress setup, the front end (what visitors see) and the back end (where content is created) are tightly connected. But with a decoupled—or even headless—setup, we split those two layers. This gives us more control over how content is delivered and how the site is built.</p>
+
+
+
+<p>In this post, we’ll break down what decoupled WordPress really means, how it compares to headless WordPress, and why we might choose one over the other depending on the project. We’ll also look at how to get started and include some code examples along the way.</p>
+
+
+
+<h3 class="wp-block-heading">What Is Decoupled WordPress?</h3>
+
+
+
+<p>Traditionally, WordPress has been a <strong>monolithic CMS</strong>, meaning both the front end (what the user sees) and the back end (where content is created) are tightly integrated.</p>
+
+
+
+<p>In a <strong>decoupled architecture</strong>, we separate the front end and back end. The WordPress CMS still handles content creation and management, but the presentation layer—the front end—is built using a separate technology (like React, Vue, or Next.js).</p>
+
+
+
+<p>This allows us to create fast, dynamic front-end, all while retaining the powerful content management features of WordPress.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/04/image-1.png?w=1024" alt="" class="wp-image-795" /></figure>
+
+
+
+<h2 class="wp-block-heading">Headless vs Decoupled WordPress: What&#8217;s the Difference?</h2>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Feature</th><th><strong>Headless WordPress</strong></th><th><strong>Decoupled WordPress</strong></th></tr></thead><tbody><tr><td>Uses WP for content only</td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td></tr><tr><td>Uses REST API or GraphQL</td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td></tr><tr><td>WordPress handles routing</td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> (can be partially)</td></tr><tr><td>Front end fully separate</td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> (but may reuse WP features)</td></tr><tr><td>Uses WP theme system</td><td><img src="https://s.w.org/images/core/emoji/15.1.0/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /></td><td>Sometimes (for hybrid setups)</td></tr></tbody></table></figure>
+
+
+
+<p><strong>Headless WordPress</strong> is <em>fully decoupled</em>. The front end is completely independent and communicates with WordPress via APIs only.</p>
+
+
+
+<p><strong>Decoupled WordPress</strong> can be <strong>partially headless</strong>, sometimes retaining parts of WordPress&#8217; rendering capabilities or templates.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Decoupled or Headless WordPress?</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Better performance</strong> with static site generators or SSR (Server Side Rendering).</li>
+
+
+
+<li><strong>Improved developer experience</strong> using modern frameworks like React or Vue.</li>
+
+
+
+<li><strong>Enhanced scalability</strong> via APIs</li>
+
+
+
+<li><strong>Omnichannel content delivery</strong> use the same CMS for web, mobile apps, etc.</li>
+
+
+
+<li><strong>Greater security</strong>—front end and CMS may live on separate servers</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Challenges to Consider</h3>
+
+
+
+<p>Before going all-in, here are a few caveats to consider:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Previewing drafts</strong> requires extra configuration</li>
+
+
+
+<li><strong>SEO setup</strong> needs to be manually handled (no native support like in WP themes)</li>
+
+
+
+<li><strong>Form plugins</strong> and other WordPress UI elements don’t work out of the box</li>
+
+
+
+<li><strong>Authentication &amp; comments</strong> need custom integration</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Conclusion</h3>
+
+
+
+<p>If our project demands lightning fast speed, flexibility in UI/UX, or omnichannel content delivery—yes, headless WordPress is a fantastic option. For simpler sites, a traditional or partially decoupled setup might make more sense.</p>
+
+
+
+<p>At the end of the day, it’s all about choosing the right architecture for our needs.</p>
+<p>The post <a href="/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

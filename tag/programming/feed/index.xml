@@ -1,0 +1,1859 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/programming/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WordPress Block Editor: Creating a Custom Block</title>
+		<link>/wordpress-block-editor-creating-a-custom-block/</link>
+					<comments>/wordpress-block-editor-creating-a-custom-block/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 28 Apr 2025 14:12:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=828</guid>
+
+					<description><![CDATA[<p>In the evolving world of web development, the WordPress Block Editor (Gutenberg) has revolutionized how we design and manage content. In this blog post, we&#8217;ll walk through the entire process—from setup to seeing our custom block in action. Why Create Custom Blocks? While WordPress provides plenty of built-in blocks, we often find ourselves needing tailor-made [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>In the evolving world of web development, the <strong>WordPress Block Editor (Gutenberg)</strong> has revolutionized how we design and manage content. In this blog post, we&#8217;ll walk through the entire process—from setup to seeing our custom block in action.</p>
+
+
+
+<h2 class="wp-block-heading">Why Create Custom Blocks?</h2>
+
+
+
+<p>While WordPress provides plenty of built-in blocks, we often find ourselves needing tailor-made solutions for unique layouts, content types, or interactive components. That’s where custom blocks shine. With <code>@wordpress/scripts</code>, we get a modern development environment with Webpack, Babel, and other tools already configured.</p>
+
+
+
+<h2 class="wp-block-heading">What Is <code>@wordpress/scripts</code>?</h2>
+
+
+
+<p><code>@wordpress/scripts</code> is a package maintained by the WordPress core team. It abstracts away the configuration complexity, letting us focus on writing our block logic using modern JavaScript (React + JSX) and CSS.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a custom block</h2>
+
+
+
+<h3 class="wp-block-heading">Step 1: Set Up the Plugin Folder</h3>
+
+
+
+<p>We start by creating a plugin directory in <code>wp-content/plugins/</code></p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">mkdir my-basic-block
+cd my-basic-block</pre>
+
+
+
+<p>Now, we create the main plugin file: <strong><code>my-basic-block.php</code></strong></p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+/**
+ * Plugin Name: My Basic Block
+ * Description: A simple custom Gutenberg block.
+ * Version: 1.0.0
+ * Author: DarkMatter-999
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+function my_basic_block_register_block() {
+    register_block_type( __DIR__ . '/build/my-basic-block' );
+}
+add_action( 'init', 'my_basic_block_register_block' );</pre>
+
+
+
+<h3 class="wp-block-heading">Step 2: Initialize Node.js and Install Dependencies</h3>
+
+
+
+<p>Initialize a Node.js project</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">npm init -y
+npm install @wordpress/scripts --save-dev</pre>
+
+
+
+<p>Update <code>package.json</code> with build scripts</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "name": "my-basic-block",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^28.0.0"
+  }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 3: Create Block Source Files</h3>
+
+
+
+<h4 class="wp-block-heading"><code>block.json</code> — Block Metadata</h4>
+
+
+
+<p>Create the block metadata file: <strong><code>src/my-basic-block/block.json</code></strong></p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "learning/my-basic-block",
+  "version": "0.1.0",
+  "title": "My Basic Block",
+  "category": "text",
+  "icon": "universal-access-alt",
+  "description": "A basic Gutenberg block built manually.",
+  "textdomain": "my-basic-block",
+  "editorScript": "file:./index.js"
+}</pre>
+
+
+
+<h4 class="wp-block-heading"><code>index.js</code> — Block Code</h4>
+
+
+
+<p>Now register the block using the metadata we defined: <strong><code>src/my-basic-block/index.js</code></strong></p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import metadata from './block.json';
+
+registerBlockType(metadata.name, {
+	edit: () =&gt; {
+		return &lt;p&gt;Hello World! This is my basic block. (Editor)&lt;/p&gt;;
+	},
+	save: () =&gt; {
+		return &lt;p&gt;Hello World! This is my basic block. (Frontend)&lt;/p&gt;;
+	},
+});</pre>
+
+
+
+<h4 class="wp-block-heading">Step 4: Build the Block</h4>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">npm run build</pre>
+
+
+
+<p>After this, a <code>build/</code> directory will be created, and the compiled version of our block will be ready for WordPress.</p>
+
+
+
+<h3 class="wp-block-heading">Step 5: Activate and Use the Block</h3>
+
+
+
+<ol class="wp-block-list">
+<li>Go to <strong>Plugins → Installed Plugins</strong> in our WordPress dashboard.</li>
+
+
+
+<li>Activate <strong>My Basic Block</strong>.</li>
+
+
+
+<li>Create or edit a post.</li>
+
+
+
+<li>Search for “<strong>My Basic Block</strong>” and insert it into the page.</li>
+
+
+
+<li>We’ll see the static message in both editor and frontend.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Bonus: Why Not Use <code>create-block</code>?</h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">npx @wordpress/create-block@latest my-basic-block</pre>
+
+
+
+<p>Well, that command is great for quickly scaffolding a full-featured plugin with everything preconfigured. But doing it manually — like we did — helps us understand how block metadata, build scripts, PHP registration, and block JavaScript all connect together. It’s a great learning experience.</p>
+
+
+
+<h2 class="wp-block-heading">Wrapping Up</h2>
+
+
+
+<p>We just created our <strong>first custom Gutenberg block</strong> from scratch, using modern tools like <code>@wordpress/scripts</code>. This is the foundation for building dynamic, reusable, and powerful blocks in WordPress. Going forward, we can add interactivity, styling, and advanced features like block controls, Inspector panels, and even dynamic server-side rendering.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-creating-a-custom-block/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React: Conditional Rendering, Lifting State Up, and Testing</title>
+		<link>/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
+					<comments>/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 25 Apr 2025 14:45:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=823</guid>
+
+					<description><![CDATA[<p>As developers diving into the world of React, we quickly realize that while building components is simple, building smart, efficient, and testable applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — Conditional Rendering, Lifting State Up, and Testing — that help us write better and more maintainable [&#8230;]</p>
+<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers diving into the world of React, we quickly realize that while building components is simple, building <strong>smart, efficient, and testable</strong> applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — <strong>Conditional Rendering</strong>, <strong>Lifting State Up</strong>, and <strong>Testing</strong> — that help us write better and more maintainable code.</p>
+
+
+
+<h2 class="wp-block-heading">Conditional Rendering in React</h2>
+
+
+
+<p>In React, <strong>conditional rendering</strong> lets us dynamically change what’s displayed on the screen based on certain conditions — just like <code>if</code> statements in JavaScript.</p>
+
+
+
+<p>Let’s say we have a component that shows different messages based on whether a user is logged in.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? &lt;h2&gt;Welcome back!&lt;/h2&gt; : &lt;h2&gt;Please sign in.&lt;/h2&gt;}
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<p>We can also use other methods, like <strong>early returns</strong>, <code>&amp;&amp;</code> short-circuiting, or even <strong>switch statements</strong>, depending on our use case.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Notification(props) {
+  return (
+    &lt;div&gt;
+      {props.show &amp;&amp; &lt;p&gt;You have new notifications!&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Lifting State Up</h2>
+
+
+
+<p>Sometimes, we need to share state between two sibling components. Instead of duplicating state, <strong>we &#8220;lift&#8221; the state up</strong> to their common parent component.</p>
+
+
+
+<p>Here’s a classic example: a temperature converter that synchronizes Celsius and Fahrenheit inputs.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1: Two child components</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function CelsiusInput({ temperature, onTemperatureChange }) {
+  return (
+    &lt;fieldset&gt;
+      &lt;legend&gt;Enter temperature in Celsius:&lt;/legend&gt;
+      &lt;input value={temperature} onChange={e =&gt; onTemperatureChange(e.target.value)} /&gt;
+    &lt;/fieldset&gt;
+  );
+}
+
+function FahrenheitInput({ temperature, onTemperatureChange }) {
+  return (
+    &lt;fieldset&gt;
+      &lt;legend&gt;Enter temperature in Fahrenheit:&lt;/legend&gt;
+      &lt;input value={temperature} onChange={e =&gt; onTemperatureChange(e.target.value)} /&gt;
+    &lt;/fieldset&gt;
+  );
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 2: Lift state up to the parent</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function toCelsius(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9;
+}
+
+function toFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
+function TemperatureCalculator() {
+  const [temperature, setTemperature] = useState('');
+  const [scale, setScale] = useState('c');
+
+  const handleCelsiusChange = (temp) =&gt; {
+    setScale('c');
+    setTemperature(temp);
+  };
+
+  const handleFahrenheitChange = (temp) =&gt; {
+    setScale('f');
+    setTemperature(temp);
+  };
+
+  const celsius = scale === 'f' ? toCelsius(temperature) : temperature;
+  const fahrenheit = scale === 'c' ? toFahrenheit(temperature) : temperature;
+
+  return (
+    &lt;div&gt;
+      &lt;CelsiusInput temperature={celsius} onTemperatureChange={handleCelsiusChange} /&gt;
+      &lt;FahrenheitInput temperature={fahrenheit} onTemperatureChange={handleFahrenheitChange} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default TemperatureCalculator;</pre>
+
+
+
+<h2 class="wp-block-heading">Testing in React</h2>
+
+
+
+<p>As our apps grow, testing becomes essential. We can use <strong>Jest</strong> (shipped with Create React App) and <strong>React Testing Library</strong> to write simple and effective tests.</p>
+
+
+
+<h3 class="wp-block-heading">Component</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Greeting({ isLoggedIn }) {
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? &lt;h2&gt;Welcome back!&lt;/h2&gt; : &lt;h2&gt;Please sign in.&lt;/h2&gt;}
+    &lt;/div&gt;
+  );
+}
+
+export default Greeting;</pre>
+
+
+
+<h3 class="wp-block-heading">Test File: <code>Greeting.test.js</code></h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { render, screen } from '@testing-library/react';
+import Greeting from './Greeting';
+
+test('renders welcome message when logged in', () =&gt; {
+  render(&lt;Greeting isLoggedIn={true} /&gt;);
+  const message = screen.getByText(/welcome back/i);
+  expect(message).toBeInTheDocument();
+});
+
+test('renders sign-in message when not logged in', () =&gt; {
+  render(&lt;Greeting isLoggedIn={false} /&gt;);
+  const message = screen.getByText(/please sign in/i);
+  expect(message).toBeInTheDocument();
+});</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>React gives us powerful tools to build flexible, user-friendly interfaces. By understanding and using techniques like <strong>conditional rendering</strong>, <strong>lifting state up</strong>, and <strong>writing proper tests</strong>, we make our components not only smarter but also easier to debug and extend.</p>
+
+
+
+<p></p>
+<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Understanding Basic React Hooks: A Developer&#8217;s Guide</title>
+		<link>/understanding-basic-react-hooks-a-developers-guide/</link>
+					<comments>/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 24 Apr 2025 13:39:33 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=817</guid>
+
+					<description><![CDATA[<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: useState, useEffect, useCallback, useMemo, useReducer, [&#8230;]</p>
+<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: <code>useState</code>, <code>useEffect</code>, <code>useCallback</code>, <code>useMemo</code>, <code>useReducer</code>, <code>useTransition</code>, and <code>useLayoutEffect</code>.</p>
+
+
+
+<h2 class="wp-block-heading">1. <code>useState</code>: Managing Local Component State</h2>
+
+
+
+<p>The <code>useState</code> hook allows us to add local state to functional components.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">2. <code>useEffect</code>: Handling Side Effects</h2>
+
+
+
+<p><code>useEffect</code> lets us perform side effects in function components—such as fetching data, updating the DOM, or setting up subscriptions.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() =&gt; {
+    const interval = setInterval(() =&gt; {
+      setSeconds(prev =&gt; prev + 1);
+    }, 1000);
+
+    return () =&gt; clearInterval(interval);
+  }, []);
+
+  return &lt;p&gt;Time: {seconds}s&lt;/p&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">3. <code>useCallback</code>: Memoizing Functions</h2>
+
+
+
+<p><code>useCallback</code> returns a memoized version of a callback that only changes if one of its dependencies does.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useCallback } from 'react';
+
+function ExpensiveComponent({ onClick }) {
+  console.log("Rendering ExpensiveComponent");
+  return &lt;button onClick={onClick}&gt;Click me&lt;/button&gt;;
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() =&gt; {
+    setCount(prev =&gt; prev + 1);
+  }, []);
+
+  return &lt;ExpensiveComponent onClick={handleClick} /&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">4. <code>useMemo</code>: Optimizing Expensive Calculations</h2>
+
+
+
+<p><code>useMemo</code> memoizes the result of an expensive calculation.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useMemo } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const expensiveValue = useMemo(() =&gt; {
+    console.log("Calculating...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Expensive Value: {expensiveValue}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">5. <code>useReducer</code>: State Management Alternative</h2>
+
+
+
+<p><code>useReducer</code> is often preferred over <code>useState</code> when managing complex state logic.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    &lt;&gt;
+      &lt;p&gt;Count: {state.count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'increment' })}&gt;+&lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'decrement' })}&gt;-&lt;/button&gt;
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">6. <code>useTransition</code>: Managing Concurrent UI Updates</h2>
+
+
+
+<p><code>useTransition</code> helps keep the UI responsive during heavy state transitions by marking updates as non-urgent.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useTransition } from 'react';
+
+function List({ items }) {
+  return items.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;);
+}
+
+function App() {
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+  const [isPending, startTransition] = useTransition();
+
+  const handleChange = (e) =&gt; {
+    const value = e.target.value;
+    setInput(value);
+
+    startTransition(() =&gt; {
+      const newList = Array.from({ length: 10000 }, (_, i) =&gt; `${value} ${i}`);
+      setList(newList);
+    });
+  };
+
+  return (
+    &lt;&gt;
+      &lt;input type="text" value={input} onChange={handleChange} /&gt;
+      {isPending ? &lt;p&gt;Loading...&lt;/p&gt; : &lt;List items={list} /&gt;}
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">7. <code>useLayoutEffect</code>: DOM Mutations Before Paint</h2>
+
+
+
+<p><code>useLayoutEffect</code> works like <code>useEffect</code>, but it fires synchronously after all DOM mutations. It’s useful when we need to measure DOM nodes or perform layout calculations.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useLayoutEffect, useRef, useState } from 'react';
+
+function Box() {
+  const boxRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() =&gt; {
+    if (boxRef.current) {
+      setWidth(boxRef.current.getBoundingClientRect().width);
+    }
+  }, []);
+
+  return (
+    &lt;div ref={boxRef} style={{ width: '50%', background: 'skyblue' }}&gt;
+      &lt;p&gt;Width: {width}px&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Hooks have changed the way we write React components. They allow us to write more concise, readable code while unlocking powerful features. As we continue to build rich user interfaces, mastering these basic hooks will give us the tools we need to work efficiently and effectively in modern React apps.</p>
+<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React Course: Hooks — useState and useEffect</title>
+		<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
+					<comments>/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 23 Apr 2025 14:10:24 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=813</guid>
+
+					<description><![CDATA[<p>React has completely changed the way we build user interfaces, and one of its most powerful features is Hooks. In this post, we’re diving into two of the most essential React Hooks: useState and useEffect. If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for [&#8230;]</p>
+<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>React has completely changed the way we build user interfaces, and one of its most powerful features is <strong>Hooks</strong>. In this post, we’re diving into two of the most essential React Hooks: <code>useState</code> and <code>useEffect</code>.</p>
+
+
+
+<p>If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for you.</p>
+
+
+
+<h2 class="wp-block-heading">What are Hooks?</h2>
+
+
+
+<p>Hooks are special functions that let us “hook into” React features from functional components. Before hooks, managing state or lifecycle methods meant writing class components. But with hooks, we can use those features directly inside functional components — making our code cleaner and more readable.</p>
+
+
+
+<h2 class="wp-block-heading">Why <code>useState</code> and <code>useEffect</code>?</h2>
+
+
+
+<p>Think of <code>useState</code> as the way we manage data that changes over time — like a counter, a form input, or a toggle.</p>
+
+
+
+<p>And <code>useEffect</code>? That’s our tool for handling side effects — fetching data, setting up subscriptions, or manually changing the DOM.</p>
+
+
+
+<h2 class="wp-block-heading">Getting Started with <code>useState</code></h2>
+
+
+
+<p>Let’s start with the most basic hook: <code>useState</code>.</p>
+
+
+
+<h3 class="wp-block-heading">What it does:</h3>
+
+
+
+<ul class="wp-block-list">
+<li>Initializes a state variable.</li>
+
+
+
+<li>Lets us update that variable.</li>
+
+
+
+<li>Re-renders the component when the state changes.</li>
+</ul>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  // Declare a state variable called 'count' and set its initial value to 0
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Count: {count}&lt;/h1&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Understanding <code>useEffect</code></h2>
+
+
+
+<p>While <code>useState</code> manages data, <code>useEffect</code> manages behavior — what should happen when our component mounts, updates, or unmounts.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() =&gt; {
+    const interval = setInterval(() =&gt; {
+      setSeconds(prev =&gt; prev + 1);
+    }, 1000);
+
+    // Cleanup function
+    return () =&gt; clearInterval(interval);
+  }, []); // Empty array means run only once (on mount)
+
+  return &lt;h1&gt;Timer: {seconds}s&lt;/h1&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Best Practices</h2>
+
+
+
+<p>Here are a few tips we follow when working with hooks:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Always declare hooks at the top level of the component.</li>
+
+
+
+<li>Avoid using hooks inside conditions or loops.</li>
+
+
+
+<li>Name state variables clearly — make your code easy to read.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Hooks like <code>useState</code> and <code>useEffect</code> make it easy to write functional components that are powerful, reusable, and clean. They&#8217;re the foundation for nearly every modern React app we build, and they’re essential knowledge for any React developer.</p>
+
+
+
+<p>In the next post, we’ll explore more advanced hooks like <code>useContext</code>, <code>useReducer</code>, and custom hooks that let us extract logic into reusable functions.</p>
+<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React Course: Components, States, and Component Lifecycle</title>
+		<link>/basic-react-course-components-states-and-component-lifecycle/</link>
+					<comments>/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 22 Apr 2025 14:27:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=807</guid>
+
+					<description><![CDATA[<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic. In this [&#8230;]</p>
+<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic.</p>
+
+
+
+<p>In this post, we’re taking a closer look at a few foundational React concepts that often spark debate and learning moments: the difference between <strong>Functional and Class Components</strong>, how <strong>state</strong> plays a central role in interactivity, and what the <strong>component lifecycle</strong> means in a modern React application.</p>
+
+
+
+<h2 class="wp-block-heading">What is React?</h2>
+
+
+
+<p>React is a <strong>JavaScript library for building user interfaces</strong>, created by Facebook. It allows us to build reusable UI components and handle dynamic content efficiently.</p>
+
+
+
+<p>With the release of React 16.8, we gained <strong>Hooks</strong>, which brought major changes to how we write components &#8211; especially with Functional Components.</p>
+
+
+
+<h2 class="wp-block-heading">Functional vs Class Components</h2>
+
+
+
+<p>React supports two main ways to create components:</p>
+
+
+
+<h3 class="wp-block-heading">1. Class Components</h3>
+
+
+
+<p>These are ES6 classes that extend from <code>React.Component</code> and can hold <strong>state</strong> and <strong>lifecycle methods</strong>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { Component } from 'react';
+
+class Welcome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'Hello from Class Component!'
+    };
+  }
+
+  render() {
+    return &lt;h1&gt;{this.state.message}&lt;/h1&gt;;
+  }
+}
+
+export default Welcome;</pre>
+
+
+
+<h3 class="wp-block-heading">2. Functional Components</h3>
+
+
+
+<p>Originally, these were stateless functions. But now, with <strong>React Hooks</strong>, they can manage state and side effects.</p>
+
+
+
+<p><strong>Functional Components</strong> are preferred for most cases due to their simplicity, better readability, and compatibility with Hooks.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Welcome() {
+  const [message, setMessage] = useState('Hello from Functional Component!');
+
+  return &lt;h1&gt;{message}&lt;/h1&gt;;
+}
+
+export default Welcome;</pre>
+
+
+
+<h2 class="wp-block-heading">Understanding State in React</h2>
+
+
+
+<p>State lets us create components that are dynamic and interactive. It’s like a component’s personal memory.</p>
+
+
+
+<h3 class="wp-block-heading">In a Class Component:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">this.state = {
+  count: 0
+};
+
+this.setState({ count: this.state.count + 1 });</pre>
+
+
+
+<h3 class="wp-block-heading">In a Functional Component using <code>useState</code>:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const [count, setCount] = useState(0);
+
+setCount(count + 1);</pre>
+
+
+
+<h2 class="wp-block-heading">Component Lifecycle</h2>
+
+
+
+<p>Lifecycle methods are only available in <strong>Class Components</strong>. They allow us to hook into different phases of a component&#8217;s life.</p>
+
+
+
+<h3 class="wp-block-heading">Lifecycle Phases:</h3>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Mounting</strong> – Component is being created and inserted.</li>
+
+
+
+<li><strong>Updating</strong> – Component is re-rendering due to state or props changes.</li>
+
+
+
+<li><strong>Unmounting</strong> – Component is being removed.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">Common Lifecycle Methods:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">componentDidMount() {
+  // Called after the component is mounted
+}
+
+componentDidUpdate(prevProps, prevState) {
+  // Called after updates
+}
+
+componentWillUnmount() {
+  // Called just before the component is removed
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Functional Components: useEffect Hook</h3>
+
+
+
+<p>React Hooks give us <code>useEffect</code> to replicate lifecycle behavior.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useEffect } from 'react';
+
+function Example() {
+  useEffect(() =&gt; {
+    console.log('Component mounted');
+
+    return () =&gt; {
+      console.log('Component will unmount');
+    };
+  }, []);
+
+  return &lt;div&gt;Lifecycle in Functional Component&lt;/div&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>As we build modern applications with React, understanding the fundamentals isn’t just helpful—it’s essential. Knowing the difference between Functional and Class Components gives us historical context and practical insight into how React has matured. More importantly, grasping how <strong>state</strong> works and how <strong>component lifecycle events</strong> behave empowers us to write more predictable, efficient, and maintainable code.</p>
+
+
+
+<p></p>
+<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Understanding React Components and the Virtual DOM</title>
+		<link>/understanding-react-components-and-the-virtual-dom/</link>
+					<comments>/understanding-react-components-and-the-virtual-dom/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 21 Apr 2025 14:31:51 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=802</guid>
+
+					<description><![CDATA[<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: components and the Virtual DOM. In this blog, we’ll break down what React components are, how [&#8230;]</p>
+<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: <strong>components</strong> and the <strong>Virtual DOM</strong>.</p>
+
+
+
+<p>In this blog, we’ll break down what React components are, how the Virtual DOM works, and why this combination makes React a go-to choice for modern frontend development.</p>
+
+
+
+<h2 class="wp-block-heading">What Are React Components?</h2>
+
+
+
+<p>In React, <strong>components</strong> are the building blocks of our user interfaces. Instead of thinking in terms of HTML pages, we build <strong>small, reusable pieces of code</strong> that describe a part of the UI. These pieces, or components, can be <strong>functional</strong> or <strong>class-based</strong>, and they help us write clean and modular code.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React from 'react';
+
+function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+export default Welcome;</pre>
+
+
+
+<p>We can use this like:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;Welcome name="Alice" /&gt;</pre>
+
+
+
+<h2 class="wp-block-heading">Types of Components</h2>
+
+
+
+<p>React offers two main ways to define components:</p>
+
+
+
+<h3 class="wp-block-heading">1. Functional Components (Modern and Preferred)</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const Button = ({ label }) =&gt; {
+  return &lt;button&gt;{label}&lt;/button&gt;;
+};</pre>
+
+
+
+<h3 class="wp-block-heading">2. Class Components (Older Syntax)</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { Component } from 'react';
+
+class Button extends Component {
+  render() {
+    return &lt;button&gt;{this.props.label}&lt;/button&gt;;
+  }
+}</pre>
+
+
+
+<h2 class="wp-block-heading">What is the Virtual DOM?</h2>
+
+
+
+<p>Let’s face it: working directly with the real DOM is slow. Every time a change happens in the UI, updating the DOM manually can lead to performance bottlenecks. This is where React’s <strong>Virtual DOM</strong> steps in.</p>
+
+
+
+<h3 class="wp-block-heading">How It Works:</h3>
+
+
+
+<ol class="wp-block-list">
+<li>When we write our components, React creates a <strong>Virtual DOM</strong>, which is just a lightweight JavaScript representation of the actual DOM.</li>
+
+
+
+<li>When state or props change, React <strong>re-renders the Virtual DOM</strong>.</li>
+
+
+
+<li>React then uses a process called <strong>reconciliation</strong> to <strong>diff</strong> the new Virtual DOM with the previous one.</li>
+
+
+
+<li>It calculates the minimal number of changes needed to update the real DOM—and applies them efficiently.</li>
+</ol>
+
+
+
+<p>This entire process is fast because JavaScript operations (like comparing two objects) are much quicker than direct DOM manipulation.</p>
+
+
+
+<p>The Virtual DOM is what makes React apps feel snappy and responsive. By avoiding unnecessary DOM updates, React optimizes rendering and keeps performance in check, even in complex applications.</p>
+
+
+
+<p>In simple terms, it’s like having a smart assistant who figures out the smallest, most efficient way to tidy up a messy room—without moving everything around unnecessarily.</p>
+
+
+
+<h3 class="wp-block-heading">Putting It All Together</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times.&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Click Me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<p>Every time we click the button:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The state (<code>count</code>) updates</li>
+
+
+
+<li>The Virtual DOM gets re-rendered</li>
+
+
+
+<li>React figures out that only the text in <code>&lt;p&gt;</code> has changed</li>
+
+
+
+<li>It updates just that part of the real DOM</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts</h2>
+
+
+
+<p>By embracing <strong>components</strong> and relying on the <strong>Virtual DOM</strong>, React gives us a structured, efficient way to build UIs. As our apps grow, these concepts become even more valuable, helping us keep things maintainable and fast.</p>
+<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Introduction to React and JSX</title>
+		<link>/introduction-to-react-and-jsx/</link>
+					<comments>/introduction-to-react-and-jsx/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 18 Apr 2025 15:01:26 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=797</guid>
+
+					<description><![CDATA[<p>In today’s world of web development, building interactive and dynamic user interfaces (UI) is more important than ever. One of the most popular and powerful tools for achieving this is React. As developers, we are always looking for ways to make our applications faster, more efficient, and scalable. React helps us do exactly that. In [&#8230;]</p>
+<p>The post <a href="/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>In today’s world of web development, building interactive and dynamic user interfaces (UI) is more important than ever. One of the most popular and powerful tools for achieving this is <strong>React</strong>. As developers, we are always looking for ways to make our applications faster, more efficient, and scalable. React helps us do exactly that.</p>
+
+
+
+<p>In this blog post, we’ll introduce you to <strong>React</strong> and <strong>JSX</strong>, two key technologies that work hand in hand to create modern web applications.</p>
+
+
+
+<h2 class="wp-block-heading">What is React?</h2>
+
+
+
+<p>React is a <strong>JavaScript library</strong> developed by Facebook for building user interfaces. Unlike traditional frameworks, React allows us to break down a user interface into smaller, reusable components. These components can be nested, updated, and managed independently, making it easier to build complex applications.</p>
+
+
+
+<p>At its core, React focuses on making the process of building dynamic web pages faster and more efficient. It does this by efficiently updating and rendering the right components when data changes, using a concept called the <strong>Virtual DOM</strong>.</p>
+
+
+
+<h3 class="wp-block-heading">Key Features of React:</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Component-based architecture</strong>: Everything in React is a component. This means you can break down the UI into smaller, manageable parts and reuse them across your application.</li>
+
+
+
+<li><strong>Declarative UI</strong>: React allows us to describe what the UI should look like based on the current state of the application. This is much more intuitive than manipulating the DOM directly.</li>
+
+
+
+<li><strong>Efficient updates with Virtual DOM</strong>: React minimizes direct manipulation of the actual DOM, using a Virtual DOM to efficiently update the UI.</li>
+
+
+
+<li><strong>One-way data flow</strong>: Data in React flows from parent components to child components, ensuring that data management remains clean and predictable.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">What is JSX?</h2>
+
+
+
+<p>Now that we’ve briefly covered what React is, let’s talk about <strong>JSX</strong>. JSX stands for <strong>JavaScript XML</strong> and is an essential part of the React ecosystem. It’s a syntax extension for JavaScript that allows us to write HTML-like code inside JavaScript. With JSX, we can create UI elements using a syntax that looks similar to HTML, making it easier to visualize the layout.</p>
+
+
+
+<p>While it may seem like we’re writing regular HTML, JSX is actually a syntactic sugar for <strong>React.createElement()</strong>, which creates React elements behind the scenes. JSX makes our code more readable and concise, and it helps us structure the components’ UI in a more intuitive way.</p>
+
+
+
+<h3 class="wp-block-heading">Why Do We Use JSX?</h3>
+
+
+
+<p>Here are a few reasons why JSX is beneficial for React development:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Readability</strong>: JSX allows us to write the UI in a format that is more familiar and readable compared to pure JavaScript code.</li>
+
+
+
+<li><strong>Integration with JavaScript</strong>: JSX is just JavaScript. This means we can embed dynamic expressions and logic inside the JSX code.</li>
+
+
+
+<li><strong>Component-based rendering</strong>: Since React components are responsible for rendering the UI, JSX provides an easy way to combine both the structure and logic into a single file.</li>
+</ul>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React from 'react';
+
+function MyButton() {
+  return (
+    &lt;button&gt;
+      Click Me!
+    &lt;/button&gt;
+  );
+}
+
+export default MyButton;</pre>
+
+
+
+<h3 class="wp-block-heading">Rendering React Components with JSX</h3>
+
+
+
+<p>Once we define our React components, we need to render them in the browser. This is done using <strong>ReactDOM.render()</strong>, which tells React where to display the component in the DOM.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React from 'react';
+import ReactDOM from 'react-dom';
+import MyButton from './MyButton';
+
+ReactDOM.render(
+  &lt;MyButton /&gt;,
+  document.getElementById('root')
+);</pre>
+
+
+
+<ul class="wp-block-list">
+<li>We import React and ReactDOM, which are necessary for working with React.</li>
+
+
+
+<li>We also import our <code>MyButton</code> component.</li>
+
+
+
+<li>Using <code>ReactDOM.render()</code>, we render our component inside the <code>div</code> with the ID <code>root</code> in the <code>index.html</code> file.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading"><strong>Handling Events in JSX</strong></h3>
+
+
+
+<p>JSX lets you handle events, such as clicks or form submissions, directly in your components.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React from 'react';
+
+function ButtonClick() {
+  const handleClick = () =&gt; {
+    alert('Button clicked!');
+  };
+
+  return &lt;button onClick={handleClick}&gt;Click Me&lt;/button&gt;;
+}
+
+export default ButtonClick;</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>By combining the power of React and the readability of JSX, we can build dynamic, efficient, and maintainable web applications. React allows us to create reusable components, manage state and updates efficiently, and produce high-performance UIs. JSX, on the other hand, simplifies the syntax of our components, making our code cleaner and more readable.</p>
+<p>The post <a href="/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/introduction-to-react-and-jsx/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Advanced Theme Development in WordPress: Using @wordpress/scripts</title>
+		<link>/advanced-theme-development-in-wordpress-using-wordpress-scripts/</link>
+					<comments>/advanced-theme-development-in-wordpress-using-wordpress-scripts/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 14 Apr 2025 15:20:30 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=770</guid>
+
+					<description><![CDATA[<p>As developers, we’re constantly looking for ways to modernize our development workflow, make our code more maintainable, and align with the best practices of modern JavaScript and CSS. That’s where @wordpress/scripts comes in. In this blog post, we’ll walk through what @wordpress/scripts is, why it matters, and how we can use it to enhance our [&#8230;]</p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-using-wordpress-scripts/">Advanced Theme Development in WordPress: Using @wordpress/scripts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers, we’re constantly looking for ways to modernize our development workflow, make our code more maintainable, and align with the best practices of modern JavaScript and CSS. That’s where <code>@wordpress/scripts</code> comes in.</p>
+
+
+
+<p>In this blog post, we’ll walk through what <code>@wordpress/scripts</code> is, why it matters, and how we can use it to enhance our theme development workflow. Whether we’re building custom blocks or modernizing our theme’s front-end assets, <code>@wordpress/scripts</code> offers us a standardized, powerful toolkit that simplifies the setup.</p>
+
+
+
+<h2 class="wp-block-heading">What is <code>@wordpress/scripts</code>?</h2>
+
+
+
+<p><code>@wordpress/scripts</code> is a package provided by the WordPress core team that bundles together the necessary tools (like Babel, Webpack, ESLint, Prettier, etc.) to support modern JavaScript and CSS development — without the hassle of manual configuration.</p>
+
+
+
+<p>Instead of writing a bunch of Webpack configs or managing multiple dev dependencies, we can just install <code>@wordpress/scripts</code> and get started immediately. It’s optimized for building blocks and modern WordPress themes.</p>
+
+
+
+<h2 class="wp-block-heading">Setting Up Our Theme with <code>@wordpress/scripts</code></h2>
+
+
+
+<h3 class="wp-block-heading">1. <strong>Create or Navigate to Our Theme</strong></h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">cd wp-content/themes/my-theme</pre>
+
+
+
+<h2 class="wp-block-heading">2. Initialize NPM and Install <code>@wordpress/scripts</code></h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">npm init -y
+npm install @wordpress/scripts --save-dev</pre>
+
+
+
+<h3 class="wp-block-heading">File Structure Example</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">our-custom-theme/
+├── assets/
+│   ├── js/
+│   │   └── index.js
+│   └── css/
+│       └── style.scss
+├── functions.php
+├── index.php
+├── package.json
+└── style.css</pre>
+
+
+
+<h2 class="wp-block-heading">Writing Modern JavaScript</h2>
+
+
+
+<p>Inside <code>assets/js/index.js</code>, we can write modern JavaScript using ES6+ features.</p>
+
+
+
+<p>We can also import dependencies or React components if needed for block development.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const message = 'Hello from @wordpress/scripts!';
+console.log(message);</pre>
+
+
+
+<h2 class="wp-block-heading">Writing SCSS with Modern Features</h2>
+
+
+
+<p>In <code>assets/css/style.scss</code>, we can use SCSS syntax.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">$primary-color: #0073aa;
+
+body {
+    background-color: $primary-color;
+    font-family: 'Helvetica Neue', sans-serif;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Add Build Scripts to <code>package.json</code></h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">"scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js",
+    "format:js": "wp-scripts format-js"
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Enqueue Compiled Assets in <code>functions.php</code></h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_theme_enqueue_assets() {
+    $theme_version = wp_get_theme()-&gt;get( 'Version' );
+
+    wp_enqueue_style(
+        'my-theme-style',
+        get_template_directory_uri() . '/build/style.css',
+        [],
+        $theme_version
+    );
+
+    wp_enqueue_script(
+        'my-theme-script',
+        get_template_directory_uri() . '/build/index.js',
+        [],
+        $theme_version,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_assets' );</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Using <code>@wordpress/scripts</code> can be a game-changer for us as WordPress developers. It simplifies the setup, encourages modern practices, and integrates seamlessly with how WordPress expects themes and blocks to be built today.</p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-using-wordpress-scripts/">Advanced Theme Development in WordPress: Using @wordpress/scripts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/advanced-theme-development-in-wordpress-using-wordpress-scripts/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Advanced Theme Development in WordPress: Asset Building</title>
+		<link>/advanced-theme-development-in-wordpress-asset-building/</link>
+					<comments>/advanced-theme-development-in-wordpress-asset-building/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 11 Apr 2025 16:29:13 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=763</guid>
+
+					<description><![CDATA[<p>As modern web developers, we’re always striving to create WordPress themes that are not only visually stunning but also performant and scalable. One of the key aspects of advanced theme development lies in how we manage and build our front-end assets—JavaScript, CSS, images, fonts, and more. That’s where tools like Webpack and Babel come into [&#8230;]</p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As modern web developers, we’re always striving to create WordPress themes that are not only visually stunning but also performant and scalable. One of the key aspects of advanced theme development lies in how we manage and build our front-end assets—JavaScript, CSS, images, fonts, and more. That’s where tools like <strong>Webpack</strong> and <strong>Babel</strong> come into play.</p>
+
+
+
+<p>In this post, we’ll walk through how we can integrate Webpack and Babel into our WordPress theme development workflow, so our themes stay modern, maintainable, and lightning-fast.</p>
+
+
+
+<h2 class="wp-block-heading">Why Use Webpack &amp; Babel in WordPress Theme Development?</h2>
+
+
+
+<p>Before diving into the setup, let’s talk briefly about <strong>why</strong> we use these tools.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Webpack</strong> is a module bundler. It helps us compile JavaScript, SCSS, and other assets into a single optimized bundle.</li>
+
+
+
+<li><strong>Babel</strong> is a JavaScript compiler. It lets us write modern ES6+ JavaScript that still works in older browsers by transpiling it down.</li>
+</ul>
+
+
+
+<p>By integrating these tools into our theme, we gain:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Better code organization</li>
+
+
+
+<li>Optimized production files</li>
+
+
+
+<li>The ability to use ES6+ features</li>
+
+
+
+<li>Automated asset versioning and cache busting</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Setting Up Our Theme for Webpack &amp; Babel</h2>
+
+
+
+<h3 class="wp-block-heading">Step 1: Create a Custom WordPress Theme (if not already)</h3>
+
+
+
+<p>Let’s assume we’ve already set up a theme in <code>/wp-content/themes/my-advanced-theme</code>.</p>
+
+
+
+<p>If not, go ahead and create the folder and the basic <code>style.css</code> and <code>functions.php</code> files to make WordPress recognize it.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h3 class="wp-block-heading">Step 2: Initialize Node.js in Our Theme</h3>
+
+
+
+<p>In our theme directory:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">cd wp-content/themes/my-advanced-theme
+npm init -y</pre>
+
+
+
+<p>This creates a <code>package.json</code> file to manage dependencies.</p>
+
+
+
+<h3 class="wp-block-heading">Step 3: Install Webpack, Babel, and Related Packages</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">npm install --save-dev webpack webpack-cli webpack-dev-server \
+babel-loader @babel/core @babel/preset-env \
+css-loader style-loader sass sass-loader \
+mini-css-extract-plugin clean-webpack-plugin \
+cross-env</pre>
+
+
+
+<ul class="wp-block-list">
+<li><code>webpack</code>, <code>webpack-cli</code>: Core Webpack tools</li>
+
+
+
+<li><code>babel-loader</code>, <code>@babel/core</code>, <code>@babel/preset-env</code>: For transpiling JS</li>
+
+
+
+<li><code>sass-loader</code>, <code>css-loader</code>, <code>style-loader</code>: For SCSS and CSS support</li>
+
+
+
+<li><code>mini-css-extract-plugin</code>: For extracting CSS into files</li>
+
+
+
+<li><code>clean-webpack-plugin</code>: For cleaning output directory before builds</li>
+
+
+
+<li><code>cross-env</code>: For setting environment variables cross-platform</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Step 4: Configure Babel</h3>
+
+
+
+<p>Create a <code>.babelrc</code> file in our theme root:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "presets": ["@babel/preset-env"]
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 5: Webpack Configuration</h3>
+
+
+
+<p>Create a file named <code>webpack.config.js</code> in our theme root:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  mode: isProduction ? 'production' : 'development',
+  entry: {
+    main: './src/js/index.js',
+    styles: './src/scss/style.scss'
+  },
+  output: {
+    filename: 'js/[name].bundle.js',
+    path: path.resolve(__dirname, 'assets'),
+    publicPath: '/wp-content/themes/my-advanced-theme/assets/'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
+    })
+  ],
+  devtool: isProduction ? false : 'source-map'
+};</pre>
+
+
+
+<h3 class="wp-block-heading">Step 6: Update functions.php to Enqueue Assets</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function mytheme_enqueue_assets() {
+    wp_enqueue_style(
+        'mytheme-style',
+        get_template_directory_uri() . '/assets/css/styles.css',
+        [],
+        filemtime(get_template_directory() . '/assets/css/styles.css')
+    );
+
+    wp_enqueue_script(
+        'mytheme-script',
+        get_template_directory_uri() . '/assets/js/main.bundle.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/main.bundle.js'),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
+
+
+
+<h2 class="wp-block-heading">Building &amp; Watching</h2>
+
+
+
+<p>To build assets:</p>
+
+
+
+<pre class="wp-block-preformatted"><code>cross-env NODE_ENV=production npx webpack</code></pre>
+
+
+
+<p>To watch for changes in development:</p>
+
+
+
+<pre class="wp-block-preformatted"><code>npx webpack --watch</code></pre>
+
+
+
+<h2 class="wp-block-heading">Wrapping Up</h2>
+
+
+
+<p>Integrating Webpack and Babel into our WordPress theme development process takes a bit of effort up front—but the payoff is huge. We get to write modern, modular code, improve performance, and streamline our workflow.</p>
+
+
+
+<p>Whether we are building custom themes for clients or working on a personal project, this setup ensures our WordPress development is future-proof.</p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/advanced-theme-development-in-wordpress-asset-building/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

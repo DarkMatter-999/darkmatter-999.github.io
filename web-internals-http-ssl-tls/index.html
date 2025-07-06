@@ -3,9 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>Web Internals: HTTP, SSL/TLS &#8211; Lakshyajeet&#039;s Blog</title>
+	
+	<!-- This site is optimized with the Yoast SEO plugin v25.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<link rel="canonical" href="/web-internals-http-ssl-tls/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Web Internals: HTTP, SSL/TLS - Lakshyajeet&#039;s Blog">
+	<meta property="og:description" content="The Hypertext Transfer Protocol(HTTP) is the foundational and by far most widely used protocol for the web. It offers a simple client-server architecture for simple implementation and operation. HTTP in itself isn&#8217;t secured it needs SSL(Secure Sockets Layer) and TLS(Transport Layer Security) to ensure security and confidentiality in the communication. How HTTPS Works: The secured [&hellip;]">
+	<meta property="og:url" content="/web-internals-http-ssl-tls/">
+	<meta property="og:site_name" content="Lakshyajeet&#039;s Blog">
+	<meta property="article:published_time" content="2025-01-29T15:14:20+00:00">
+	<meta property="article:modified_time" content="2025-07-06T15:58:59+00:00">
+	<meta property="og:image" content="/wp-content/uploads/2025/01/https-1.jpg">
+	<meta property="og:image:width" content="750">
+	<meta property="og:image:height" content="728">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta name="author" content="lakshyajeet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="lakshyajeet">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="3 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"/web-internals-http-ssl-tls/#article","isPartOf":{"@id":"/web-internals-http-ssl-tls/"},"author":{"name":"lakshyajeet","@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"headline":"Web Internals: HTTP, SSL/TLS","datePublished":"2025-01-29T15:14:20+00:00","dateModified":"2025-07-06T15:58:59+00:00","mainEntityOfPage":{"@id":"/web-internals-http-ssl-tls/"},"wordCount":680,"commentCount":0,"publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"image":{"@id":"/web-internals-http-ssl-tls/#primaryimage"},"thumbnailUrl":"/wp-content/uploads/2025/01/https-1.jpg","keywords":["development","seo","theme development","wordpress","wordpress theme","wp"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["/web-internals-http-ssl-tls/#respond"]}]},{"@type":"WebPage","@id":"/web-internals-http-ssl-tls/","url":"/web-internals-http-ssl-tls/","name":"Web Internals: HTTP, SSL/TLS - Lakshyajeet&#039;s Blog","isPartOf":{"@id":"/#website"},"primaryImageOfPage":{"@id":"/web-internals-http-ssl-tls/#primaryimage"},"image":{"@id":"/web-internals-http-ssl-tls/#primaryimage"},"thumbnailUrl":"/wp-content/uploads/2025/01/https-1.jpg","datePublished":"2025-01-29T15:14:20+00:00","dateModified":"2025-07-06T15:58:59+00:00","breadcrumb":{"@id":"/web-internals-http-ssl-tls/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["/web-internals-http-ssl-tls/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"/web-internals-http-ssl-tls/#primaryimage","url":"/wp-content/uploads/2025/01/https-1.jpg","contentUrl":"/wp-content/uploads/2025/01/https-1.jpg","width":750,"height":728},{"@type":"BreadcrumbList","@id":"/web-internals-http-ssl-tls/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Blog","item":"/blog/"},{"@type":"ListItem","position":3,"name":"Web Internals: HTTP, SSL/TLS"}]},{"@type":"WebSite","@id":"/#website","url":"/","name":"Lakshyajeet's Blog","description":"","publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc","name":"lakshyajeet","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","caption":"lakshyajeet"},"logo":{"@id":"/#/schema/person/image/"},"url":"/author/lakshyajeet/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<title>Web Internals: HTTP, SSL/TLS - Lakshyajeet&#039;s Blog</title>
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Feed" href="/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Comments Feed" href="/comments/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Web Internals: HTTP, SSL/TLS Comments Feed" href="/web-internals-http-ssl-tls/feed/">
@@ -83,7 +108,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/184">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.8.1">
-<link rel="canonical" href="/web-internals-http-ssl-tls/">
 <link rel="shortlink" href="/?p=184">
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fweb-internals-http-ssl-tls%2F">
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fweb-internals-http-ssl-tls%2F#038;format=xml">

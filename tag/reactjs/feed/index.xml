@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/reactjs/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Understanding Basic React Hooks: A Developer&#8217;s Guide</title>
+		<link>/understanding-basic-react-hooks-a-developers-guide/</link>
+					<comments>/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 24 Apr 2025 13:39:33 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=817</guid>
+
+					<description><![CDATA[<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: useState, useEffect, useCallback, useMemo, useReducer, [&#8230;]</p>
+<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: <code>useState</code>, <code>useEffect</code>, <code>useCallback</code>, <code>useMemo</code>, <code>useReducer</code>, <code>useTransition</code>, and <code>useLayoutEffect</code>.</p>
+
+
+
+<h2 class="wp-block-heading">1. <code>useState</code>: Managing Local Component State</h2>
+
+
+
+<p>The <code>useState</code> hook allows us to add local state to functional components.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">2. <code>useEffect</code>: Handling Side Effects</h2>
+
+
+
+<p><code>useEffect</code> lets us perform side effects in function components—such as fetching data, updating the DOM, or setting up subscriptions.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() =&gt; {
+    const interval = setInterval(() =&gt; {
+      setSeconds(prev =&gt; prev + 1);
+    }, 1000);
+
+    return () =&gt; clearInterval(interval);
+  }, []);
+
+  return &lt;p&gt;Time: {seconds}s&lt;/p&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">3. <code>useCallback</code>: Memoizing Functions</h2>
+
+
+
+<p><code>useCallback</code> returns a memoized version of a callback that only changes if one of its dependencies does.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useCallback } from 'react';
+
+function ExpensiveComponent({ onClick }) {
+  console.log("Rendering ExpensiveComponent");
+  return &lt;button onClick={onClick}&gt;Click me&lt;/button&gt;;
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() =&gt; {
+    setCount(prev =&gt; prev + 1);
+  }, []);
+
+  return &lt;ExpensiveComponent onClick={handleClick} /&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">4. <code>useMemo</code>: Optimizing Expensive Calculations</h2>
+
+
+
+<p><code>useMemo</code> memoizes the result of an expensive calculation.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useMemo } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const expensiveValue = useMemo(() =&gt; {
+    console.log("Calculating...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Expensive Value: {expensiveValue}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">5. <code>useReducer</code>: State Management Alternative</h2>
+
+
+
+<p><code>useReducer</code> is often preferred over <code>useState</code> when managing complex state logic.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    &lt;&gt;
+      &lt;p&gt;Count: {state.count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'increment' })}&gt;+&lt;/button&gt;
+      &lt;button onClick={() =&gt; dispatch({ type: 'decrement' })}&gt;-&lt;/button&gt;
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">6. <code>useTransition</code>: Managing Concurrent UI Updates</h2>
+
+
+
+<p><code>useTransition</code> helps keep the UI responsive during heavy state transitions by marking updates as non-urgent.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useTransition } from 'react';
+
+function List({ items }) {
+  return items.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;);
+}
+
+function App() {
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+  const [isPending, startTransition] = useTransition();
+
+  const handleChange = (e) =&gt; {
+    const value = e.target.value;
+    setInput(value);
+
+    startTransition(() =&gt; {
+      const newList = Array.from({ length: 10000 }, (_, i) =&gt; `${value} ${i}`);
+      setList(newList);
+    });
+  };
+
+  return (
+    &lt;&gt;
+      &lt;input type="text" value={input} onChange={handleChange} /&gt;
+      {isPending ? &lt;p&gt;Loading...&lt;/p&gt; : &lt;List items={list} /&gt;}
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">7. <code>useLayoutEffect</code>: DOM Mutations Before Paint</h2>
+
+
+
+<p><code>useLayoutEffect</code> works like <code>useEffect</code>, but it fires synchronously after all DOM mutations. It’s useful when we need to measure DOM nodes or perform layout calculations.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useLayoutEffect, useRef, useState } from 'react';
+
+function Box() {
+  const boxRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() =&gt; {
+    if (boxRef.current) {
+      setWidth(boxRef.current.getBoundingClientRect().width);
+    }
+  }, []);
+
+  return (
+    &lt;div ref={boxRef} style={{ width: '50%', background: 'skyblue' }}&gt;
+      &lt;p&gt;Width: {width}px&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Hooks have changed the way we write React components. They allow us to write more concise, readable code while unlocking powerful features. As we continue to build rich user interfaces, mastering these basic hooks will give us the tools we need to work efficiently and effectively in modern React apps.</p>
+<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React Course: Hooks — useState and useEffect</title>
+		<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
+					<comments>/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 23 Apr 2025 14:10:24 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=813</guid>
+
+					<description><![CDATA[<p>React has completely changed the way we build user interfaces, and one of its most powerful features is Hooks. In this post, we’re diving into two of the most essential React Hooks: useState and useEffect. If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for [&#8230;]</p>
+<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>React has completely changed the way we build user interfaces, and one of its most powerful features is <strong>Hooks</strong>. In this post, we’re diving into two of the most essential React Hooks: <code>useState</code> and <code>useEffect</code>.</p>
+
+
+
+<p>If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for you.</p>
+
+
+
+<h2 class="wp-block-heading">What are Hooks?</h2>
+
+
+
+<p>Hooks are special functions that let us “hook into” React features from functional components. Before hooks, managing state or lifecycle methods meant writing class components. But with hooks, we can use those features directly inside functional components — making our code cleaner and more readable.</p>
+
+
+
+<h2 class="wp-block-heading">Why <code>useState</code> and <code>useEffect</code>?</h2>
+
+
+
+<p>Think of <code>useState</code> as the way we manage data that changes over time — like a counter, a form input, or a toggle.</p>
+
+
+
+<p>And <code>useEffect</code>? That’s our tool for handling side effects — fetching data, setting up subscriptions, or manually changing the DOM.</p>
+
+
+
+<h2 class="wp-block-heading">Getting Started with <code>useState</code></h2>
+
+
+
+<p>Let’s start with the most basic hook: <code>useState</code>.</p>
+
+
+
+<h3 class="wp-block-heading">What it does:</h3>
+
+
+
+<ul class="wp-block-list">
+<li>Initializes a state variable.</li>
+
+
+
+<li>Lets us update that variable.</li>
+
+
+
+<li>Re-renders the component when the state changes.</li>
+</ul>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  // Declare a state variable called 'count' and set its initial value to 0
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Count: {count}&lt;/h1&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Understanding <code>useEffect</code></h2>
+
+
+
+<p>While <code>useState</code> manages data, <code>useEffect</code> manages behavior — what should happen when our component mounts, updates, or unmounts.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() =&gt; {
+    const interval = setInterval(() =&gt; {
+      setSeconds(prev =&gt; prev + 1);
+    }, 1000);
+
+    // Cleanup function
+    return () =&gt; clearInterval(interval);
+  }, []); // Empty array means run only once (on mount)
+
+  return &lt;h1&gt;Timer: {seconds}s&lt;/h1&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Best Practices</h2>
+
+
+
+<p>Here are a few tips we follow when working with hooks:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Always declare hooks at the top level of the component.</li>
+
+
+
+<li>Avoid using hooks inside conditions or loops.</li>
+
+
+
+<li>Name state variables clearly — make your code easy to read.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Hooks like <code>useState</code> and <code>useEffect</code> make it easy to write functional components that are powerful, reusable, and clean. They&#8217;re the foundation for nearly every modern React app we build, and they’re essential knowledge for any React developer.</p>
+
+
+
+<p>In the next post, we’ll explore more advanced hooks like <code>useContext</code>, <code>useReducer</code>, and custom hooks that let us extract logic into reusable functions.</p>
+<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

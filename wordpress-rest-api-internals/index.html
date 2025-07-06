@@ -3,9 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="max-image-preview:large">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>WordPress REST API Internals &#8211; Lakshyajeet&#039;s Blog</title>
+	
+	<!-- This site is optimized with the Yoast SEO plugin v25.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<link rel="canonical" href="/wordpress-rest-api-internals/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="WordPress REST API Internals - Lakshyajeet&#039;s Blog">
+	<meta property="og:description" content="When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or simply extending the functionality of the site. This blog explores the internals how this works. The Request Flow The process begins as soon as a request is made to the WordPress site’s REST API [&hellip;]">
+	<meta property="og:url" content="/wordpress-rest-api-internals/">
+	<meta property="og:site_name" content="Lakshyajeet&#039;s Blog">
+	<meta property="article:published_time" content="2025-03-03T16:00:02+00:00">
+	<meta property="article:modified_time" content="2025-07-06T15:58:58+00:00">
+	<meta property="og:image" content="http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360">
+	<meta name="author" content="lakshyajeet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="lakshyajeet">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="4 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"/wordpress-rest-api-internals/#article","isPartOf":{"@id":"/wordpress-rest-api-internals/"},"author":{"name":"lakshyajeet","@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"headline":"WordPress REST API Internals","datePublished":"2025-03-03T16:00:02+00:00","dateModified":"2025-07-06T15:58:58+00:00","mainEntityOfPage":{"@id":"/wordpress-rest-api-internals/"},"wordCount":693,"commentCount":0,"publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"image":{"@id":"/wordpress-rest-api-internals/#primaryimage"},"thumbnailUrl":"http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360","keywords":["development","plugin development","seo","wordpress","wp"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["/wordpress-rest-api-internals/#respond"]}]},{"@type":"WebPage","@id":"/wordpress-rest-api-internals/","url":"/wordpress-rest-api-internals/","name":"WordPress REST API Internals - Lakshyajeet&#039;s Blog","isPartOf":{"@id":"/#website"},"primaryImageOfPage":{"@id":"/wordpress-rest-api-internals/#primaryimage"},"image":{"@id":"/wordpress-rest-api-internals/#primaryimage"},"thumbnailUrl":"http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360","datePublished":"2025-03-03T16:00:02+00:00","dateModified":"2025-07-06T15:58:58+00:00","breadcrumb":{"@id":"/wordpress-rest-api-internals/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["/wordpress-rest-api-internals/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"/wordpress-rest-api-internals/#primaryimage","url":"http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360","contentUrl":"http://192.168.1.19:8080/wp-content/uploads/2025/03/image.png?w=360"},{"@type":"BreadcrumbList","@id":"/wordpress-rest-api-internals/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"/"},{"@type":"ListItem","position":2,"name":"Blog","item":"/blog/"},{"@type":"ListItem","position":3,"name":"WordPress REST API Internals"}]},{"@type":"WebSite","@id":"/#website","url":"/","name":"Lakshyajeet's Blog","description":"","publisher":{"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"/#/schema/person/a2544f21ad29d03768185cdf9ab84efc","name":"lakshyajeet","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7f3acd1e4ebbbed40ef7a5e05d0dae8969aa9f86d0300191da9e1427d8306b95?s=96&d=mm&r=g","caption":"lakshyajeet"},"logo":{"@id":"/#/schema/person/image/"},"url":"/author/lakshyajeet/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<title>WordPress REST API Internals - Lakshyajeet&#039;s Blog</title>
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Feed" href="/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; Comments Feed" href="/comments/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet&#039;s Blog &raquo; WordPress REST API Internals Comments Feed" href="/wordpress-rest-api-internals/feed/">
@@ -82,7 +104,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/536">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.8.1">
-<link rel="canonical" href="/wordpress-rest-api-internals/">
 <link rel="shortlink" href="/?p=536">
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fwordpress-rest-api-internals%2F">
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fwordpress-rest-api-internals%2F#038;format=xml">

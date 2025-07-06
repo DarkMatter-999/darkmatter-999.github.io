@@ -8,7 +8,7 @@
 	>
 
 <channel>
-	<title>lakshyajeet &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<atom:link href="/author/lakshyajeet/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
@@ -22,7 +22,7 @@
 
 <image>
 	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>lakshyajeet &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<link>/</link>
 	<width>32</width>
 	<height>32</height>
@@ -42,7 +42,9 @@
 		<category><![CDATA[writing]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=898</guid>
 
-					<description><![CDATA[As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]</p>
+<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where <strong>Block Themes</strong> and <strong>Block Patterns</strong> play a central role in how our sites look and function.</p>
 
@@ -233,6 +235,7 @@ register_block_pattern(
 
 
 <p>Block Themes and Block Patterns aren’t just buzzwords—they&#8217;re the future of WordPress. Whether we’re building for clients or crafting our own sites, these tools give us greater flexibility, faster development, and more power over design—all while embracing a no-code/low-code philosophy.</p>
+<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
@@ -255,7 +258,9 @@ register_block_pattern(
 		<category><![CDATA[writing]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=890</guid>
 
-					<description><![CDATA[In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]]]></description>
+					<description><![CDATA[<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]</p>
+<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of <strong>Block Themes</strong>. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of web design on WordPress.</p>
 
@@ -448,6 +453,7 @@ Text Domain: my-block-theme
 
 
 <p></p>
+<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-themes-introduction/feed/</wfw:commentRss>
@@ -470,7 +476,9 @@ Text Domain: my-block-theme
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
 
-					<description><![CDATA[As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
 
@@ -581,6 +589,7 @@ registerBlockType('mytheme/custom-widget', {
 
 
 <p></p>
+<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
@@ -603,7 +612,9 @@ registerBlockType('mytheme/custom-widget', {
 		<category><![CDATA[writing]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=879</guid>
 
-					<description><![CDATA[As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]]]></description>
+					<description><![CDATA[<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the <strong>Formatting Toolbar API</strong>, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks.</p>
 
@@ -705,6 +716,7 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 
 
 <p>The <strong>Formatting Toolbar API</strong> gives us a flexible way to extend the WordPress editing experience. Whether we&#8217;re adding highlights, tooltips, or custom shortcodes, this API is a powerful tool in our WordPress development toolkit.</p>
+<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
@@ -727,7 +739,9 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
-					<description><![CDATA[As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
 
@@ -867,6 +881,7 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 
 
 <p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
+<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
@@ -889,7 +904,9 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
 
-					<description><![CDATA[When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]]]></description>
+					<description><![CDATA[<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
 
@@ -1143,6 +1160,7 @@ function myplugin_render_latest_post() {
 
 
 <p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
+<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
@@ -1165,7 +1183,9 @@ function myplugin_render_latest_post() {
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
 
-					<description><![CDATA[As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
 
@@ -1324,6 +1344,7 @@ registerBlockType('myplugin/section', {
 
 
 <p></p>
+<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
@@ -1346,7 +1367,9 @@ registerBlockType('myplugin/section', {
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
 
-					<description><![CDATA[As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
 
@@ -1541,6 +1564,7 @@ edit({ attributes, setAttributes }) {
 
 
 <p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
+<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
@@ -1563,7 +1587,9 @@ edit({ attributes, setAttributes }) {
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
 
-					<description><![CDATA[As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
 
@@ -1703,6 +1729,7 @@ wp.hooks.addFilter(
 
 
 <p></p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
@@ -1725,7 +1752,9 @@ wp.hooks.addFilter(
 		<category><![CDATA[wordpress]]></category>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
 
-					<description><![CDATA[As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]]]></description>
+					<description><![CDATA[<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
 
@@ -1932,6 +1961,7 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 
 
 <p></p>
+<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/business/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WordPress Block Editor: Widgets</title>
+		<link>/wordpress-block-editor-widgets/</link>
+					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[business]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
+
+					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
+
+
+
+<h2 class="wp-block-heading">What Are Widgets in the WordPress Block Editor?</h2>
+
+
+
+<p>Traditionally, WordPress widgets were managed through the <strong>Appearance → Widgets</strong> menu in the dashboard. These were modular components—like recent posts, calendars, search bars, and more—that we could drag and drop into widget areas such as sidebars and footers.</p>
+
+
+
+<p>With the arrival of the <strong>Block Editor (Gutenberg)</strong>, widgets have been reimagined as blocks. This means we can now manage widgets using the same block-based system we use for posts and pages—bringing consistency and visual clarity to the editing experience.</p>
+
+
+
+<h2 class="wp-block-heading">Block-Based Widgets: Why It Matters</h2>
+
+
+
+<p>So why the block-based widget editor matters:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Visual Editing:</strong> We can now see what our widgets will look like as we edit them.</li>
+
+
+
+<li><strong>Block Flexibility:</strong> Any block—whether native or third-party—can be used as a widget.</li>
+
+
+
+<li><strong>Reusable Blocks:</strong> We can reuse widget content across the site.</li>
+
+
+
+<li><strong>Improved Customization:</strong> With group, column, and spacing blocks, layout possibilities have exploded.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Enabling Block Widgets in Classic Themes (Code Example)</h2>
+
+
+
+<p>If our theme doesn&#8217;t support block widgets yet, we can enable it using a simple snippet in our theme’s <code>functions.php</code> file:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function enable_block_widgets_support() {
+    add_theme_support('widgets-block-editor');
+}
+add_action('after_setup_theme', 'enable_block_widgets_support');</pre>
+
+
+
+<h2 class="wp-block-heading">Creating a Custom Widget Block (Advanced)</h2>
+
+
+
+<p>Want to build our own custom block to use as a widget? Here’s a basic boilerplate using JavaScript and the <code>@wordpress</code> packages:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// custom-widget-block.js
+const { registerBlockType } = wp.blocks;
+const { TextControl } = wp.components;
+
+registerBlockType('mytheme/custom-widget', {
+    title: 'Custom Widget',
+    icon: 'admin-generic',
+    category: 'widgets',
+    attributes: {
+        content: {
+            type: 'string',
+            default: '',
+        },
+    },
+    edit: (props) =&gt; {
+        const { attributes: { content }, setAttributes } = props;
+        return (
+            &lt;TextControl
+                label="Widget Content"
+                value={content}
+                onChange={(value) =&gt; setAttributes({ content: value })}
+            /&gt;
+        );
+    },
+    save: (props) =&gt; {
+        return &lt;div&gt;{props.attributes.content}&lt;/div&gt;;
+    },
+});</pre>
+
+
+
+<p>To register this block, we&#8217;d include it in our plugin or theme with proper setup via <code>block.json</code> and <code>webpack</code>/<code>wp-scripts</code>.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The Block Editor has turned widgets into something far more powerful and intuitive than the old drag-and-drop days. Whether we&#8217;re customizing a sidebar, footer, or creating custom blocks, the new widget system lets us manage our content visually, flexibly, and efficiently.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Advanced Theme Development in WordPress: Child Themes</title>
+		<link>/advanced-theme-development-in-wordpress-child-themes/</link>
+					<comments>/advanced-theme-development-in-wordpress-child-themes/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 10 Apr 2025 16:25:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[business]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[website]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=755</guid>
+
+					<description><![CDATA[<p>As WordPress developers, we’re always looking for ways to build websites that are not only beautiful and functional but also maintainable and upgrade-friendly. One of the best practices in advanced WordPress theme development is creating and using child themes. In this post, we’ll walk through what child themes are, why they matter, and how we [&#8230;]</p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, we’re always looking for ways to build websites that are not only beautiful and functional but also maintainable and upgrade-friendly. One of the best practices in advanced WordPress theme development is creating and using <strong>child themes</strong>.</p>
+
+
+
+<p>In this post, we’ll walk through what child themes are, why they matter, and how we can create and use them in our projects. We&#8217;ll see just how easy (and powerful) they are.</p>
+
+
+
+<h2 class="wp-block-heading">What Is a WordPress Child Theme?</h2>
+
+
+
+<p>A <strong>child theme</strong> in WordPress is a theme that inherits the functionality, styling, and templates of another theme, called the <strong>parent theme</strong>.</p>
+
+
+
+<p>Think of a child theme as a safe workspace where we can customize the look and feel of a site <strong>without touching the original parent theme’s files</strong>. This way, we can update the parent theme without losing any of our customizations.</p>
+
+
+
+<h3 class="wp-block-heading">Why Should We Use a Child Theme?</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Safe Updates</strong>: Customizations in the child theme stay intact even when the parent theme is updated.</li>
+
+
+
+<li><strong>Modular Development</strong>: We can isolate our changes, making them easier to manage and debug.</li>
+
+
+
+<li><strong>Faster Development</strong>: Since we&#8217;re building on top of an existing theme, we don&#8217;t start from scratch.</li>
+
+
+
+<li><strong>Experimentation</strong>: Great for testing out changes without breaking the core theme.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">How to Create a Child Theme in WordPress</h3>
+
+
+
+<p>Let’s go step-by-step to create a child theme. We&#8217;ll use the popular <strong>Twenty Twenty-Four</strong> theme as our parent theme for this example.</p>
+
+
+
+<h4 class="wp-block-heading">1. Create a Child Theme Folder</h4>
+
+
+
+<p>In the <code>/wp-content/themes/</code> directory, we create a new folder:</p>
+
+
+
+<pre class="wp-block-code"><code>/wp-content/themes/parenttheme-child</code></pre>
+
+
+
+<p><strong>Naming tip</strong>: use the parent theme name followed by <code>-child</code> for clarity.</p>
+
+
+
+<h4 class="wp-block-heading">2. Create a <code>style.css</code> File</h4>
+
+
+
+<p>Inside the child theme folder, we create a <code>style.css</code> file. This file must start with a specific header comment to let WordPress know it&#8217;s a child theme:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">/*
+Theme Name:     My Theme Child
+Theme URI:      https://example.com/
+Description:    A child theme of Twenty Twenty-One
+Author URI:     https://example.com/
+Template:       twentytwentyone
+Version:        1.0.0
+Text Domain:    twentytwentyone-child
+*/</pre>
+
+
+
+<h4 class="wp-block-heading">3. Enqueue the Parent Theme Styles</h4>
+
+
+
+<p>Now, let’s create a <code>functions.php</code> file in the child theme folder to load the parent theme’s styles properly.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+// Enqueue parent and child theme styles
+function twentytwentyone_child_enqueue_styles() {
+    $parenthandle = 'twentytwentyone-style'; // This handle may vary by theme
+    $theme = wp_get_theme();
+
+    wp_enqueue_style($parenthandle,
+        get_template_directory_uri() . '/style.css',
+        array(),
+        $theme-&gt;parent()-&gt;get('Version')
+    );
+
+    wp_enqueue_style('twentytwentyone-child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array($parenthandle),
+        $theme-&gt;get('Version')
+    );
+}
+add_action('wp_enqueue_scripts', 'twentytwentyone_child_enqueue_styles');</pre>
+
+
+
+<h4 class="wp-block-heading">4. Activate the Child Theme</h4>
+
+
+
+<p>Head over to <strong>Appearance &gt; Themes</strong> in the WordPress admin dashboard, and activate our new <strong>child theme</strong>.</p>
+
+
+
+<p>Now any custom styles or PHP changes we make in the child theme won’t be lost when the parent theme is updated.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Child themes are a powerful tool in our WordPress development arsenal. Whether we&#8217;re building client sites, personal projects, or working on a team, they allow us to keep our code clean, safe, and future-proof.</p>
+
+
+
+<p>By understanding how child themes work and how to build them properly, we give ourselves the freedom to innovate <strong>without risk</strong>. And that’s what modern WordPress development is all about.</p>
+
+
+
+<p></p>
+<p>The post <a href="/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/advanced-theme-development-in-wordpress-child-themes/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

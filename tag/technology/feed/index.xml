@@ -1,0 +1,1984 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<atom:link href="/tag/technology/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description></description>
+	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.1</generator>
+
+<image>
+	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>WordPress Block Themes: Introduction</title>
+		<link>/wordpress-block-themes-introduction/</link>
+					<comments>/wordpress-block-themes-introduction/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 12 May 2025 14:58:01 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[writing]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=890</guid>
+
+					<description><![CDATA[<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]</p>
+<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of <strong>Block Themes</strong>. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of web design on WordPress.</p>
+
+
+
+<h2 class="wp-block-heading">What are WordPress Block Themes?</h2>
+
+
+
+<p>A WordPress Block Theme is a theme that fully embraces the <strong>Block Editor</strong>, also known as <strong>Gutenberg</strong>. Block Themes are designed to work with the block-based approach that WordPress introduced to content creation. Unlike traditional themes, which rely heavily on PHP templates and widget areas, Block Themes provide an entirely block-based approach to building and customizing a website.</p>
+
+
+
+<p>Essentially, a Block Theme uses blocks for all aspects of the site — including the header, footer, and sidebar. With this structure, everything on the website, from the smallest detail to the entire layout, is built using blocks. This creates a more unified and consistent experience when it comes to designing and customizing a website in WordPress.</p>
+
+
+
+<h2 class="wp-block-heading">How Block Themes Differ from Traditional Themes</h2>
+
+
+
+<p>Before Block Themes, WordPress used a theme structure that involved PHP files for templates, like <code>header.php</code>, <code>footer.php</code>, <code>single.php</code>, and others. These files were designed to output various sections of a webpage, which would then be styled using CSS and customized using widgets.</p>
+
+
+
+<p>In contrast, Block Themes shift the focus to <strong>blocks</strong> as the main building components for every part of a WordPress site. This has a few important differences:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Template Parts as Blocks</strong>: In traditional themes, elements like the header, footer, and sidebar are typically added through PHP code. In Block Themes, these elements are created as blocks. This gives users the ability to edit these parts directly in the WordPress Block Editor.</li>
+
+
+
+<li><strong>No PHP Template Files</strong>: Traditional themes heavily rely on PHP files like <code>index.php</code> or <code>page.php</code> for rendering. In Block Themes, most of the rendering is done through <strong>HTML templates</strong> powered by the block-based system.</li>
+
+
+
+<li><strong>Full-Site Editing</strong>: Block Themes are built for <strong>Full-Site Editing (FSE)</strong>, which allows users to edit their entire website (not just posts and pages) from the block editor. This includes editing headers, footers, and sidebars — everything becomes editable within the block editor environment.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Why Are WordPress Block Themes Important?</h2>
+
+
+
+<p>As WordPress evolves, so do the needs of developers and users alike. Block Themes represent the future of WordPress theming and offer several important advantages:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Simplified Design Process</strong>: With everything built as blocks, users can easily edit, move, or add new components to their website. No need to dive deep into PHP files or manage widgets — everything is in the editor.</li>
+
+
+
+<li><strong>Consistency Across the Site</strong>: Since the whole website structure is built with blocks, it ensures that the design remains consistent. For instance, the header block is the same across all pages, ensuring a uniform look and feel.</li>
+
+
+
+<li><strong>Improved Customization</strong>: With Block Themes, we can customize our entire site directly from the WordPress admin area, without needing to use custom code. This is great for non-developers and designers who want to focus more on content and layout.</li>
+
+
+
+<li><strong>Compatibility with the Block Editor</strong>: Block Themes are fully compatible with the Gutenberg Block Editor, making it easier to design content-heavy pages. Gutenberg continues to evolve, and using a Block Theme ensures we&#8217;re future-proofing our WordPress website.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">How to Create a Basic WordPress Block Theme</h2>
+
+
+
+<p>Creating a WordPress Block Theme requires some foundational knowledge of how blocks work in WordPress. Here&#8217;s a very basic example of how we can create a simple Block Theme.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1: Set Up Theme Folder</h3>
+
+
+
+<p>To begin creating a Block Theme, create a new folder in our <code>wp-content/themes</code> directory. Let’s call it <code>my-block-theme</code>.</p>
+
+
+
+<h3 class="wp-block-heading">Step 2: Create <code>style.css</code></h3>
+
+
+
+<p>Inside the <code>my-block-theme</code> folder, create a <code>style.css</code> file to define the theme’s meta information.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">/*
+Theme Name: My Block Theme
+Theme URI: https://example.com/my-block-theme
+Author: Your Name
+Author URI: https://example.com/
+Description: A simple Block-based WordPress theme.
+Version: 1.0
+Requires at least: 5.8
+Requires PHP: 7.4
+License: GPL2
+Text Domain: my-block-theme
+*/</pre>
+
+
+
+<h3 class="wp-block-heading">Step 3: Create <code>theme.json</code></h3>
+
+
+
+<p>To enable Full-Site Editing and block-based template structures, we need a <code>theme.json</code> file. This file allows us to define global styles and configurations for blocks.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "version": 2,
+  "settings": {
+    "custom": {
+      "spacing": {
+        "unit": "px"
+      }
+    }
+  }
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 4: Define Templates Using Blocks</h3>
+
+
+
+<p>Now, we’ll need to define our theme’s templates. For a Block Theme, this is typically done with HTML files.</p>
+
+
+
+<p>For example, create a file called <code>index.html</code> inside our theme folder.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Block Theme&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Header Block --&gt;
+  &lt;div class="wp-block-site-header"&gt;
+    &lt;!-- Site Header Content Here --&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Main Content Block --&gt;
+  &lt;div class="wp-block-post-content"&gt;
+    &lt;!-- Main Content Here --&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer Block --&gt;
+  &lt;div class="wp-block-site-footer"&gt;
+    &lt;!-- Footer Content Here --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+
+
+<p>This basic structure defines the three key blocks: header, content, and footer.</p>
+
+
+
+<h3 class="wp-block-heading">Step 5: Activate the Theme</h3>
+
+
+
+<p>After we’ve set up these files, we can go to our WordPress dashboard and navigate to <strong>Appearance &gt; Themes</strong>. We should see our new Block Theme, “My Block Theme,” listed there. Activate it.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Block Themes represent the future of WordPress. They provide a more intuitive, flexible, and consistent approach to website design, making it easier for us to create and manage websites without needing to rely on complex PHP files or traditional theme structures.</p>
+
+
+
+<p>By adopting Block Themes, we&#8217;re not only improving the customization experience for ourselves but also ensuring that we stay ahead of the curve with WordPress’s growing block-based capabilities. As the Block Editor continues to evolve, the power and flexibility of Block Themes will only increase, making it an essential tool for WordPress developers and designers moving forward.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-themes-introduction/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Formatting Toolbar API</title>
+		<link>/wordpress-block-editor-formatting-toolbar-api/</link>
+					<comments>/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 08 May 2025 14:34:35 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blog]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<category><![CDATA[writing]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=879</guid>
+
+					<description><![CDATA[<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the <strong>Formatting Toolbar API</strong>, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks.</p>
+
+
+
+<h2 class="wp-block-heading">What Is the Formatting Toolbar API?</h2>
+
+
+
+<p>The <strong>Formatting Toolbar API</strong> lets us add custom inline buttons (like bold, italic, links, etc) to the toolbar that appears when we highlight text inside a rich text block. This API is part of the <code>@wordpress/rich-text</code> and <code>@wordpress/format-library</code> packages.</p>
+
+
+
+<p>With this, we can introduce custom formats like highlighting text or adding special tooltips to create a more tailored content editing experience for our users.</p>
+
+
+
+<h2 class="wp-block-heading">Example: Adding a “Highlight” Button to the Toolbar</h2>
+
+
+
+<h3 class="wp-block-heading">1. Register the Format Type</h3>
+
+
+
+<p>We&#8217;ll use <code>registerFormatType</code> from <code>@wordpress/rich-text</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// my-custom-highlight.js
+import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
+import { RichTextToolbarButton } from '@wordpress/block-editor';
+import { Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { formatBold } from '@wordpress/icons';
+
+registerFormatType('my-plugin/highlight', {
+    title: __('Highlight', 'my-plugin'),
+    tagName: 'mark',
+    className: 'highlighted-text',
+    edit({ isActive, value, onChange }) {
+        return (
+            &lt;Fragment&gt;
+                &lt;RichTextToolbarButton
+                    icon={formatBold}
+                    title={__('Highlight', 'my-plugin')}
+                    onClick={() =&gt; {
+                        onChange(toggleFormat(value, {
+                            type: 'my-plugin/highlight',
+                        }));
+                    }}
+                    isActive={isActive}
+                /&gt;
+            &lt;/Fragment&gt;
+        );
+    },
+});</pre>
+
+
+
+<h3 class="wp-block-heading">2. Enqueue the Script</h3>
+
+
+
+<p>In our plugin or theme <code>functions.php</code>, enqueue the script using <code>enqueue_block_editor_assets</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function my_plugin_enqueue_formatting_toolbar() {
+    wp_enqueue_script(
+        'my-custom-highlight',
+        plugin_dir_url(__FILE__) . 'my-custom-highlight.js',
+        [ 'wp-rich-text', 'wp-element', 'wp-block-editor', 'wp-i18n' ],
+        false,
+        true
+    );
+}
+add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar');</pre>
+
+
+
+<h3 class="wp-block-heading">3. Add Some Styling</h3>
+
+
+
+<p>Add a custom style so the highlighting is visible.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">.mark.highlighted-text {
+    background-color: yellow;
+    padding: 0 2px;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The <strong>Formatting Toolbar API</strong> gives us a flexible way to extend the WordPress editing experience. Whether we&#8217;re adding highlights, tooltips, or custom shortcodes, this API is a powerful tool in our WordPress development toolkit.</p>
+<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
+		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
+
+					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
+
+
+
+<h2 class="wp-block-heading">Why Metaboxes and Notices Matter</h2>
+
+
+
+<p>Metaboxes allow us to collect custom meta information related to a post—think SEO descriptions, additional fields, or custom toggles. Meanwhile, notices give us the ability to alert users to something important—like a successful save, an error, or a prompt for further action.</p>
+
+
+
+<p>By integrating these features directly into the Gutenberg (Block) Editor, we maintain a native, modern, and seamless user experience.</p>
+
+
+
+<h2 class="wp-block-heading">Metaboxes</h2>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import { TextControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
+import { useBlockProps } from '@wordpress/block-editor';
+
+const Edit = () =&gt; {
+	const blockProps = useBlockProps();
+	const postType = useSelect(
+		(select) =&gt; select('core/editor').getCurrentPostType(),
+		[]
+	);
+
+	const [meta, setMeta] = useEntityProp('postType', postType, 'meta');
+	const metaFieldValue = meta.myguten_meta_block_field;
+
+	const updateMetaValue = (newValue) =&gt; {
+		setMeta({ ...meta, myguten_meta_block_field: newValue });
+	};
+
+	return (
+		&lt;div {...blockProps}&gt;
+			&lt;TextControl
+				label="Meta Block Field"
+				value={metaFieldValue}
+				onChange={updateMetaValue}
+			/&gt;
+		&lt;/div&gt;
+	);
+};
+
+registerBlockType('myguten/meta-block', {
+	edit: Edit,
+	save: () =&gt; null, // We save this data as post meta, not block content.
+});</pre>
+
+
+
+<ul class="wp-block-list">
+<li>We use <code>useEntityProp</code> to access and modify the post meta.</li>
+
+
+
+<li><code>TextControl</code> lets us render a simple input field.</li>
+
+
+
+<li>The block doesn&#8217;t save any content itself; instead, we save custom metadata using the <code>setMeta</code> function.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Registering Metakeys</h3>
+
+
+
+<p>Before this works, we need to make sure to <strong>register the meta key</strong> in PHP and set <code>'show_in_rest' =&gt; true</code> so it&#8217;s accessible from the block editor.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function myguten_register_post_meta() {
+	register_post_meta( 'post', 'myguten_meta_block_field', array(
+		'show_in_rest' =&gt; true,
+		'type'         =&gt; 'string',
+		'single'       =&gt; true,
+		'auth_callback' =&gt; function() {
+			return current_user_can( 'edit_posts' );
+		}
+	) );
+}
+add_action( 'init', 'myguten_register_post_meta' );</pre>
+
+
+
+<h2 class="wp-block-heading">Admin Notices</h2>
+
+
+
+<p>There are times when we want to alert the user—maybe something failed, or we want to show a confirmation. The Gutenberg editor provides a great way to <strong>hook into the notices system</strong>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { useSelect } from '@wordpress/data';
+import { store as noticesStore } from '@wordpress/notices';
+
+const ExampleComponent = () =&gt; {
+	const notices = useSelect((select) =&gt;
+		select(noticesStore).getNotices()
+	);
+	return (
+		&lt;ul&gt;
+			{notices.map((notice) =&gt; (
+				&lt;li key={notice.id}&gt;{notice.content}&lt;/li&gt;
+			))}
+		&lt;/ul&gt;
+	);
+};</pre>
+
+
+
+<p>By using <code>useSelect</code> and <code>noticesStore</code>, we can tap into WordPress’s internal notices system. This keeps our UI consistent with the rest of the editor and gives us a standardized way to deliver feedback to the user.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { useDispatch } from '@wordpress/data';
+import { store as noticesStore } from '@wordpress/notices';
+
+const { createSuccessNotice, createErrorNotice } = useDispatch(noticesStore);
+
+createSuccessNotice('Your meta field was updated successfully!');</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
+<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Dynamic and Static Blocks</title>
+		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
+					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
+
+					<description><![CDATA[<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
+
+
+
+<p>Understanding the difference between these two types is essential for us as WordPress developers to make informed decisions about performance, customization, and content rendering. In this post, we&#8217;ll explore what static and dynamic blocks are, when to use each, and how to create them.</p>
+
+
+
+<h2 class="wp-block-heading">What Are Static and Dynamic Blocks?</h2>
+
+
+
+<h3 class="wp-block-heading">Static Blocks</h3>
+
+
+
+<p>A <strong>static block</strong> is rendered entirely in JavaScript using React. When we add content to a static block, that content is saved directly into the post content as HTML. This means the content is stored &#8220;as is&#8221; in the database.</p>
+
+
+
+<p><strong>Use static blocks when:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>The content doesn&#8217;t need to change dynamically.</li>
+
+
+
+<li>The block only requires what the user sees in the editor.</li>
+
+
+
+<li>We want to optimize performance by avoiding PHP processing during page loads.</li>
+</ul>
+
+
+
+<p><strong>Example Use Cases:</strong> Headings, paragraphs, buttons, image galleries.</p>
+
+
+
+<h3 class="wp-block-heading">Dynamic Blocks</h3>
+
+
+
+<p>A <strong>dynamic block</strong> is rendered on the front end using PHP. The block’s output is generated every time the page loads, making it ideal for content that changes frequently or depends on server-side logic.</p>
+
+
+
+<p><strong>Use dynamic blocks when:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>The output needs to update frequently (e.g., latest posts, logged-in user data).</li>
+
+
+
+<li>We want to keep the post content clean and rely on server-side templates.</li>
+
+
+
+<li>We need advanced customization using PHP logic.</li>
+</ul>
+
+
+
+<p><strong>Example Use Cases:</strong> Latest posts, post metadata, contact forms, custom listings.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Static Block</h2>
+
+
+
+<h3 class="wp-block-heading">File Structure:</h3>
+
+
+
+<pre class="wp-block-preformatted"><code>my-plugin/<br>├── alert-box/<br>│   ├── block.json<br>│   ├── edit.js<br>│   └── index.js</code></pre>
+
+
+
+<h3 class="wp-block-heading">block.json</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "myplugin/alert-box",
+  "title": "Alert Box",
+  "category": "widgets",
+  "icon": "warning",
+  "editorScript": "file:./index.js"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">index.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import Edit from './edit';
+
+registerBlockType('myplugin/alert-box', {
+    attributes: {
+        content: {
+            type: 'string',
+            source: 'html',
+            selector: 'p'
+        }
+    },
+    edit: Edit,
+    save({ attributes }) {
+        return (
+            &lt;div className="alert-box"&gt;
+                &lt;p&gt;{attributes.content}&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">edit.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
+
+export default function Edit({ attributes, setAttributes }) {
+    const blockProps = useBlockProps();
+
+    return (
+        &lt;div {...blockProps} className="alert-box"&gt;
+            &lt;RichText
+                tagName="p"
+                value={attributes.content}
+                onChange={(content) =&gt; setAttributes({ content })}
+                placeholder={__('Add your alert text here...', 'myplugin')}
+            /&gt;
+        &lt;/div&gt;
+    );
+}</pre>
+
+
+
+<p>This block is fully static. The <code>save</code> function defines exactly what gets stored and rendered.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Dynamic Block</h2>
+
+
+
+<p>Dynamic blocks require a PHP render callback. Here&#8217;s how we can make a dynamic block that shows the <strong>latest post title</strong>.</p>
+
+
+
+<h3 class="wp-block-heading">File Structure:</h3>
+
+
+
+<pre class="wp-block-preformatted">my-plugin/<br>├── latest-post/<br>│ ├── block.json<br>│ ├── index.js<br>│ └── render.php</pre>
+
+
+
+<h3 class="wp-block-heading">block.json</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "myplugin/latest-post",
+  "title": "Latest Post",
+  "category": "widgets",
+  "icon": "megaphone",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">index.js</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('myplugin/latest-post', {
+    edit() {
+        return &lt;p&gt;Latest post will be shown here on the frontend.&lt;/p&gt;;
+    },
+    save() {
+        // Returning null to indicate dynamic rendering
+        return null;
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">render.php</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+function myplugin_render_latest_post() {
+    $recent_posts = wp_get_recent_posts([
+        'numberposts' =&gt; 1,
+        'post_status' =&gt; 'publish',
+    ]);
+
+    if (empty($recent_posts)) {
+        return '&lt;p&gt;No posts found.&lt;/p&gt;';
+    }
+
+    $post = $recent_posts[0];
+    return sprintf('&lt;h3&gt;&lt;a href="%s"&gt;%s&lt;/a&gt;&lt;/h3&gt;', esc_url(get_permalink($post['ID'])), esc_html($post['post_title']));
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Choosing Between Static and Dynamic</h2>
+
+
+
+<p>When deciding whether to use a static or dynamic block, we should ask:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Does this block require real-time data or updates from the server?</strong> → Go dynamic.</li>
+
+
+
+<li><strong>Is the block mostly decorative or fixed content?</strong> → Use static.</li>
+
+
+
+<li><strong>Do we need to keep our post content clean from HTML bloat?</strong> → Dynamic blocks can help.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts</h2>
+
+
+
+<p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
+<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Nested Blocks</title>
+		<link>/wordpress-block-editor-nested-blocks/</link>
+					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[ai]]></category>
+		<category><![CDATA[gutenberg]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
+
+					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
+
+
+
+<h3 class="wp-block-heading">What Are Nested Blocks?</h3>
+
+
+
+<p>Nested blocks allow us to insert blocks <em>inside</em> other blocks. Think of them as sub-components. For instance, a custom “Team” block might contain multiple “Team Member” blocks. Or a “Testimonial Slider” block could hold several “Testimonial” blocks.</p>
+
+
+
+<p>In technical terms, we achieve this nesting by using WordPress&#8217;s <code>InnerBlocks</code> component inside a custom block.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Nested Blocks?</h3>
+
+
+
+<p>We use nested blocks when:</p>
+
+
+
+<ul class="wp-block-list">
+<li>We want reusable layout structures (e.g. columns, cards)</li>
+
+
+
+<li>We need to give users more flexibility while keeping them within a defined layout</li>
+
+
+
+<li>We want to group multiple blocks for styling or behavior</li>
+
+
+
+<li>We&#8217;re building container-like blocks (e.g. accordions, tabs, sliders)</li>
+</ul>
+
+
+
+<p>Nested blocks help balance flexibility with structure.</p>
+
+
+
+<h2 class="wp-block-heading">Creating a Block with Nested Blocks</h2>
+
+
+
+<h3 class="wp-block-heading">1. Register the Block</h3>
+
+
+
+<p>We can register our block in <code>block.json</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">{
+  "apiVersion": 3,
+  "name": "my-plugin/section",
+  "title": "Section",
+  "category": "layout",
+  "icon": "editor-insertmore",
+  "description": "A custom section block that allows nested blocks inside.",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js"
+}</pre>
+
+
+
+<h3 class="wp-block-heading">2. Block Edit Function with <code>InnerBlocks</code></h3>
+
+
+
+<p>In our <code>index.js</code> file, we’ll use the <code>InnerBlocks</code> component to allow nesting</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
+
+registerBlockType('myplugin/section', {
+    edit: () =&gt; {
+        return (
+            &lt;div className="my-section-block"&gt;
+                &lt;InnerBlocks /&gt;
+            &lt;/div&gt;
+        );
+    },
+    save: () =&gt; {
+        return (
+            &lt;div className="my-section-block"&gt;
+                &lt;InnerBlocks.Content /&gt;
+            &lt;/div&gt;
+        );
+    },
+});</pre>
+
+
+
+<h3 class="wp-block-heading">Restricting Allowed Blocks (Optional)</h3>
+
+
+
+<p>Sometimes we want to restrict which blocks can be inserted inside our container. Here&#8217;s how we do that using the <code>allowedBlocks</code> prop.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
+    allowedBlocks={['core/paragraph', 'core/image', 'core/heading']}
+/&gt;</pre>
+
+
+
+<p>We can also add placeholders in the templates for better UX.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
+    template={[
+        ['core/heading', { placeholder: 'Section Heading' }],
+        ['core/paragraph', { placeholder: 'Add your text here...' }]
+    ]}
+/&gt;</pre>
+
+
+
+<h3 class="wp-block-heading">Gotchas and Best Practices</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Avoid infinite nesting</strong> &#8211; prevent blocks from nesting themselves inside themselves.</li>
+
+
+
+<li><strong>Use <code>templateLock</code></strong> if we want to lock the layout (<code>'all'</code>, <code>'insert'</code>, <code>'false'</code>).</li>
+
+
+
+<li><strong>Use proper CSS scoping</strong> to avoid styling conflicts across blocks.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Conclusion</h3>
+
+
+
+<p>Nested blocks are one of the most powerful tools in our WordPress development toolkit. They allow us to create structured, flexible, and user-friendly experiences for content editors. Whether we’re building reusable components or complex layout systems, mastering <code>InnerBlocks</code> will elevate our block development game.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Block Attributes and Controls</title>
+		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
+					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[digital-marketing]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
+
+					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
+
+
+
+<p>In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. </p>
+
+
+
+<h2 class="wp-block-heading">What Are Block Attributes?</h2>
+
+
+
+<p>In simple terms, <strong>block attributes</strong> are the data fields that define the content or behavior of a block. Think of them as the settings or properties that make our block unique and functional.</p>
+
+
+
+<p>For example, a “Heading” block might have the following attributes:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>content</code>: The text of the heading.</li>
+
+
+
+<li><code>level</code>: The heading level (e.g., h2, h3).</li>
+
+
+
+<li><code>align</code>: Text alignment.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Defining Attributes in a Block</h3>
+
+
+
+<p>When we register a block using <code>registerBlockType</code>, we define the attributes in the configuration:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">registerBlockType('myplugin/alert-box', {
+  title: 'Alert Box',
+  icon: 'warning',
+  category: 'widgets',
+
+  attributes: {
+    message: {
+      type: 'string',
+      default: 'This is an alert box!',
+    },
+    backgroundColor: {
+      type: 'string',
+      default: '#ffcc00',
+    },
+  },
+
+  edit({ attributes, setAttributes }) {
+    const { message, backgroundColor } = attributes;
+
+    return (
+      &lt;div style={{ backgroundColor }}&gt;
+        &lt;RichText
+          tagName="p"
+          value={message}
+          onChange={(value) =&gt; setAttributes({ message: value })}
+        /&gt;
+      &lt;/div&gt;
+    );
+  },
+
+  save({ attributes }) {
+    return (
+      &lt;div style={{ backgroundColor: attributes.backgroundColor }}&gt;
+        &lt;RichText.Content tagName="p" value={attributes.message} /&gt;
+      &lt;/div&gt;
+    );
+  },
+});</pre>
+
+
+
+<h2 class="wp-block-heading">What Are Controls in the Block Editor?</h2>
+
+
+
+<p><strong>Controls</strong> are the UI elements we use to let users change a block’s attributes. These can include:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Text inputs</li>
+
+
+
+<li>Color pickers</li>
+
+
+
+<li>Toggle switches</li>
+
+
+
+<li>Dropdowns</li>
+</ul>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/05/image.png?w=271" alt="" class="wp-image-854" /></figure>
+
+
+
+<h3 class="wp-block-heading">Adding Inspector Controls</h3>
+
+
+
+<p>To let users modify attributes, we add UI controls using components from <code>@wordpress/components</code> inside the block&#8217;s <code>edit</code> function.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { PanelBody, ColorPalette } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+
+edit({ attributes, setAttributes }) {
+  const { backgroundColor } = attributes;
+
+  const colors = [
+    { name: 'Yellow', color: '#ffcc00' },
+    { name: 'Red', color: '#ff4444' },
+    { name: 'Green', color: '#44ff44' },
+  ];
+
+  return (
+    &lt;&gt;
+      &lt;InspectorControls&gt;
+        &lt;PanelBody title="Background Color" initialOpen={true}&gt;
+          &lt;ColorPalette
+            colors={colors}
+            value={backgroundColor}
+            onChange={(color) =&gt; setAttributes({ backgroundColor: color })}
+          /&gt;
+        &lt;/PanelBody&gt;
+      &lt;/InspectorControls&gt;
+
+      &lt;div style={{ backgroundColor }}&gt;
+        &lt;RichText
+          tagName="p"
+          value={attributes.message}
+          onChange={(value) =&gt; setAttributes({ message: value })}
+        /&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">How Attributes and Controls Work Together</h2>
+
+
+
+<p>The relationship is simple but powerful:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Attributes</strong> hold the data.</li>
+
+
+
+<li><strong>Controls</strong> let users change that data.</li>
+
+
+
+<li><strong>The block</strong> reflects those changes live in the editor and in the saved content.</li>
+</ul>
+
+
+
+<p>This structure allows us to build dynamic blocks that are reusable and fully customizable from the editor.</p>
+
+
+
+<h2 class="wp-block-heading">Summary</h2>
+
+
+
+<p>In Gutenberg block development, <strong>attributes</strong> are the data model, and <strong>controls</strong> are the interface. When we define them thoughtfully and use them properly, we can create flexible and intuitive content editing experiences that our users love.</p>
+
+
+
+<p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
+<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>WordPress Block Editor: Block Supports Explained</title>
+		<link>/wordpress-block-editor-block-supports-explained/</link>
+					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[blogging-tips]]></category>
+		<category><![CDATA[non-classe]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
+
+					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
+
+
+
+<p>In this blog, we&#8217;ll explore what <strong>Block Supports</strong> are, how to use them, and how can someone implement it in our own custom blocks.</p>
+
+
+
+<h3 class="wp-block-heading">What Are Block Supports?</h3>
+
+
+
+<p>Block Supports are built-in features provided by the WordPress Block Editor that we can <strong>opt into</strong> when developing our custom blocks. These supports allow us to <strong>enable additional UI controls</strong> — like typography, color, spacing, borders, and more — directly in the editor sidebar for our blocks.</p>
+
+
+
+<p>This means we don’t have to manually code UI panels or handle CSS ourselves for many of these features — WordPress does that for us when we enable supports.</p>
+
+
+
+<h3 class="wp-block-heading">Why Use Block Supports?</h3>
+
+
+
+<ul class="wp-block-list">
+<li>We save development time.</li>
+
+
+
+<li>We make our blocks consistent with core WordPress blocks.</li>
+
+
+
+<li>We give users a better editing experience with built-in controls.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">How to Use Block Supports in a Custom Block</h3>
+
+
+
+<p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// my-custom-block.js
+import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
+
+registerBlockType('myplugin/my-custom-block', {
+    title: __('My Custom Block', 'myplugin'),
+    icon: 'smiley',
+    category: 'design',
+    supports: {
+        color: {
+            text: true,
+            background: true,
+        },
+        spacing: {
+            margin: true,
+            padding: true,
+        },
+        typography: {
+            fontSize: true,
+            lineHeight: true,
+        },
+        border: true,
+        align: ['wide', 'full'],
+    },
+    edit({ attributes }) {
+        const blockProps = useBlockProps();
+
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    },
+    save({ attributes }) {
+        const blockProps = useBlockProps.save();
+        return (
+            &lt;div {...blockProps}&gt;
+                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
+            &lt;/div&gt;
+        );
+    }
+});</pre>
+
+
+
+<h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
+
+
+
+<p>Here’s a quick overview of common supports:</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Support</th><th>Description</th></tr></thead><tbody><tr><td><code>color</code></td><td>Enables text/background color controls</td></tr><tr><td><code>typography</code></td><td>Adds font size and line-height controls</td></tr><tr><td><code>spacing</code></td><td>Adds padding and margin settings</td></tr><tr><td><code>border</code></td><td>Allows setting border radius, width, etc</td></tr><tr><td><code>align</code></td><td>Enables block alignment (wide/full)</td></tr><tr><td><code>html</code></td><td>Allows editing the block’s HTML</td></tr></tbody></table></figure>
+
+
+
+<p><strong>CSS Variables</strong>: When using block supports, the editor outputs inline styles or CSS variables. Always check the frontend for consistent rendering.</p>
+
+
+
+<p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">// Disable color support for Paragraph block
+wp.hooks.addFilter(
+    'blocks.registerBlockType',
+    'myplugin/remove-paragraph-supports',
+    (settings, name) =&gt; {
+        if (name === 'core/paragraph') {
+            settings.supports = {
+                ...settings.supports,
+                color: false,
+            };
+        }
+        return settings;
+    }
+);</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Block supports are a powerful and underused part of the WordPress block development toolkit. By enabling them, we create more flexible, future-proof, and user-friendly blocks — without reinventing the wheel.</p>
+
+
+
+<p></p>
+<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React: Conditional Rendering, Lifting State Up, and Testing</title>
+		<link>/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
+					<comments>/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Fri, 25 Apr 2025 14:45:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=823</guid>
+
+					<description><![CDATA[<p>As developers diving into the world of React, we quickly realize that while building components is simple, building smart, efficient, and testable applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — Conditional Rendering, Lifting State Up, and Testing — that help us write better and more maintainable [&#8230;]</p>
+<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers diving into the world of React, we quickly realize that while building components is simple, building <strong>smart, efficient, and testable</strong> applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — <strong>Conditional Rendering</strong>, <strong>Lifting State Up</strong>, and <strong>Testing</strong> — that help us write better and more maintainable code.</p>
+
+
+
+<h2 class="wp-block-heading">Conditional Rendering in React</h2>
+
+
+
+<p>In React, <strong>conditional rendering</strong> lets us dynamically change what’s displayed on the screen based on certain conditions — just like <code>if</code> statements in JavaScript.</p>
+
+
+
+<p>Let’s say we have a component that shows different messages based on whether a user is logged in.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? &lt;h2&gt;Welcome back!&lt;/h2&gt; : &lt;h2&gt;Please sign in.&lt;/h2&gt;}
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<p>We can also use other methods, like <strong>early returns</strong>, <code>&amp;&amp;</code> short-circuiting, or even <strong>switch statements</strong>, depending on our use case.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Notification(props) {
+  return (
+    &lt;div&gt;
+      {props.show &amp;&amp; &lt;p&gt;You have new notifications!&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Lifting State Up</h2>
+
+
+
+<p>Sometimes, we need to share state between two sibling components. Instead of duplicating state, <strong>we &#8220;lift&#8221; the state up</strong> to their common parent component.</p>
+
+
+
+<p>Here’s a classic example: a temperature converter that synchronizes Celsius and Fahrenheit inputs.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1: Two child components</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function CelsiusInput({ temperature, onTemperatureChange }) {
+  return (
+    &lt;fieldset&gt;
+      &lt;legend&gt;Enter temperature in Celsius:&lt;/legend&gt;
+      &lt;input value={temperature} onChange={e =&gt; onTemperatureChange(e.target.value)} /&gt;
+    &lt;/fieldset&gt;
+  );
+}
+
+function FahrenheitInput({ temperature, onTemperatureChange }) {
+  return (
+    &lt;fieldset&gt;
+      &lt;legend&gt;Enter temperature in Fahrenheit:&lt;/legend&gt;
+      &lt;input value={temperature} onChange={e =&gt; onTemperatureChange(e.target.value)} /&gt;
+    &lt;/fieldset&gt;
+  );
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Step 2: Lift state up to the parent</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function toCelsius(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9;
+}
+
+function toFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
+function TemperatureCalculator() {
+  const [temperature, setTemperature] = useState('');
+  const [scale, setScale] = useState('c');
+
+  const handleCelsiusChange = (temp) =&gt; {
+    setScale('c');
+    setTemperature(temp);
+  };
+
+  const handleFahrenheitChange = (temp) =&gt; {
+    setScale('f');
+    setTemperature(temp);
+  };
+
+  const celsius = scale === 'f' ? toCelsius(temperature) : temperature;
+  const fahrenheit = scale === 'c' ? toFahrenheit(temperature) : temperature;
+
+  return (
+    &lt;div&gt;
+      &lt;CelsiusInput temperature={celsius} onTemperatureChange={handleCelsiusChange} /&gt;
+      &lt;FahrenheitInput temperature={fahrenheit} onTemperatureChange={handleFahrenheitChange} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default TemperatureCalculator;</pre>
+
+
+
+<h2 class="wp-block-heading">Testing in React</h2>
+
+
+
+<p>As our apps grow, testing becomes essential. We can use <strong>Jest</strong> (shipped with Create React App) and <strong>React Testing Library</strong> to write simple and effective tests.</p>
+
+
+
+<h3 class="wp-block-heading">Component</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">function Greeting({ isLoggedIn }) {
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? &lt;h2&gt;Welcome back!&lt;/h2&gt; : &lt;h2&gt;Please sign in.&lt;/h2&gt;}
+    &lt;/div&gt;
+  );
+}
+
+export default Greeting;</pre>
+
+
+
+<h3 class="wp-block-heading">Test File: <code>Greeting.test.js</code></h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import { render, screen } from '@testing-library/react';
+import Greeting from './Greeting';
+
+test('renders welcome message when logged in', () =&gt; {
+  render(&lt;Greeting isLoggedIn={true} /&gt;);
+  const message = screen.getByText(/welcome back/i);
+  expect(message).toBeInTheDocument();
+});
+
+test('renders sign-in message when not logged in', () =&gt; {
+  render(&lt;Greeting isLoggedIn={false} /&gt;);
+  const message = screen.getByText(/please sign in/i);
+  expect(message).toBeInTheDocument();
+});</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>React gives us powerful tools to build flexible, user-friendly interfaces. By understanding and using techniques like <strong>conditional rendering</strong>, <strong>lifting state up</strong>, and <strong>writing proper tests</strong>, we make our components not only smarter but also easier to debug and extend.</p>
+
+
+
+<p></p>
+<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Basic React Course: Components, States, and Component Lifecycle</title>
+		<link>/basic-react-course-components-states-and-component-lifecycle/</link>
+					<comments>/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 22 Apr 2025 14:27:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=807</guid>
+
+					<description><![CDATA[<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic. In this [&#8230;]</p>
+<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic.</p>
+
+
+
+<p>In this post, we’re taking a closer look at a few foundational React concepts that often spark debate and learning moments: the difference between <strong>Functional and Class Components</strong>, how <strong>state</strong> plays a central role in interactivity, and what the <strong>component lifecycle</strong> means in a modern React application.</p>
+
+
+
+<h2 class="wp-block-heading">What is React?</h2>
+
+
+
+<p>React is a <strong>JavaScript library for building user interfaces</strong>, created by Facebook. It allows us to build reusable UI components and handle dynamic content efficiently.</p>
+
+
+
+<p>With the release of React 16.8, we gained <strong>Hooks</strong>, which brought major changes to how we write components &#8211; especially with Functional Components.</p>
+
+
+
+<h2 class="wp-block-heading">Functional vs Class Components</h2>
+
+
+
+<p>React supports two main ways to create components:</p>
+
+
+
+<h3 class="wp-block-heading">1. Class Components</h3>
+
+
+
+<p>These are ES6 classes that extend from <code>React.Component</code> and can hold <strong>state</strong> and <strong>lifecycle methods</strong>.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { Component } from 'react';
+
+class Welcome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'Hello from Class Component!'
+    };
+  }
+
+  render() {
+    return &lt;h1&gt;{this.state.message}&lt;/h1&gt;;
+  }
+}
+
+export default Welcome;</pre>
+
+
+
+<h3 class="wp-block-heading">2. Functional Components</h3>
+
+
+
+<p>Originally, these were stateless functions. But now, with <strong>React Hooks</strong>, they can manage state and side effects.</p>
+
+
+
+<p><strong>Functional Components</strong> are preferred for most cases due to their simplicity, better readability, and compatibility with Hooks.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Welcome() {
+  const [message, setMessage] = useState('Hello from Functional Component!');
+
+  return &lt;h1&gt;{message}&lt;/h1&gt;;
+}
+
+export default Welcome;</pre>
+
+
+
+<h2 class="wp-block-heading">Understanding State in React</h2>
+
+
+
+<p>State lets us create components that are dynamic and interactive. It’s like a component’s personal memory.</p>
+
+
+
+<h3 class="wp-block-heading">In a Class Component:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">this.state = {
+  count: 0
+};
+
+this.setState({ count: this.state.count + 1 });</pre>
+
+
+
+<h3 class="wp-block-heading">In a Functional Component using <code>useState</code>:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const [count, setCount] = useState(0);
+
+setCount(count + 1);</pre>
+
+
+
+<h2 class="wp-block-heading">Component Lifecycle</h2>
+
+
+
+<p>Lifecycle methods are only available in <strong>Class Components</strong>. They allow us to hook into different phases of a component&#8217;s life.</p>
+
+
+
+<h3 class="wp-block-heading">Lifecycle Phases:</h3>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Mounting</strong> – Component is being created and inserted.</li>
+
+
+
+<li><strong>Updating</strong> – Component is re-rendering due to state or props changes.</li>
+
+
+
+<li><strong>Unmounting</strong> – Component is being removed.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">Common Lifecycle Methods:</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">componentDidMount() {
+  // Called after the component is mounted
+}
+
+componentDidUpdate(prevProps, prevState) {
+  // Called after updates
+}
+
+componentWillUnmount() {
+  // Called just before the component is removed
+}</pre>
+
+
+
+<h3 class="wp-block-heading">Functional Components: useEffect Hook</h3>
+
+
+
+<p>React Hooks give us <code>useEffect</code> to replicate lifecycle behavior.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useEffect } from 'react';
+
+function Example() {
+  useEffect(() =&gt; {
+    console.log('Component mounted');
+
+    return () =&gt; {
+      console.log('Component will unmount');
+    };
+  }, []);
+
+  return &lt;div&gt;Lifecycle in Functional Component&lt;/div&gt;;
+}</pre>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>As we build modern applications with React, understanding the fundamentals isn’t just helpful—it’s essential. Knowing the difference between Functional and Class Components gives us historical context and practical insight into how React has matured. More importantly, grasping how <strong>state</strong> works and how <strong>component lifecycle events</strong> behave empowers us to write more predictable, efficient, and maintainable code.</p>
+
+
+
+<p></p>
+<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Understanding React Components and the Virtual DOM</title>
+		<link>/understanding-react-components-and-the-virtual-dom/</link>
+					<comments>/understanding-react-components-and-the-virtual-dom/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 21 Apr 2025 14:31:51 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[react]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[web-development]]></category>
+		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=802</guid>
+
+					<description><![CDATA[<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: components and the Virtual DOM. In this blog, we’ll break down what React components are, how [&#8230;]</p>
+<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: <strong>components</strong> and the <strong>Virtual DOM</strong>.</p>
+
+
+
+<p>In this blog, we’ll break down what React components are, how the Virtual DOM works, and why this combination makes React a go-to choice for modern frontend development.</p>
+
+
+
+<h2 class="wp-block-heading">What Are React Components?</h2>
+
+
+
+<p>In React, <strong>components</strong> are the building blocks of our user interfaces. Instead of thinking in terms of HTML pages, we build <strong>small, reusable pieces of code</strong> that describe a part of the UI. These pieces, or components, can be <strong>functional</strong> or <strong>class-based</strong>, and they help us write clean and modular code.</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React from 'react';
+
+function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+export default Welcome;</pre>
+
+
+
+<p>We can use this like:</p>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">&lt;Welcome name="Alice" /&gt;</pre>
+
+
+
+<h2 class="wp-block-heading">Types of Components</h2>
+
+
+
+<p>React offers two main ways to define components:</p>
+
+
+
+<h3 class="wp-block-heading">1. Functional Components (Modern and Preferred)</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">const Button = ({ label }) =&gt; {
+  return &lt;button&gt;{label}&lt;/button&gt;;
+};</pre>
+
+
+
+<h3 class="wp-block-heading">2. Class Components (Older Syntax)</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { Component } from 'react';
+
+class Button extends Component {
+  render() {
+    return &lt;button&gt;{this.props.label}&lt;/button&gt;;
+  }
+}</pre>
+
+
+
+<h2 class="wp-block-heading">What is the Virtual DOM?</h2>
+
+
+
+<p>Let’s face it: working directly with the real DOM is slow. Every time a change happens in the UI, updating the DOM manually can lead to performance bottlenecks. This is where React’s <strong>Virtual DOM</strong> steps in.</p>
+
+
+
+<h3 class="wp-block-heading">How It Works:</h3>
+
+
+
+<ol class="wp-block-list">
+<li>When we write our components, React creates a <strong>Virtual DOM</strong>, which is just a lightweight JavaScript representation of the actual DOM.</li>
+
+
+
+<li>When state or props change, React <strong>re-renders the Virtual DOM</strong>.</li>
+
+
+
+<li>React then uses a process called <strong>reconciliation</strong> to <strong>diff</strong> the new Virtual DOM with the previous one.</li>
+
+
+
+<li>It calculates the minimal number of changes needed to update the real DOM—and applies them efficiently.</li>
+</ol>
+
+
+
+<p>This entire process is fast because JavaScript operations (like comparing two objects) are much quicker than direct DOM manipulation.</p>
+
+
+
+<p>The Virtual DOM is what makes React apps feel snappy and responsive. By avoiding unnecessary DOM updates, React optimizes rendering and keeps performance in check, even in complex applications.</p>
+
+
+
+<p>In simple terms, it’s like having a smart assistant who figures out the smallest, most efficient way to tidy up a messy room—without moving everything around unnecessarily.</p>
+
+
+
+<h3 class="wp-block-heading">Putting It All Together</h3>
+
+
+
+<pre class="wp-block-syntaxhighlighter-code">import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times.&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Click Me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+
+
+
+<p>Every time we click the button:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The state (<code>count</code>) updates</li>
+
+
+
+<li>The Virtual DOM gets re-rendered</li>
+
+
+
+<li>React figures out that only the text in <code>&lt;p&gt;</code> has changed</li>
+
+
+
+<li>It updates just that part of the real DOM</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Final Thoughts</h2>
+
+
+
+<p>By embracing <strong>components</strong> and relying on the <strong>Virtual DOM</strong>, React gives us a structured, efficient way to build UIs. As our apps grow, these concepts become even more valuable, helping us keep things maintainable and fast.</p>
+<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

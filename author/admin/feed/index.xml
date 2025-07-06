@@ -8,7 +8,7 @@
 	>
 
 <channel>
-	<title>admin &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<atom:link href="/author/admin/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description></description>
@@ -22,7 +22,7 @@
 
 <image>
 	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>admin &#8211; Lakshyajeet&#039;s Blog</title>
+	<title>Front Page - Lakshyajeet&#039;s Blog</title>
 	<link>/</link>
 	<width>32</width>
 	<height>32</height>
