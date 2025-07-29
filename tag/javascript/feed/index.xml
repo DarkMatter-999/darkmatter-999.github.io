@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/javascript/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/javascript/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
-		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
-					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
 					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
@@ -184,18 +184,18 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 
 
 <p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Dynamic and Static Blocks</title>
-		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
-					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
@@ -208,7 +208,7 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
 
 					<description><![CDATA[<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
@@ -463,18 +463,18 @@ function myplugin_render_latest_post() {
 
 
 <p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Nested Blocks</title>
-		<link>/wordpress-block-editor-nested-blocks/</link>
-					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
@@ -487,7 +487,7 @@ function myplugin_render_latest_post() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
@@ -647,18 +647,18 @@ registerBlockType('myplugin/section', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Attributes and Controls</title>
-		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
-					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
@@ -671,7 +671,7 @@ registerBlockType('myplugin/section', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
 
 					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
@@ -867,18 +867,18 @@ edit({ attributes, setAttributes }) {
 
 
 <p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Filters Explained</title>
-		<link>/wordpress-block-editor-block-filters-explained/</link>
-					<comments>/wordpress-block-editor-block-filters-explained/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
@@ -891,7 +891,7 @@ edit({ attributes, setAttributes }) {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
@@ -1099,18 +1099,18 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React: Conditional Rendering, Lifting State Up, and Testing</title>
-		<link>/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
-					<comments>/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 25 Apr 2025 14:45:00 +0000</pubDate>
@@ -1123,7 +1123,7 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=823</guid>
 
 					<description><![CDATA[<p>As developers diving into the world of React, we quickly realize that while building components is simple, building smart, efficient, and testable applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — Conditional Rendering, Lifting State Up, and Testing — that help us write better and more maintainable [&#8230;]</p>
-<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers diving into the world of React, we quickly realize that while building components is simple, building <strong>smart, efficient, and testable</strong> applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — <strong>Conditional Rendering</strong>, <strong>Lifting State Up</strong>, and <strong>Testing</strong> — that help us write better and more maintainable code.</p>
@@ -1300,18 +1300,18 @@ test('renders sign-in message when not logged in', () =&gt; {
 
 
 <p></p>
-<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Understanding Basic React Hooks: A Developer&#8217;s Guide</title>
-		<link>/understanding-basic-react-hooks-a-developers-guide/</link>
-					<comments>/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/</link>
+					<comments>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 24 Apr 2025 13:39:33 +0000</pubDate>
@@ -1324,7 +1324,7 @@ test('renders sign-in message when not logged in', () =&gt; {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=817</guid>
 
 					<description><![CDATA[<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: useState, useEffect, useCallback, useMemo, useReducer, [&#8230;]</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: <code>useState</code>, <code>useEffect</code>, <code>useCallback</code>, <code>useMemo</code>, <code>useReducer</code>, <code>useTransition</code>, and <code>useLayoutEffect</code>.</p>
@@ -1544,18 +1544,18 @@ function Box() {
 
 
 <p>Hooks have changed the way we write React components. They allow us to write more concise, readable code while unlocking powerful features. As we continue to build rich user interfaces, mastering these basic hooks will give us the tools we need to work efficiently and effectively in modern React apps.</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React Course: Hooks — useState and useEffect</title>
-		<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
-					<comments>/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 23 Apr 2025 14:10:24 +0000</pubDate>
@@ -1568,7 +1568,7 @@ function Box() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=813</guid>
 
 					<description><![CDATA[<p>React has completely changed the way we build user interfaces, and one of its most powerful features is Hooks. In this post, we’re diving into two of the most essential React Hooks: useState and useEffect. If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for [&#8230;]</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>React has completely changed the way we build user interfaces, and one of its most powerful features is <strong>Hooks</strong>. In this post, we’re diving into two of the most essential React Hooks: <code>useState</code> and <code>useEffect</code>.</p>
@@ -1699,18 +1699,18 @@ function Timer() {
 
 
 <p>In the next post, we’ll explore more advanced hooks like <code>useContext</code>, <code>useReducer</code>, and custom hooks that let us extract logic into reusable functions.</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React Course: Components, States, and Component Lifecycle</title>
-		<link>/basic-react-course-components-states-and-component-lifecycle/</link>
-					<comments>/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 22 Apr 2025 14:27:05 +0000</pubDate>
@@ -1723,7 +1723,7 @@ function Timer() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=807</guid>
 
 					<description><![CDATA[<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic. In this [&#8230;]</p>
-<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic.</p>
@@ -1912,18 +1912,18 @@ function Example() {
 
 
 <p></p>
-<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Understanding React Components and the Virtual DOM</title>
-		<link>/understanding-react-components-and-the-virtual-dom/</link>
-					<comments>/understanding-react-components-and-the-virtual-dom/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/</link>
+					<comments>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 21 Apr 2025 14:31:51 +0000</pubDate>
@@ -1936,7 +1936,7 @@ function Example() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=802</guid>
 
 					<description><![CDATA[<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: components and the Virtual DOM. In this blog, we’ll break down what React components are, how [&#8230;]</p>
-<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: <strong>components</strong> and the <strong>Virtual DOM</strong>.</p>
@@ -2093,10 +2093,10 @@ function Counter() {
 
 
 <p>By embracing <strong>components</strong> and relying on the <strong>Virtual DOM</strong>, React gives us a structured, efficient way to build UIs. As our apps grow, these concepts become even more valuable, helping us keep things maintainable and fast.</p>
-<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

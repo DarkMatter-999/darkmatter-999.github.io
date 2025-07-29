@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/ai/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/ai/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Editor: Nested Blocks</title>
-		<link>/wordpress-block-editor-nested-blocks/</link>
-					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
@@ -203,18 +203,18 @@ registerBlockType('myplugin/section', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: The Customizer API</title>
-		<link>/advanced-theme-development-in-wordpress-the-customizer-api/</link>
-					<comments>/advanced-theme-development-in-wordpress-the-customizer-api/#comments</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/#comments</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 04 Apr 2025 14:43:07 +0000</pubDate>
@@ -232,7 +232,7 @@ registerBlockType('myplugin/section', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=730</guid>
 
 					<description><![CDATA[<p>The Customizer API provides site owners with a simple and intuitive interface to modify their theme settings in real-time. With the ability to customize a variety of settings—from colors and logos to layout options and typography—it’s no wonder that the Customizer API is a go-to feature for most advanced theme development projects. In this blog, [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>The Customizer API provides site owners with a simple and intuitive interface to modify their theme settings in real-time. With the ability to customize a variety of settings—from colors and logos to layout options and typography—it’s no wonder that the Customizer API is a go-to feature for most advanced theme development projects.</p>
@@ -438,10 +438,10 @@ add_action( 'customize_register', 'my_theme_customize_register' );</pre>
 
 
 <p>The WordPress Customizer is an incredibly powerful tool for theme developers. With just a few lines of code, we’ve added a section for uploading a logo, but this approach can be extended for many other types of customizations—colors, fonts, text fields, and more.</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-the-customizer-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/feed/</wfw:commentRss>
 			<slash:comments>1</slash:comments>
 		
 		

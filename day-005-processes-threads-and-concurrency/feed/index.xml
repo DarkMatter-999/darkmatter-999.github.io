@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: Day 005: Processes, Threads and Concurrency	</title>
-	<atom:link href="/day-005-processes-threads-and-concurrency/feed/" rel="self" type="application/rss+xml" />
-	<link>/day-005-processes-threads-and-concurrency/</link>
+	<atom:link href="https://darkmatter-999.github.io/day-005-processes-threads-and-concurrency/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/day-005-processes-threads-and-concurrency/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<sy:updatePeriod>

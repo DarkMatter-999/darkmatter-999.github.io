@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/react/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/react/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Editor: Block Filters Explained</title>
-		<link>/wordpress-block-editor-block-filters-explained/</link>
-					<comments>/wordpress-block-editor-block-filters-explained/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
@@ -251,18 +251,18 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React: Conditional Rendering, Lifting State Up, and Testing</title>
-		<link>/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
-					<comments>/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 25 Apr 2025 14:45:00 +0000</pubDate>
@@ -275,7 +275,7 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=823</guid>
 
 					<description><![CDATA[<p>As developers diving into the world of React, we quickly realize that while building components is simple, building smart, efficient, and testable applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — Conditional Rendering, Lifting State Up, and Testing — that help us write better and more maintainable [&#8230;]</p>
-<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers diving into the world of React, we quickly realize that while building components is simple, building <strong>smart, efficient, and testable</strong> applications takes a deeper understanding. In this blog post, we’ll walk through some fundamental React concepts — <strong>Conditional Rendering</strong>, <strong>Lifting State Up</strong>, and <strong>Testing</strong> — that help us write better and more maintainable code.</p>
@@ -452,18 +452,18 @@ test('renders sign-in message when not logged in', () =&gt; {
 
 
 <p></p>
-<p>The post <a href="/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/">Basic React: Conditional Rendering, Lifting State Up, and Testing</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Understanding Basic React Hooks: A Developer&#8217;s Guide</title>
-		<link>/understanding-basic-react-hooks-a-developers-guide/</link>
-					<comments>/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/</link>
+					<comments>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 24 Apr 2025 13:39:33 +0000</pubDate>
@@ -476,7 +476,7 @@ test('renders sign-in message when not logged in', () =&gt; {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=817</guid>
 
 					<description><![CDATA[<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: useState, useEffect, useCallback, useMemo, useReducer, [&#8230;]</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: <code>useState</code>, <code>useEffect</code>, <code>useCallback</code>, <code>useMemo</code>, <code>useReducer</code>, <code>useTransition</code>, and <code>useLayoutEffect</code>.</p>
@@ -696,18 +696,18 @@ function Box() {
 
 
 <p>Hooks have changed the way we write React components. They allow us to write more concise, readable code while unlocking powerful features. As we continue to build rich user interfaces, mastering these basic hooks will give us the tools we need to work efficiently and effectively in modern React apps.</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React Course: Hooks — useState and useEffect</title>
-		<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
-					<comments>/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 23 Apr 2025 14:10:24 +0000</pubDate>
@@ -720,7 +720,7 @@ function Box() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=813</guid>
 
 					<description><![CDATA[<p>React has completely changed the way we build user interfaces, and one of its most powerful features is Hooks. In this post, we’re diving into two of the most essential React Hooks: useState and useEffect. If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for [&#8230;]</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>React has completely changed the way we build user interfaces, and one of its most powerful features is <strong>Hooks</strong>. In this post, we’re diving into two of the most essential React Hooks: <code>useState</code> and <code>useEffect</code>.</p>
@@ -851,18 +851,18 @@ function Timer() {
 
 
 <p>In the next post, we’ll explore more advanced hooks like <code>useContext</code>, <code>useReducer</code>, and custom hooks that let us extract logic into reusable functions.</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React Course: Components, States, and Component Lifecycle</title>
-		<link>/basic-react-course-components-states-and-component-lifecycle/</link>
-					<comments>/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 22 Apr 2025 14:27:05 +0000</pubDate>
@@ -875,7 +875,7 @@ function Timer() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=807</guid>
 
 					<description><![CDATA[<p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic. In this [&#8230;]</p>
-<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we continue evolving our front-end projects and building increasingly dynamic user interfaces, React remains one of the most essential tools in our development toolkit. Its component-based architecture gives us the flexibility to design reusable, scalable code, while its modern features push us to think differently about how we structure and manage logic.</p>
@@ -1064,18 +1064,18 @@ function Example() {
 
 
 <p></p>
-<p>The post <a href="/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/">Basic React Course: Components, States, and Component Lifecycle</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Understanding React Components and the Virtual DOM</title>
-		<link>/understanding-react-components-and-the-virtual-dom/</link>
-					<comments>/understanding-react-components-and-the-virtual-dom/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/</link>
+					<comments>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 21 Apr 2025 14:31:51 +0000</pubDate>
@@ -1088,7 +1088,7 @@ function Example() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=802</guid>
 
 					<description><![CDATA[<p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: components and the Virtual DOM. In this blog, we’ll break down what React components are, how [&#8230;]</p>
-<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we aim to build fast, scalable, and maintainable web applications. Over time, we’ve tried various frameworks and libraries, but React has truly changed the way we structure our UI logic—thanks to two of its most powerful features: <strong>components</strong> and the <strong>Virtual DOM</strong>.</p>
@@ -1245,18 +1245,18 @@ function Counter() {
 
 
 <p>By embracing <strong>components</strong> and relying on the <strong>Virtual DOM</strong>, React gives us a structured, efficient way to build UIs. As our apps grow, these concepts become even more valuable, helping us keep things maintainable and fast.</p>
-<p>The post <a href="/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/">Understanding React Components and the Virtual DOM</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Introduction to React and JSX</title>
-		<link>/introduction-to-react-and-jsx/</link>
-					<comments>/introduction-to-react-and-jsx/#respond</comments>
+		<link>https://darkmatter-999.github.io/introduction-to-react-and-jsx/</link>
+					<comments>https://darkmatter-999.github.io/introduction-to-react-and-jsx/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 18 Apr 2025 15:01:26 +0000</pubDate>
@@ -1269,7 +1269,7 @@ function Counter() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=797</guid>
 
 					<description><![CDATA[<p>In today’s world of web development, building interactive and dynamic user interfaces (UI) is more important than ever. One of the most popular and powerful tools for achieving this is React. As developers, we are always looking for ways to make our applications faster, more efficient, and scalable. React helps us do exactly that. In [&#8230;]</p>
-<p>The post <a href="/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>In today’s world of web development, building interactive and dynamic user interfaces (UI) is more important than ever. One of the most popular and powerful tools for achieving this is <strong>React</strong>. As developers, we are always looking for ways to make our applications faster, more efficient, and scalable. React helps us do exactly that.</p>
@@ -1422,18 +1422,18 @@ export default ButtonClick;</pre>
 
 
 <p>By combining the power of React and the readability of JSX, we can build dynamic, efficient, and maintainable web applications. React allows us to create reusable components, manage state and updates efficiently, and produce high-performance UIs. JSX, on the other hand, simplifies the syntax of our components, making our code cleaner and more readable.</p>
-<p>The post <a href="/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/introduction-to-react-and-jsx/">Introduction to React and JSX</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/introduction-to-react-and-jsx/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/introduction-to-react-and-jsx/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: Asset Building</title>
-		<link>/advanced-theme-development-in-wordpress-asset-building/</link>
-					<comments>/advanced-theme-development-in-wordpress-asset-building/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 11 Apr 2025 16:29:13 +0000</pubDate>
@@ -1446,7 +1446,7 @@ export default ButtonClick;</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=763</guid>
 
 					<description><![CDATA[<p>As modern web developers, we’re always striving to create WordPress themes that are not only visually stunning but also performant and scalable. One of the key aspects of advanced theme development lies in how we manage and build our front-end assets—JavaScript, CSS, images, fonts, and more. That’s where tools like Webpack and Babel come into [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As modern web developers, we’re always striving to create WordPress themes that are not only visually stunning but also performant and scalable. One of the key aspects of advanced theme development lies in how we manage and build our front-end assets—JavaScript, CSS, images, fonts, and more. That’s where tools like <strong>Webpack</strong> and <strong>Babel</strong> come into play.</p>
@@ -1692,10 +1692,10 @@ add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
 
 
 <p>Whether we are building custom themes for clients or working on a personal project, this setup ensures our WordPress development is future-proof.</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/">Advanced Theme Development in WordPress: Asset Building</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-asset-building/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

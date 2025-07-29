@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/non-classe/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/non-classe/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:57 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Editor: Block Supports Explained</title>
-		<link>/wordpress-block-editor-block-supports-explained/</link>
-					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
 
 					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
@@ -184,10 +184,10 @@ wp.hooks.addFilter(
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

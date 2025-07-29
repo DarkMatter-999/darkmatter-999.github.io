@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/sitecore/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/sitecore/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</title>
-		<link>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</link>
-					<comments>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</link>
+					<comments>https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 17 Apr 2025 15:08:38 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=790</guid>
 
 					<description><![CDATA[<p>As developers and content creators, we’re always looking for better ways to build fast, flexible, and scalable websites. One approach that’s been getting a lot of attention lately is the decoupled WordPress architecture. In a traditional WordPress setup, the front end (what visitors see) and the back end (where content is created) are tightly connected. [&#8230;]</p>
-<p>The post <a href="/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers and content creators, we’re always looking for better ways to build fast, flexible, and scalable websites. One approach that’s been getting a lot of attention lately is the <strong>decoupled WordPress architecture</strong>.</p>
@@ -155,10 +155,10 @@
 
 
 <p>At the end of the day, it’s all about choosing the right architecture for our needs.</p>
-<p>The post <a href="/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/">Understanding WordPress Decoupled Architecture: Headless vs Decoupled WordPress</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

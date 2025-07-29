@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://darkmatter-999.github.io/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>/post-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/post-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/page-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/page-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:03:40+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/dm_project-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/dm_project-sitemap.xml</loc>
 		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/category-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/category-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/post_tag-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/post_tag-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/author-sitemap.xml</loc>
+		<loc>https://darkmatter-999.github.io/author-sitemap.xml</loc>
 		<lastmod>2025-07-06T16:10:09+00:00</lastmod>
 	</sitemap>
 </sitemapindex>

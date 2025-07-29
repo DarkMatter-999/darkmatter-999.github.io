@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/plugin-development/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/plugin-development/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WP-Cron: A Comprehensive Guide</title>
-		<link>/wp-cron-a-comprehensive-guide/</link>
-					<comments>/wp-cron-a-comprehensive-guide/#respond</comments>
+		<link>https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/</link>
+					<comments>https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 17 Mar 2025 14:44:07 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=623</guid>
 
 					<description><![CDATA[<p>In WordPress, the wp-cron plays a crucial role in automating tasks that need to occur periodically. From publishing scheduled posts to clearing spam comments or checking for updates wp-cron makes it possible for WordPress to handle routine tasks without manual intervention. What is wp-cron? To put it simply, wp-cron is cron for WordPress. Cron jobs [&#8230;]</p>
-<p>The post <a href="/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>In WordPress, the <code>wp-cron</code> plays a crucial role in automating tasks that need to occur periodically. From publishing scheduled posts to clearing spam comments or checking for updates wp-cron makes it possible for WordPress to handle routine tasks without manual intervention.</p>
@@ -153,18 +153,18 @@ add_action('init', 'schedule_cron_job');</pre>
 
 
 <p></p>
-<p>The post <a href="/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/">WP-Cron: A Comprehensive Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wp-cron-a-comprehensive-guide/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Working with Transient API</title>
-		<link>/working-with-transient-api/</link>
-					<comments>/working-with-transient-api/#respond</comments>
+		<link>https://darkmatter-999.github.io/working-with-transient-api/</link>
+					<comments>https://darkmatter-999.github.io/working-with-transient-api/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 10 Mar 2025 14:33:27 +0000</pubDate>
@@ -177,7 +177,7 @@ add_action('init', 'schedule_cron_job');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=572</guid>
 
 					<description><![CDATA[<p>As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website. Best Practices for Using Transient API Appropriate Expiration Time Transients are intended for temporary storage [&#8230;]</p>
-<p>The post <a href="/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we have seen previously seen what the Transient API is in WordPress, this blog explores the best practices and other things to keep in mind when using the Transient API to ensure efficiency, integrity and speed of our website.</p>
@@ -306,18 +306,18 @@ add_action('save_post_my_event', function () {
 
 
 <p></p>
-<p>The post <a href="/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-transient-api/">Working with Transient API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/working-with-transient-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/working-with-transient-api/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress REST API Internals</title>
-		<link>/wordpress-rest-api-internals/</link>
-					<comments>/wordpress-rest-api-internals/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-rest-api-internals/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-rest-api-internals/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 03 Mar 2025 16:00:02 +0000</pubDate>
@@ -330,7 +330,7 @@ add_action('save_post_my_event', function () {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=536</guid>
 
 					<description><![CDATA[<p>When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or simply extending the functionality of the site. This blog explores the internals how this works. The Request Flow The process begins as soon as a request is made to the WordPress site’s REST API [&#8230;]</p>
-<p>The post <a href="/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When working with WordPress, REST API is one of the most powerful feature, whether building custom plugins, integrating external applications or  simply extending the functionality of the site. This blog explores the internals how this works.</p>
@@ -434,18 +434,18 @@ add_action('save_post_my_event', function () {
 
 
 <p></p>
-<p>The post <a href="/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-rest-api-internals/">WordPress REST API Internals</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-rest-api-internals/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-rest-api-internals/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WP-CLI Custom Commands</title>
-		<link>/wp-cli-custom-commands/</link>
-					<comments>/wp-cli-custom-commands/#respond</comments>
+		<link>https://darkmatter-999.github.io/wp-cli-custom-commands/</link>
+					<comments>https://darkmatter-999.github.io/wp-cli-custom-commands/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 28 Feb 2025 15:04:02 +0000</pubDate>
@@ -458,7 +458,7 @@ add_action('save_post_my_event', function () {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=524</guid>
 
 					<description><![CDATA[<p>As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow. Setting Up Our Custom Commands [&#8230;]</p>
-<p>The post <a href="/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we have seen previously, WP-CLI offers a great way of interacting with WordPress through the command line. However, the true potential of WP-CLI is unlocked when we create custom commands for our specific needs. This blog explores how to create and utilize custom WP-CLI commands to streamline our workflow.</p>
@@ -607,18 +607,18 @@ add_action('save_post_my_event', function () {
 
 
 <p>Custom WP-CLI commands offer a powerful way to extend the functionality of WP-CLI. By creating custom commands we can streamline our workflow, automate repetitive tasks, and enhance our productivity. Whether it&#8217;s greeting users, fetching blog posts, or exporting custom post types, the possibilities with custom commands are endless.</p>
-<p>The post <a href="/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wp-cli-custom-commands/">WP-CLI Custom Commands</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wp-cli-custom-commands/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wp-cli-custom-commands/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Working with the WP_Rest_Controller Class</title>
-		<link>/working-with-the-wp_rest_controller-class/</link>
-					<comments>/working-with-the-wp_rest_controller-class/#respond</comments>
+		<link>https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/</link>
+					<comments>https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 27 Feb 2025 14:41:53 +0000</pubDate>
@@ -631,7 +631,7 @@ add_action('save_post_my_event', function () {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=507</guid>
 
 					<description><![CDATA[<p>As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The WP_REST_Controller class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints. What is WP_REST_Controller? The WP_REST_Controller class is an abstract class which provides basic structure [&#8230;]</p>
-<p>The post <a href="/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we have seen previosly the REST API is an essential tool for creating dynamic and interactive web applications using WordPress. The <code class="">WP_REST_Controller</code> class is a fundamental part of this API, providing a structured way to handle RESTful routes and endpoints.</p>
@@ -896,18 +896,18 @@ class Custom_REST_Controller extends WP_REST_Controller {
 
 
 <p>The <code>WP_Rest_Controller</code> class provides a solid foundation for building custom REST API endpoints in WordPress. By extending this class, we can define custom routes and handle CRUD operations.</p>
-<p>The post <a href="/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/">Working with the WP_Rest_Controller Class</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/working-with-the-wp_rest_controller-class/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress REST API: Creating and Retrieving Posts</title>
-		<link>/wordpress-rest-api-creating-and-retrieving-posts/</link>
-					<comments>/wordpress-rest-api-creating-and-retrieving-posts/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 25 Feb 2025 14:56:05 +0000</pubDate>
@@ -920,7 +920,7 @@ class Custom_REST_Controller extends WP_REST_Controller {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=480</guid>
 
 					<description><![CDATA[<p>WordPress provides a robust and interactive way to extend its core functionality by providing the REST API. It enables us to perform create, update, read and delete operations on posts and custom posts types. Registering Custom Routes Before we start to create and read posts first we need to register routes to access this functionality.In [&#8230;]</p>
-<p>The post <a href="/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>WordPress provides a robust and interactive way to extend its core functionality by providing the REST API. It enables us to perform create, update, read and delete operations on posts and custom posts types.</p>
@@ -1136,18 +1136,18 @@ add_action( 'rest_api_init', 'my_create_event_post_route' );</pre>
 
 
 <p>Using the WordPress REST API to create and retrieve posts is a powerful way to interact with our WordPress site programmatically using the widely used JSON format. By incorporating these techniques we can build highly dynamic and responsive WordPress applications.</p>
-<p>The post <a href="/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/">WordPress REST API: Creating and Retrieving Posts</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-rest-api-creating-and-retrieving-posts/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Working with WordPress REST API</title>
-		<link>/working-with-wordpress-rest-api/</link>
-					<comments>/working-with-wordpress-rest-api/#respond</comments>
+		<link>https://darkmatter-999.github.io/working-with-wordpress-rest-api/</link>
+					<comments>https://darkmatter-999.github.io/working-with-wordpress-rest-api/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 24 Feb 2025 16:05:21 +0000</pubDate>
@@ -1160,7 +1160,7 @@ add_action( 'rest_api_init', 'my_create_event_post_route' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=472</guid>
 
 					<description><![CDATA[<p>When building WordPress applications, one of the most powerful tools that we have at our disposal is the REST API. REST APIs (Representational State Transfer API) provide a structured way to interact with a WordPress site enabling us to retrieve, create, update, and delete data remotely. What is REST API? A REST API is a [&#8230;]</p>
-<p>The post <a href="/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When building WordPress applications, one of the most powerful tools that we have at our disposal is the <strong>REST API</strong>. REST APIs (Representational State Transfer API) provide a structured way to interact with a WordPress site enabling us to retrieve, create, update, and delete data remotely.</p>
@@ -1307,18 +1307,18 @@ function my_event_posts( $request ) {
 
 
 <p>The WordPress REST API is an invaluable tool for extending WordPress. We can create powerful and flexible endpoints which allows external applications to interact with WordPress data. The REST API provides a structured and standardized way to do so.</p>
-<p>The post <a href="/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/working-with-wordpress-rest-api/">Working with WordPress REST API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/working-with-wordpress-rest-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/working-with-wordpress-rest-api/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Plugin Development Basics: VII</title>
-		<link>/wordpress-plugin-development-basics-vii/</link>
-					<comments>/wordpress-plugin-development-basics-vii/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 20 Feb 2025 15:20:50 +0000</pubDate>
@@ -1331,7 +1331,7 @@ function my_event_posts( $request ) {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=444</guid>
 
 					<description><![CDATA[<p>Like everything else in WordPress even the settings page is very customizable, custom settings and options can be added by a plugin. Settings menu allows us to provide a custom interface where users can input and save various configuration options from the WordPress admin dashboard. Adding the Settings Menu A top level menu can be [&#8230;]</p>
-<p>The post <a href="/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>Like everything else in WordPress even the settings page is very customizable, custom settings and options can be added by a plugin. Settings menu allows us to provide a custom interface where users can input and save various configuration options from the WordPress admin dashboard.</p>
@@ -1490,18 +1490,18 @@ function my_setting_option_cb() {
 
 
 <p>We have successfully created a basic Settings page for our WordPress plugin. We can expand this plugin to include more settings, validation and styles all while using Settings API.</p>
-<p>The post <a href="/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/">WordPress Plugin Development Basics: VII</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-plugin-development-basics-vii/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Plugin Development Basics: VI</title>
-		<link>/wordpress-plugin-development-basics-vi/</link>
-					<comments>/wordpress-plugin-development-basics-vi/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 19 Feb 2025 14:45:56 +0000</pubDate>
@@ -1514,7 +1514,7 @@ function my_setting_option_cb() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=430</guid>
 
 					<description><![CDATA[<p>When building for WordPress, AJAX is a term which we hear very often, this blog shows how to implement a autocomplete search tailored to a custom post type meta box using WordPress AJAX. Registering the Custom Post Type Firstly, we need to define our custom post types to make query against. Here, we will use [&#8230;]</p>
-<p>The post <a href="/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When building for WordPress, AJAX is a term which we hear very often, this blog shows how to implement a autocomplete search tailored to a custom post type meta box using WordPress AJAX.</p>
@@ -1756,18 +1756,18 @@ add_action( 'admin_enqueue_scripts', 'enqueue_event_types_script' );</pre>
 
 
 <p>This approach can be extended to any other custom post type or taxonomies and we can tweak it to fit different requirements.</p>
-<p>The post <a href="/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/">WordPress Plugin Development Basics: VI</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-plugin-development-basics-vi/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Plugin Development Basics: V</title>
-		<link>/wordpress-plugin-development-basics-v/</link>
-					<comments>/wordpress-plugin-development-basics-v/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 18 Feb 2025 14:10:20 +0000</pubDate>
@@ -1780,7 +1780,7 @@ add_action( 'admin_enqueue_scripts', 'enqueue_event_types_script' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=416</guid>
 
 					<description><![CDATA[<p>As we have seen previously, WordPress is a great Content Management System. So far we have only covered the text side of the equation. wp.media is the main media management part of this. What is wp.media? wp.media is a JavaScript API provided by WordPress that gives us access to WordPress&#8217;s built-in media manager. It offers [&#8230;]</p>
-<p>The post <a href="/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As we have seen previously, WordPress is a great Content Management System. So far we have only covered the text side of the equation. <code>wp.media</code> is the main media management part of this.</p>
@@ -1909,10 +1909,10 @@ function media_selector_plugin_enqueue_scripts() {
 
 
 <p>Using <code>wp.media</code> in plugin development for media handling is a must with respect to anything to do with media files in WordPress. It provides a simple yet powerful way to integrate media without needing any custom development and needing to reinventing the wheel.</p>
-<p>The post <a href="/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/">WordPress Plugin Development Basics: V</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-plugin-development-basics-v/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

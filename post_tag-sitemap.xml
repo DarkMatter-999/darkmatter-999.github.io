@@ -1,115 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://darkmatter-999.github.io/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/tag/ai/</loc>
+		<loc>https://darkmatter-999.github.io/tag/ai/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/blog/</loc>
+		<loc>https://darkmatter-999.github.io/tag/blog/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/blogging/</loc>
+		<loc>https://darkmatter-999.github.io/tag/blogging/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/blogging-tips/</loc>
+		<loc>https://darkmatter-999.github.io/tag/blogging-tips/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/business/</loc>
+		<loc>https://darkmatter-999.github.io/tag/business/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/cms/</loc>
+		<loc>https://darkmatter-999.github.io/tag/cms/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/development/</loc>
+		<loc>https://darkmatter-999.github.io/tag/development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/digital-marketing/</loc>
+		<loc>https://darkmatter-999.github.io/tag/digital-marketing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/gutenberg/</loc>
+		<loc>https://darkmatter-999.github.io/tag/gutenberg/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/headless/</loc>
+		<loc>https://darkmatter-999.github.io/tag/headless/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/javascript/</loc>
+		<loc>https://darkmatter-999.github.io/tag/javascript/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/marketing/</loc>
+		<loc>https://darkmatter-999.github.io/tag/marketing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/non-classe/</loc>
+		<loc>https://darkmatter-999.github.io/tag/non-classe/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/plugin-development/</loc>
+		<loc>https://darkmatter-999.github.io/tag/plugin-development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/programming/</loc>
+		<loc>https://darkmatter-999.github.io/tag/programming/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/react/</loc>
+		<loc>https://darkmatter-999.github.io/tag/react/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/reactjs/</loc>
+		<loc>https://darkmatter-999.github.io/tag/reactjs/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/seo/</loc>
+		<loc>https://darkmatter-999.github.io/tag/seo/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/sitecore/</loc>
+		<loc>https://darkmatter-999.github.io/tag/sitecore/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/software/</loc>
+		<loc>https://darkmatter-999.github.io/tag/software/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/technology/</loc>
+		<loc>https://darkmatter-999.github.io/tag/technology/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/theme-development/</loc>
+		<loc>https://darkmatter-999.github.io/tag/theme-development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/web-development/</loc>
+		<loc>https://darkmatter-999.github.io/tag/web-development/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/website/</loc>
+		<loc>https://darkmatter-999.github.io/tag/website/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/tag/wordpress/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/wordpress-theme/</loc>
+		<loc>https://darkmatter-999.github.io/tag/wordpress-theme/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/wp/</loc>
+		<loc>https://darkmatter-999.github.io/tag/wp/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/tag/writing/</loc>
+		<loc>https://darkmatter-999.github.io/tag/writing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 </urlset>

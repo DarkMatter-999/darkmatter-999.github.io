@@ -1,439 +1,439 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://darkmatter-999.github.io/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/blog/</loc>
+		<loc>https://darkmatter-999.github.io/blog/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-themes-block-themes-and-block-patterns-explained/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-supports-explained/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-block-supports-explained/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-attributes-and-controls/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/05/image-1.png?w=271</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/05/image-1.png?w=271</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-nested-blocks/</loc>
-		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/wordpress-block-editor-dynamic-and-static-blocks/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-nested-blocks/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-custom-metaboxes-and-notices/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-formatting-toolbar-api/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-widgets/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-formatting-toolbar-api/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-themes-introduction/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-widgets/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-themes-introduction/</loc>
+		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-wordpress-authentication-cookies-sessions/</loc>
+		<loc>https://darkmatter-999.github.io/understanding-wordpress-authentication-cookies-sessions/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-the-customizer-api-part-ii/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api-part-ii/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-the-customizer-api/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-navigation-menus/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-web-accessibility/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-search-page/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-custom-sidebars/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-the-loop/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-template-hierarchy/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-enqueuing-scripts-and-styles/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-basics/</loc>
+		<loc>https://darkmatter-999.github.io/theme-development-in-wordpress-basics/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress-themes/</loc>
+		<loc>https://darkmatter-999.github.io/introduction-to-wordpress-themes/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/custom-tables-in-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/custom-tables-in-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-mastering-conditional-tags/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-child-themes/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-asset-building/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-asset-building/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-using-wordpress-scripts/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-using-wordpress-scripts/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-theme-initialization-process/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/04/image-2.png?w=461</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/04/image-2.png?w=461</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-wp_widget/</loc>
+		<loc>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/04/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/04/image-1-1.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/introduction-to-react-and-jsx/</loc>
+		<loc>https://darkmatter-999.github.io/introduction-to-react-and-jsx/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-react-components-and-the-virtual-dom/</loc>
+		<loc>https://darkmatter-999.github.io/understanding-react-components-and-the-virtual-dom/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-course-components-states-and-component-lifecycle/</loc>
+		<loc>https://darkmatter-999.github.io/basic-react-course-components-states-and-component-lifecycle/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-course-hooks-usestate-and-useeffect/</loc>
+		<loc>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-basic-react-hooks-a-developers-guide/</loc>
+		<loc>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-conditional-rendering-lifting-state-up-and-testing/</loc>
+		<loc>https://darkmatter-999.github.io/basic-react-conditional-rendering-lifting-state-up-and-testing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-creating-a-custom-block/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-filters-explained/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-block-editor-block-filters-explained/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wp-cron-a-comprehensive-guide/</loc>
+		<loc>https://darkmatter-999.github.io/wp-cron-a-comprehensive-guide/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/working-with-the-wp_rest_controller-class/</loc>
+		<loc>https://darkmatter-999.github.io/working-with-the-wp_rest_controller-class/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wp-cli-custom-commands/</loc>
+		<loc>https://darkmatter-999.github.io/wp-cli-custom-commands/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-rest-api-internals/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-rest-api-internals/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/03/image-1-scaled.png?w=360</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/03/image-1-scaled.png?w=360</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/handling-media-with-rest-api/</loc>
+		<loc>https://darkmatter-999.github.io/handling-media-with-rest-api/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/transient-api-and-http-api-in-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/transient-api-and-http-api-in-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/working-with-transient-api/</loc>
+		<loc>https://darkmatter-999.github.io/working-with-transient-api/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/dashboard-widgets-in-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/dashboard-widgets-in-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress-rewrite-api/</loc>
+		<loc>https://darkmatter-999.github.io/introduction-to-wordpress-rewrite-api/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/rewrite-api-a-practical-usecase/</loc>
+		<loc>https://darkmatter-999.github.io/rewrite-api-a-practical-usecase/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/user-roles-in-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/user-roles-in-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-administration/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-administration/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-8-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-8-1-scaled.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-002-php/</loc>
+		<loc>https://darkmatter-999.github.io/day-002-php/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/spongebob-rainbow-1.png</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/spongebob-rainbow-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-11.png?w=681</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-11.png?w=681</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-the-essentials/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-the-essentials/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-4-1.png?w=872</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-4-1.png?w=872</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-5-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-5-1-scaled.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-6-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-6-1-scaled.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-7-1.png?w=548</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-7-1.png?w=548</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/getting-started-with-the-wordpress-block-and-site-editor/</loc>
+		<loc>https://darkmatter-999.github.io/getting-started-with-the-wordpress-block-and-site-editor/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-17.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-17.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-1-1.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-2-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-2-1.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-3-1.png?w=324</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-3-1.png?w=324</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/introduction-to-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/object-oriented-programming-in-php/</loc>
+		<loc>https://darkmatter-999.github.io/object-oriented-programming-in-php/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/oops-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/oops-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-development-a-deep-dive/</loc>
+		<loc>https://darkmatter-999.github.io/web-development-a-deep-dive/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/deepdive-1.jpeg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/deepdive-1.jpeg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-internals-http-ssl-tls/</loc>
+		<loc>https://darkmatter-999.github.io/web-internals-http-ssl-tls/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/https-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/https-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-10-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-10-1.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-internals-dns/</loc>
+		<loc>https://darkmatter-999.github.io/web-internals-dns/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/dns-1.png</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/dns-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-7-edited-1.png</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-7-edited-1.png</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-006-git-from-scratch/</loc>
+		<loc>https://darkmatter-999.github.io/day-006-git-from-scratch/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/git-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/git-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-005-processes-threads-and-concurrency/</loc>
+		<loc>https://darkmatter-999.github.io/day-005-processes-threads-and-concurrency/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/os-1.jpeg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/os-1.jpeg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-2-1.png?w=474</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-2-1.png?w=474</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-3-1.png?w=652</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-3-1.png?w=652</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-4-1.png?w=750</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-4-1.png?w=750</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-5-1.png?w=750</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-5-1.png?w=750</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-004-javascipt/</loc>
+		<loc>https://darkmatter-999.github.io/day-004-javascipt/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/js-1.jpeg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/js-1.jpeg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-003-html-css/</loc>
+		<loc>https://darkmatter-999.github.io/day-003-html-css/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/htmlcss-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/htmlcss-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/image-1-1.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-001-pilot/</loc>
+		<loc>https://darkmatter-999.github.io/day-001-pilot/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/mastering-wordpress-seo-phpunit-testing/</loc>
+		<loc>https://darkmatter-999.github.io/mastering-wordpress-seo-phpunit-testing/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-9-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-9-1.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-php-coding-conventions/</loc>
-		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/wordpress-plugin-development-basics/</loc>
-		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/wordpress-plugin-development-basics-ii/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-php-coding-conventions/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/internationalization-and-localization-in-wordpress/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-iii/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-ii/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-iv/</loc>
+		<loc>https://darkmatter-999.github.io/internationalization-and-localization-in-wordpress/</loc>
+		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-iii/</loc>
+		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-iv/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-10-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-10-1-scaled.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-v/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-v/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-vi/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vi/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-vii/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/debugging-in-wordpress-with-xdebug/</loc>
+		<loc>https://darkmatter-999.github.io/debugging-in-wordpress-with-xdebug/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-11-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-11-1.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-12-1.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-12-1.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-13-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-13-1-scaled.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-14-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-14-1-scaled.png?w=1024</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-15-1.png?w=426</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-15-1.png?w=426</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/image-16-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/02/image-16-1-scaled.png?w=1024</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/working-with-wordpress-rest-api/</loc>
+		<loc>https://darkmatter-999.github.io/working-with-wordpress-rest-api/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-rest-api-creating-and-retrieving-posts/</loc>
+		<loc>https://darkmatter-999.github.io/wordpress-rest-api-creating-and-retrieving-posts/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-wp-cli/</loc>
+		<loc>https://darkmatter-999.github.io/introduction-to-wp-cli/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 </urlset>

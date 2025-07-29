@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/software/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/software/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Advanced Theme Development in WordPress: WP_Widget</title>
-		<link>/advanced-theme-development-in-wordpress-wp_widget/</link>
-					<comments>/advanced-theme-development-in-wordpress-wp_widget/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 16 Apr 2025 15:52:42 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=784</guid>
 
 					<description><![CDATA[<p>When we’re building advanced WordPress themes, we often focus on custom post types, taxonomies, and template hierarchies. But there’s one powerful tool that’s often overlooked: the WP_Widget class. Mastering widgets can unlock new possibilities for dynamic, user-configurable areas within our themes. Today, let’s dive deep into WP_Widget and how we can use it to create [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-wp_widget/">Advanced Theme Development in WordPress: WP_Widget</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/">Advanced Theme Development in WordPress: WP_Widget</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When we’re building advanced WordPress themes, we often focus on custom post types, taxonomies, and template hierarchies. But there’s one powerful tool that’s often overlooked: the <code>WP_Widget</code> class. Mastering widgets can unlock new possibilities for dynamic, user-configurable areas within our themes. Today, let’s dive deep into <code>WP_Widget</code> and how we can use it to create fully customized, reusable widgets in our WordPress themes.</p>
@@ -194,10 +194,10 @@ add_action('widgets_init', 'register_custom_widgets');</pre>
 
 
 <p>Widgets are an underrated powerhouse in our WordPress theme development toolkit. By understanding and extending <code>WP_Widget</code>, we give ourselves the flexibility to create custom content blocks that are both powerful and user-friendly.</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-wp_widget/">Advanced Theme Development in WordPress: WP_Widget</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/">Advanced Theme Development in WordPress: WP_Widget</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-wp_widget/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

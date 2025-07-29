@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/reactjs/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/reactjs/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Understanding Basic React Hooks: A Developer&#8217;s Guide</title>
-		<link>/understanding-basic-react-hooks-a-developers-guide/</link>
-					<comments>/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
+		<link>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/</link>
+					<comments>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 24 Apr 2025 13:39:33 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=817</guid>
 
 					<description><![CDATA[<p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: useState, useEffect, useCallback, useMemo, useReducer, [&#8230;]</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we’re constantly striving to write cleaner, more efficient code—and React Hooks are an essential part of that journey. Introduced in React 16.8, hooks let us use state and other React features without writing a class. In this post, we’ll dive into some of the most commonly used hooks: <code>useState</code>, <code>useEffect</code>, <code>useCallback</code>, <code>useMemo</code>, <code>useReducer</code>, <code>useTransition</code>, and <code>useLayoutEffect</code>.</p>
@@ -263,18 +263,18 @@ function Box() {
 
 
 <p>Hooks have changed the way we write React components. They allow us to write more concise, readable code while unlocking powerful features. As we continue to build rich user interfaces, mastering these basic hooks will give us the tools we need to work efficiently and effectively in modern React apps.</p>
-<p>The post <a href="/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/">Understanding Basic React Hooks: A Developer&#8217;s Guide</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/understanding-basic-react-hooks-a-developers-guide/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Basic React Course: Hooks — useState and useEffect</title>
-		<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
-					<comments>/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
+		<link>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/</link>
+					<comments>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 23 Apr 2025 14:10:24 +0000</pubDate>
@@ -287,7 +287,7 @@ function Box() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=813</guid>
 
 					<description><![CDATA[<p>React has completely changed the way we build user interfaces, and one of its most powerful features is Hooks. In this post, we’re diving into two of the most essential React Hooks: useState and useEffect. If you&#8217;re just getting started with React, or if you’ve only worked with class components before, this guide is for [&#8230;]</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>React has completely changed the way we build user interfaces, and one of its most powerful features is <strong>Hooks</strong>. In this post, we’re diving into two of the most essential React Hooks: <code>useState</code> and <code>useEffect</code>.</p>
@@ -418,10 +418,10 @@ function Timer() {
 
 
 <p>In the next post, we’ll explore more advanced hooks like <code>useContext</code>, <code>useReducer</code>, and custom hooks that let us extract logic into reusable functions.</p>
-<p>The post <a href="/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/">Basic React Course: Hooks — useState and useEffect</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/basic-react-course-hooks-usestate-and-useeffect/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

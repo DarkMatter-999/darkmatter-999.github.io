@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: WordPress Plugin Development Basics	</title>
-	<atom:link href="/wordpress-plugin-development-basics/feed/" rel="self" type="application/rss+xml" />
-	<link>/wordpress-plugin-development-basics/</link>
+	<atom:link href="https://darkmatter-999.github.io/wordpress-plugin-development-basics/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,7 +20,7 @@
 	<item>
 		<title>
 		By: WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>/wordpress-plugin-development-basics/#comment-2</link>
+		<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics/#comment-2</link>
 
 		<dc:creator><![CDATA[WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Wed, 12 Feb 2025 14:25:38 +0000</pubDate>

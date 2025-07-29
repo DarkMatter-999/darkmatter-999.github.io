@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: Day 002: PHP	</title>
-	<atom:link href="/day-002-php/feed/" rel="self" type="application/rss+xml" />
-	<link>/day-002-php/</link>
+	<atom:link href="https://darkmatter-999.github.io/day-002-php/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/day-002-php/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<sy:updatePeriod>

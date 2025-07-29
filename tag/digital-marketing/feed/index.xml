@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/digital-marketing/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/digital-marketing/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Themes: Block Themes and Block Patterns Explained</title>
-		<link>/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
-					<comments>/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 13 May 2025 16:28:27 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=898</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where <strong>Block Themes</strong> and <strong>Block Patterns</strong> play a central role in how our sites look and function.</p>
@@ -235,18 +235,18 @@ register_block_pattern(
 
 
 <p>Block Themes and Block Patterns aren’t just buzzwords—they&#8217;re the future of WordPress. Whether we’re building for clients or crafting our own sites, these tools give us greater flexibility, faster development, and more power over design—all while embracing a no-code/low-code philosophy.</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Widgets</title>
-		<link>/wordpress-block-editor-widgets/</link>
-					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-widgets/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-widgets/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
@@ -259,7 +259,7 @@ register_block_pattern(
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
@@ -371,18 +371,18 @@ registerBlockType('mytheme/custom-widget', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-widgets/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
-		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
-					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
@@ -395,7 +395,7 @@ registerBlockType('mytheme/custom-widget', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
 					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
@@ -536,18 +536,18 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 
 
 <p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Dynamic and Static Blocks</title>
-		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
-					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
@@ -560,7 +560,7 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
 
 					<description><![CDATA[<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
@@ -815,18 +815,18 @@ function myplugin_render_latest_post() {
 
 
 <p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Attributes and Controls</title>
-		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
-					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
@@ -839,7 +839,7 @@ function myplugin_render_latest_post() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
 
 					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
@@ -1035,18 +1035,18 @@ edit({ attributes, setAttributes }) {
 
 
 <p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Creating a Custom Block</title>
-		<link>/wordpress-block-editor-creating-a-custom-block/</link>
-					<comments>/wordpress-block-editor-creating-a-custom-block/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 28 Apr 2025 14:12:08 +0000</pubDate>
@@ -1059,7 +1059,7 @@ edit({ attributes, setAttributes }) {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=828</guid>
 
 					<description><![CDATA[<p>In the evolving world of web development, the WordPress Block Editor (Gutenberg) has revolutionized how we design and manage content. In this blog post, we&#8217;ll walk through the entire process—from setup to seeing our custom block in action. Why Create Custom Blocks? While WordPress provides plenty of built-in blocks, we often find ourselves needing tailor-made [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>In the evolving world of web development, the <strong>WordPress Block Editor (Gutenberg)</strong> has revolutionized how we design and manage content. In this blog post, we&#8217;ll walk through the entire process—from setup to seeing our custom block in action.</p>
@@ -1259,18 +1259,18 @@ registerBlockType(metadata.name, {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/">WordPress Block Editor: Creating a Custom Block</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-creating-a-custom-block/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-creating-a-custom-block/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: Theme Initialization Process</title>
-		<link>/advanced-theme-development-in-wordpress-theme-initialization-process/</link>
-					<comments>/advanced-theme-development-in-wordpress-theme-initialization-process/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 15 Apr 2025 15:03:37 +0000</pubDate>
@@ -1283,7 +1283,7 @@ registerBlockType(metadata.name, {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=778</guid>
 
 					<description><![CDATA[<p>As developers, we know that crafting powerful and performant themes isn&#8217;t just about beautiful templates—it&#8217;s about understanding the engine that powers them. One of the most fundamental, yet often overlooked, aspects of advanced theme development is the theme initialization process. In this post, we’ll walk through how WordPress initializes themes, what files are involved, and [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-theme-initialization-process/">Advanced Theme Development in WordPress: Theme Initialization Process</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/">Advanced Theme Development in WordPress: Theme Initialization Process</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers, we know that crafting powerful and performant themes isn&#8217;t just about beautiful templates—it&#8217;s about understanding the engine that powers them. One of the most fundamental, yet often overlooked, aspects of advanced theme development is the <strong>theme initialization process</strong>.</p>
@@ -1415,18 +1415,18 @@ add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
 
 
 <p></p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-theme-initialization-process/">Advanced Theme Development in WordPress: Theme Initialization Process</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/">Advanced Theme Development in WordPress: Theme Initialization Process</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-theme-initialization-process/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-theme-initialization-process/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: Mastering Conditional Tags</title>
-		<link>/advanced-theme-development-in-wordpress-mastering-conditional-tags/</link>
-					<comments>/advanced-theme-development-in-wordpress-mastering-conditional-tags/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 09 Apr 2025 13:56:08 +0000</pubDate>
@@ -1439,7 +1439,7 @@ add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=748</guid>
 
 					<description><![CDATA[<p>In the world of WordPress theme development, one of the most powerful tools at our disposal are Conditional Tags. These tags allow us to create dynamic and personalized user experiences by displaying content or applying styles based on specific conditions. In this blog, we’ll explore what Conditional Tags are, how they work, and how we [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-mastering-conditional-tags/">Advanced Theme Development in WordPress: Mastering Conditional Tags</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/">Advanced Theme Development in WordPress: Mastering Conditional Tags</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>In the world of WordPress theme development, one of the most powerful tools at our disposal are <strong>Conditional Tags</strong>. These tags allow us to create dynamic and personalized user experiences by displaying content or applying styles based on specific conditions.</p>
@@ -1651,18 +1651,18 @@ add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
 
 
 <p></p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-mastering-conditional-tags/">Advanced Theme Development in WordPress: Mastering Conditional Tags</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/">Advanced Theme Development in WordPress: Mastering Conditional Tags</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-mastering-conditional-tags/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-mastering-conditional-tags/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: Navigation API and Pagination API</title>
-		<link>/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</link>
-					<comments>/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 08 Apr 2025 14:45:36 +0000</pubDate>
@@ -1675,7 +1675,7 @@ add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=744</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we know how critical it is to create seamless, user-friendly websites. Navigation and pagination are two fundamental aspects of a site&#8217;s usability, and WordPress offers APIs that make implementing these features both powerful and efficient. In this post, we&#8217;ll explore how the Navigation API and Pagination API work in WordPress theme development, [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/">Advanced Theme Development in WordPress: Navigation API and Pagination API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/">Advanced Theme Development in WordPress: Navigation API and Pagination API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we know how critical it is to create seamless, user-friendly websites. Navigation and pagination are two fundamental aspects of a site&#8217;s usability, and WordPress offers APIs that make implementing these features both powerful and efficient.</p>
@@ -1844,10 +1844,10 @@ echo paginate_links( array(
 
 
 <p>The <strong>Navigation API</strong> helps us create more customizable and maintainable navigation menus, while the <strong>Pagination API</strong> ensures that our content is easily accessible and manageable for users. By leveraging these APIs, we are setting ourselves up to build themes that are not only functional but also future-proof and optimized for performance.</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/">Advanced Theme Development in WordPress: Navigation API and Pagination API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/">Advanced Theme Development in WordPress: Navigation API and Pagination API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/development/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/development/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Advanced Theme Development in WordPress: The Customizer API</title>
-		<link>/advanced-theme-development-in-wordpress-the-customizer-api/</link>
-					<comments>/advanced-theme-development-in-wordpress-the-customizer-api/#comments</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/#comments</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 04 Apr 2025 14:43:07 +0000</pubDate>
@@ -48,7 +48,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=730</guid>
 
 					<description><![CDATA[<p>The Customizer API provides site owners with a simple and intuitive interface to modify their theme settings in real-time. With the ability to customize a variety of settings—from colors and logos to layout options and typography—it’s no wonder that the Customizer API is a go-to feature for most advanced theme development projects. In this blog, [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>The Customizer API provides site owners with a simple and intuitive interface to modify their theme settings in real-time. With the ability to customize a variety of settings—from colors and logos to layout options and typography—it’s no wonder that the Customizer API is a go-to feature for most advanced theme development projects.</p>
@@ -254,18 +254,18 @@ add_action( 'customize_register', 'my_theme_customize_register' );</pre>
 
 
 <p>The WordPress Customizer is an incredibly powerful tool for theme developers. With just a few lines of code, we’ve added a section for uploading a logo, but this approach can be extended for many other types of customizations—colors, fonts, text fields, and more.</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/">Advanced Theme Development in WordPress: The Customizer API</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-the-customizer-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/feed/</wfw:commentRss>
 			<slash:comments>1</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Navigation Menus</title>
-		<link>/theme-development-in-wordpress-navigation-menus/</link>
-					<comments>/theme-development-in-wordpress-navigation-menus/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 03 Apr 2025 14:54:48 +0000</pubDate>
@@ -281,7 +281,7 @@ add_action( 'customize_register', 'my_theme_customize_register' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=723</guid>
 
 					<description><![CDATA[<p>When developing a WordPress theme, one of the essential elements we often work with is the navigation menu. Navigation menus are a vital part of any website, allowing visitors to easily move between pages, categories, or custom content on our site. But how do we as developers, manage navigation menus effectively? In this post, we’ll [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-navigation-menus/">Theme Development in WordPress: Navigation Menus</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/">Theme Development in WordPress: Navigation Menus</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When developing a WordPress theme, one of the essential elements we often work with is the navigation menu. Navigation menus are a vital part of any website, allowing visitors to easily move between pages, categories, or custom content on our site. But how do we as developers, manage navigation menus effectively?</p>
@@ -457,18 +457,18 @@ add_action( 'after_setup_theme', 'my_theme_customizer_menus' );</pre>
 
 
 <p></p>
-<p>The post <a href="/theme-development-in-wordpress-navigation-menus/">Theme Development in WordPress: Navigation Menus</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/">Theme Development in WordPress: Navigation Menus</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-navigation-menus/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-navigation-menus/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Web Accessibility</title>
-		<link>/theme-development-in-wordpress-web-accessibility/</link>
-					<comments>/theme-development-in-wordpress-web-accessibility/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 02 Apr 2025 15:02:13 +0000</pubDate>
@@ -482,7 +482,7 @@ add_action( 'after_setup_theme', 'my_theme_customizer_menus' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=712</guid>
 
 					<description><![CDATA[<p>At the heart of every successful WordPress theme development project lies a crucial principle—accessibility. Unfortunately, despite its importance, many websites still fail to meet accessibility standards, leaving a significant portion of the user base unable to fully engage with the content. In this post, we’ll explore why accessibility matters in WordPress theme development, how you [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-web-accessibility/">Theme Development in WordPress: Web Accessibility</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/">Theme Development in WordPress: Web Accessibility</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>At the heart of every successful WordPress theme development project lies a crucial principle—accessibility. Unfortunately, despite its importance, many websites still fail to meet accessibility standards, leaving a significant portion of the user base unable to fully engage with the content. In this post, we’ll explore why accessibility matters in WordPress theme development, how you can ensure your themes are inclusive, and the steps you can take to implement web accessibility in your workflow.</p>
@@ -785,18 +785,18 @@ add_action( 'after_setup_theme', 'my_theme_customizer_menus' );</pre>
 
 
 <p>Remember, accessibility is a continuous process. Regular testing, improvements, and staying updated with the latest WCAG standards will help ensure your site remains inclusive for all users.</p>
-<p>The post <a href="/theme-development-in-wordpress-web-accessibility/">Theme Development in WordPress: Web Accessibility</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/">Theme Development in WordPress: Web Accessibility</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-web-accessibility/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-web-accessibility/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Search Page</title>
-		<link>/theme-development-in-wordpress-search-page/</link>
-					<comments>/theme-development-in-wordpress-search-page/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 01 Apr 2025 14:42:06 +0000</pubDate>
@@ -810,7 +810,7 @@ add_action( 'after_setup_theme', 'my_theme_customizer_menus' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=706</guid>
 
 					<description><![CDATA[<p>When it comes to WordPress theme development, one of the most important features is a search page. Whether it&#8217;s for a blog, an e-commerce site, or a business page, providing users with an intuitive and functional search experience is essential. A search page allows users to quickly find relevant content, improving site navigation and overall [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-search-page/">Theme Development in WordPress: Search Page</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/">Theme Development in WordPress: Search Page</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When it comes to WordPress theme development, one of the most important features is a search page. Whether it&#8217;s for a blog, an e-commerce site, or a business page, providing users with an intuitive and functional search experience is essential. A search page allows users to quickly find relevant content, improving site navigation and overall user experience.</p>
@@ -923,18 +923,18 @@ add_action( 'pre_get_posts', 'custom_search_query' );</pre>
 
 
 <p>Creating a custom search page for a WordPress theme is an essential step in providing an enhanced user experience. By following these steps—creating the search template, styling the results, customizing the search form, and optionally refining the search query—we can offer users a seamless and visually appealing way to find content on our site.</p>
-<p>The post <a href="/theme-development-in-wordpress-search-page/">Theme Development in WordPress: Search Page</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/">Theme Development in WordPress: Search Page</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-search-page/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-search-page/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Custom Sidebars</title>
-		<link>/theme-development-in-wordpress-custom-sidebars/</link>
-					<comments>/theme-development-in-wordpress-custom-sidebars/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 31 Mar 2025 14:56:35 +0000</pubDate>
@@ -948,7 +948,7 @@ add_action( 'pre_get_posts', 'custom_search_query' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=699</guid>
 
 					<description><![CDATA[<p>When developing a WordPress theme, one of the components we often work with is the sidebar. The sidebar can serve as a place for various types of content like widgets, advertisements, navigation menus, and even custom content sections. In this post, We’ll walk through the process of creating a custom sidebar for a WordPress theme [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-custom-sidebars/">Theme Development in WordPress: Custom Sidebars</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/">Theme Development in WordPress: Custom Sidebars</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When developing a WordPress theme, one of the components we often work with is the sidebar. The sidebar can serve as a place for various types of content like widgets, advertisements, navigation menus, and even custom content sections. In this post, We’ll walk through the process of creating a custom sidebar for a WordPress theme from scratch, using our own custom sidebars instead of the default ones.</p>
@@ -1127,18 +1127,18 @@ add_action( 'widgets_init', 'register_my_custom_widget' );</pre>
 
 
 <p>Creating a custom sidebar in WordPress allows us to enhance the functionality of our themes by providing a personalized space for different types of content. We can easily create, register, and display sidebars using just a few simple functions, like <code>register_sidebar()</code> and <code>dynamic_sidebar()</code>. Adding custom widgets and styling ensures that the sidebar not only works well but also integrates seamlessly with the design.</p>
-<p>The post <a href="/theme-development-in-wordpress-custom-sidebars/">Theme Development in WordPress: Custom Sidebars</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/">Theme Development in WordPress: Custom Sidebars</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-custom-sidebars/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-custom-sidebars/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: How WordPress Enqueues Scripts and Styles</title>
-		<link>/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</link>
-					<comments>/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 28 Mar 2025 14:58:33 +0000</pubDate>
@@ -1152,7 +1152,7 @@ add_action( 'widgets_init', 'register_my_custom_widget' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=693</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we often deal with the intricacies of the platform’s built-in functions to manage and optimize our sites. One of the most fundamental concepts, particularly for theme and plugin developers, is how WordPress handles scripts and styles—especially when it comes to enqueuing them in the proper order. This can significantly impact the performance [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/">Theme Development in WordPress: How WordPress Enqueues Scripts and Styles</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/">Theme Development in WordPress: How WordPress Enqueues Scripts and Styles</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we often deal with the intricacies of the platform’s built-in functions to manage and optimize our sites. One of the most fundamental concepts, particularly for theme and plugin developers, is how WordPress handles scripts and styles—especially when it comes to enqueuing them in the proper order. This can significantly impact the performance and functionality of a site, so it&#8217;s essential to understand how the <code>wp_enqueue_script()</code> and <code>wp_enqueue_style()</code> functions work.</p>
@@ -1278,18 +1278,18 @@ wp_enqueue_style('my-style', 'path/to/style.css', array(), '1.0.0');</pre>
 
 
 <p>However, there are some nuances, particularly when it comes to handling default WordPress scripts. We will need to take care when trying to move these scripts to the footer, especially when they are pre-registered with dependencies and groups. By understanding how WordPress manages these assets, we can create better-performing websites that avoid common pitfalls.</p>
-<p>The post <a href="/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/">Theme Development in WordPress: How WordPress Enqueues Scripts and Styles</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/">Theme Development in WordPress: How WordPress Enqueues Scripts and Styles</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: The Loop</title>
-		<link>/theme-development-in-wordpress-the-loop/</link>
-					<comments>/theme-development-in-wordpress-the-loop/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 27 Mar 2025 15:59:39 +0000</pubDate>
@@ -1303,7 +1303,7 @@ wp_enqueue_style('my-style', 'path/to/style.css', array(), '1.0.0');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=686</guid>
 
 					<description><![CDATA[<p>When it comes to WordPress theme development, one concept stands out as essential for every developer: The Loop. If we are familiar with WordPress, it is likely that we have already heard the term. Let’s break it down in detail, exploring what it does, how it works, and how we can leverage it to build [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-the-loop/">Theme Development in WordPress: The Loop</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/">Theme Development in WordPress: The Loop</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When it comes to WordPress theme development, one concept stands out as essential for every developer: The Loop. If we are familiar with WordPress, it is likely that we have already heard the term. Let’s break it down in detail, exploring what it does, how it works, and how we can leverage it to build dynamic, content-rich WordPress sites.</p>
@@ -1557,18 +1557,18 @@ endif;
 
 
 <p>As WordPress developers, it&#8217;s essential to understand how The Loop interacts with our theme’s layout, how to manipulate it with custom queries, and how to reset data when using multiple loops. Once we get the hang of The Loop, we will have the power to display content exactly how we envision it on any WordPress site.</p>
-<p>The post <a href="/theme-development-in-wordpress-the-loop/">Theme Development in WordPress: The Loop</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/">Theme Development in WordPress: The Loop</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-the-loop/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-the-loop/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Template Hierarchy</title>
-		<link>/theme-development-in-wordpress-template-hierarchy/</link>
-					<comments>/theme-development-in-wordpress-template-hierarchy/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 26 Mar 2025 15:19:16 +0000</pubDate>
@@ -1582,7 +1582,7 @@ endif;
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=682</guid>
 
 					<description><![CDATA[<p>When developing a WordPress theme, one of the most important concepts to grasp is the template hierarchy. This hierarchy dictates the order in which WordPress selects template files to display different types of content. Understanding the structure of these files will help us customize our theme effectively, ensuring that our website renders exactly the way [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-template-hierarchy/">Theme Development in WordPress: Template Hierarchy</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/">Theme Development in WordPress: Template Hierarchy</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When developing a WordPress theme, one of the most important concepts to grasp is the <strong>template hierarchy</strong>. This hierarchy dictates the order in which WordPress selects template files to display different types of content. Understanding the structure of these files will help us customize our theme effectively, ensuring that our website renders exactly the way we want it to across various pages and post types.</p>
@@ -1968,18 +1968,18 @@ endif;
 
 
 <p></p>
-<p>The post <a href="/theme-development-in-wordpress-template-hierarchy/">Theme Development in WordPress: Template Hierarchy</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/">Theme Development in WordPress: Template Hierarchy</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-template-hierarchy/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-template-hierarchy/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Enqueuing Scripts and Styles</title>
-		<link>/theme-development-in-wordpress-enqueuing-scripts-and-styles/</link>
-					<comments>/theme-development-in-wordpress-enqueuing-scripts-and-styles/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 25 Mar 2025 14:12:23 +0000</pubDate>
@@ -1993,7 +1993,7 @@ endif;
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=669</guid>
 
 					<description><![CDATA[<p>When developing a WordPress theme, one of the first tasks is to ensure that our site’s scripts and styles are properly loaded. This is where the process of enqueuing comes in. In this blog, We’ll walk through why and how to enqueue styles and scripts in WordPress theme development. What is Enqueueing? Enqueueing can be [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-enqueuing-scripts-and-styles/">Theme Development in WordPress: Enqueuing Scripts and Styles</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/">Theme Development in WordPress: Enqueuing Scripts and Styles</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When developing a WordPress theme, one of the first tasks is to ensure that our site’s scripts and styles are properly loaded. This is where the process of enqueuing comes in. In this blog, We’ll walk through why and how to enqueue styles and scripts in WordPress theme development.</p>
@@ -2182,18 +2182,18 @@ add_action( 'wp_enqueue_scripts', 'enqueue_styles_and_scripts' );</pre>
 
 
 <p></p>
-<p>The post <a href="/theme-development-in-wordpress-enqueuing-scripts-and-styles/">Theme Development in WordPress: Enqueuing Scripts and Styles</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/">Theme Development in WordPress: Enqueuing Scripts and Styles</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-enqueuing-scripts-and-styles/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-enqueuing-scripts-and-styles/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Theme Development in WordPress: Basics</title>
-		<link>/theme-development-in-wordpress-basics/</link>
-					<comments>/theme-development-in-wordpress-basics/#respond</comments>
+		<link>https://darkmatter-999.github.io/theme-development-in-wordpress-basics/</link>
+					<comments>https://darkmatter-999.github.io/theme-development-in-wordpress-basics/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 24 Mar 2025 15:18:38 +0000</pubDate>
@@ -2207,7 +2207,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_styles_and_scripts' );</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=662</guid>
 
 					<description><![CDATA[<p>As WordPress developers understanding how to develop custom themes is a crucial skill. Whether we are a developer looking to customize a client&#8217;s site or an individual aiming to create thier own, mastering the basics of theme development is essential. In this guide, we’ll walk through the fundamental concepts and steps needed to get started [&#8230;]</p>
-<p>The post <a href="/theme-development-in-wordpress-basics/">Theme Development in WordPress: Basics</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-basics/">Theme Development in WordPress: Basics</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers understanding how to develop custom themes is a crucial skill. Whether we are a developer looking to customize a client&#8217;s site or an individual aiming to create thier own, mastering the basics of theme development is essential. In this guide, we’ll walk through the fundamental concepts and steps needed to get started with WordPress theme development.</p>
@@ -2321,10 +2321,10 @@ get_footer(); // Includes footer.php file
 
 
 <p>As we’ve explored in this guide, developing a WordPress theme from scratch can be a rewarding process that allows us to create highly customized websites. By understanding the core components—like the theme folder structure, key template files, and essential WordPress functions—we can build themes that are both functional and aesthetically pleasing.</p>
-<p>The post <a href="/theme-development-in-wordpress-basics/">Theme Development in WordPress: Basics</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/theme-development-in-wordpress-basics/">Theme Development in WordPress: Basics</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/theme-development-in-wordpress-basics/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/theme-development-in-wordpress-basics/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

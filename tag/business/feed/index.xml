@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/tag/business/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://darkmatter-999.github.io/tag/business/feed/" rel="self" type="application/rss+xml" />
+	<link>https://darkmatter-999.github.io/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,16 +21,16 @@
 	<generator>https://wordpress.org/?v=6.8.1</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<url>https://darkmatter-999.github.io/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
 	<title>Front Page - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://darkmatter-999.github.io/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Editor: Widgets</title>
-		<link>/wordpress-block-editor-widgets/</link>
-					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		<link>https://darkmatter-999.github.io/wordpress-block-editor-widgets/</link>
+					<comments>https://darkmatter-999.github.io/wordpress-block-editor-widgets/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
@@ -155,18 +155,18 @@ registerBlockType('mytheme/custom-widget', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/wordpress-block-editor-widgets/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Advanced Theme Development in WordPress: Child Themes</title>
-		<link>/advanced-theme-development-in-wordpress-child-themes/</link>
-					<comments>/advanced-theme-development-in-wordpress-child-themes/#respond</comments>
+		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/</link>
+					<comments>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 10 Apr 2025 16:25:27 +0000</pubDate>
@@ -179,7 +179,7 @@ registerBlockType('mytheme/custom-widget', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=755</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we’re always looking for ways to build websites that are not only beautiful and functional but also maintainable and upgrade-friendly. One of the best practices in advanced WordPress theme development is creating and using child themes. In this post, we’ll walk through what child themes are, why they matter, and how we [&#8230;]</p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we’re always looking for ways to build websites that are not only beautiful and functional but also maintainable and upgrade-friendly. One of the best practices in advanced WordPress theme development is creating and using <strong>child themes</strong>.</p>
@@ -323,10 +323,10 @@ add_action('wp_enqueue_scripts', 'twentytwentyone_child_enqueue_styles');</pre>
 
 
 <p></p>
-<p>The post <a href="/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/">Advanced Theme Development in WordPress: Child Themes</a> appeared first on <a href="https://darkmatter-999.github.io/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/advanced-theme-development-in-wordpress-child-themes/feed/</wfw:commentRss>
+					<wfw:commentRss>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-child-themes/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
