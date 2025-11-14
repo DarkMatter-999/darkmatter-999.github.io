@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: About	</title>
-	<atom:link href="https://darkmatter-999.github.io/about/feed/" rel="self" type="application/rss+xml" />
-	<link>https://darkmatter-999.github.io/about/</link>
+	<atom:link href="/about/feed/" rel="self" type="application/rss+xml" />
+	<link>/about/</link>
 	<description></description>
 	<lastBuildDate>Mon, 20 Jan 2025 13:56:05 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
 </channel>
 </rss>

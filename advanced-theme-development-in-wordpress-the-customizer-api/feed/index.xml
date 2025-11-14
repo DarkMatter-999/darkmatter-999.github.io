@@ -8,19 +8,19 @@
 <channel>
 	<title>
 	Comments on: Advanced Theme Development in WordPress: The Customizer API	</title>
-	<atom:link href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/feed/" rel="self" type="application/rss+xml" />
-	<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/</link>
+	<atom:link href="/advanced-theme-development-in-wordpress-the-customizer-api/feed/" rel="self" type="application/rss+xml" />
+	<link>/advanced-theme-development-in-wordpress-the-customizer-api/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
 	<item>
 		<title>
 		By: Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
+		<link>/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
 
 		<dc:creator><![CDATA[Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Mon, 07 Apr 2025 15:18:10 +0000</pubDate>

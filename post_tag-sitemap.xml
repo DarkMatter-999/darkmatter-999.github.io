@@ -1,115 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://darkmatter-999.github.io/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/ai/</loc>
+		<loc>/tag/ai/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/blog/</loc>
+		<loc>/tag/blog/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/blogging/</loc>
+		<loc>/tag/blogging/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/blogging-tips/</loc>
+		<loc>/tag/blogging-tips/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/business/</loc>
+		<loc>/tag/business/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/cms/</loc>
+		<loc>/tag/cms/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/development/</loc>
+		<loc>/tag/development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/digital-marketing/</loc>
+		<loc>/tag/digital-marketing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/gutenberg/</loc>
+		<loc>/tag/gutenberg/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/headless/</loc>
+		<loc>/tag/headless/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/javascript/</loc>
+		<loc>/tag/javascript/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/marketing/</loc>
+		<loc>/tag/marketing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/non-classe/</loc>
+		<loc>/tag/non-classe/</loc>
 		<lastmod>2025-07-06T15:58:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/plugin-development/</loc>
+		<loc>/tag/plugin-development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/programming/</loc>
+		<loc>/tag/programming/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/react/</loc>
+		<loc>/tag/react/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/reactjs/</loc>
+		<loc>/tag/reactjs/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/seo/</loc>
+		<loc>/tag/seo/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/sitecore/</loc>
+		<loc>/tag/sitecore/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/software/</loc>
+		<loc>/tag/software/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/technology/</loc>
+		<loc>/tag/technology/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/theme-development/</loc>
+		<loc>/tag/theme-development/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/web-development/</loc>
+		<loc>/tag/web-development/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/website/</loc>
+		<loc>/tag/website/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/wordpress/</loc>
+		<loc>/tag/wordpress/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/wordpress-theme/</loc>
+		<loc>/tag/wordpress-theme/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/wp/</loc>
+		<loc>/tag/wp/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/tag/writing/</loc>
+		<loc>/tag/writing/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 </urlset>

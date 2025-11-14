@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://darkmatter-999.github.io/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://darkmatter-999.github.io/dm_project/</loc>
+		<loc>/dm_project/</loc>
 		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/dm_project/whymdb-imdb-clone/</loc>
+		<loc>/dm_project/whymdb-imdb-clone/</loc>
 		<lastmod>2025-07-06T14:10:19+00:00</lastmod>
 		<image:image>
-			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/07/whymdb-1.jpg</image:loc>
+			<image:loc>/wp-content/uploads/2025/07/whymdb-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/dm_project/pyleo/</loc>
+		<loc>/dm_project/pyleo/</loc>
 		<lastmod>2025-07-06T14:10:27+00:00</lastmod>
 		<image:image>
-			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/07/pyleo-1.jpg</image:loc>
+			<image:loc>/wp-content/uploads/2025/07/pyleo-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/dm_project/little-vulkan-engine/</loc>
+		<loc>/dm_project/little-vulkan-engine/</loc>
 		<lastmod>2025-07-06T14:10:34+00:00</lastmod>
 		<image:image>
-			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/07/lve-1.jpg</image:loc>
+			<image:loc>/wp-content/uploads/2025/07/lve-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://darkmatter-999.github.io/dm_project/raytracer/</loc>
+		<loc>/dm_project/raytracer/</loc>
 		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
 		<image:image>
-			<image:loc>https://darkmatter-999.github.io/wp-content/uploads/2025/07/raytracer-1.png</image:loc>
+			<image:loc>/wp-content/uploads/2025/07/raytracer-1.png</image:loc>
 		</image:image>
 	</url>
 </urlset>

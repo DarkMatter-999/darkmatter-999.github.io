@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Handling Media with REST API	</title>
-	<atom:link href="https://darkmatter-999.github.io/handling-media-with-rest-api/feed/" rel="self" type="application/rss+xml" />
-	<link>https://darkmatter-999.github.io/handling-media-with-rest-api/</link>
+	<atom:link href="/handling-media-with-rest-api/feed/" rel="self" type="application/rss+xml" />
+	<link>/handling-media-with-rest-api/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
 </channel>
 </rss>

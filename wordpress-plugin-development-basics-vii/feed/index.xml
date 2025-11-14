@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: WordPress Plugin Development Basics: VII	</title>
-	<atom:link href="https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/feed/" rel="self" type="application/rss+xml" />
-	<link>https://darkmatter-999.github.io/wordpress-plugin-development-basics-vii/</link>
+	<atom:link href="/wordpress-plugin-development-basics-vii/feed/" rel="self" type="application/rss+xml" />
+	<link>/wordpress-plugin-development-basics-vii/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
 </channel>
 </rss>

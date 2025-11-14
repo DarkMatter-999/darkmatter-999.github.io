@@ -1,11 +1,8 @@
+# START YOAST BLOCK
+# ---------------------------
 User-agent: *
 Disallow:
 
-Sitemap: https://darkmatter-999.github.io/sitemap.xml
-Sitemap: https://darkmatter-999.github.io/sitemap_index.xml
-Sitemap: https://darkmatter-999.github.io/author-sitemap.xml
-Sitemap: https://darkmatter-999.github.io/category-sitemap.xml
-Sitemap: https://darkmatter-999.github.io/dm_project-sitemap.xml
-Sitemap: https://darkmatter-999.github.io/page-sitemap.xml
-Sitemap: https://darkmatter-999.github.io/post-sitemap.xml
-Sitemap: https://darkmatter-999.github.io/post_tag-sitemap.xml
+Sitemap: http://portfolio-staging.local/sitemap_index.xml
+# ---------------------------
+# END YOAST BLOCK

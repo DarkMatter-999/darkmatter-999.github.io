@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Advanced Theme Development in WordPress: WP_Widget	</title>
-	<atom:link href="https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/feed/" rel="self" type="application/rss+xml" />
-	<link>https://darkmatter-999.github.io/advanced-theme-development-in-wordpress-wp_widget/</link>
+	<atom:link href="/advanced-theme-development-in-wordpress-wp_widget/feed/" rel="self" type="application/rss+xml" />
+	<link>/advanced-theme-development-in-wordpress-wp_widget/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.2</generator>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
 </channel>
 </rss>
