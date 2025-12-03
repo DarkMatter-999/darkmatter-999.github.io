@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Internationalization and Localization in WordPress	</title>
-	<atom:link href="/internationalization-and-localization-in-wordpress/feed/" rel="self" type="application/rss+xml" />
-	<link>/internationalization-and-localization-in-wordpress/</link>
+	<atom:link href="https://https://lakshyajeet.in/internationalization-and-localization-in-wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/internationalization-and-localization-in-wordpress/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 </channel>
 </rss>

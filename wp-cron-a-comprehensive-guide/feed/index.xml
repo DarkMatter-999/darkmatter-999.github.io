@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: WP-Cron: A Comprehensive Guide	</title>
-	<atom:link href="/wp-cron-a-comprehensive-guide/feed/" rel="self" type="application/rss+xml" />
-	<link>/wp-cron-a-comprehensive-guide/</link>
+	<atom:link href="https://https://lakshyajeet.in/wp-cron-a-comprehensive-guide/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/wp-cron-a-comprehensive-guide/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 </channel>
 </rss>

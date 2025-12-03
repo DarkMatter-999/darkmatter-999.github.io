@@ -8,22 +8,22 @@
 	>
 
 <channel>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/author/admin/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<atom:link href="https://https://lakshyajeet.in/author/admin/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Sat, 16 Aug 2025 14:40:54 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 03 Dec 2025 10:07:53 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<url>https://https://lakshyajeet.in/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<link>https://https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 

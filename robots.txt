@@ -3,6 +3,6 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://portfolio-staging.local/sitemap_index.xml
+Sitemap: https://https://lakshyajeet.in/sitemap_index.xml
 # ---------------------------
 # END YOAST BLOCK

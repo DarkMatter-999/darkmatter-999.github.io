@@ -8,7 +8,7 @@
 <channel>
 	<title>
 	Comments for Lakshyajeet&#039;s Blog	</title>
-	<atom:link href="/comments/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://https://lakshyajeet.in/comments/feed/" rel="self" type="application/rss+xml" />
 	<link></link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:59 +0000</lastBuildDate>
@@ -16,11 +16,11 @@
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 	<item>
 		<title>
 		Comment on Advanced Theme Development in WordPress: The Customizer API by Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
+		<link>https://https://lakshyajeet.in/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
 
 		<dc:creator><![CDATA[Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Mon, 07 Apr 2025 15:18:10 +0000</pubDate>
@@ -34,7 +34,7 @@
 		<item>
 		<title>
 		Comment on WordPress Plugin Development Basics by WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>/wordpress-plugin-development-basics/#comment-2</link>
+		<link>https://https://lakshyajeet.in/wordpress-plugin-development-basics/#comment-2</link>
 
 		<dc:creator><![CDATA[WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Wed, 12 Feb 2025 14:25:38 +0000</pubDate>

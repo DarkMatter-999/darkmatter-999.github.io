@@ -8,9 +8,9 @@
 	>
 
 <channel>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<atom:link href="https://https://lakshyajeet.in/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -18,19 +18,19 @@
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<url>https://https://lakshyajeet.in/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<link>https://https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Block Themes: Block Themes and Block Patterns Explained</title>
-		<link>/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
-					<comments>/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 13 May 2025 16:28:27 +0000</pubDate>
@@ -43,7 +43,7 @@
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=898</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where <strong>Block Themes</strong> and <strong>Block Patterns</strong> play a central role in how our sites look and function.</p>
@@ -108,31 +108,31 @@
 <p>Example of <code>theme.json</code> in a Block Theme:</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">{
-  "version": 2,
-  "settings": {
-    "color": {
-      "palette": [
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+{
+  &quot;version&quot;: 2,
+  &quot;settings&quot;: {
+    &quot;color&quot;: {
+      &quot;palette&quot;: &#x5B;
         {
-          "slug": "primary",
-          "color": "#0073aa",
-          "name": "Primary"
+          &quot;slug&quot;: &quot;primary&quot;,
+          &quot;color&quot;: &quot;#0073aa&quot;,
+          &quot;name&quot;: &quot;Primary&quot;
         }
       ]
     }
   },
-  "styles": {
-    "elements": {
-      "h1": {
-        "typography": {
-          "fontSize": "2.5rem"
+  &quot;styles&quot;: {
+    &quot;elements&quot;: {
+      &quot;h1&quot;: {
+        &quot;typography&quot;: {
+          &quot;fontSize&quot;: &quot;2.5rem&quot;
         }
       }
     }
   }
-}</pre>
-
+}
+</pre></div>
 
 
 <p>This file gives us centralized control over global styles like fonts, colors, and spacing—without editing any CSS.</p>
@@ -180,24 +180,24 @@
 <h5 class="wp-block-heading">Example: <code>patterns/call-to-action.php</code></h5>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
+&lt;?php
 register_block_pattern(
-    'mytheme/call-to-action',
+    &#039;mytheme/call-to-action&#039;,
     array(
-        'title'       =&gt; __('Call to Action', 'mytheme'),
-        'description' =&gt; _x('A full-width call to action section.', 'Block pattern description', 'mytheme'),
-        'content'     =&gt; '&lt;!-- wp:group {"align":"full","backgroundColor":"primary","className":"cta"} --&gt;
-                            &lt;div class="wp-block-group alignfull cta has-primary-background-color"&gt;
+        &#039;title&#039;       =&gt; __(&#039;Call to Action&#039;, &#039;mytheme&#039;),
+        &#039;description&#039; =&gt; _x(&#039;A full-width call to action section.&#039;, &#039;Block pattern description&#039;, &#039;mytheme&#039;),
+        &#039;content&#039;     =&gt; &#039;&lt;!-- wp:group {&quot;align&quot;:&quot;full&quot;,&quot;backgroundColor&quot;:&quot;primary&quot;,&quot;className&quot;:&quot;cta&quot;} --&gt;
+                            &lt;div class=&quot;wp-block-group alignfull cta has-primary-background-color&quot;&gt;
                               &lt;h2&gt;Ready to start your journey?&lt;/h2&gt;
                               &lt;p&gt;Join us today and build your future.&lt;/p&gt;
-                              &lt;a class="wp-block-button__link" href="/signup"&gt;Get Started&lt;/a&gt;
+                              &lt;a class=&quot;wp-block-button__link&quot; href=&quot;/signup&quot;&gt;Get Started&lt;/a&gt;
                             &lt;/div&gt;
-                          &lt;!-- /wp:group --&gt;',
-        'categories'  =&gt; array('call-to-action'),
+                          &lt;!-- /wp:group --&gt;&#039;,
+        &#039;categories&#039;  =&gt; array(&#039;call-to-action&#039;),
     )
-);</pre>
-
+);
+</pre></div>
 
 
 <h2 class="wp-block-heading">Block Themes vs Classic Themes</h2>
@@ -235,18 +235,18 @@ register_block_pattern(
 
 
 <p>Block Themes and Block Patterns aren’t just buzzwords—they&#8217;re the future of WordPress. Whether we’re building for clients or crafting our own sites, these tools give us greater flexibility, faster development, and more power over design—all while embracing a no-code/low-code philosophy.</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Themes: Introduction</title>
-		<link>/wordpress-block-themes-introduction/</link>
-					<comments>/wordpress-block-themes-introduction/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-themes-introduction/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-themes-introduction/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 12 May 2025 14:58:01 +0000</pubDate>
@@ -259,7 +259,7 @@ register_block_pattern(
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=890</guid>
 
 					<description><![CDATA[<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]</p>
-<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of <strong>Block Themes</strong>. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of web design on WordPress.</p>
@@ -353,8 +353,8 @@ register_block_pattern(
 <p>Inside the <code>my-block-theme</code> folder, create a <code>style.css</code> file to define the theme’s meta information.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">/*
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: css; title: ; notranslate">
+/*
 Theme Name: My Block Theme
 Theme URI: https://example.com/my-block-theme
 Author: Your Name
@@ -365,8 +365,8 @@ Requires at least: 5.8
 Requires PHP: 7.4
 License: GPL2
 Text Domain: my-block-theme
-*/</pre>
-
+*/
+</pre></div>
 
 
 <h3 class="wp-block-heading">Step 3: Create <code>theme.json</code></h3>
@@ -376,18 +376,18 @@ Text Domain: my-block-theme
 <p>To enable Full-Site Editing and block-based template structures, we need a <code>theme.json</code> file. This file allows us to define global styles and configurations for blocks.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">{
-  "version": 2,
-  "settings": {
-    "custom": {
-      "spacing": {
-        "unit": "px"
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+{
+  &quot;version&quot;: 2,
+  &quot;settings&quot;: {
+    &quot;custom&quot;: {
+      &quot;spacing&quot;: {
+        &quot;unit&quot;: &quot;px&quot;
       }
     }
   }
-}</pre>
-
+}
+</pre></div>
 
 
 <h3 class="wp-block-heading">Step 4: Define Templates Using Blocks</h3>
@@ -401,31 +401,31 @@ Text Domain: my-block-theme
 <p>For example, create a file called <code>index.html</code> inside our theme folder.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">&lt;!DOCTYPE html&gt;
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate">
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
   &lt;title&gt;My Block Theme&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
   &lt;!-- Header Block --&gt;
-  &lt;div class="wp-block-site-header"&gt;
+  &lt;div class=&quot;wp-block-site-header&quot;&gt;
     &lt;!-- Site Header Content Here --&gt;
   &lt;/div&gt;
   
   &lt;!-- Main Content Block --&gt;
-  &lt;div class="wp-block-post-content"&gt;
+  &lt;div class=&quot;wp-block-post-content&quot;&gt;
     &lt;!-- Main Content Here --&gt;
   &lt;/div&gt;
 
   &lt;!-- Footer Block --&gt;
-  &lt;div class="wp-block-site-footer"&gt;
+  &lt;div class=&quot;wp-block-site-footer&quot;&gt;
     &lt;!-- Footer Content Here --&gt;
   &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre>
-
+&lt;/html&gt;
+</pre></div>
 
 
 <p>This basic structure defines the three key blocks: header, content, and footer.</p>
@@ -453,18 +453,18 @@ Text Domain: my-block-theme
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-themes-introduction/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-themes-introduction/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Widgets</title>
-		<link>/wordpress-block-editor-widgets/</link>
-					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-widgets/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-widgets/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
@@ -477,7 +477,7 @@ Text Domain: my-block-theme
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
@@ -529,12 +529,12 @@ Text Domain: my-block-theme
 <p>If our theme doesn&#8217;t support block widgets yet, we can enable it using a simple snippet in our theme’s <code>functions.php</code> file:</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">function enable_block_widgets_support() {
-    add_theme_support('widgets-block-editor');
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
+function enable_block_widgets_support() {
+    add_theme_support(&#039;widgets-block-editor&#039;);
 }
-add_action('after_setup_theme', 'enable_block_widgets_support');</pre>
-
+add_action(&#039;after_setup_theme&#039;, &#039;enable_block_widgets_support&#039;);
+</pre></div>
 
 
 <h2 class="wp-block-heading">Creating a Custom Widget Block (Advanced)</h2>
@@ -544,26 +544,26 @@ add_action('after_setup_theme', 'enable_block_widgets_support');</pre>
 <p>Want to build our own custom block to use as a widget? Here’s a basic boilerplate using JavaScript and the <code>@wordpress</code> packages:</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">// custom-widget-block.js
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+// custom-widget-block.js
 const { registerBlockType } = wp.blocks;
 const { TextControl } = wp.components;
 
-registerBlockType('mytheme/custom-widget', {
-    title: 'Custom Widget',
-    icon: 'admin-generic',
-    category: 'widgets',
+registerBlockType(&#039;mytheme/custom-widget&#039;, {
+    title: &#039;Custom Widget&#039;,
+    icon: &#039;admin-generic&#039;,
+    category: &#039;widgets&#039;,
     attributes: {
         content: {
-            type: 'string',
-            default: '',
+            type: &#039;string&#039;,
+            default: &#039;&#039;,
         },
     },
     edit: (props) =&gt; {
         const { attributes: { content }, setAttributes } = props;
         return (
             &lt;TextControl
-                label="Widget Content"
+                label=&quot;Widget Content&quot;
                 value={content}
                 onChange={(value) =&gt; setAttributes({ content: value })}
             /&gt;
@@ -572,8 +572,8 @@ registerBlockType('mytheme/custom-widget', {
     save: (props) =&gt; {
         return &lt;div&gt;{props.attributes.content}&lt;/div&gt;;
     },
-});</pre>
-
+});
+</pre></div>
 
 
 <p>To register this block, we&#8217;d include it in our plugin or theme with proper setup via <code>block.json</code> and <code>webpack</code>/<code>wp-scripts</code>.</p>
@@ -589,18 +589,18 @@ registerBlockType('mytheme/custom-widget', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-widgets/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Formatting Toolbar API</title>
-		<link>/wordpress-block-editor-formatting-toolbar-api/</link>
-					<comments>/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 08 May 2025 14:34:35 +0000</pubDate>
@@ -613,7 +613,7 @@ registerBlockType('mytheme/custom-widget', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=879</guid>
 
 					<description><![CDATA[<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the <strong>Formatting Toolbar API</strong>, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks.</p>
@@ -643,27 +643,27 @@ registerBlockType('mytheme/custom-widget', {
 <p>We&#8217;ll use <code>registerFormatType</code> from <code>@wordpress/rich-text</code>.</p>
 
 
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+// my-custom-highlight.js
+import { registerFormatType, toggleFormat } from &#039;@wordpress/rich-text&#039;;
+import { RichTextToolbarButton } from &#039;@wordpress/block-editor&#039;;
+import { Fragment } from &#039;@wordpress/element&#039;;
+import { __ } from &#039;@wordpress/i18n&#039;;
+import { formatBold } from &#039;@wordpress/icons&#039;;
 
-<pre class="wp-block-syntaxhighlighter-code">// my-custom-highlight.js
-import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
-import { RichTextToolbarButton } from '@wordpress/block-editor';
-import { Fragment } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
-import { formatBold } from '@wordpress/icons';
-
-registerFormatType('my-plugin/highlight', {
-    title: __('Highlight', 'my-plugin'),
-    tagName: 'mark',
-    className: 'highlighted-text',
+registerFormatType(&#039;my-plugin/highlight&#039;, {
+    title: __(&#039;Highlight&#039;, &#039;my-plugin&#039;),
+    tagName: &#039;mark&#039;,
+    className: &#039;highlighted-text&#039;,
     edit({ isActive, value, onChange }) {
         return (
             &lt;Fragment&gt;
                 &lt;RichTextToolbarButton
                     icon={formatBold}
-                    title={__('Highlight', 'my-plugin')}
+                    title={__(&#039;Highlight&#039;, &#039;my-plugin&#039;)}
                     onClick={() =&gt; {
                         onChange(toggleFormat(value, {
-                            type: 'my-plugin/highlight',
+                            type: &#039;my-plugin/highlight&#039;,
                         }));
                     }}
                     isActive={isActive}
@@ -671,8 +671,8 @@ registerFormatType('my-plugin/highlight', {
             &lt;/Fragment&gt;
         );
     },
-});</pre>
-
+});
+</pre></div>
 
 
 <h3 class="wp-block-heading">2. Enqueue the Script</h3>
@@ -682,18 +682,18 @@ registerFormatType('my-plugin/highlight', {
 <p>In our plugin or theme <code>functions.php</code>, enqueue the script using <code>enqueue_block_editor_assets</code>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">function my_plugin_enqueue_formatting_toolbar() {
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+function my_plugin_enqueue_formatting_toolbar() {
     wp_enqueue_script(
-        'my-custom-highlight',
-        plugin_dir_url(__FILE__) . 'my-custom-highlight.js',
-        [ 'wp-rich-text', 'wp-element', 'wp-block-editor', 'wp-i18n' ],
+        &#039;my-custom-highlight&#039;,
+        plugin_dir_url(__FILE__) . &#039;my-custom-highlight.js&#039;,
+        &#x5B; &#039;wp-rich-text&#039;, &#039;wp-element&#039;, &#039;wp-block-editor&#039;, &#039;wp-i18n&#039; ],
         false,
         true
     );
 }
-add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar');</pre>
-
+add_action(&#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_formatting_toolbar&#039;);
+</pre></div>
 
 
 <h3 class="wp-block-heading">3. Add Some Styling</h3>
@@ -703,12 +703,12 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 <p>Add a custom style so the highlighting is visible.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">.mark.highlighted-text {
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: css; title: ; notranslate">
+.mark.highlighted-text {
     background-color: yellow;
     padding: 0 2px;
-}</pre>
-
+}
+</pre></div>
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -716,18 +716,18 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 
 
 <p>The <strong>Formatting Toolbar API</strong> gives us a flexible way to extend the WordPress editing experience. Whether we&#8217;re adding highlights, tooltips, or custom shortcodes, this API is a powerful tool in our WordPress development toolkit.</p>
-<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
-		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
-					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
@@ -740,7 +740,7 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
 					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
@@ -762,21 +762,21 @@ add_action('enqueue_block_editor_assets', 'my_plugin_enqueue_formatting_toolbar'
 <h2 class="wp-block-heading">Metaboxes</h2>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
-import { TextControl } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
-import { useEntityProp } from '@wordpress/core-data';
-import { useBlockProps } from '@wordpress/block-editor';
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { registerBlockType } from &#039;@wordpress/blocks&#039;;
+import { TextControl } from &#039;@wordpress/components&#039;;
+import { useSelect } from &#039;@wordpress/data&#039;;
+import { useEntityProp } from &#039;@wordpress/core-data&#039;;
+import { useBlockProps } from &#039;@wordpress/block-editor&#039;;
 
 const Edit = () =&gt; {
 	const blockProps = useBlockProps();
 	const postType = useSelect(
-		(select) =&gt; select('core/editor').getCurrentPostType(),
-		[]
+		(select) =&gt; select(&#039;core/editor&#039;).getCurrentPostType(),
+		&#x5B;]
 	);
 
-	const [meta, setMeta] = useEntityProp('postType', postType, 'meta');
+	const &#x5B;meta, setMeta] = useEntityProp(&#039;postType&#039;, postType, &#039;meta&#039;);
 	const metaFieldValue = meta.myguten_meta_block_field;
 
 	const updateMetaValue = (newValue) =&gt; {
@@ -786,7 +786,7 @@ const Edit = () =&gt; {
 	return (
 		&lt;div {...blockProps}&gt;
 			&lt;TextControl
-				label="Meta Block Field"
+				label=&quot;Meta Block Field&quot;
 				value={metaFieldValue}
 				onChange={updateMetaValue}
 			/&gt;
@@ -794,11 +794,11 @@ const Edit = () =&gt; {
 	);
 };
 
-registerBlockType('myguten/meta-block', {
+registerBlockType(&#039;myguten/meta-block&#039;, {
 	edit: Edit,
 	save: () =&gt; null, // We save this data as post meta, not block content.
-});</pre>
-
+});
+</pre></div>
 
 
 <ul class="wp-block-list">
@@ -822,19 +822,19 @@ registerBlockType('myguten/meta-block', {
 <p>Before this works, we need to make sure to <strong>register the meta key</strong> in PHP and set <code>'show_in_rest' =&gt; true</code> so it&#8217;s accessible from the block editor.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">function myguten_register_post_meta() {
-	register_post_meta( 'post', 'myguten_meta_block_field', array(
-		'show_in_rest' =&gt; true,
-		'type'         =&gt; 'string',
-		'single'       =&gt; true,
-		'auth_callback' =&gt; function() {
-			return current_user_can( 'edit_posts' );
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
+function myguten_register_post_meta() {
+	register_post_meta( &#039;post&#039;, &#039;myguten_meta_block_field&#039;, array(
+		&#039;show_in_rest&#039; =&gt; true,
+		&#039;type&#039;         =&gt; &#039;string&#039;,
+		&#039;single&#039;       =&gt; true,
+		&#039;auth_callback&#039; =&gt; function() {
+			return current_user_can( &#039;edit_posts&#039; );
 		}
 	) );
 }
-add_action( 'init', 'myguten_register_post_meta' );</pre>
-
+add_action( &#039;init&#039;, &#039;myguten_register_post_meta&#039; );
+</pre></div>
 
 
 <h2 class="wp-block-heading">Admin Notices</h2>
@@ -844,9 +844,9 @@ add_action( 'init', 'myguten_register_post_meta' );</pre>
 <p>There are times when we want to alert the user—maybe something failed, or we want to show a confirmation. The Gutenberg editor provides a great way to <strong>hook into the notices system</strong>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">import { useSelect } from '@wordpress/data';
-import { store as noticesStore } from '@wordpress/notices';
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { useSelect } from &#039;@wordpress/data&#039;;
+import { store as noticesStore } from &#039;@wordpress/notices&#039;;
 
 const ExampleComponent = () =&gt; {
 	const notices = useSelect((select) =&gt;
@@ -859,21 +859,21 @@ const ExampleComponent = () =&gt; {
 			))}
 		&lt;/ul&gt;
 	);
-};</pre>
-
+};
+</pre></div>
 
 
 <p>By using <code>useSelect</code> and <code>noticesStore</code>, we can tap into WordPress’s internal notices system. This keeps our UI consistent with the rest of the editor and gives us a standardized way to deliver feedback to the user.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">import { useDispatch } from '@wordpress/data';
-import { store as noticesStore } from '@wordpress/notices';
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { useDispatch } from &#039;@wordpress/data&#039;;
+import { store as noticesStore } from &#039;@wordpress/notices&#039;;
 
 const { createSuccessNotice, createErrorNotice } = useDispatch(noticesStore);
 
-createSuccessNotice('Your meta field was updated successfully!');</pre>
-
+createSuccessNotice(&#039;Your meta field was updated successfully!&#039;);
+</pre></div>
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -881,18 +881,18 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 
 
 <p>Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Dynamic and Static Blocks</title>
-		<link>/wordpress-block-editor-dynamic-and-static-blocks/</link>
-					<comments>/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 06 May 2025 14:23:58 +0000</pubDate>
@@ -905,7 +905,7 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=864</guid>
 
 					<description><![CDATA[<p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: static blocks and dynamic blocks. Understanding the difference between these two types is [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>When we build websites with WordPress, we encounter the Block Editor. It&#8217;s a powerful visual editor that has changed how we create content and design layouts. But when we start developing custom blocks for this editor, we come across two important concepts: <strong>static blocks</strong> and <strong>dynamic blocks</strong>.</p>
@@ -995,67 +995,67 @@ createSuccessNotice('Your meta field was updated successfully!');</pre>
 <h3 class="wp-block-heading">block.json</h3>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">{
-  "apiVersion": 3,
-  "name": "myplugin/alert-box",
-  "title": "Alert Box",
-  "category": "widgets",
-  "icon": "warning",
-  "editorScript": "file:./index.js"
-}</pre>
-
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+{
+  &quot;apiVersion&quot;: 3,
+  &quot;name&quot;: &quot;myplugin/alert-box&quot;,
+  &quot;title&quot;: &quot;Alert Box&quot;,
+  &quot;category&quot;: &quot;widgets&quot;,
+  &quot;icon&quot;: &quot;warning&quot;,
+  &quot;editorScript&quot;: &quot;file:./index.js&quot;
+}
+</pre></div>
 
 
 <h3 class="wp-block-heading">index.js</h3>
 
 
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { registerBlockType } from &#039;@wordpress/blocks&#039;;
+import Edit from &#039;./edit&#039;;
 
-<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
-import Edit from './edit';
-
-registerBlockType('myplugin/alert-box', {
+registerBlockType(&#039;myplugin/alert-box&#039;, {
     attributes: {
         content: {
-            type: 'string',
-            source: 'html',
-            selector: 'p'
+            type: &#039;string&#039;,
+            source: &#039;html&#039;,
+            selector: &#039;p&#039;
         }
     },
     edit: Edit,
     save({ attributes }) {
         return (
-            &lt;div className="alert-box"&gt;
+            &lt;div className=&quot;alert-box&quot;&gt;
                 &lt;p&gt;{attributes.content}&lt;/p&gt;
             &lt;/div&gt;
         );
     }
-});</pre>
-
+});
+</pre></div>
 
 
 <h3 class="wp-block-heading">edit.js</h3>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { __ } from &#039;@wordpress/i18n&#039;;
+import { useBlockProps, RichText } from &#039;@wordpress/block-editor&#039;;
 
 export default function Edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
 
     return (
-        &lt;div {...blockProps} className="alert-box"&gt;
+        &lt;div {...blockProps} className=&quot;alert-box&quot;&gt;
             &lt;RichText
-                tagName="p"
+                tagName=&quot;p&quot;
                 value={attributes.content}
                 onChange={(content) =&gt; setAttributes({ content })}
-                placeholder={__('Add your alert text here...', 'myplugin')}
+                placeholder={__(&#039;Add your alert text here...&#039;, &#039;myplugin&#039;)}
             /&gt;
         &lt;/div&gt;
     );
-}</pre>
-
+}
+</pre></div>
 
 
 <p>This block is fully static. The <code>save</code> function defines exactly what gets stored and rendered.</p>
@@ -1081,26 +1081,26 @@ export default function Edit({ attributes, setAttributes }) {
 <h3 class="wp-block-heading">block.json</h3>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">{
-  "apiVersion": 3,
-  "name": "myplugin/latest-post",
-  "title": "Latest Post",
-  "category": "widgets",
-  "icon": "megaphone",
-  "editorScript": "file:./index.js",
-  "render": "file:./render.php"
-}</pre>
-
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+{
+  &quot;apiVersion&quot;: 3,
+  &quot;name&quot;: &quot;myplugin/latest-post&quot;,
+  &quot;title&quot;: &quot;Latest Post&quot;,
+  &quot;category&quot;: &quot;widgets&quot;,
+  &quot;icon&quot;: &quot;megaphone&quot;,
+  &quot;editorScript&quot;: &quot;file:./index.js&quot;,
+  &quot;render&quot;: &quot;file:./render.php&quot;
+}
+</pre></div>
 
 
 <h3 class="wp-block-heading">index.js</h3>
 
 
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { registerBlockType } from &#039;@wordpress/blocks&#039;;
 
-<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
-
-registerBlockType('myplugin/latest-post', {
+registerBlockType(&#039;myplugin/latest-post&#039;, {
     edit() {
         return &lt;p&gt;Latest post will be shown here on the frontend.&lt;/p&gt;;
     },
@@ -1108,29 +1108,29 @@ registerBlockType('myplugin/latest-post', {
         // Returning null to indicate dynamic rendering
         return null;
     }
-});</pre>
-
+});
+</pre></div>
 
 
 <h3 class="wp-block-heading">render.php</h3>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">&lt;?php
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+&lt;?php
 function myplugin_render_latest_post() {
-    $recent_posts = wp_get_recent_posts([
-        'numberposts' =&gt; 1,
-        'post_status' =&gt; 'publish',
+    $recent_posts = wp_get_recent_posts(&#x5B;
+        &#039;numberposts&#039; =&gt; 1,
+        &#039;post_status&#039; =&gt; &#039;publish&#039;,
     ]);
 
     if (empty($recent_posts)) {
-        return '&lt;p&gt;No posts found.&lt;/p&gt;';
+        return &#039;&lt;p&gt;No posts found.&lt;/p&gt;&#039;;
     }
 
-    $post = $recent_posts[0];
-    return sprintf('&lt;h3&gt;&lt;a href="%s"&gt;%s&lt;/a&gt;&lt;/h3&gt;', esc_url(get_permalink($post['ID'])), esc_html($post['post_title']));
-}</pre>
-
+    $post = $recent_posts&#x5B;0];
+    return sprintf(&#039;&lt;h3&gt;&lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/h3&gt;&#039;, esc_url(get_permalink($post&#x5B;&#039;ID&#039;])), esc_html($post&#x5B;&#039;post_title&#039;]));
+}
+</pre></div>
 
 
 <h2 class="wp-block-heading">Choosing Between Static and Dynamic</h2>
@@ -1160,18 +1160,18 @@ function myplugin_render_latest_post() {
 
 
 <p>The WordPress Block Editor gives us powerful tools to create modern, reusable content structures. By understanding static and dynamic blocks, we can build flexible and performant custom blocks that suit a variety of use cases. Whether we’re building a rich content page or a dynamic listing, there’s a block type that fits the bill.</p>
-<p>The post <a href="/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/">WordPress Block Editor: Dynamic and Static Blocks</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Nested Blocks</title>
-		<link>/wordpress-block-editor-nested-blocks/</link>
-					<comments>/wordpress-block-editor-nested-blocks/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-nested-blocks/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-nested-blocks/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
@@ -1184,7 +1184,7 @@ function myplugin_render_latest_post() {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
@@ -1244,20 +1244,20 @@ function myplugin_render_latest_post() {
 <p>We can register our block in <code>block.json</code>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">{
-  "apiVersion": 3,
-  "name": "my-plugin/section",
-  "title": "Section",
-  "category": "layout",
-  "icon": "editor-insertmore",
-  "description": "A custom section block that allows nested blocks inside.",
-  "supports": {
-    "html": false
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+{
+  &quot;apiVersion&quot;: 3,
+  &quot;name&quot;: &quot;my-plugin/section&quot;,
+  &quot;title&quot;: &quot;Section&quot;,
+  &quot;category&quot;: &quot;layout&quot;,
+  &quot;icon&quot;: &quot;editor-insertmore&quot;,
+  &quot;description&quot;: &quot;A custom section block that allows nested blocks inside.&quot;,
+  &quot;supports&quot;: {
+    &quot;html&quot;: false
   },
-  "editorScript": "file:./index.js"
-}</pre>
-
+  &quot;editorScript&quot;: &quot;file:./index.js&quot;
+}
+</pre></div>
 
 
 <h3 class="wp-block-heading">2. Block Edit Function with <code>InnerBlocks</code></h3>
@@ -1267,27 +1267,27 @@ function myplugin_render_latest_post() {
 <p>In our <code>index.js</code> file, we’ll use the <code>InnerBlocks</code> component to allow nesting</p>
 
 
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { registerBlockType } from &#039;@wordpress/blocks&#039;;
+import { InnerBlocks } from &#039;@wordpress/block-editor&#039;;
 
-<pre class="wp-block-syntaxhighlighter-code">import { registerBlockType } from '@wordpress/blocks';
-import { InnerBlocks } from '@wordpress/block-editor';
-
-registerBlockType('myplugin/section', {
+registerBlockType(&#039;myplugin/section&#039;, {
     edit: () =&gt; {
         return (
-            &lt;div className="my-section-block"&gt;
+            &lt;div className=&quot;my-section-block&quot;&gt;
                 &lt;InnerBlocks /&gt;
             &lt;/div&gt;
         );
     },
     save: () =&gt; {
         return (
-            &lt;div className="my-section-block"&gt;
+            &lt;div className=&quot;my-section-block&quot;&gt;
                 &lt;InnerBlocks.Content /&gt;
             &lt;/div&gt;
         );
     },
-});</pre>
-
+});
+</pre></div>
 
 
 <h3 class="wp-block-heading">Restricting Allowed Blocks (Optional)</h3>
@@ -1297,24 +1297,24 @@ registerBlockType('myplugin/section', {
 <p>Sometimes we want to restrict which blocks can be inserted inside our container. Here&#8217;s how we do that using the <code>allowedBlocks</code> prop.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
-    allowedBlocks={['core/paragraph', 'core/image', 'core/heading']}
-/&gt;</pre>
-
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+&lt;InnerBlocks
+    allowedBlocks={&#x5B;&#039;core/paragraph&#039;, &#039;core/image&#039;, &#039;core/heading&#039;]}
+/&gt;
+</pre></div>
 
 
 <p>We can also add placeholders in the templates for better UX.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">&lt;InnerBlocks
-    template={[
-        ['core/heading', { placeholder: 'Section Heading' }],
-        ['core/paragraph', { placeholder: 'Add your text here...' }]
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+&lt;InnerBlocks
+    template={&#x5B;
+        &#x5B;&#039;core/heading&#039;, { placeholder: &#039;Section Heading&#039; }],
+        &#x5B;&#039;core/paragraph&#039;, { placeholder: &#039;Add your text here...&#039; }]
     ]}
-/&gt;</pre>
-
+/&gt;
+</pre></div>
 
 
 <h3 class="wp-block-heading">Gotchas and Best Practices</h3>
@@ -1344,18 +1344,18 @@ registerBlockType('myplugin/section', {
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Attributes and Controls</title>
-		<link>/wordpress-block-editor-block-attributes-and-controls/</link>
-					<comments>/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
@@ -1368,7 +1368,7 @@ registerBlockType('myplugin/section', {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
 
 					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
@@ -1412,20 +1412,20 @@ registerBlockType('myplugin/section', {
 <p>When we register a block using <code>registerBlockType</code>, we define the attributes in the configuration:</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">registerBlockType('myplugin/alert-box', {
-  title: 'Alert Box',
-  icon: 'warning',
-  category: 'widgets',
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+registerBlockType(&#039;myplugin/alert-box&#039;, {
+  title: &#039;Alert Box&#039;,
+  icon: &#039;warning&#039;,
+  category: &#039;widgets&#039;,
 
   attributes: {
     message: {
-      type: 'string',
-      default: 'This is an alert box!',
+      type: &#039;string&#039;,
+      default: &#039;This is an alert box!&#039;,
     },
     backgroundColor: {
-      type: 'string',
-      default: '#ffcc00',
+      type: &#039;string&#039;,
+      default: &#039;#ffcc00&#039;,
     },
   },
 
@@ -1435,7 +1435,7 @@ registerBlockType('myplugin/section', {
     return (
       &lt;div style={{ backgroundColor }}&gt;
         &lt;RichText
-          tagName="p"
+          tagName=&quot;p&quot;
           value={message}
           onChange={(value) =&gt; setAttributes({ message: value })}
         /&gt;
@@ -1446,12 +1446,12 @@ registerBlockType('myplugin/section', {
   save({ attributes }) {
     return (
       &lt;div style={{ backgroundColor: attributes.backgroundColor }}&gt;
-        &lt;RichText.Content tagName="p" value={attributes.message} /&gt;
+        &lt;RichText.Content tagName=&quot;p&quot; value={attributes.message} /&gt;
       &lt;/div&gt;
     );
   },
-});</pre>
-
+});
+</pre></div>
 
 
 <h2 class="wp-block-heading">What Are Controls in the Block Editor?</h2>
@@ -1491,23 +1491,23 @@ registerBlockType('myplugin/section', {
 <p>To let users modify attributes, we add UI controls using components from <code>@wordpress/components</code> inside the block&#8217;s <code>edit</code> function.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">import { PanelBody, ColorPalette } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+import { PanelBody, ColorPalette } from &#039;@wordpress/components&#039;;
+import { InspectorControls } from &#039;@wordpress/block-editor&#039;;
 
 edit({ attributes, setAttributes }) {
   const { backgroundColor } = attributes;
 
-  const colors = [
-    { name: 'Yellow', color: '#ffcc00' },
-    { name: 'Red', color: '#ff4444' },
-    { name: 'Green', color: '#44ff44' },
+  const colors = &#x5B;
+    { name: &#039;Yellow&#039;, color: &#039;#ffcc00&#039; },
+    { name: &#039;Red&#039;, color: &#039;#ff4444&#039; },
+    { name: &#039;Green&#039;, color: &#039;#44ff44&#039; },
   ];
 
   return (
     &lt;&gt;
       &lt;InspectorControls&gt;
-        &lt;PanelBody title="Background Color" initialOpen={true}&gt;
+        &lt;PanelBody title=&quot;Background Color&quot; initialOpen={true}&gt;
           &lt;ColorPalette
             colors={colors}
             value={backgroundColor}
@@ -1518,15 +1518,15 @@ edit({ attributes, setAttributes }) {
 
       &lt;div style={{ backgroundColor }}&gt;
         &lt;RichText
-          tagName="p"
+          tagName=&quot;p&quot;
           value={attributes.message}
           onChange={(value) =&gt; setAttributes({ message: value })}
         /&gt;
       &lt;/div&gt;
     &lt;/&gt;
   );
-}</pre>
-
+}
+</pre></div>
 
 
 <h2 class="wp-block-heading">How Attributes and Controls Work Together</h2>
@@ -1564,18 +1564,18 @@ edit({ attributes, setAttributes }) {
 
 
 <p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
-<p>The post <a href="/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Supports Explained</title>
-		<link>/wordpress-block-editor-block-supports-explained/</link>
-					<comments>/wordpress-block-editor-block-supports-explained/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
@@ -1588,7 +1588,7 @@ edit({ attributes, setAttributes }) {
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
 
 					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
@@ -1636,16 +1636,16 @@ edit({ attributes, setAttributes }) {
 <p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
 
 
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+// my-custom-block.js
+import { registerBlockType } from &#039;@wordpress/blocks&#039;;
+import { __ } from &#039;@wordpress/i18n&#039;;
+import { useBlockProps } from &#039;@wordpress/block-editor&#039;;
 
-<pre class="wp-block-syntaxhighlighter-code">// my-custom-block.js
-import { registerBlockType } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
-
-registerBlockType('myplugin/my-custom-block', {
-    title: __('My Custom Block', 'myplugin'),
-    icon: 'smiley',
-    category: 'design',
+registerBlockType(&#039;myplugin/my-custom-block&#039;, {
+    title: __(&#039;My Custom Block&#039;, &#039;myplugin&#039;),
+    icon: &#039;smiley&#039;,
+    category: &#039;design&#039;,
     supports: {
         color: {
             text: true,
@@ -1660,7 +1660,7 @@ registerBlockType('myplugin/my-custom-block', {
             lineHeight: true,
         },
         border: true,
-        align: ['wide', 'full'],
+        align: &#x5B;&#039;wide&#039;, &#039;full&#039;],
     },
     edit({ attributes }) {
         const blockProps = useBlockProps();
@@ -1679,8 +1679,8 @@ registerBlockType('myplugin/my-custom-block', {
             &lt;/div&gt;
         );
     }
-});</pre>
-
+});
+</pre></div>
 
 
 <h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
@@ -1702,13 +1702,13 @@ registerBlockType('myplugin/my-custom-block', {
 <p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">// Disable color support for Paragraph block
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+// Disable color support for Paragraph block
 wp.hooks.addFilter(
-    'blocks.registerBlockType',
-    'myplugin/remove-paragraph-supports',
+    &#039;blocks.registerBlockType&#039;,
+    &#039;myplugin/remove-paragraph-supports&#039;,
     (settings, name) =&gt; {
-        if (name === 'core/paragraph') {
+        if (name === &#039;core/paragraph&#039;) {
             settings.supports = {
                 ...settings.supports,
                 color: false,
@@ -1716,8 +1716,8 @@ wp.hooks.addFilter(
         }
         return settings;
     }
-);</pre>
-
+);
+</pre></div>
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -1729,18 +1729,18 @@ wp.hooks.addFilter(
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Block Filters Explained</title>
-		<link>/wordpress-block-editor-block-filters-explained/</link>
-					<comments>/wordpress-block-editor-block-filters-explained/#respond</comments>
+		<link>https://https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/</link>
+					<comments>https://https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
@@ -1753,7 +1753,7 @@ wp.hooks.addFilter(
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
 
 					<description><![CDATA[<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
@@ -1843,25 +1843,25 @@ wp.hooks.addFilter(
 <p>Let’s say we want every <code>core/paragraph</code> block to get a custom class like <code>my-custom-paragraph</code>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+const { addFilter } = wp.hooks;
 
 function addCustomClassName( props, blockType, attributes ) {
-    if ( blockType.name === 'core/paragraph' ) {
+    if ( blockType.name === &#039;core/paragraph&#039; ) {
         return {
             ...props,
-            className: `${props.className || ''} my-custom-paragraph`,
+            className: `${props.className || &#039;&#039;} my-custom-paragraph`,
         };
     }
     return props;
 }
 
 addFilter(
-    'blocks.getSaveContent.extraProps',
-    'my-plugin/add-custom-class',
+    &#039;blocks.getSaveContent.extraProps&#039;,
+    &#039;my-plugin/add-custom-class&#039;,
     addCustomClassName
-);</pre>
-
+);
+</pre></div>
 
 
 <h3 class="wp-block-heading">2. Modify Block Settings on Registration</h3>
@@ -1871,11 +1871,11 @@ addFilter(
 <p>What if we want to disable the &#8220;drop cap&#8221; feature from the paragraph block?</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+const { addFilter } = wp.hooks;
 
 function modifyBlockSettings( settings, name ) {
-    if ( name === 'core/paragraph' ) {
+    if ( name === &#039;core/paragraph&#039; ) {
         return {
             ...settings,
             supports: {
@@ -1888,11 +1888,11 @@ function modifyBlockSettings( settings, name ) {
 }
 
 addFilter(
-    'blocks.registerBlockType',
-    'my-plugin/modify-paragraph-settings',
+    &#039;blocks.registerBlockType&#039;,
+    &#039;my-plugin/modify-paragraph-settings&#039;,
     modifyBlockSettings
-);</pre>
-
+);
+</pre></div>
 
 
 <h3 class="wp-block-heading">3. Wrap the Block&#8217;s Edit Component</h3>
@@ -1902,17 +1902,17 @@ addFilter(
 <p>Need to inject UI or logic into a block&#8217;s editor UI? We can wrap the <code>edit</code> function using <code>editor.BlockEdit</code>.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">const { addFilter } = wp.hooks;
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+const { addFilter } = wp.hooks;
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 
 const withCustomEditWrapper = createHigherOrderComponent( ( BlockEdit ) =&gt; {
     return ( props ) =&gt; {
-        if ( props.name === 'core/paragraph' ) {
+        if ( props.name === &#039;core/paragraph&#039; ) {
             return (
                 &lt;Fragment&gt;
-                    &lt;div style={{ border: '1px solid red', padding: '10px' }}&gt;
+                    &lt;div style={{ border: &#039;1px solid red&#039;, padding: &#039;10px&#039; }}&gt;
                         &lt;strong&gt;Custom UI:&lt;/strong&gt; You’re editing a paragraph!
                     &lt;/div&gt;
                     &lt;BlockEdit { ...props } /&gt;
@@ -1921,14 +1921,14 @@ const withCustomEditWrapper = createHigherOrderComponent( ( BlockEdit ) =&gt; {
         }
         return &lt;BlockEdit { ...props } /&gt;;
     };
-}, 'withCustomEditWrapper' );
+}, &#039;withCustomEditWrapper&#039; );
 
 addFilter(
-    'editor.BlockEdit',
-    'my-plugin/custom-block-edit',
+    &#039;editor.BlockEdit&#039;,
+    &#039;my-plugin/custom-block-edit&#039;,
     withCustomEditWrapper
-);</pre>
-
+);
+</pre></div>
 
 
 <h2 class="wp-block-heading">Enqueuing the JavaScript</h2>
@@ -1938,18 +1938,18 @@ addFilter(
 <p>To make all this work, we’ll need to enqueue our JS file in the editor.</p>
 
 
-
-<pre class="wp-block-syntaxhighlighter-code">function my_plugin_enqueue_editor_assets() {
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
+function my_plugin_enqueue_editor_assets() {
     wp_enqueue_script(
-        'my-plugin-block-filters',
-        plugin_dir_url( __FILE__ ) . 'my-plugin.js',
-        array( 'wp-blocks', 'wp-hooks', 'wp-element', 'wp-compose', 'wp-editor' ),
-        '1.0.0',
+        &#039;my-plugin-block-filters&#039;,
+        plugin_dir_url( __FILE__ ) . &#039;my-plugin.js&#039;,
+        array( &#039;wp-blocks&#039;, &#039;wp-hooks&#039;, &#039;wp-element&#039;, &#039;wp-compose&#039;, &#039;wp-editor&#039; ),
+        &#039;1.0.0&#039;,
         true
     );
 }
-add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );</pre>
-
+add_action( &#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_editor_assets&#039; );
+</pre></div>
 
 
 <h2 class="wp-block-heading">Final Thoughts</h2>
@@ -1961,10 +1961,10 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_editor_assets' );<
 
 
 <p></p>
-<p>The post <a href="/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

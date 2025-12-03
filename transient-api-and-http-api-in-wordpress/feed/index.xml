@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Transient API and HTTP API in WordPress	</title>
-	<atom:link href="/transient-api-and-http-api-in-wordpress/feed/" rel="self" type="application/rss+xml" />
-	<link>/transient-api-and-http-api-in-wordpress/</link>
+	<atom:link href="https://https://lakshyajeet.in/transient-api-and-http-api-in-wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/transient-api-and-http-api-in-wordpress/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 </channel>
 </rss>

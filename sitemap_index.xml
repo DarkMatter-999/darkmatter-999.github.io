@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://https://lakshyajeet.in/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>/post-sitemap.xml</loc>
+		<loc>https://https://lakshyajeet.in/post-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/page-sitemap.xml</loc>
-		<lastmod>2025-08-16T14:40:54+00:00</lastmod>
+		<loc>https://https://lakshyajeet.in/page-sitemap.xml</loc>
+		<lastmod>2025-12-03T10:07:53+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/dm_project-sitemap.xml</loc>
+		<loc>https://https://lakshyajeet.in/dm_project-sitemap.xml</loc>
 		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/category-sitemap.xml</loc>
+		<loc>https://https://lakshyajeet.in/category-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/post_tag-sitemap.xml</loc>
+		<loc>https://https://lakshyajeet.in/post_tag-sitemap.xml</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>/author-sitemap.xml</loc>
+		<loc>https://https://lakshyajeet.in/author-sitemap.xml</loc>
 		<lastmod>2025-07-06T16:10:09+00:00</lastmod>
 	</sitemap>
 </sitemapindex>

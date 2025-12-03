@@ -8,9 +8,9 @@
 	>
 
 <channel>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/dm_project/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<atom:link href="https://https://lakshyajeet.in/dm_project/feed/" rel="self" type="application/rss+xml" />
+	<link>https://https://lakshyajeet.in/</link>
 	<description></description>
 	<lastBuildDate>Sun, 06 Jul 2025 14:10:40 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -18,29 +18,29 @@
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<generator>https://wordpress.org/?v=6.9</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
-	<title>Home - Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<url>https://https://lakshyajeet.in/wp-content/uploads/2025/01/cropped-nyan-1-32x32.gif</url>
+	<title>Lakshyajeet&#039;s Blog</title>
+	<link>https://https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WhyMDB (IMDB Clone)</title>
-		<link>/dm_project/whymdb-imdb-clone/</link>
+		<link>https://https://lakshyajeet.in/dm_project/whymdb-imdb-clone/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:18:51 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=936</guid>
 
 					<description><![CDATA[<p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.</p>
-<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.<br></p>
-<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -48,18 +48,18 @@
 			</item>
 		<item>
 		<title>PyLeo</title>
-		<link>/dm_project/pyleo/</link>
+		<link>https://https://lakshyajeet.in/dm_project/pyleo/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:18:24 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=934</guid>
 
 					<description><![CDATA[<p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.</p>
-<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/pyleo/">PyLeo</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.<br></p>
-<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/pyleo/">PyLeo</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -67,18 +67,18 @@
 			</item>
 		<item>
 		<title>Little Vulkan Engine</title>
-		<link>/dm_project/little-vulkan-engine/</link>
+		<link>https://https://lakshyajeet.in/dm_project/little-vulkan-engine/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:17:48 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=932</guid>
 
 					<description><![CDATA[<p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.</p>
-<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.<br></p>
-<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -86,18 +86,18 @@
 			</item>
 		<item>
 		<title>RayTracer</title>
-		<link>/dm_project/raytracer/</link>
+		<link>https://https://lakshyajeet.in/dm_project/raytracer/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:17:13 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=926</guid>
 
 					<description><![CDATA[<p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
-<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/raytracer/">RayTracer</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
-<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://https://lakshyajeet.in/dm_project/raytracer/">RayTracer</a> appeared first on <a href="https://https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
