@@ -12,7 +12,7 @@
 	<atom:link href="https://lakshyajeet.in/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Sun, 06 Jul 2025 15:58:58 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 04 Dec 2025 09:52:12 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -108,31 +108,33 @@
 <p>Example of <code>theme.json</code> in a Block Theme:</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 {
-  &quot;version&quot;: 2,
-  &quot;settings&quot;: {
-    &quot;color&quot;: {
-      &quot;palette&quot;: &#x5B;
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">&quot;settings&quot;</span>: {
+    <span class="hljs-string">&quot;color&quot;</span>: {
+      <span class="hljs-string">&quot;palette&quot;</span>: [
         {
-          &quot;slug&quot;: &quot;primary&quot;,
-          &quot;color&quot;: &quot;#0073aa&quot;,
-          &quot;name&quot;: &quot;Primary&quot;
+          <span class="hljs-string">&quot;slug&quot;</span>: <span class="hljs-string">&quot;primary&quot;</span>,
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#0073aa&quot;</span>,
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Primary&quot;</span>
         }
       ]
     }
   },
-  &quot;styles&quot;: {
-    &quot;elements&quot;: {
-      &quot;h1&quot;: {
-        &quot;typography&quot;: {
-          &quot;fontSize&quot;: &quot;2.5rem&quot;
+  <span class="hljs-string">&quot;styles&quot;</span>: {
+    <span class="hljs-string">&quot;elements&quot;</span>: {
+      <span class="hljs-string">&quot;h1&quot;</span>: {
+        <span class="hljs-string">&quot;typography&quot;</span>: {
+          <span class="hljs-string">&quot;fontSize&quot;</span>: <span class="hljs-string">&quot;2.5rem&quot;</span>
         }
       }
     }
   }
 }
-</pre></div>
+</code></pre>
+
 
 
 <p>This file gives us centralized control over global styles like fonts, colors, and spacing—without editing any CSS.</p>
@@ -180,24 +182,26 @@
 <h5 class="wp-block-heading">Example: <code>patterns/call-to-action.php</code></h5>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
-&lt;?php
-register_block_pattern(
-    &#039;mytheme/call-to-action&#039;,
-    array(
-        &#039;title&#039;       =&gt; __(&#039;Call to Action&#039;, &#039;mytheme&#039;),
-        &#039;description&#039; =&gt; _x(&#039;A full-width call to action section.&#039;, &#039;Block pattern description&#039;, &#039;mytheme&#039;),
-        &#039;content&#039;     =&gt; &#039;&lt;!-- wp:group {&quot;align&quot;:&quot;full&quot;,&quot;backgroundColor&quot;:&quot;primary&quot;,&quot;className&quot;:&quot;cta&quot;} --&gt;
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-php">
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">register_block_pattern</span>(
+    <span class="hljs-string">&apos;mytheme/call-to-action&apos;</span>,
+    <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&apos;title&apos;</span>       =&gt; <span class="hljs-title function_ invoke__">__</span>(<span class="hljs-string">&apos;Call to Action&apos;</span>, <span class="hljs-string">&apos;mytheme&apos;</span>),
+        <span class="hljs-string">&apos;description&apos;</span> =&gt; <span class="hljs-title function_ invoke__">_x</span>(<span class="hljs-string">&apos;A full-width call to action section.&apos;</span>, <span class="hljs-string">&apos;Block pattern description&apos;</span>, <span class="hljs-string">&apos;mytheme&apos;</span>),
+        <span class="hljs-string">&apos;content&apos;</span>     =&gt; <span class="hljs-string">&apos;&lt;!-- wp:group {&quot;align&quot;:&quot;full&quot;,&quot;backgroundColor&quot;:&quot;primary&quot;,&quot;className&quot;:&quot;cta&quot;} --&gt;
                             &lt;div class=&quot;wp-block-group alignfull cta has-primary-background-color&quot;&gt;
                               &lt;h2&gt;Ready to start your journey?&lt;/h2&gt;
                               &lt;p&gt;Join us today and build your future.&lt;/p&gt;
                               &lt;a class=&quot;wp-block-button__link&quot; href=&quot;/signup&quot;&gt;Get Started&lt;/a&gt;
                             &lt;/div&gt;
-                          &lt;!-- /wp:group --&gt;&#039;,
-        &#039;categories&#039;  =&gt; array(&#039;call-to-action&#039;),
+                          &lt;!-- /wp:group --&gt;&apos;</span>,
+        <span class="hljs-string">&apos;categories&apos;</span>  =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;call-to-action&apos;</span>),
     )
 );
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Block Themes vs Classic Themes</h2>
@@ -353,8 +357,9 @@ register_block_pattern(
 <p>Inside the <code>my-block-theme</code> folder, create a <code>style.css</code> file to define the theme’s meta information.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: css; title: ; notranslate">
-/*
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-css">
+<span class="hljs-comment">/*
 Theme Name: My Block Theme
 Theme URI: https://example.com/my-block-theme
 Author: Your Name
@@ -365,8 +370,9 @@ Requires at least: 5.8
 Requires PHP: 7.4
 License: GPL2
 Text Domain: my-block-theme
-*/
-</pre></div>
+*/</span>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">Step 3: Create <code>theme.json</code></h3>
@@ -376,18 +382,20 @@ Text Domain: my-block-theme
 <p>To enable Full-Site Editing and block-based template structures, we need a <code>theme.json</code> file. This file allows us to define global styles and configurations for blocks.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 {
-  &quot;version&quot;: 2,
-  &quot;settings&quot;: {
-    &quot;custom&quot;: {
-      &quot;spacing&quot;: {
-        &quot;unit&quot;: &quot;px&quot;
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">&quot;settings&quot;</span>: {
+    <span class="hljs-string">&quot;custom&quot;</span>: {
+      <span class="hljs-string">&quot;spacing&quot;</span>: {
+        <span class="hljs-string">&quot;unit&quot;</span>: <span class="hljs-string">&quot;px&quot;</span>
       }
     }
   }
 }
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">Step 4: Define Templates Using Blocks</h3>
@@ -401,31 +409,33 @@ Text Domain: my-block-theme
 <p>For example, create a file called <code>index.html</code> inside our theme folder.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;title&gt;My Block Theme&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Header Block --&gt;
-  &lt;div class=&quot;wp-block-site-header&quot;&gt;
-    &lt;!-- Site Header Content Here --&gt;
-  &lt;/div&gt;
-  
-  &lt;!-- Main Content Block --&gt;
-  &lt;div class=&quot;wp-block-post-content&quot;&gt;
-    &lt;!-- Main Content Here --&gt;
-  &lt;/div&gt;
 
-  &lt;!-- Footer Block --&gt;
-  &lt;div class=&quot;wp-block-site-footer&quot;&gt;
-    &lt;!-- Footer Content Here --&gt;
-  &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre></div>
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-xml">
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Block Theme<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Header Block --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wp-block-site-header&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Site Header Content Here --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-comment">&lt;!-- Main Content Block --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wp-block-post-content&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Main Content Here --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Footer Block --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wp-block-site-footer&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Footer Content Here --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+
 
 
 <p>This basic structure defines the three key blocks: header, content, and footer.</p>
@@ -529,12 +539,14 @@ Text Domain: my-block-theme
 <p>If our theme doesn&#8217;t support block widgets yet, we can enable it using a simple snippet in our theme’s <code>functions.php</code> file:</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
-function enable_block_widgets_support() {
-    add_theme_support(&#039;widgets-block-editor&#039;);
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-php">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enable_block_widgets_support</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-title function_ invoke__">add_theme_support</span>(<span class="hljs-string">&apos;widgets-block-editor&apos;</span>);
 }
-add_action(&#039;after_setup_theme&#039;, &#039;enable_block_widgets_support&#039;);
-</pre></div>
+<span class="hljs-title function_ invoke__">add_action</span>(<span class="hljs-string">&apos;after_setup_theme&apos;</span>, <span class="hljs-string">&apos;enable_block_widgets_support&apos;</span>);
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Creating a Custom Widget Block (Advanced)</h2>
@@ -544,36 +556,38 @@ add_action(&#039;after_setup_theme&#039;, &#039;enable_block_widgets_support&#03
 <p>Want to build our own custom block to use as a widget? Here’s a basic boilerplate using JavaScript and the <code>@wordpress</code> packages:</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-// custom-widget-block.js
-const { registerBlockType } = wp.blocks;
-const { TextControl } = wp.components;
 
-registerBlockType(&#039;mytheme/custom-widget&#039;, {
-    title: &#039;Custom Widget&#039;,
-    icon: &#039;admin-generic&#039;,
-    category: &#039;widgets&#039;,
-    attributes: {
-        content: {
-            type: &#039;string&#039;,
-            default: &#039;&#039;,
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-comment">// custom-widget-block.js</span>
+<span class="hljs-keyword">const</span> { registerBlockType } = wp.<span class="hljs-property">blocks</span>;
+<span class="hljs-keyword">const</span> { <span class="hljs-title class_">TextControl</span> } = wp.<span class="hljs-property">components</span>;
+
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;mytheme/custom-widget&apos;</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;Custom Widget&apos;</span>,
+    <span class="hljs-attr">icon</span>: <span class="hljs-string">&apos;admin-generic&apos;</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">&apos;widgets&apos;</span>,
+    <span class="hljs-attr">attributes</span>: {
+        <span class="hljs-attr">content</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
+            <span class="hljs-attr">default</span>: <span class="hljs-string">&apos;&apos;</span>,
         },
     },
-    edit: (props) =&gt; {
-        const { attributes: { content }, setAttributes } = props;
-        return (
-            &lt;TextControl
-                label=&quot;Widget Content&quot;
-                value={content}
-                onChange={(value) =&gt; setAttributes({ content: value })}
-            /&gt;
+    <span class="hljs-attr">edit</span>: <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> { <span class="hljs-attr">attributes</span>: { content }, setAttributes } = props;
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextControl</span>
+                <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Widget Content&quot;</span>
+                <span class="hljs-attr">value</span>=<span class="hljs-string">{content}</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(value)</span> =&gt;</span> setAttributes({ content: value })}
+            /&gt;</span>
         );
     },
-    save: (props) =&gt; {
-        return &lt;div&gt;{props.attributes.content}&lt;/div&gt;;
+    <span class="hljs-attr">save</span>: <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> {
+        <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{props.attributes.content}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
     },
 });
-</pre></div>
+</code></pre>
+
 
 
 <p>To register this block, we&#8217;d include it in our plugin or theme with proper setup via <code>block.json</code> and <code>webpack</code>/<code>wp-scripts</code>.</p>
@@ -643,36 +657,38 @@ registerBlockType(&#039;mytheme/custom-widget&#039;, {
 <p>We&#8217;ll use <code>registerFormatType</code> from <code>@wordpress/rich-text</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-// my-custom-highlight.js
-import { registerFormatType, toggleFormat } from &#039;@wordpress/rich-text&#039;;
-import { RichTextToolbarButton } from &#039;@wordpress/block-editor&#039;;
-import { Fragment } from &#039;@wordpress/element&#039;;
-import { __ } from &#039;@wordpress/i18n&#039;;
-import { formatBold } from &#039;@wordpress/icons&#039;;
 
-registerFormatType(&#039;my-plugin/highlight&#039;, {
-    title: __(&#039;Highlight&#039;, &#039;my-plugin&#039;),
-    tagName: &#039;mark&#039;,
-    className: &#039;highlighted-text&#039;,
-    edit({ isActive, value, onChange }) {
-        return (
-            &lt;Fragment&gt;
-                &lt;RichTextToolbarButton
-                    icon={formatBold}
-                    title={__(&#039;Highlight&#039;, &#039;my-plugin&#039;)}
-                    onClick={() =&gt; {
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-comment">// my-custom-highlight.js</span>
+<span class="hljs-keyword">import</span> { registerFormatType, toggleFormat } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/rich-text&apos;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RichTextToolbarButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Fragment</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/element&apos;</span>;
+<span class="hljs-keyword">import</span> { __ } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/i18n&apos;</span>;
+<span class="hljs-keyword">import</span> { formatBold } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/icons&apos;</span>;
+
+<span class="hljs-title function_">registerFormatType</span>(<span class="hljs-string">&apos;my-plugin/highlight&apos;</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-title function_">__</span>(<span class="hljs-string">&apos;Highlight&apos;</span>, <span class="hljs-string">&apos;my-plugin&apos;</span>),
+    <span class="hljs-attr">tagName</span>: <span class="hljs-string">&apos;mark&apos;</span>,
+    <span class="hljs-attr">className</span>: <span class="hljs-string">&apos;highlighted-text&apos;</span>,
+    <span class="hljs-title function_">edit</span>(<span class="hljs-params">{ isActive, value, onChange }</span>) {
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">RichTextToolbarButton</span>
+                    <span class="hljs-attr">icon</span>=<span class="hljs-string">{formatBold}</span>
+                    <span class="hljs-attr">title</span>=<span class="hljs-string">{__(</span>&apos;<span class="hljs-attr">Highlight</span>&apos;, &apos;<span class="hljs-attr">my-plugin</span>&apos;)}
+                    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
                         onChange(toggleFormat(value, {
-                            type: &#039;my-plugin/highlight&#039;,
+                            type: &apos;my-plugin/highlight&apos;,
                         }));
                     }}
                     isActive={isActive}
                 /&gt;
-            &lt;/Fragment&gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span></span>
         );
     },
 });
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">2. Enqueue the Script</h3>
@@ -682,18 +698,20 @@ registerFormatType(&#039;my-plugin/highlight&#039;, {
 <p>In our plugin or theme <code>functions.php</code>, enqueue the script using <code>enqueue_block_editor_assets</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-function my_plugin_enqueue_formatting_toolbar() {
-    wp_enqueue_script(
-        &#039;my-custom-highlight&#039;,
-        plugin_dir_url(__FILE__) . &#039;my-custom-highlight.js&#039;,
-        &#x5B; &#039;wp-rich-text&#039;, &#039;wp-element&#039;, &#039;wp-block-editor&#039;, &#039;wp-i18n&#039; ],
-        false,
-        true
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">my_plugin_enqueue_formatting_toolbar</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">wp_enqueue_script</span>(
+        <span class="hljs-string">&apos;my-custom-highlight&apos;</span>,
+        <span class="hljs-title function_">plugin_dir_url</span>(__FILE__) . <span class="hljs-string">&apos;my-custom-highlight.js&apos;</span>,
+        [ <span class="hljs-string">&apos;wp-rich-text&apos;</span>, <span class="hljs-string">&apos;wp-element&apos;</span>, <span class="hljs-string">&apos;wp-block-editor&apos;</span>, <span class="hljs-string">&apos;wp-i18n&apos;</span> ],
+        <span class="hljs-literal">false</span>,
+        <span class="hljs-literal">true</span>
     );
 }
-add_action(&#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_formatting_toolbar&#039;);
-</pre></div>
+<span class="hljs-title function_">add_action</span>(<span class="hljs-string">&apos;enqueue_block_editor_assets&apos;</span>, <span class="hljs-string">&apos;my_plugin_enqueue_formatting_toolbar&apos;</span>);
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">3. Add Some Styling</h3>
@@ -703,12 +721,14 @@ add_action(&#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_form
 <p>Add a custom style so the highlighting is visible.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: css; title: ; notranslate">
-.mark.highlighted-text {
-    background-color: yellow;
-    padding: 0 2px;
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-css">
+<span class="hljs-selector-class">.mark</span><span class="hljs-selector-class">.highlighted-text</span> {
+    <span class="hljs-attribute">background-color</span>: yellow;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">2px</span>;
 }
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -762,43 +782,45 @@ add_action(&#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_form
 <h2 class="wp-block-heading">Metaboxes</h2>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { registerBlockType } from &#039;@wordpress/blocks&#039;;
-import { TextControl } from &#039;@wordpress/components&#039;;
-import { useSelect } from &#039;@wordpress/data&#039;;
-import { useEntityProp } from &#039;@wordpress/core-data&#039;;
-import { useBlockProps } from &#039;@wordpress/block-editor&#039;;
 
-const Edit = () =&gt; {
-	const blockProps = useBlockProps();
-	const postType = useSelect(
-		(select) =&gt; select(&#039;core/editor&#039;).getCurrentPostType(),
-		&#x5B;]
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">TextControl</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/components&apos;</span>;
+<span class="hljs-keyword">import</span> { useSelect } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/data&apos;</span>;
+<span class="hljs-keyword">import</span> { useEntityProp } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/core-data&apos;</span>;
+<span class="hljs-keyword">import</span> { useBlockProps } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">Edit</span> = (<span class="hljs-params"></span>) =&gt; {
+	<span class="hljs-keyword">const</span> blockProps = <span class="hljs-title function_">useBlockProps</span>();
+	<span class="hljs-keyword">const</span> postType = <span class="hljs-title function_">useSelect</span>(
+		<span class="hljs-function">(<span class="hljs-params">select</span>) =&gt;</span> <span class="hljs-title function_">select</span>(<span class="hljs-string">&apos;core/editor&apos;</span>).<span class="hljs-title function_">getCurrentPostType</span>(),
+		[]
 	);
 
-	const &#x5B;meta, setMeta] = useEntityProp(&#039;postType&#039;, postType, &#039;meta&#039;);
-	const metaFieldValue = meta.myguten_meta_block_field;
+	<span class="hljs-keyword">const</span> [meta, setMeta] = <span class="hljs-title function_">useEntityProp</span>(<span class="hljs-string">&apos;postType&apos;</span>, postType, <span class="hljs-string">&apos;meta&apos;</span>);
+	<span class="hljs-keyword">const</span> metaFieldValue = meta.<span class="hljs-property">myguten_meta_block_field</span>;
 
-	const updateMetaValue = (newValue) =&gt; {
-		setMeta({ ...meta, myguten_meta_block_field: newValue });
+	<span class="hljs-keyword">const</span> <span class="hljs-title function_">updateMetaValue</span> = (<span class="hljs-params">newValue</span>) =&gt; {
+		<span class="hljs-title function_">setMeta</span>({ ...meta, <span class="hljs-attr">myguten_meta_block_field</span>: newValue });
 	};
 
-	return (
-		&lt;div {...blockProps}&gt;
-			&lt;TextControl
-				label=&quot;Meta Block Field&quot;
-				value={metaFieldValue}
-				onChange={updateMetaValue}
-			/&gt;
-		&lt;/div&gt;
+	<span class="hljs-keyword">return</span> (
+		<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>}&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">TextControl</span>
+				<span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Meta Block Field&quot;</span>
+				<span class="hljs-attr">value</span>=<span class="hljs-string">{metaFieldValue}</span>
+				<span class="hljs-attr">onChange</span>=<span class="hljs-string">{updateMetaValue}</span>
+			/&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 	);
 };
 
-registerBlockType(&#039;myguten/meta-block&#039;, {
-	edit: Edit,
-	save: () =&gt; null, // We save this data as post meta, not block content.
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myguten/meta-block&apos;</span>, {
+	<span class="hljs-attr">edit</span>: <span class="hljs-title class_">Edit</span>,
+	<span class="hljs-attr">save</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-literal">null</span>, <span class="hljs-comment">// We save this data as post meta, not block content.</span>
 });
-</pre></div>
+</code></pre>
+
 
 
 <ul class="wp-block-list">
@@ -822,19 +844,21 @@ registerBlockType(&#039;myguten/meta-block&#039;, {
 <p>Before this works, we need to make sure to <strong>register the meta key</strong> in PHP and set <code>'show_in_rest' =&gt; true</code> so it&#8217;s accessible from the block editor.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
-function myguten_register_post_meta() {
-	register_post_meta( &#039;post&#039;, &#039;myguten_meta_block_field&#039;, array(
-		&#039;show_in_rest&#039; =&gt; true,
-		&#039;type&#039;         =&gt; &#039;string&#039;,
-		&#039;single&#039;       =&gt; true,
-		&#039;auth_callback&#039; =&gt; function() {
-			return current_user_can( &#039;edit_posts&#039; );
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-php">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myguten_register_post_meta</span>(<span class="hljs-params"></span>) </span>{
+	<span class="hljs-title function_ invoke__">register_post_meta</span>( <span class="hljs-string">&apos;post&apos;</span>, <span class="hljs-string">&apos;myguten_meta_block_field&apos;</span>, <span class="hljs-keyword">array</span>(
+		<span class="hljs-string">&apos;show_in_rest&apos;</span> =&gt; <span class="hljs-literal">true</span>,
+		<span class="hljs-string">&apos;type&apos;</span>         =&gt; <span class="hljs-string">&apos;string&apos;</span>,
+		<span class="hljs-string">&apos;single&apos;</span>       =&gt; <span class="hljs-literal">true</span>,
+		<span class="hljs-string">&apos;auth_callback&apos;</span> =&gt; function() {
+			<span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">current_user_can</span>( <span class="hljs-string">&apos;edit_posts&apos;</span> );
 		}
 	) );
 }
-add_action( &#039;init&#039;, &#039;myguten_register_post_meta&#039; );
-</pre></div>
+<span class="hljs-title function_ invoke__">add_action</span>( <span class="hljs-string">&apos;init&apos;</span>, <span class="hljs-string">&apos;myguten_register_post_meta&apos;</span> );
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Admin Notices</h2>
@@ -844,36 +868,40 @@ add_action( &#039;init&#039;, &#039;myguten_register_post_meta&#039; );
 <p>There are times when we want to alert the user—maybe something failed, or we want to show a confirmation. The Gutenberg editor provides a great way to <strong>hook into the notices system</strong>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { useSelect } from &#039;@wordpress/data&#039;;
-import { store as noticesStore } from &#039;@wordpress/notices&#039;;
 
-const ExampleComponent = () =&gt; {
-	const notices = useSelect((select) =&gt;
-		select(noticesStore).getNotices()
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { useSelect } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/data&apos;</span>;
+<span class="hljs-keyword">import</span> { store <span class="hljs-keyword">as</span> noticesStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/notices&apos;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">ExampleComponent</span> = (<span class="hljs-params"></span>) =&gt; {
+	<span class="hljs-keyword">const</span> notices = <span class="hljs-title function_">useSelect</span>(<span class="hljs-function">(<span class="hljs-params">select</span>) =&gt;</span>
+		<span class="hljs-title function_">select</span>(noticesStore).<span class="hljs-title function_">getNotices</span>()
 	);
-	return (
-		&lt;ul&gt;
+	<span class="hljs-keyword">return</span> (
+		<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
 			{notices.map((notice) =&gt; (
-				&lt;li key={notice.id}&gt;{notice.content}&lt;/li&gt;
+				<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{notice.id}</span>&gt;</span>{notice.content}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 			))}
-		&lt;/ul&gt;
+		<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
 	);
 };
-</pre></div>
+</code></pre>
+
 
 
 <p>By using <code>useSelect</code> and <code>noticesStore</code>, we can tap into WordPress’s internal notices system. This keeps our UI consistent with the rest of the editor and gives us a standardized way to deliver feedback to the user.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { useDispatch } from &#039;@wordpress/data&#039;;
-import { store as noticesStore } from &#039;@wordpress/notices&#039;;
 
-const { createSuccessNotice, createErrorNotice } = useDispatch(noticesStore);
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { useDispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/data&apos;</span>;
+<span class="hljs-keyword">import</span> { store <span class="hljs-keyword">as</span> noticesStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/notices&apos;</span>;
 
-createSuccessNotice(&#039;Your meta field was updated successfully!&#039;);
-</pre></div>
+<span class="hljs-keyword">const</span> { createSuccessNotice, createErrorNotice } = <span class="hljs-title function_">useDispatch</span>(noticesStore);
+
+<span class="hljs-title function_">createSuccessNotice</span>(<span class="hljs-string">&apos;Your meta field was updated successfully!&apos;</span>);
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -995,67 +1023,73 @@ createSuccessNotice(&#039;Your meta field was updated successfully!&#039;);
 <h3 class="wp-block-heading">block.json</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 {
-  &quot;apiVersion&quot;: 3,
-  &quot;name&quot;: &quot;myplugin/alert-box&quot;,
-  &quot;title&quot;: &quot;Alert Box&quot;,
-  &quot;category&quot;: &quot;widgets&quot;,
-  &quot;icon&quot;: &quot;warning&quot;,
-  &quot;editorScript&quot;: &quot;file:./index.js&quot;
+  <span class="hljs-string">&quot;apiVersion&quot;</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;myplugin/alert-box&quot;</span>,
+  <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Alert Box&quot;</span>,
+  <span class="hljs-string">&quot;category&quot;</span>: <span class="hljs-string">&quot;widgets&quot;</span>,
+  <span class="hljs-string">&quot;icon&quot;</span>: <span class="hljs-string">&quot;warning&quot;</span>,
+  <span class="hljs-string">&quot;editorScript&quot;</span>: <span class="hljs-string">&quot;file:./index.js&quot;</span>
 }
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">index.js</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { registerBlockType } from &#039;@wordpress/blocks&#039;;
-import Edit from &#039;./edit&#039;;
 
-registerBlockType(&#039;myplugin/alert-box&#039;, {
-    attributes: {
-        content: {
-            type: &#039;string&#039;,
-            source: &#039;html&#039;,
-            selector: &#039;p&#039;
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Edit</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./edit&apos;</span>;
+
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/alert-box&apos;</span>, {
+    <span class="hljs-attr">attributes</span>: {
+        <span class="hljs-attr">content</span>: {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
+            <span class="hljs-attr">source</span>: <span class="hljs-string">&apos;html&apos;</span>,
+            <span class="hljs-attr">selector</span>: <span class="hljs-string">&apos;p&apos;</span>
         }
     },
-    edit: Edit,
-    save({ attributes }) {
-        return (
-            &lt;div className=&quot;alert-box&quot;&gt;
-                &lt;p&gt;{attributes.content}&lt;/p&gt;
-            &lt;/div&gt;
+    <span class="hljs-attr">edit</span>: <span class="hljs-title class_">Edit</span>,
+    <span class="hljs-title function_">save</span>(<span class="hljs-params">{ attributes }</span>) {
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;alert-box&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{attributes.content}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
         );
     }
 });
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">edit.js</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { __ } from &#039;@wordpress/i18n&#039;;
-import { useBlockProps, RichText } from &#039;@wordpress/block-editor&#039;;
 
-export default function Edit({ attributes, setAttributes }) {
-    const blockProps = useBlockProps();
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { __ } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/i18n&apos;</span>;
+<span class="hljs-keyword">import</span> { useBlockProps, <span class="hljs-title class_">RichText</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
 
-    return (
-        &lt;div {...blockProps} className=&quot;alert-box&quot;&gt;
-            &lt;RichText
-                tagName=&quot;p&quot;
-                value={attributes.content}
-                onChange={(content) =&gt; setAttributes({ content })}
-                placeholder={__(&#039;Add your alert text here...&#039;, &#039;myplugin&#039;)}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Edit</span>(<span class="hljs-params">{ attributes, setAttributes }</span>) {
+    <span class="hljs-keyword">const</span> blockProps = <span class="hljs-title function_">useBlockProps</span>();
+
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>} <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;alert-box&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">RichText</span>
+                <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span>
+                <span class="hljs-attr">value</span>=<span class="hljs-string">{attributes.content}</span>
+                <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(content)</span> =&gt;</span> setAttributes({ content })}
+                placeholder={__(&apos;Add your alert text here...&apos;, &apos;myplugin&apos;)}
             /&gt;
-        &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
     );
 }
-</pre></div>
+</code></pre>
+
 
 
 <p>This block is fully static. The <code>save</code> function defines exactly what gets stored and rendered.</p>
@@ -1081,56 +1115,62 @@ export default function Edit({ attributes, setAttributes }) {
 <h3 class="wp-block-heading">block.json</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 {
-  &quot;apiVersion&quot;: 3,
-  &quot;name&quot;: &quot;myplugin/latest-post&quot;,
-  &quot;title&quot;: &quot;Latest Post&quot;,
-  &quot;category&quot;: &quot;widgets&quot;,
-  &quot;icon&quot;: &quot;megaphone&quot;,
-  &quot;editorScript&quot;: &quot;file:./index.js&quot;,
-  &quot;render&quot;: &quot;file:./render.php&quot;
+  <span class="hljs-string">&quot;apiVersion&quot;</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;myplugin/latest-post&quot;</span>,
+  <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Latest Post&quot;</span>,
+  <span class="hljs-string">&quot;category&quot;</span>: <span class="hljs-string">&quot;widgets&quot;</span>,
+  <span class="hljs-string">&quot;icon&quot;</span>: <span class="hljs-string">&quot;megaphone&quot;</span>,
+  <span class="hljs-string">&quot;editorScript&quot;</span>: <span class="hljs-string">&quot;file:./index.js&quot;</span>,
+  <span class="hljs-string">&quot;render&quot;</span>: <span class="hljs-string">&quot;file:./render.php&quot;</span>
 }
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">index.js</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { registerBlockType } from &#039;@wordpress/blocks&#039;;
 
-registerBlockType(&#039;myplugin/latest-post&#039;, {
-    edit() {
-        return &lt;p&gt;Latest post will be shown here on the frontend.&lt;/p&gt;;
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
+
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/latest-post&apos;</span>, {
+    <span class="hljs-title function_">edit</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Latest post will be shown here on the frontend.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
     },
-    save() {
-        // Returning null to indicate dynamic rendering
-        return null;
+    <span class="hljs-title function_">save</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Returning null to indicate dynamic rendering</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }
 });
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">render.php</h3>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 &lt;?php
-function myplugin_render_latest_post() {
-    $recent_posts = wp_get_recent_posts(&#x5B;
-        &#039;numberposts&#039; =&gt; 1,
-        &#039;post_status&#039; =&gt; &#039;publish&#039;,
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">myplugin_render_latest_post</span>(<span class="hljs-params"></span>) {
+    $recent_posts = <span class="hljs-title function_">wp_get_recent_posts</span>([
+        <span class="hljs-string">&apos;numberposts&apos;</span> =&gt; <span class="hljs-number">1</span>,
+        <span class="hljs-string">&apos;post_status&apos;</span> =&gt; <span class="hljs-string">&apos;publish&apos;</span>,
     ]);
 
-    if (empty($recent_posts)) {
-        return &#039;&lt;p&gt;No posts found.&lt;/p&gt;&#039;;
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">empty</span>($recent_posts)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;&lt;p&gt;No posts found.&lt;/p&gt;&apos;</span>;
     }
 
-    $post = $recent_posts&#x5B;0];
-    return sprintf(&#039;&lt;h3&gt;&lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/h3&gt;&#039;, esc_url(get_permalink($post&#x5B;&#039;ID&#039;])), esc_html($post&#x5B;&#039;post_title&#039;]));
+    $post = $recent_posts[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">sprintf</span>(<span class="hljs-string">&apos;&lt;h3&gt;&lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/h3&gt;&apos;</span>, <span class="hljs-title function_">esc_url</span>(<span class="hljs-title function_">get_permalink</span>($post[<span class="hljs-string">&apos;ID&apos;</span>])), <span class="hljs-title function_">esc_html</span>($post[<span class="hljs-string">&apos;post_title&apos;</span>]));
 }
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Choosing Between Static and Dynamic</h2>
@@ -1244,20 +1284,22 @@ function myplugin_render_latest_post() {
 <p>We can register our block in <code>block.json</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
 {
-  &quot;apiVersion&quot;: 3,
-  &quot;name&quot;: &quot;my-plugin/section&quot;,
-  &quot;title&quot;: &quot;Section&quot;,
-  &quot;category&quot;: &quot;layout&quot;,
-  &quot;icon&quot;: &quot;editor-insertmore&quot;,
-  &quot;description&quot;: &quot;A custom section block that allows nested blocks inside.&quot;,
-  &quot;supports&quot;: {
-    &quot;html&quot;: false
+  <span class="hljs-string">&quot;apiVersion&quot;</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;my-plugin/section&quot;</span>,
+  <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Section&quot;</span>,
+  <span class="hljs-string">&quot;category&quot;</span>: <span class="hljs-string">&quot;layout&quot;</span>,
+  <span class="hljs-string">&quot;icon&quot;</span>: <span class="hljs-string">&quot;editor-insertmore&quot;</span>,
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A custom section block that allows nested blocks inside.&quot;</span>,
+  <span class="hljs-string">&quot;supports&quot;</span>: {
+    <span class="hljs-string">&quot;html&quot;</span>: <span class="hljs-literal">false</span>
   },
-  &quot;editorScript&quot;: &quot;file:./index.js&quot;
+  <span class="hljs-string">&quot;editorScript&quot;</span>: <span class="hljs-string">&quot;file:./index.js&quot;</span>
 }
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">2. Block Edit Function with <code>InnerBlocks</code></h3>
@@ -1267,27 +1309,29 @@ function myplugin_render_latest_post() {
 <p>In our <code>index.js</code> file, we’ll use the <code>InnerBlocks</code> component to allow nesting</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { registerBlockType } from &#039;@wordpress/blocks&#039;;
-import { InnerBlocks } from &#039;@wordpress/block-editor&#039;;
 
-registerBlockType(&#039;myplugin/section&#039;, {
-    edit: () =&gt; {
-        return (
-            &lt;div className=&quot;my-section-block&quot;&gt;
-                &lt;InnerBlocks /&gt;
-            &lt;/div&gt;
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InnerBlocks</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
+
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/section&apos;</span>, {
+    <span class="hljs-attr">edit</span>: <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;my-section-block&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">InnerBlocks</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
         );
     },
-    save: () =&gt; {
-        return (
-            &lt;div className=&quot;my-section-block&quot;&gt;
-                &lt;InnerBlocks.Content /&gt;
-            &lt;/div&gt;
+    <span class="hljs-attr">save</span>: <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;my-section-block&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">InnerBlocks.Content</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
         );
     },
 });
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">Restricting Allowed Blocks (Optional)</h3>
@@ -1297,24 +1341,28 @@ registerBlockType(&#039;myplugin/section&#039;, {
 <p>Sometimes we want to restrict which blocks can be inserted inside our container. Here&#8217;s how we do that using the <code>allowedBlocks</code> prop.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-&lt;InnerBlocks
-    allowedBlocks={&#x5B;&#039;core/paragraph&#039;, &#039;core/image&#039;, &#039;core/heading&#039;]}
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+&lt;<span class="hljs-title class_">InnerBlocks</span>
+    allowedBlocks={[<span class="hljs-string">&apos;core/paragraph&apos;</span>, <span class="hljs-string">&apos;core/image&apos;</span>, <span class="hljs-string">&apos;core/heading&apos;</span>]}
 /&gt;
-</pre></div>
+</code></pre>
+
 
 
 <p>We can also add placeholders in the templates for better UX.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-&lt;InnerBlocks
-    template={&#x5B;
-        &#x5B;&#039;core/heading&#039;, { placeholder: &#039;Section Heading&#039; }],
-        &#x5B;&#039;core/paragraph&#039;, { placeholder: &#039;Add your text here...&#039; }]
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+&lt;<span class="hljs-title class_">InnerBlocks</span>
+    template={[
+        [<span class="hljs-string">&apos;core/heading&apos;</span>, { <span class="hljs-attr">placeholder</span>: <span class="hljs-string">&apos;Section Heading&apos;</span> }],
+        [<span class="hljs-string">&apos;core/paragraph&apos;</span>, { <span class="hljs-attr">placeholder</span>: <span class="hljs-string">&apos;Add your text here...&apos;</span> }]
     ]}
 /&gt;
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">Gotchas and Best Practices</h3>
@@ -1412,46 +1460,48 @@ registerBlockType(&#039;myplugin/section&#039;, {
 <p>When we register a block using <code>registerBlockType</code>, we define the attributes in the configuration:</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-registerBlockType(&#039;myplugin/alert-box&#039;, {
-  title: &#039;Alert Box&#039;,
-  icon: &#039;warning&#039;,
-  category: &#039;widgets&#039;,
 
-  attributes: {
-    message: {
-      type: &#039;string&#039;,
-      default: &#039;This is an alert box!&#039;,
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/alert-box&apos;</span>, {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;Alert Box&apos;</span>,
+  <span class="hljs-attr">icon</span>: <span class="hljs-string">&apos;warning&apos;</span>,
+  <span class="hljs-attr">category</span>: <span class="hljs-string">&apos;widgets&apos;</span>,
+
+  <span class="hljs-attr">attributes</span>: {
+    <span class="hljs-attr">message</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-string">&apos;This is an alert box!&apos;</span>,
     },
-    backgroundColor: {
-      type: &#039;string&#039;,
-      default: &#039;#ffcc00&#039;,
+    <span class="hljs-attr">backgroundColor</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-string">&apos;#ffcc00&apos;</span>,
     },
   },
 
-  edit({ attributes, setAttributes }) {
-    const { message, backgroundColor } = attributes;
+  <span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes, setAttributes }</span>) {
+    <span class="hljs-keyword">const</span> { message, backgroundColor } = attributes;
 
-    return (
-      &lt;div style={{ backgroundColor }}&gt;
-        &lt;RichText
-          tagName=&quot;p&quot;
-          value={message}
-          onChange={(value) =&gt; setAttributes({ message: value })}
+    <span class="hljs-keyword">return</span> (
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor</span> }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RichText</span>
+          <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span>
+          <span class="hljs-attr">value</span>=<span class="hljs-string">{message}</span>
+          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(value)</span> =&gt;</span> setAttributes({ message: value })}
         /&gt;
-      &lt;/div&gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
     );
   },
 
-  save({ attributes }) {
-    return (
-      &lt;div style={{ backgroundColor: attributes.backgroundColor }}&gt;
-        &lt;RichText.Content tagName=&quot;p&quot; value={attributes.message} /&gt;
-      &lt;/div&gt;
+  <span class="hljs-title function_">save</span>(<span class="hljs-params">{ attributes }</span>) {
+    <span class="hljs-keyword">return</span> (
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor:</span> <span class="hljs-attr">attributes.backgroundColor</span> }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RichText.Content</span> <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{attributes.message}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
     );
   },
 });
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">What Are Controls in the Block Editor?</h2>
@@ -1480,7 +1530,7 @@ registerBlockType(&#039;myplugin/alert-box&#039;, {
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/05/image.png?w=271" alt="" class="wp-image-854" /></figure>
+<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/05/image.png?w=271" alt="" class="wp-image-854"/></figure>
 
 
 
@@ -1491,42 +1541,44 @@ registerBlockType(&#039;myplugin/alert-box&#039;, {
 <p>To let users modify attributes, we add UI controls using components from <code>@wordpress/components</code> inside the block&#8217;s <code>edit</code> function.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-import { PanelBody, ColorPalette } from &#039;@wordpress/components&#039;;
-import { InspectorControls } from &#039;@wordpress/block-editor&#039;;
 
-edit({ attributes, setAttributes }) {
-  const { backgroundColor } = attributes;
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">PanelBody</span>, <span class="hljs-title class_">ColorPalette</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/components&apos;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InspectorControls</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
 
-  const colors = &#x5B;
-    { name: &#039;Yellow&#039;, color: &#039;#ffcc00&#039; },
-    { name: &#039;Red&#039;, color: &#039;#ff4444&#039; },
-    { name: &#039;Green&#039;, color: &#039;#44ff44&#039; },
+<span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes, setAttributes }</span>) {
+  <span class="hljs-keyword">const</span> { backgroundColor } = attributes;
+
+  <span class="hljs-keyword">const</span> colors = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Yellow&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#ffcc00&apos;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Red&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#ff4444&apos;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Green&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#44ff44&apos;</span> },
   ];
 
-  return (
-    &lt;&gt;
-      &lt;InspectorControls&gt;
-        &lt;PanelBody title=&quot;Background Color&quot; initialOpen={true}&gt;
-          &lt;ColorPalette
-            colors={colors}
-            value={backgroundColor}
-            onChange={(color) =&gt; setAttributes({ backgroundColor: color })}
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">InspectorControls</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">PanelBody</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Background Color&quot;</span> <span class="hljs-attr">initialOpen</span>=<span class="hljs-string">{true}</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ColorPalette</span>
+            <span class="hljs-attr">colors</span>=<span class="hljs-string">{colors}</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{backgroundColor}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(color)</span> =&gt;</span> setAttributes({ backgroundColor: color })}
           /&gt;
-        &lt;/PanelBody&gt;
-      &lt;/InspectorControls&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">PanelBody</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">InspectorControls</span>&gt;</span>
 
-      &lt;div style={{ backgroundColor }}&gt;
-        &lt;RichText
-          tagName=&quot;p&quot;
-          value={attributes.message}
-          onChange={(value) =&gt; setAttributes({ message: value })}
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor</span> }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RichText</span>
+          <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span>
+          <span class="hljs-attr">value</span>=<span class="hljs-string">{attributes.message}</span>
+          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(value)</span> =&gt;</span> setAttributes({ message: value })}
         /&gt;
-      &lt;/div&gt;
-    &lt;/&gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
   );
 }
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">How Attributes and Controls Work Together</h2>
@@ -1636,51 +1688,53 @@ edit({ attributes, setAttributes }) {
 <p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-// my-custom-block.js
-import { registerBlockType } from &#039;@wordpress/blocks&#039;;
-import { __ } from &#039;@wordpress/i18n&#039;;
-import { useBlockProps } from &#039;@wordpress/block-editor&#039;;
 
-registerBlockType(&#039;myplugin/my-custom-block&#039;, {
-    title: __(&#039;My Custom Block&#039;, &#039;myplugin&#039;),
-    icon: &#039;smiley&#039;,
-    category: &#039;design&#039;,
-    supports: {
-        color: {
-            text: true,
-            background: true,
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-comment">// my-custom-block.js</span>
+<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
+<span class="hljs-keyword">import</span> { __ } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/i18n&apos;</span>;
+<span class="hljs-keyword">import</span> { useBlockProps } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
+
+<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/my-custom-block&apos;</span>, {
+    <span class="hljs-attr">title</span>: <span class="hljs-title function_">__</span>(<span class="hljs-string">&apos;My Custom Block&apos;</span>, <span class="hljs-string">&apos;myplugin&apos;</span>),
+    <span class="hljs-attr">icon</span>: <span class="hljs-string">&apos;smiley&apos;</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">&apos;design&apos;</span>,
+    <span class="hljs-attr">supports</span>: {
+        <span class="hljs-attr">color</span>: {
+            <span class="hljs-attr">text</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">background</span>: <span class="hljs-literal">true</span>,
         },
-        spacing: {
-            margin: true,
-            padding: true,
+        <span class="hljs-attr">spacing</span>: {
+            <span class="hljs-attr">margin</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">padding</span>: <span class="hljs-literal">true</span>,
         },
-        typography: {
-            fontSize: true,
-            lineHeight: true,
+        <span class="hljs-attr">typography</span>: {
+            <span class="hljs-attr">fontSize</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">lineHeight</span>: <span class="hljs-literal">true</span>,
         },
-        border: true,
-        align: &#x5B;&#039;wide&#039;, &#039;full&#039;],
+        <span class="hljs-attr">border</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">align</span>: [<span class="hljs-string">&apos;wide&apos;</span>, <span class="hljs-string">&apos;full&apos;</span>],
     },
-    edit({ attributes }) {
-        const blockProps = useBlockProps();
+    <span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes }</span>) {
+        <span class="hljs-keyword">const</span> blockProps = <span class="hljs-title function_">useBlockProps</span>();
 
-        return (
-            &lt;div {...blockProps}&gt;
-                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
-            &lt;/div&gt;
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>}&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is our custom block with block supports.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
         );
     },
-    save({ attributes }) {
-        const blockProps = useBlockProps.save();
-        return (
-            &lt;div {...blockProps}&gt;
-                &lt;p&gt;This is our custom block with block supports.&lt;/p&gt;
-            &lt;/div&gt;
+    <span class="hljs-title function_">save</span>(<span class="hljs-params">{ attributes }</span>) {
+        <span class="hljs-keyword">const</span> blockProps = useBlockProps.<span class="hljs-title function_">save</span>();
+        <span class="hljs-keyword">return</span> (
+            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>}&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is our custom block with block supports.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
         );
     }
 });
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
@@ -1702,22 +1756,24 @@ registerBlockType(&#039;myplugin/my-custom-block&#039;, {
 <p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-// Disable color support for Paragraph block
-wp.hooks.addFilter(
-    &#039;blocks.registerBlockType&#039;,
-    &#039;myplugin/remove-paragraph-supports&#039;,
-    (settings, name) =&gt; {
-        if (name === &#039;core/paragraph&#039;) {
-            settings.supports = {
-                ...settings.supports,
-                color: false,
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-comment">// Disable color support for Paragraph block</span>
+wp.<span class="hljs-property">hooks</span>.<span class="hljs-title function_">addFilter</span>(
+    <span class="hljs-string">&apos;blocks.registerBlockType&apos;</span>,
+    <span class="hljs-string">&apos;myplugin/remove-paragraph-supports&apos;</span>,
+    <span class="hljs-function">(<span class="hljs-params">settings, name</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (name === <span class="hljs-string">&apos;core/paragraph&apos;</span>) {
+            settings.<span class="hljs-property">supports</span> = {
+                ...settings.<span class="hljs-property">supports</span>,
+                <span class="hljs-attr">color</span>: <span class="hljs-literal">false</span>,
             };
         }
-        return settings;
+        <span class="hljs-keyword">return</span> settings;
     }
 );
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Conclusion</h2>
@@ -1843,25 +1899,27 @@ wp.hooks.addFilter(
 <p>Let’s say we want every <code>core/paragraph</code> block to get a custom class like <code>my-custom-paragraph</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-const { addFilter } = wp.hooks;
 
-function addCustomClassName( props, blockType, attributes ) {
-    if ( blockType.name === &#039;core/paragraph&#039; ) {
-        return {
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">addCustomClassName</span>(<span class="hljs-params"> props, blockType, attributes </span>) {
+    <span class="hljs-keyword">if</span> ( blockType.<span class="hljs-property">name</span> === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
+        <span class="hljs-keyword">return</span> {
             ...props,
-            className: `${props.className || &#039;&#039;} my-custom-paragraph`,
+            <span class="hljs-attr">className</span>: <span class="hljs-string">`<span class="hljs-subst">${props.className || <span class="hljs-string">&apos;&apos;</span>}</span> my-custom-paragraph`</span>,
         };
     }
-    return props;
+    <span class="hljs-keyword">return</span> props;
 }
 
-addFilter(
-    &#039;blocks.getSaveContent.extraProps&#039;,
-    &#039;my-plugin/add-custom-class&#039;,
+<span class="hljs-title function_">addFilter</span>(
+    <span class="hljs-string">&apos;blocks.getSaveContent.extraProps&apos;</span>,
+    <span class="hljs-string">&apos;my-plugin/add-custom-class&apos;</span>,
     addCustomClassName
 );
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">2. Modify Block Settings on Registration</h3>
@@ -1871,28 +1929,30 @@ addFilter(
 <p>What if we want to disable the &#8220;drop cap&#8221; feature from the paragraph block?</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-const { addFilter } = wp.hooks;
 
-function modifyBlockSettings( settings, name ) {
-    if ( name === &#039;core/paragraph&#039; ) {
-        return {
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">modifyBlockSettings</span>(<span class="hljs-params"> settings, name </span>) {
+    <span class="hljs-keyword">if</span> ( name === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
+        <span class="hljs-keyword">return</span> {
             ...settings,
-            supports: {
-                ...settings.supports,
-                dropCap: false,
+            <span class="hljs-attr">supports</span>: {
+                ...settings.<span class="hljs-property">supports</span>,
+                <span class="hljs-attr">dropCap</span>: <span class="hljs-literal">false</span>,
             },
         };
     }
-    return settings;
+    <span class="hljs-keyword">return</span> settings;
 }
 
-addFilter(
-    &#039;blocks.registerBlockType&#039;,
-    &#039;my-plugin/modify-paragraph-settings&#039;,
+<span class="hljs-title function_">addFilter</span>(
+    <span class="hljs-string">&apos;blocks.registerBlockType&apos;</span>,
+    <span class="hljs-string">&apos;my-plugin/modify-paragraph-settings&apos;</span>,
     modifyBlockSettings
 );
-</pre></div>
+</code></pre>
+
 
 
 <h3 class="wp-block-heading">3. Wrap the Block&#8217;s Edit Component</h3>
@@ -1902,33 +1962,35 @@ addFilter(
 <p>Need to inject UI or logic into a block&#8217;s editor UI? We can wrap the <code>edit</code> function using <code>editor.BlockEdit</code>.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate">
-const { addFilter } = wp.hooks;
-const { createHigherOrderComponent } = wp.compose;
-const { Fragment } = wp.element;
 
-const withCustomEditWrapper = createHigherOrderComponent( ( BlockEdit ) =&gt; {
-    return ( props ) =&gt; {
-        if ( props.name === &#039;core/paragraph&#039; ) {
-            return (
-                &lt;Fragment&gt;
-                    &lt;div style={{ border: &#039;1px solid red&#039;, padding: &#039;10px&#039; }}&gt;
-                        &lt;strong&gt;Custom UI:&lt;/strong&gt; You’re editing a paragraph!
-                    &lt;/div&gt;
-                    &lt;BlockEdit { ...props } /&gt;
-                &lt;/Fragment&gt;
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
+<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
+<span class="hljs-keyword">const</span> { createHigherOrderComponent } = wp.<span class="hljs-property">compose</span>;
+<span class="hljs-keyword">const</span> { <span class="hljs-title class_">Fragment</span> } = wp.<span class="hljs-property">element</span>;
+
+<span class="hljs-keyword">const</span> withCustomEditWrapper = <span class="hljs-title function_">createHigherOrderComponent</span>( <span class="hljs-function">(<span class="hljs-params"> BlockEdit </span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params"> props </span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> ( props.<span class="hljs-property">name</span> === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
+            <span class="hljs-keyword">return</span> (
+                <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">border:</span> &apos;<span class="hljs-attr">1px</span> <span class="hljs-attr">solid</span> <span class="hljs-attr">red</span>&apos;, <span class="hljs-attr">padding:</span> &apos;<span class="hljs-attr">10px</span>&apos; }}&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Custom UI:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> You’re editing a paragraph!
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">BlockEdit</span> { <span class="hljs-attr">...props</span> } /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span></span>
             );
         }
-        return &lt;BlockEdit { ...props } /&gt;;
+        <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">BlockEdit</span> { <span class="hljs-attr">...props</span> } /&gt;</span></span>;
     };
-}, &#039;withCustomEditWrapper&#039; );
+}, <span class="hljs-string">&apos;withCustomEditWrapper&apos;</span> );
 
-addFilter(
-    &#039;editor.BlockEdit&#039;,
-    &#039;my-plugin/custom-block-edit&#039;,
+<span class="hljs-title function_">addFilter</span>(
+    <span class="hljs-string">&apos;editor.BlockEdit&apos;</span>,
+    <span class="hljs-string">&apos;my-plugin/custom-block-edit&apos;</span>,
     withCustomEditWrapper
 );
-</pre></div>
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Enqueuing the JavaScript</h2>
@@ -1938,18 +2000,20 @@ addFilter(
 <p>To make all this work, we’ll need to enqueue our JS file in the editor.</p>
 
 
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate">
-function my_plugin_enqueue_editor_assets() {
-    wp_enqueue_script(
-        &#039;my-plugin-block-filters&#039;,
-        plugin_dir_url( __FILE__ ) . &#039;my-plugin.js&#039;,
-        array( &#039;wp-blocks&#039;, &#039;wp-hooks&#039;, &#039;wp-element&#039;, &#039;wp-compose&#039;, &#039;wp-editor&#039; ),
-        &#039;1.0.0&#039;,
-        true
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-php">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">my_plugin_enqueue_editor_assets</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-title function_ invoke__">wp_enqueue_script</span>(
+        <span class="hljs-string">&apos;my-plugin-block-filters&apos;</span>,
+        <span class="hljs-title function_ invoke__">plugin_dir_url</span>( <span class="hljs-keyword">__FILE__</span> ) . <span class="hljs-string">&apos;my-plugin.js&apos;</span>,
+        <span class="hljs-keyword">array</span>( <span class="hljs-string">&apos;wp-blocks&apos;</span>, <span class="hljs-string">&apos;wp-hooks&apos;</span>, <span class="hljs-string">&apos;wp-element&apos;</span>, <span class="hljs-string">&apos;wp-compose&apos;</span>, <span class="hljs-string">&apos;wp-editor&apos;</span> ),
+        <span class="hljs-string">&apos;1.0.0&apos;</span>,
+        <span class="hljs-literal">true</span>
     );
 }
-add_action( &#039;enqueue_block_editor_assets&#039;, &#039;my_plugin_enqueue_editor_assets&#039; );
-</pre></div>
+<span class="hljs-title function_ invoke__">add_action</span>( <span class="hljs-string">&apos;enqueue_block_editor_assets&apos;</span>, <span class="hljs-string">&apos;my_plugin_enqueue_editor_assets&apos;</span> );
+</code></pre>
+
 
 
 <h2 class="wp-block-heading">Final Thoughts</h2>
