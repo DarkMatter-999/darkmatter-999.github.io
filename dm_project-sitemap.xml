@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/dm_project/</loc>
-		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
+		<lastmod>2025-12-21T06:56:53+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/dm_project/whymdb-imdb-clone/</loc>
@@ -30,6 +30,19 @@
 		<lastmod>2025-07-06T14:10:40+00:00</lastmod>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/07/raytracer-1.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/</loc>
+		<lastmod>2025-12-21T06:56:53+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/12/DarkMatter-WordPress-Theme.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage.png</image:loc>
 		</image:image>
 	</url>
 </urlset>
