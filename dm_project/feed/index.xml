@@ -12,7 +12,7 @@
 	<atom:link href="https://lakshyajeet.in/dm_project/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Sun, 21 Dec 2025 06:56:53 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 01 Jan 2026 06:48:10 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,145 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>WordPress Theme Style Switcher</title>
+		<link>https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 01 Jan 2026 06:45:47 +0000</pubDate>
+				<guid isPermaLink="false">https://lakshyajeet.in/?post_type=dm_project#038;p=1216</guid>
+
+					<description><![CDATA[<p>The WordPress-Theme-Style-Switcher plugin allows users to easily switch between a theme's predefined style variations without reloading the page. It dynamically generates and applies the necessary CSS for each variation, ensuring smooth and conflict-free style changes.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>The&nbsp;<code>WordPress-Theme-Style-Switcher</code>&nbsp;is a&nbsp;WordPress plugin&nbsp;that&nbsp;<em>revolutionizes</em>&nbsp;how users interact with theme styles in WordPress. This plugin empowers site administrators and visitors alike to&nbsp;<strong>effortlessly toggle between a theme&#8217;s predefined style variations</strong>&nbsp;on the fly, without any page reloads. Its unique value lies in its intelligent backend: by dynamically generating and&nbsp;<em>scoping</em>&nbsp;each variation&#8217;s CSS, it ensures&nbsp;<strong>flawless application of styles without conflicts</strong>. Coupled with an intuitive frontend block that offers buttons, dropdowns, or even an invisible mode for custom UIs, and a robust JavaScript API, it provides an unparalleled,&nbsp;<em>persisted</em>&nbsp;user experience. This means greater&nbsp;<strong>design flexibility, enhanced accessibility, and a significantly more engaging browsing experience</strong>&nbsp;for every WordPress site.</p>
+
+
+
+<h2 class="wp-block-heading">Interactive Frontend Style Switcher (Block &amp; API)</h2>
+
+
+
+<p>Imagine visiting a website and wishing you could instantly switch its look and feel, perhaps a sleek dark mode for evening browsing, or a vibrant high-contrast theme for better readability. In a world increasingly focused on personalization, offering such dynamic control isn&#8217;t just a nice-to-have; it&#8217;s an expectation. This is precisely the problem the <code>WordPress-Theme-Style-Switcher</code> plugin sets out to solve, and at its very heart lies the <strong>Interactive Frontend Style Switcher (Block &amp; API)</strong> component, the elegant user-facing interface that makes this magic happen.</p>
+
+
+
+<figure style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)" class="wp-block-video"><video height="1042" style="aspect-ratio: 1859 / 1042;" width="1859" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/01/ThemeStyleSwitcherDemo.webm" playsinline></video></figure>
+
+
+
+<p>Here is an interactive demo:</p>
+
+
+
+<div class="wp-block-group is-content-justification-left is-nowrap is-layout-flex wp-container-core-group-is-layout-3b9ed39a wp-block-group-is-layout-flex" style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p>Dropdown style:</p>
+
+
+
+<div class="theme-style-switcher-block wp-block-buttons" data-tss-block="true" data-display="dropdown"></div>
+
+
+
+<p>Button style:</p>
+
+
+
+<div class="theme-style-switcher-block wp-block-buttons" data-tss-block="true" data-display="buttons"></div>
+</div>
+
+
+
+<h3 class="wp-block-heading">The User&#8217;s Canvas: A Block-Powered Experience<a href="http://localhost.local:6419/01_interactive_frontend_style_switcher__block___api__.md#the-users-canvas-a-block-powered-experience"></a></h3>
+
+
+
+<p>Our design philosophy for the style switcher started with the user. How could we make it effortless for content creators to add style-switching capabilities to their posts and templates? The answer was clear: the WordPress block editor. We developed a custom &#8220;Theme Style Switcher&#8221; block, empowering authors to drag-and-drop this powerful feature onto any page.</p>
+
+
+
+<p>The beauty of this block lies in its flexibility. Do you prefer a set of distinct buttons for each style, like choosing a filter on a photo? Or perhaps a more compact dropdown menu, akin to selecting a theme in your favorite app? The block offers both, along with an &#8220;invisible&#8221; option for those who wish to build their own custom UI with the underlying API. This choice ensures that the switcher can blend perfectly with any theme&#8217;s aesthetic and user flow, without requiring a single line of code from the site builder.</p>
+
+
+
+<h3 class="wp-block-heading">The Dynamic Duo: JavaScript, Classes, and Persistence<a href="http://localhost.local:6419/01_interactive_frontend_style_switcher__block___api__.md#the-dynamic-duo-javascript-classes-and-persistence"></a></h3>
+
+
+
+<p>Once the block is in place, the real frontend wizardry begins. A dedicated JavaScript &#8220;view script&#8221; (think of it as the block&#8217;s live conductor) springs into action. This script isn&#8217;t just rendering buttons or dropdowns; it&#8217;s listening intently for your interaction.</p>
+
+
+
+<p>When you click a style button or select an option from the dropdown, the script instantly orchestrates a visual transformation. It works by dynamically adding or removing a special CSS class, like&nbsp;<code>is-style-dark</code>&nbsp;or&nbsp;<code>is-style-light</code>, directly on the&nbsp;<code>&lt;html&gt;</code>&nbsp;element of your webpage. This isn&#8217;t just a fleeting change; the script also intelligently saves your preference to&nbsp;<code>localStorage</code>. This simple yet powerful mechanism ensures that your chosen style persists across page loads, giving you a consistent browsing experience without having to re-select your preferred look every time.</p>
+
+
+
+<h3 class="wp-block-heading">Extending the Canvas: A Programmatic Gateway<a href="http://localhost.local:6419/01_interactive_frontend_style_switcher__block___api__.md#extending-the-canvas-a-programmatic-gateway"></a></h3>
+
+
+
+<p>While the block provides an intuitive entry point, we understand that developers and advanced users often need more. That&#8217;s why the Interactive Frontend Style Switcher doesn&#8217;t just offer a block; it exposes a global JavaScript API:&nbsp;<code>window.setThemeStyle(slug)</code>.</p>
+
+
+
+<p>This small but mighty function is a game-changer for extensibility. It allows other plugins, themes, or even custom scripts to programmatically control the style variations. Imagine building a custom theme option that automatically switches to a &#8220;night mode&#8221; after sunset, or integrating with a user preference panel. The&nbsp;<code>window.setThemeStyle()</code>&nbsp;API provides the precise hook to achieve these advanced scenarios, making the entire system incredibly adaptable.</p>
+
+
+
+<p>The Interactive Frontend Style Switcher is more than just a component; it&#8217;s the front line of user empowerment. It delivers instant visual feedback, remembers user choices, and seamlessly integrates into the WordPress ecosystem, all while offering powerful hooks for custom development. It&#8217;s the tangible representation of our commitment to dynamic, user-centric design.</p>
+
+
+
+<h3 class="wp-block-heading">The Engineering Art: Harnessing&nbsp;<code>theme.json</code>&nbsp;Power with Surgical Precision<a href="http://localhost.local:6419/02_dynamic_theme_style_generation_and_scoping_.md#the-engineering-art-harnessing-themejson-power-with-surgical-precision"></a></h3>
+
+
+
+<p>The&nbsp;<code>WordPress-Theme-Style-Switcher</code>&nbsp;plugin tackles this by deeply integrating with WordPress&#8217;s robust&nbsp;<code>WP_Theme_JSON</code>&nbsp;API. Here&#8217;s the high-level architecture and philosophy behind it:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Variation Discovery</strong>: The plugin intelligently scans the active theme&#8217;s&nbsp;<code>styles/</code>&nbsp;directory, identifying every&nbsp;<code>*.json</code>&nbsp;file as a potential style variation. Each file&#8217;s slug (its filename) and title become a distinct option for the user.</li>
+
+
+
+<li><strong>CSS Generation per Variation</strong>: For each discovered style variation, the plugin doesn&#8217;t just grab a pre-made CSS file. Instead, it takes the theme&#8217;s base&nbsp;<code>theme.json</code>, merges it with the specific&nbsp;<code>styles/*.json</code>&nbsp;variation data, and then hands this combined JSON structure to&nbsp;<code>WP_Theme_JSON</code>. This powerful WordPress class then generates the full, raw CSS stylesheet for&nbsp;<em>that specific variation</em>.</li>
+
+
+
+<li><strong>Intelligent Cleaning &amp; Filtering</strong>: Before scoping, the plugin performs a crucial cleanup. It removes&nbsp;<code>null</code>&nbsp;values and empty arrays from the merged&nbsp;<code>theme.json</code>&nbsp;structure, ensuring that only meaningful style declarations are processed. It also filters out potentially malformed presets.</li>
+
+
+
+<li><strong>The Scoping Superpower</strong>: This is the real magic. The raw CSS generated for each variation is inherently global. To prevent conflicts, the plugin then&nbsp;<em>scopes</em>&nbsp;every single CSS selector within that stylesheet.
+<ul class="wp-block-list">
+<li>Every standard CSS selector (e.g.,&nbsp;<code>.wp-block-group</code>,&nbsp;<code>h1</code>) is prefixed with the unique variation class (e.g.,&nbsp;<code>.is-style-dark .wp-block-group</code>,&nbsp;<code>.is-style-dark h1</code>).</li>
+
+
+
+<li>Crucially, CSS variables defined on&nbsp;<code>:root</code>&nbsp;are transformed to target&nbsp;<code>:root.is-style-{slug}</code>. This ensures that when the&nbsp;<code>is-style-dark</code>&nbsp;class is present on the&nbsp;<code>&lt;html&gt;</code>&nbsp;element, only&nbsp;<em>that variation&#8217;s</em>&nbsp;CSS variables and specific styles take effect, like a custom lens that filters the entire page&#8217;s appearance.</li>
+</ul>
+</li>
+
+
+
+<li><strong>Optional Declaration Filtering</strong>: To give theme developers even more control, the plugin offers an optional setting to filter out&nbsp;<code>layout</code>&nbsp;or&nbsp;<code>color</code>&nbsp;declarations from the generated CSS. This is particularly useful if a theme intends to manage these aspects through custom CSS or other means, preventing the plugin&#8217;s variations from inadvertently overriding them.</li>
+
+
+
+<li><strong>Efficient Delivery</strong>: Finally, these perfectly scoped and isolated CSS blocks are registered and enqueued as inline styles (<code>wp_add_inline_style</code>). This means no extra external stylesheet requests for variations, enhancing performance. The plugin also intelligently extracts and outputs&nbsp;<code>@font-face</code>&nbsp;rules and&nbsp;<code>preload</code>&nbsp;links for local fonts referenced within the variation JSONs, ensuring optimal font loading.</li>
+</ol>
+
+
+
+<p>Imagine each style variation as a beautifully designed costume for a play. Instead of trying to layer all costumes on top of each other, our plugin creates a unique stage backdrop (the&nbsp;<code>is-style-{slug}</code>&nbsp;class) for&nbsp;<em>each</em>&nbsp;costume. When the&nbsp;<code>is-style-dark</code>&nbsp;backdrop is up, only the &#8216;dark&#8217; costume&#8217;s elements are visible and relevant, even though the &#8216;light&#8217; costume&#8217;s details might technically be &#8220;backstage.&#8221; This elegant solution guarantees that styles are applied precisely where and when they are intended.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>DarkMatter WordPress Theme</title>
 		<link>https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/</link>
 		
@@ -39,7 +178,7 @@
 <p>The post <a href="https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/">DarkMatter WordPress Theme</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
-<p>The DarkMatter WordPress theme <strong>fully embraces Full Site Editing (FSE)</strong> to deliver a visually striking and highly interactive user experience. Underneath its captivating frontend, the theme boasts a <strong>modular PHP architecture</strong> utilizing autoloading and the Singleton pattern, ensuring scalability and maintainability.</p>
+<p>The&nbsp;DarkMatter WordPress theme&nbsp;<strong>fully embraces Full Site Editing (FSE)</strong>&nbsp;to deliver a visually striking and highly interactive user experience. Underneath its captivating frontend, the theme boasts a&nbsp;<strong>modular PHP architecture</strong>&nbsp;utilizing autoloading and the Singleton pattern, ensuring scalability and maintainability.</p>
 
 
 
@@ -47,7 +186,7 @@
 
 
 
-<p>In today&#8217;s web, a beautiful site isn&#8217;t enough if it loads like a sloth. That&#8217;s why one of <code>DarkMatter</code>&#8216;s core philosophies is a seamless blend of stunning aesthetics with top-tier performance. At the heart of this is a sophisticated frontend build pipeline, expertly managed by <strong>Webpack</strong> via the <code>@wordpress/scripts</code> package.</p>
+<p>In today&#8217;s web, a beautiful site isn&#8217;t enough if it loads like a sloth. That&#8217;s why one of&nbsp;<code>DarkMatter</code>&#8216;s core philosophies is a seamless blend of stunning aesthetics with top-tier performance. At the heart of this is a sophisticated frontend build pipeline, expertly managed by&nbsp;<strong>Webpack</strong>&nbsp;via the&nbsp;<code>@wordpress/scripts</code>&nbsp;package.</p>
 
 
 
@@ -55,7 +194,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large is-resized"><img fetchpriority="high" decoding="async" width="1024" height="572" src="https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1024x572.png" alt="DarkMatter Theme footer" class="wp-image-1207" style="width:auto;height:400px" srcset="https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1024x572.png 1024w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-300x168.png 300w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-768x429.png 768w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1536x858.png 1536w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter.png 1859w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">DarkMatter Theme footer</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large is-resized is-style-default" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img fetchpriority="high" decoding="async" width="1024" height="572" src="https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1024x572.png" alt="DarkMatter Theme footer" class="wp-image-1207" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1024x572.png 1024w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-300x168.png 300w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-768x429.png 768w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter-1536x858.png 1536w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMFooter.png 1859w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">DarkMatter Theme footer</figcaption></figure>
 
 
 
@@ -64,15 +203,15 @@
 
 
 <ul class="wp-block-list">
-<li><strong>The &#8220;Slidedown&#8221; Header:</strong> Notice how the header gracefully slides into view and fixes itself to the top of the screen only after you scroll down a bit? This subtle but effective detail keeps the interface clean and unobtrusive, dedicating maximum screen real estate to your content until the navigation is truly needed. It&#8217;s a smooth, intuitive way to manage screen space.</li>
+<li><strong>The &#8220;Slidedown&#8221; Header:</strong>&nbsp;Notice how the header gracefully slides into view and fixes itself to the top of the screen only after you scroll down a bit? This subtle but effective detail keeps the interface clean and unobtrusive, dedicating maximum screen real estate to your content until the navigation is truly needed. It&#8217;s a smooth, intuitive way to manage screen space.</li>
 
 
 
-<li><strong>Captivating Animated &#8220;Hero-Name&#8221; Gradient:</strong> The hero section isn&#8217;t just a static greeting. The main &#8220;DarkMatter&#8221; title features a dynamic, animated gradient that flows and shifts, drawing the eye and adding a touch of modern magic. It&#8217;s a visually rich element that transforms a simple text block into an engaging focal point.</li>
+<li><strong>Captivating Animated &#8220;Hero-Name&#8221; Gradient:</strong>&nbsp;The hero section isn&#8217;t just a static greeting. The main &#8220;DarkMatter&#8221; title features a dynamic, animated gradient that flows and shifts, drawing the eye and adding a touch of modern magic. It&#8217;s a visually rich element that transforms a simple text block into an engaging focal point.</li>
 
 
 
-<li><strong>Interactive Footer with Bubble Animations:</strong> Even the footer is an experience! As you move your mouse over the footer section, you&#8217;ll be treated to a mesmerizing bubble animation that subtly reacts to your cursor. This effect adds an unexpected layer of interactivity, making the end of the page as engaging as the beginning.</li>
+<li><strong>Interactive Footer with Bubble Animations:</strong>&nbsp;Even the footer is an experience! As you move your mouse over the footer section, you&#8217;ll be treated to a mesmerizing bubble animation that subtly reacts to your cursor. This effect adds an unexpected layer of interactivity, making the end of the page as engaging as the beginning.</li>
 </ul>
 
 
@@ -91,7 +230,7 @@
 
 
 
-<h3 class="wp-block-heading">Embracing the Future with <code>theme.json</code><a href="http://localhost:6419/02_full_site_editing__fse__foundation_with_dynamic_block_customization_.md#embracing-the-future-with-themejson"></a></h3>
+<h3 class="wp-block-heading">Embracing the Future with&nbsp;<code>theme.json</code><a href="http://localhost:6419/02_full_site_editing__fse__foundation_with_dynamic_block_customization_.md#embracing-the-future-with-themejson"></a></h3>
 
 
 
@@ -100,11 +239,11 @@
 
 
 <ul class="wp-block-list">
-<li><strong>Global Styles:</strong> Establishing a consistent visual language across the entire site, from default text and background colors to link styles. <code>DarkMatter</code> defines a rich, dark aesthetic (with a light style variation available) using a custom color palette, ensuring brand cohesion.</li>
+<li><strong>Global Styles:</strong>&nbsp;Establishing a consistent visual language across the entire site, from default text and background colors to link styles.&nbsp;<code>DarkMatter</code>&nbsp;defines a rich, dark aesthetic (with a light style variation available) using a custom color palette, ensuring brand cohesion.</li>
 
 
 
-<li><strong>Typography:</strong> Defining beautiful font families (like Poppins and Galada), setting fluid font sizes, and managing line heights to ensure readability and elegance on any device.</li>
+<li><strong>Typography:</strong>&nbsp;Defining beautiful font families (like Poppins and Galada), setting fluid font sizes, and managing line heights to ensure readability and elegance on any device.</li>
 </ul>
 
 
@@ -113,7 +252,7 @@
 
 
 
-<p>Beyond global settings, <code>DarkMatter</code> fully harnesses FSE&#8217;s modular power through its extensive use of block templates and template parts. This means key structural areas of the site, from the common header and footer to how a search results page is constructed, are composed entirely of blocks.</p>
+<p>Beyond global settings,&nbsp;<code>DarkMatter</code>&nbsp;fully harnesses FSE&#8217;s modular power through its extensive use of block templates and template parts. This means key structural areas of the site, from the common header and footer to how a search results page is constructed, are composed entirely of blocks.</p>
 
 
 
@@ -121,7 +260,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large is-resized"><img decoding="async" width="1024" height="572" src="https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1024x572.png" alt="Custom Archive Page" class="wp-image-1208" style="width:auto;height:400px" srcset="https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1024x572.png 1024w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-300x167.png 300w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-768x429.png 768w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1536x857.png 1536w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage.png 1856w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Custom Archive Page</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large is-resized" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img decoding="async" width="1024" height="572" src="https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1024x572.png" alt="Custom Archive Page" class="wp-image-1208" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1024x572.png 1024w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-300x167.png 300w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-768x429.png 768w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage-1536x857.png 1536w, https://lakshyajeet.in/wp-content/uploads/2025/12/DMArchivePage.png 1856w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Custom Archive Page</figcaption></figure>
 
 
 
@@ -158,19 +297,19 @@
 
 
 <ul class="wp-block-list">
-<li><strong>Readability:</strong> Code is organized into logical, namespaced classes, making it intuitively navigable for developers.</li>
+<li><strong>Readability:</strong>&nbsp;Code is organized into logical, namespaced classes, making it intuitively navigable for developers.</li>
 
 
 
-<li><strong>Maintainability:</strong> Changes or additions to specific functionalities can be confined to their respective classes, minimizing the risk of introducing bugs elsewhere.</li>
+<li><strong>Maintainability:</strong>&nbsp;Changes or additions to specific functionalities can be confined to their respective classes, minimizing the risk of introducing bugs elsewhere.</li>
 
 
 
-<li><strong>Testability:</strong> Individual components can be isolated and tested more easily, leading to a more robust and reliable theme.</li>
+<li><strong>Testability:</strong>&nbsp;Individual components can be isolated and tested more easily, leading to a more robust and reliable theme.</li>
 
 
 
-<li><strong>Scalability:</strong> The theme can grow and incorporate more complex features without spiraling into an unmanageable mess. It sets a new standard for modern WordPress theme development.</li>
+<li><strong>Scalability:</strong>&nbsp;The theme can grow and incorporate more complex features without spiraling into an unmanageable mess. It sets a new standard for modern WordPress theme development.</li>
 </ul>
 
 
