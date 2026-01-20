@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/dm_project/</loc>
-		<lastmod>2026-01-01T06:48:10+00:00</lastmod>
+		<lastmod>2026-01-18T07:11:54+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/dm_project/whymdb-imdb-clone/</loc>
@@ -47,7 +47,7 @@
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/</loc>
-		<lastmod>2026-01-01T06:48:10+00:00</lastmod>
+		<lastmod>2026-01-18T07:11:54+00:00</lastmod>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/ThemeStyleSwitcher.webp</image:loc>
 		</image:image>

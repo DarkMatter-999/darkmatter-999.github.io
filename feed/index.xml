@@ -12,7 +12,7 @@
 	<atom:link href="https://lakshyajeet.in/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Thu, 04 Dec 2025 09:52:12 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 20 Jan 2026 08:43:19 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,1190 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Building a Kademlia DHT over WebRTC</title>
+		<link>https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/</link>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 20 Jan 2026 08:43:19 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1233</guid>
+
+					<description><![CDATA[<p>Distributed Hash Tables (DHTs) are the backbone of decentralized file systems (like IPFS) and peer-to-peer networks (like BitTorrent). However, implementing one from scratch is often daunting due to the complexity of node discovery, routing, and NAT traversal. The&#160;WebRTC-DHT&#160;project offers a clean, educational implementation of the Kademlia protocol running on Node.js. It leverages&#160;WebRTC&#160;for peer-to-peer data transport [&#8230;]</p>
+<p>The post <a href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Distributed Hash Tables (DHTs) are the backbone of decentralized file systems (like IPFS) and peer-to-peer networks (like BitTorrent). However, implementing one from scratch is often daunting due to the complexity of node discovery, routing, and NAT traversal.</p>
+
+
+
+<p>The&nbsp;<strong><a href="https://github.com/DarkMatter-999/WebRTC-DHT">WebRTC-DHT</a></strong>&nbsp;project offers a clean, educational implementation of the Kademlia protocol running on Node.js. It leverages&nbsp;<strong>WebRTC</strong>&nbsp;for peer-to-peer data transport allowing for NAT traversal via STUN and introduces a hybrid signalling mechanism that transitions from a centralized WebSocket server to a fully decentralized mesh.</p>
+
+
+
+<p>In this article, we will dissect the architecture, explore the core Kademlia logic, and understand how to orchestrate a P2P swarm using Docker.</p>
+
+
+
+<p>All the code is available at the Github Repo: <a href="https://github.com/DarkMatter-999/WebRTC-DHT">DarkMatter-999/WebRTC-DHT</a></p>
+
+
+
+<h2 class="wp-block-heading">The Problem, The Solution, and The Architecture</h2>
+
+
+
+<p>Distributed systems are notoriously difficult to build. If we want to create a database where data is shared across let&#8217;s say 100 computers, and any 10 of them disappear at any moment without losing data, we face three massive challenges.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Discovery</strong>: How do nodes find each other?</li>
+
+
+
+<li><strong>Connectivity</strong>: How do they talk to each other?</li>
+
+
+
+<li><strong>Routing</strong>: How do they find specific nodes with the data we want?</li>
+</ul>
+
+
+
+<p><strong>WebRTC-DHT</strong> is a reference implementation that solves these challenges using <strong>Kademlia</strong> (the routing algorithm behind BitTorrent) and <strong>WebRTC</strong> (for peer-to-peer connectivity).</p>
+
+
+
+<h3 class="wp-block-heading">What are we building?</h3>
+
+
+
+<p>We are looking at a <strong>Node.js based Distributed Hash Table (DHT)</strong>.<br>Think of a standard JavaScript <code>Map</code>:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="const map = new Map();
+map.set('my-key', 'my-value');" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apos;my-key&apos;</span>, <span class="hljs-string">&apos;my-value&apos;</span>);</code></pre>
+
+
+
+<p>This data lives in the memory of <strong>one</strong> computer. If that computer crashes, the data is gone.</p>
+
+
+
+<p>In this project, we are building a network where that <code>Map</code> is sliced up and spread across hundreds of peers. So that when we run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="node.storeValue('my-key', 'my-value');" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript">node.<span class="hljs-title function_">storeValue</span>(<span class="hljs-string">&apos;my-key&apos;</span>, <span class="hljs-string">&apos;my-value&apos;</span>);</code></pre>
+
+
+
+<p>The system calculates the hash of <code>'my-key'</code>, finds the peers/nodes in the network whose IDs are mathematically &#8220;closest&#8221; to that hash, and stores the data on them.</p>
+
+
+
+<h3 class="wp-block-heading">The Tech Stack</h3>
+
+
+
+<p>The project relies on a few specific libraries to make this happen. To keep the implementation bare-bones and educational, the project relies on only a few essential libraries:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>wrtc</code></strong>: This is a Node.js binding for the WebRTC API. Usually, WebRTC is for browsers (Chrome/Firefox), but this library lets our Node.js server processes act like browsers to establish Peer-to-Peer (P2P) data channels.</li>
+
+
+
+<li><strong><code>ws</code></strong>: A standard WebSocket library. We use this <em>only</em> for the initial handshake (signalling).</li>
+
+
+
+<li><strong>Docker</strong>: This is used to provide orchestration layer to simulate a whole network on our machine.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Architecture &amp; File Structure</h3>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="635" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png" alt="Kademlia Architecture Diagram for the project" class="wp-image-1250" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png 1024w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-300x186.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-768x476.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image.png 1095w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h4 class="wp-block-heading">A. The &#8220;Physical&#8221; Layer (Networking)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Signalling server is a centralized WebSocket server(<strong><code>src/signalling/index.js</code></strong>). Nodes connect here first to say &#8220;I exist.&#8221; It introduces them to their first few peers, then steps back.</li>
+
+
+
+<li>The Connection Manager class(<strong><code>src/peer/connection-manager.js</code></strong>) handles the dirty work of WebRTC. It manages ICE candidates, SDP offers, and maintains the list of open sockets (DataChannels) to other peers.</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading">B. The &#8220;Logical&#8221; Layer (Kademlia)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Routing Table(<strong><code>src/peer/routing-table.js</code></strong>) it doesn&#8217;t send data, it just remembers <em>who</em> we know. It organizes peers into &#8220;Buckets&#8221; based on their ID distance. This is pure Kademlia logic.</li>
+
+
+
+<li>The nodes speak a custom binary protocol to save bandwidth. The utility functions convert JavaScript objects into compact Buffers (e.g., packing a <code>STORE</code> command into bytes).</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading">C. The &#8220;Application&#8221; Layer (The Brain)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Peer Node class(<strong><code>src/peer/peer-node.js</code></strong>). This ties everything together. It owns the Storage (the actual data), runs the Routing Table, and executes the complex algorithms to find data (<code>findValue</code>) or store it (<code>storeValue</code>).</li>
+</ul>
+
+
+
+<p>Now, with the basics all clear we can move to nuts and bolts of the system.</p>
+
+
+
+<h2 class="wp-block-heading">Networking &amp; Hybrid Signalling</h2>
+
+
+
+<p>In a distributed network, the hardest part is often just saying &#8220;Hello.&#8221;</p>
+
+
+
+<p>This project uses <strong>WebRTC</strong>, which is famous for its ability to punch through firewalls and offers a P2P connection between the nodes. But, this P2P connection starts with a catch, before any two peers can connect directly, they must exchange setup data (SDP offers, Answers and ICE candidates), this process is done through a third-party called <strong>Signalling</strong>. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png" alt="Networking &amp; Hybrid Signalling" class="wp-image-1251" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png 815w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-300x292.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-768x746.png 768w" sizes="(max-width: 815px) 100vw, 815px" /></figure>
+
+
+
+<p>While most implementation of WebRTC stick with a permanent WebSocket server in the middle for signalling, going with the spirit of decentralization and to avoid a single point of failure, we use a <strong>Hybrid Strategy</strong>.</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Bootstrap</strong>: Use a WebSocket server to find the <em>first</em> few peers.</li>
+
+
+
+<li><strong>Decentralization</strong>: Once connected, use the existing peer connections to route signals and offers to new peers.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">The Signalling Server</h3>
+
+
+
+<p>Open <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/signalling/index.js">src/signalling/index.js</a></code>, you might be surprised to see by how small the file is (~100 lines). That&#8217;s intentional as this server is <strong>dumb</strong>. It does not know anything about the DHT logic, it just passes notes between the peers.<br>When a node starts, it first connects here.</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Register</strong>: The node sends <code>type: 'register'</code> with its ID.</li>
+
+
+
+<li><strong>Discovery:</strong> The node sends <code>type: 'get-peers'</code>.</li>
+
+
+
+<li><strong>Introduction:</strong> The server calculates the XOR distance between the requester and everyone else it knows, returning the 5 closest peers.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/signalling/index.js (Excerpt)
+case 'get-peers':
+  // ... (logic to calculate distance) ...
+  // Return top 5 closest peers so the new node has someone to talk to
+  ws.send(JSON.stringify({ type: 'peers', peers: closestPeers }));
+  break;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/signalling/index.js (Excerpt)</span>
+<span class="hljs-keyword">case</span> <span class="hljs-string">&apos;get-peers&apos;</span>:
+  <span class="hljs-comment">// ... (logic to calculate distance) ...</span>
+  <span class="hljs-comment">// Return top 5 closest peers so the new node has someone to talk to</span>
+  ws.<span class="hljs-title function_">send</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;peers&apos;</span>, <span class="hljs-attr">peers</span>: closestPeers }));
+  <span class="hljs-keyword">break</span>;</code></pre>
+
+
+
+<p>Once the node receives this list, it disconnects from the logic of the server and moves to the <strong>ConnectionManager</strong>.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>The Switchboard: ConnectionManager</strong></h3>
+
+
+
+<p>The heavy lifting happens in <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/connection-manager.js">src/peer/connection-manager.js</a></code>. This class manages the lifecycle of peer connections.</p>
+
+
+
+<p>The most critical function in this file is <code>_sendSignal</code>. This function decides <em>how</em> to send the connection setup data to a target peer.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/connection-manager.js
+
+_sendSignal(peerIdHex, type, payload) {
+  // STRATEGY 1: The Easy Way
+  // If we are still connected to the WebSocket server, use it.
+  if (WebSocket.OPEN === this.socket?.readyState) {
+    this._sendSignalWS(wstype, peerIdHex, payload);
+    return;
+  }
+
+  // STRATEGY 2: The Decentralized Way (The Cool Part)
+  // If no server, we route the signal through the DHT mesh we already have!
+  if (!this.routeSignal) return; // (Safety check)
+
+  // Wrap the signal in a DHT packet
+  const msg = encodeSignal(type, {
+    from: this.nodeIdHex,
+    to: peerIdHex,
+    payload,
+  });
+
+  // Ask the routing table: &quot;Who is closest to this target peer?&quot;
+  const next = this.routeSignal(peerIdHex);
+
+  // Send the signal to those neighbors, asking them to forward it.
+  for (const hex of next) {
+    const peer = this.peers.get(hex);
+    if (peer?.channel?.readyState === 'open') {
+      peer.channel.send(msg);
+    }
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/connection-manager.js</span>
+
+<span class="hljs-title function_">_sendSignal</span>(<span class="hljs-params">peerIdHex, type, payload</span>) {
+  <span class="hljs-comment">// STRATEGY 1: The Easy Way</span>
+  <span class="hljs-comment">// If we are still connected to the WebSocket server, use it.</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">socket</span>?.<span class="hljs-property">readyState</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_sendSignalWS</span>(wstype, peerIdHex, payload);
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">// STRATEGY 2: The Decentralized Way (The Cool Part)</span>
+  <span class="hljs-comment">// If no server, we route the signal through the DHT mesh we already have!</span>
+  <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">routeSignal</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// (Safety check)</span>
+
+  <span class="hljs-comment">// Wrap the signal in a DHT packet</span>
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-title function_">encodeSignal</span>(type, {
+    <span class="hljs-attr">from</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeIdHex</span>,
+    <span class="hljs-attr">to</span>: peerIdHex,
+    payload,
+  });
+
+  <span class="hljs-comment">// Ask the routing table: &quot;Who is closest to this target peer?&quot;</span>
+  <span class="hljs-keyword">const</span> next = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">routeSignal</span>(peerIdHex);
+
+  <span class="hljs-comment">// Send the signal to those neighbors, asking them to forward it.</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> hex <span class="hljs-keyword">of</span> next) {
+    <span class="hljs-keyword">const</span> peer = <span class="hljs-variable language_">this</span>.<span class="hljs-property">peers</span>.<span class="hljs-title function_">get</span>(hex);
+    <span class="hljs-keyword">if</span> (peer?.<span class="hljs-property">channel</span>?.<span class="hljs-property">readyState</span> === <span class="hljs-string">&apos;open&apos;</span>) {
+      peer.<span class="hljs-property">channel</span>.<span class="hljs-title function_">send</span>(msg);
+    }
+  }
+}</code></pre>
+
+
+
+<p>This is the key to decentralization. Once we have a few friends in the network, we no longer need the signalling server. If we want to connect to a stranger, we just ask our friends to pass the note along until it reaches the stranger, Kademlia makes it very efficient by organizing the network into a structured <strong>Distributed Hash Table (DHT)</strong> where every participant is assigned a unique ID. Instead of broadcasting a request to everyone or wandering aimlessly through a list of friends. </p>
+
+
+
+<p>Kademlia uses a <strong>logical distance metric (XOR)</strong> to &#8220;map&#8221; the network, when you ask your friends to pass a note, they don&#8217;t just pass it to anyone, they pass it to the person they know whose ID is numerically &#8220;closer&#8221; to the stranger&#8217;s ID. This creates a routing system where the number of hops required to find anyone stays very small, specifically scaling at a rate of <em>O(log n)</em>, meaning even in a network of millions, you can reach a stranger in just a few steps.</p>
+
+
+
+<h3 class="wp-block-heading">Handling Incoming Signals</h3>
+
+
+
+<p>When a signal arrives (either via WebSocket or forwarded by another peer), <code>_handleDhtSignal</code> processes it.<br>There is a subtle but important piece of code here for <strong>Deduplication</strong>. In a mesh network, you might receive the same forwarded message from three different neighbors. We must process it only once.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/connection-manager.js
+
+async _handleDhtSignal(buf) {
+  const { type, payload } = decodeSignal(buf);
+  const { messageId } = payload;
+
+  // Have we seen this message ID recently?
+  const now = Date.now();
+  const ts = this.seenSignalIds.get(messageId);
+  if (ts &amp;&amp; now - ts < SEEN_SIGNAL_TTL) return; // Ignore duplicate
+
+  this.seenSignalIds.set(messageId, now); // Mark as seen
+
+  // Is this meant for me?
+  if (payload.to !== this.nodeIdHex) {
+    // Forwarding logic would go here
+    // ...
+    return;
+  }
+
+  // It is for me! Process the Offer/Answer/ICE...
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/connection-manager.js</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">_handleDhtSignal</span>(<span class="hljs-params">buf</span>) {
+  <span class="hljs-keyword">const</span> { type, payload } = <span class="hljs-title function_">decodeSignal</span>(buf);
+  <span class="hljs-keyword">const</span> { messageId } = payload;
+
+  <span class="hljs-comment">// Have we seen this message ID recently?</span>
+  <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+  <span class="hljs-keyword">const</span> ts = <span class="hljs-variable language_">this</span>.<span class="hljs-property">seenSignalIds</span>.<span class="hljs-title function_">get</span>(messageId);
+  <span class="hljs-keyword">if</span> (ts &amp;&amp; now - ts &lt; <span class="hljs-variable constant_">SEEN_SIGNAL_TTL</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// Ignore duplicate</span>
+
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">seenSignalIds</span>.<span class="hljs-title function_">set</span>(messageId, now); <span class="hljs-comment">// Mark as seen</span>
+
+  <span class="hljs-comment">// Is this meant for me?</span>
+  <span class="hljs-keyword">if</span> (payload.<span class="hljs-property">to</span> !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeIdHex</span>) {
+    <span class="hljs-comment">// Forwarding logic would go here</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">// It is for me! Process the Offer/Answer/ICE...</span>
+}</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots"/>
+
+
+
+<h2 class="wp-block-heading">The Routing Table</h2>
+
+
+
+<p>Now that our nodes can exchange binary messages, they need to know <em>who</em> to send those messages to. If we have 10,000 nodes in a network, we can&#8217;t simply keep a list of everyone in memory, that doesn&#8217;t scale.<br>Instead, Kademlia uses a clever strategy: <strong><em>Know a lot about your neighbors, and a little about everyone else.</em></strong></p>
+
+
+
+<p>This logic lives in <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/routing-table.js">src/peer/routing-table.js</a></code>. It is arguably the most mathematically interesting part of the project.</p>
+
+
+
+<h3 class="wp-block-heading">The Metric: XOR Distance</h3>
+
+
+
+<p>How do we define <em>&#8220;distance&#8221;</em> on internet? Latency? Hops? Geographical location?<br>Kademlia ignores all of that. It defines the distance purely mathematically using the <strong>XOR</strong> operation on Node IDs.</p>
+
+
+
+<p>If Node A is <code>0101</code> and Node B is <code>0100</code>, the distance between them is <code>0001</code>.</p>
+
+
+
+<p>This has a powerful property of <strong>Unidirectionality</strong>. For any point <em>x</em> and distance <em>d</em>, there is exactly one point <em>y</em> such that distance(<em>x</em>, <em>y</em>) = <em>d</em>. This eliminates &#8220;routing loops&#8221; naturally.</p>
+
+
+
+<p>In <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/utils.js">src/peer/utils.js</a></code>, we see the raw buffer implementation:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/utils.js
+
+export function xorDistance(a, b) {
+  const buf = Buffer.alloc(a.length);
+  for (let i = 0; i < a.length; i++) {
+    buf[i] = a[i] ^ b[i]; // Bitwise XOR
+  }
+  return buf;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/utils.js</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">xorDistance</span>(<span class="hljs-params">a, b</span>) {
+  <span class="hljs-keyword">const</span> buf = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">alloc</span>(a.<span class="hljs-property">length</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; a.<span class="hljs-property">length</span>; i++) {
+    buf[i] = a[i] ^ b[i]; <span class="hljs-comment">// Bitwise XOR</span>
+  }
+  <span class="hljs-keyword">return</span> buf;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">K-Buckets</h3>
+
+
+
+<p>The routing table isn&#8217;t just one big list. It is an array of <strong>Buckets</strong>.<br>Since our Node IDs are 256 bits (<em>SHA-256</em>), the routing table has <strong>256 buckets</strong>.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Bucket 0</strong>: Stores nodes that share the first 0 bits with us (very far away).</li>
+
+
+
+<li><strong>Bucket 255</strong>: Stores nodes that differ only at the very last bit (immediate neighbors).</li>
+</ul>
+
+
+
+<p>This creates a logarithmic view of the network. We have highly detailed knowledge of nodes close to us, and sparse knowledge of nodes far away.</p>
+
+
+
+<p>How do we decide which bucket a peer goes into? We find the <strong>First Differing Bit</strong> (or leading zero count of the XOR distance).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js
+
+_bucketIndex(nodeId) {
+  const dist = xorDistance(this.nodeId, nodeId);
+
+  // Scan byte by byte
+  for (let i = 0; i < dist.length; i++) {
+    if (dist[i] === 0) continue; // Bytes are identical, keep going
+
+    // Found a differing byte, now find the specific bit
+    for (let bit = 0; bit < 8; bit++) {
+      if (dist[i] &amp; (0x80 &gt;&gt; bit)) {
+        return i * 8 + bit; // Return the exact bit position (0-255)
+      }
+    }
+  }
+  return this.buckets.length - 1;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js</span>
+
+<span class="hljs-title function_">_bucketIndex</span>(<span class="hljs-params">nodeId</span>) {
+  <span class="hljs-keyword">const</span> dist = <span class="hljs-title function_">xorDistance</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeId</span>, nodeId);
+
+  <span class="hljs-comment">// Scan byte by byte</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dist.<span class="hljs-property">length</span>; i++) {
+    <span class="hljs-keyword">if</span> (dist[i] === <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// Bytes are identical, keep going</span>
+
+    <span class="hljs-comment">// Found a differing byte, now find the specific bit</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> bit = <span class="hljs-number">0</span>; bit &lt; <span class="hljs-number">8</span>; bit++) {
+      <span class="hljs-keyword">if</span> (dist[i] &amp; (<span class="hljs-number">0x80</span> &gt;&gt; bit)) {
+        <span class="hljs-keyword">return</span> i * <span class="hljs-number">8</span> + bit; <span class="hljs-comment">// Return the exact bit position (0-255)</span>
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">Managing Buckets: The &#8220;k=20&#8221; Rule</h3>
+
+
+
+<p>Each bucket has a size limit, usually denoted as the <em>k</em> (default is 20 in this project).<br>Why limit it, you might ask? To keep the traffic low. If we know 20 nodes in a specific region of the ID space, that is statistically enough to route messages successfully even if half of them go offline any time.</p>
+
+
+
+<p>But what happens when we meet a new node and the corresponding bucket is <strong>Full</strong>? This is where Kademlia&#8217;s &#8220;Eviction Policy&#8221; comes in.</p>
+
+
+
+<h4 class="wp-block-heading">The &#8220;Wait and See&#8221; Strategy</h4>
+
+
+
+<p>We do <strong>not</strong> simply drop the new node. Nor do we blindly drop the old node. We favor stability (old reliable nodes) over novelty (new unverified nodes).</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Update:</strong> If the node is already in the bucket, move it to the tail (mark as recently seen).</li>
+
+
+
+<li><strong>Add:</strong> If the bucket has space (<em>&lt; 20</em>), just add it.</li>
+
+
+
+<li><strong>Standby:</strong> If the bucket is <strong>Full</strong>, we put the new node into a separate <code>replacements</code> list.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js (Excerpt)
+
+if (bucket.nodes.length < this.k) {
+  bucket.nodes.push(nodeId);
+  return { action: 'added' };
+}
+
+// Bucket is full. Don't add yet. Store as a replacement candidate.
+if (!bucket.replacements.some((id) =&gt; id.equals(nodeId))) {
+  bucket.replacements.push(nodeId);
+  // Keep the replacement list small too
+  if (bucket.replacements.length &gt; this.k) {
+    bucket.replacements.shift();
+  }
+}
+return { action: 'full', bucketIndex: i };" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js (Excerpt)</span>
+
+<span class="hljs-keyword">if</span> (bucket.<span class="hljs-property">nodes</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">k</span>) {
+  bucket.<span class="hljs-property">nodes</span>.<span class="hljs-title function_">push</span>(nodeId);
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">action</span>: <span class="hljs-string">&apos;added&apos;</span> };
+}
+
+<span class="hljs-comment">// Bucket is full. Don&apos;t add yet. Store as a replacement candidate.</span>
+<span class="hljs-keyword">if</span> (!bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> id.<span class="hljs-title function_">equals</span>(nodeId))) {
+  bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">push</span>(nodeId);
+  <span class="hljs-comment">// Keep the replacement list small too</span>
+  <span class="hljs-keyword">if</span> (bucket.<span class="hljs-property">replacements</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">k</span>) {
+    bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">shift</span>();
+  }
+}
+<span class="hljs-keyword">return</span> { <span class="hljs-attr">action</span>: <span class="hljs-string">&apos;full&apos;</span>, <span class="hljs-attr">bucketIndex</span>: i };</code></pre>
+
+
+
+<p><strong>So when does the new node actually get in?</strong><br>Later, in the background, <code>PeerNode</code> checks the &#8220;Least Recently Seen&#8221; node in that full bucket. It pings it.</p>
+
+
+
+<ul class="wp-block-list">
+<li>If the old node responds: It stays. The new node stays in the waiting list.</li>
+
+
+
+<li>If the old node is dead: It is evicted. The new node is promoted from <code>replacements</code> to <code>nodes</code>.</li>
+</ul>
+
+
+
+<p>This guarantees that our routing table is filled with robust, long-lived peers.</p>
+
+
+
+<h3 class="wp-block-heading">Finding Neighbors</h3>
+
+
+
+<p>Finally, the most used function in our entire DHT is <code>findClosest</code>. When we want to look up a key, we need to ask the nodes mathematically closest to it.<br>This function aggregates nodes from the target bucket, and then moves outwards to the adjacent buckets until sufficient candidates are found.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js
+
+findClosest(targetId, count = this.k) {
+  const results = [];
+  const start = this._bucketIndex(targetId);
+
+  // We check buckets [start], [start+1], [start-1], [start+2]...
+  // expanding outward from the target distance.
+  for (let d = 0; d < this.buckets.length &amp;&amp; results.length < count; d++) {
+    const i = d % 2 === 0 ? start + d : start - d;
+    if (i < 0 || i &gt;= this.buckets.length) continue;
+
+    const bucket = this.buckets[i];
+    results.push(...bucket.nodes);
+  }
+
+  // Finally, sort everything by XOR distance to the target
+  results.sort((a, b) =&gt;
+    compareDistance(xorDistance(a, targetId), xorDistance(b, targetId))
+  );
+
+  return results.slice(0, count);
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js</span>
+
+<span class="hljs-title function_">findClosest</span>(<span class="hljs-params">targetId, count = <span class="hljs-variable language_">this</span>.k</span>) {
+  <span class="hljs-keyword">const</span> results = [];
+  <span class="hljs-keyword">const</span> start = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_bucketIndex</span>(targetId);
+
+  <span class="hljs-comment">// We check buckets [start], [start+1], [start-1], [start+2]...</span>
+  <span class="hljs-comment">// expanding outward from the target distance.</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span> &amp;&amp; results.<span class="hljs-property">length</span> &lt; count; d++) {
+    <span class="hljs-keyword">const</span> i = d % <span class="hljs-number">2</span> === <span class="hljs-number">0</span> ? start + d : start - d;
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span>) <span class="hljs-keyword">continue</span>;
+
+    <span class="hljs-keyword">const</span> bucket = <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>[i];
+    results.<span class="hljs-title function_">push</span>(...bucket.<span class="hljs-property">nodes</span>);
+  }
+
+  <span class="hljs-comment">// Finally, sort everything by XOR distance to the target</span>
+  results.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span>
+    <span class="hljs-title function_">compareDistance</span>(<span class="hljs-title function_">xorDistance</span>(a, targetId), <span class="hljs-title function_">xorDistance</span>(b, targetId))
+  );
+
+  <span class="hljs-keyword">return</span> results.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, count);
+}</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots"/>
+
+
+
+<h2 class="wp-block-heading">The Core Logic (PeerNode)</h2>
+
+
+
+<p>We have the phone lines (WebRTC/ConnectionManager) and the phone book (RoutingTable). Now we need the operator.<br><code>PeerNode</code>(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/peer-node.js">src/peer/peer-node.js</a></code>) is the brain of the operation. It is where the actual &#8220;Kademlia&#8221; happens, it orchestrates the complex operation of asking peers for information, collecting responses, and deciding where to go next. It is responsible for <strong>Iterative Lookups</strong>, <strong>Data Persistence</strong>, and <strong>Network Maintenance</strong>.</p>
+
+
+
+<h3 class="wp-block-heading">The Search: <code>iterativeFindNode</code></h3>
+
+
+
+<p>This is the most critical algorithm in any DHT, when we want to find a node (or a piece of data/value), you can&#8217;t just ask any one of the neighbors and hope they know. We have to crawl the network, getting closer to the target one step at a time.</p>
+
+
+
+<p>Kademlia uses an <strong><em>alpha</em>-parallel</strong> search (where <em>alpha=3</em> in this project).</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img decoding="async" width="964" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png" alt="Iterative Find Node algorithm" class="wp-image-1252" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png 964w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-283x300.png 283w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-768x816.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2.png 970w" sizes="(max-width: 964px) 100vw, 964px" /></figure>
+
+
+
+<p>The process is as follows:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Shortlist:</strong> Pick the 20 closest nodes we already know.</li>
+
+
+
+<li><strong>Parallel Query:</strong> Pick the top 3 (<em>alpha</em>) nodes we haven&#8217;t asked yet.</li>
+
+
+
+<li><strong>Ask:</strong> Send <code>FIND_NODE</code> requests to them simultaneously.</li>
+
+
+
+<li><strong>Update:</strong> They reply with <em>their</em> closest neighbors. We add these new nodes to our shortlist.</li>
+
+
+
+<li><strong>Repeat:</strong> Sort the list, pick the next 3, and loop until we stop finding closer nodes.</li>
+</ol>
+
+
+
+<p>This logic guarantees that even in a network of millions, we can find a target in <em>O(log N)</em> hops (usually just 3 or 4 jumps).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js (Simplified)
+
+async iterativeFindNode(targetNodeId) {
+  let shortlist = this.routingTable.findClosest(targetNodeId, this.K);
+  
+  // The loop runs until we stop making progress or hit a max limit
+  while (rounds++ < MAX_ROUNDS) {
+    
+    // Pick 'alpha' (3) unqueried nodes
+    const batch = shortlist.filter(n =&gt; !queried.has(n)).slice(0, this.ALPHA);
+    
+    // Blast out requests in parallel
+    const responses = await Promise.all(
+      batch.map(node =&gt; this.sendFindNode(node, targetNodeId))
+    );
+
+    // Add new nodes discovered from responses to the shortlist
+    for (const nodes of responses) {
+      updateShortlist(shortlist, nodes);
+    }
+
+    // Sort by distance again
+    shortlist.sort(/* sort by distance to target */);
+  }
+
+  return shortlist;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js (Simplified)</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">iterativeFindNode</span>(<span class="hljs-params">targetNodeId</span>) {
+  <span class="hljs-keyword">let</span> shortlist = <span class="hljs-variable language_">this</span>.<span class="hljs-property">routingTable</span>.<span class="hljs-title function_">findClosest</span>(targetNodeId, <span class="hljs-variable language_">this</span>.<span class="hljs-property">K</span>);
+  
+  <span class="hljs-comment">// The loop runs until we stop making progress or hit a max limit</span>
+  <span class="hljs-keyword">while</span> (rounds++ &lt; <span class="hljs-variable constant_">MAX_ROUNDS</span>) {
+    
+    <span class="hljs-comment">// Pick &apos;alpha&apos; (3) unqueried nodes</span>
+    <span class="hljs-keyword">const</span> batch = shortlist.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> !queried.<span class="hljs-title function_">has</span>(n)).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">ALPHA</span>);
+    
+    <span class="hljs-comment">// Blast out requests in parallel</span>
+    <span class="hljs-keyword">const</span> responses = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(
+      batch.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">node</span> =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sendFindNode</span>(node, targetNodeId))
+    );
+
+    <span class="hljs-comment">// Add new nodes discovered from responses to the shortlist</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> nodes <span class="hljs-keyword">of</span> responses) {
+      <span class="hljs-title function_">updateShortlist</span>(shortlist, nodes);
+    }
+
+    <span class="hljs-comment">// Sort by distance again</span>
+    shortlist.<span class="hljs-title function_">sort</span>(<span class="hljs-comment">/* sort by distance to target */</span>);
+  }
+
+  <span class="hljs-keyword">return</span> shortlist;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Memory: <code>storeValue</code> and Quorums</h3>
+
+
+
+<p>A DHT isn&#8217;t useful if it loses data when a node goes offline. To prevent this, we never store data on just a <em>single</em> node. We store it on the  <em><strong>k </strong></em><strong>closest nodes</strong> (where <em>k=20</em>).</p>
+
+
+
+<p>However, we don&#8217;t need <em>all</em> 20 nodes to confirm success. We wait for a <strong>Write Quorum</strong> (<em>w</em>).</p>
+
+
+
+<ul class="wp-block-list">
+<li><em>k = 20</em></li>
+
+
+
+<li><em>W = [k/2] = 10</em></li>
+</ul>
+
+
+
+<p>This means if 10 nodes accept our data, we consider it <em>saved</em>. This ensures high availability. Even if 9 nodes crash immediately after the write, the data survives on the 10th node (and eventually with others).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js
+
+async storeValue(key, value) {
+  // 1. Find the 20 closest nodes to the Key's hash
+  const closest = await this.iterativeFindNode(keyId);
+  
+  const W = Math.ceil(this.K / 2); // 10
+  let acks = 0;
+
+  // 2. Send STORE command to them
+  for (const hex of targets) {
+    const ok = await this.conn.send(hex, /* STORE command */);
+    
+    if (ok) {
+      acks++;
+      // 3. Stop once we hit Quorum
+      if (acks &gt;= W) break;
+    }
+  }
+
+  if (acks < W) {
+    throw new Error(`STORE failed: quorum not reached (${acks}/${W})`);
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">storeValue</span>(<span class="hljs-params">key, value</span>) {
+  <span class="hljs-comment">// 1. Find the 20 closest nodes to the Key&apos;s hash</span>
+  <span class="hljs-keyword">const</span> closest = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">iterativeFindNode</span>(keyId);
+  
+  <span class="hljs-keyword">const</span> W = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">K</span> / <span class="hljs-number">2</span>); <span class="hljs-comment">// 10</span>
+  <span class="hljs-keyword">let</span> acks = <span class="hljs-number">0</span>;
+
+  <span class="hljs-comment">// 2. Send STORE command to them</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> hex <span class="hljs-keyword">of</span> targets) {
+    <span class="hljs-keyword">const</span> ok = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">conn</span>.<span class="hljs-title function_">send</span>(hex, <span class="hljs-comment">/* STORE command */</span>);
+    
+    <span class="hljs-keyword">if</span> (ok) {
+      acks++;
+      <span class="hljs-comment">// 3. Stop once we hit Quorum</span>
+      <span class="hljs-keyword">if</span> (acks &gt;= W) <span class="hljs-keyword">break</span>;
+    }
+  }
+
+  <span class="hljs-keyword">if</span> (acks &lt; W) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`STORE failed: quorum not reached (<span class="hljs-subst">${acks}</span>/<span class="hljs-subst">${W}</span>)`</span>);
+  }
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Retrieval: <code>findValue</code> &amp; Repair</h3>
+
+
+
+<p>Retrieving data (<code>findValue</code>) looks very similar to <code>iterativeFindNode</code>, with two key differences:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Early Exit:</strong> If a peer replies with the <em>Data</em> instead of a list of nodes, the search stops immediately.</li>
+
+
+
+<li><strong>Opportunistic Replication (Repair):</strong> This is a cool optimization.</li>
+</ol>
+
+
+
+<p>Imagine you find the data on Node D. But Node A, Node B, and Node C were mathematically <em>closer</em> to the key but didn&#8217;t have it (maybe they were offline when it was published).<br>Since we are walking past A, B, and C anyway, we should fix that!</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js (Excerpt from findValue)
+
+if (res.record) {
+  // We found the data!
+  bestRecord = res.record;
+
+  // Look for a node that was CLOSER than the one who had the data
+  const closer = shortlist.find(n =&gt; isCloser(n, responder));
+
+  // &quot;Store-back&quot;: Give the data to that closer node so the next person finds it faster
+  if (closer) {
+    this.conn.send(closer, encodeStore(keyId, bestRecord));
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js (Excerpt from findValue)</span>
+
+<span class="hljs-keyword">if</span> (res.<span class="hljs-property">record</span>) {
+  <span class="hljs-comment">// We found the data!</span>
+  bestRecord = res.<span class="hljs-property">record</span>;
+
+  <span class="hljs-comment">// Look for a node that was CLOSER than the one who had the data</span>
+  <span class="hljs-keyword">const</span> closer = shortlist.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> <span class="hljs-title function_">isCloser</span>(n, responder));
+
+  <span class="hljs-comment">// &quot;Store-back&quot;: Give the data to that closer node so the next person finds it faster</span>
+  <span class="hljs-keyword">if</span> (closer) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">conn</span>.<span class="hljs-title function_">send</span>(closer, <span class="hljs-title function_">encodeStore</span>(keyId, bestRecord));
+  }
+}</code></pre>
+
+
+
+<p>This &#8220;<em>Store-back</em>&#8221; mechanism ensures that popular data naturally migrates to the nodes where it &#8220;<em>belongs</em>&#8221; (the closest ones), keeping the network efficient.</p>
+
+
+
+<h3 class="wp-block-heading">The Gardening: Maintenance Timers</h3>
+
+
+
+<p>This is my favorite example of emergent behavior derived from simple rules. A DHT is like a living organism. Nodes join, leave, and crash. Data expires. If we did nothing, the routing tables would rot and data would vanish.</p>
+
+
+
+<p>In <code>node.start()</code>, several background timers are launched to act as janitors:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Bucket Refresh:</strong> Pick a random ID in a bucket&#8217;s range and search for it. This forces us to find new peers in that specific area of the network, keeping the routing table full.</li>
+
+
+
+<li><strong>Republish:</strong> If <em>I</em> am the original author of a piece of data, I must re-upload it every hour so peers know it&#8217;s still valid.</li>
+
+
+
+<li><strong>Replica Repair:</strong> If I am holding data for someone else, I check if I am still one of the closest nodes. If not, I move the data to someone closer.</li>
+
+
+
+<li><strong>Liveness Checks:</strong> Ping the oldest nodes in my routing table. If they don&#8217;t answer, evict them and replace them with fresh nodes.</li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots"/>
+
+
+
+<h2 class="wp-block-heading">Orchestration &amp; Usage (Running the Swarm)</h2>
+
+
+
+<p>We have explored the code and understood the logic. Now, let&#8217;s play with it.</p>
+
+
+
+<p>Developing a Distributed system is hard because we can&#8217;t easily run 50 copies of our app on our machine manually. We need <strong>Orchestration</strong>. The project includes a dedicated orchestration layer built using <strong>Docker Compose</strong>.<br></p>
+
+
+
+<h3 class="wp-block-heading">The Orchestrator</h3>
+
+
+
+<p>Instead of writing <code>docker</code> commands, the project includes a helper script(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/index.js">index.js</a></code>) at the root directory.<br>When you run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- up --peers 10" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> up <span class="hljs-literal">--peers</span> <span class="hljs-number">10</span></code></pre>
+
+
+
+<p>The script parses the arguments and executes:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ docker compose -f docker-compose.yml up -d --scale peer=10" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> docker compose <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml up <span class="hljs-literal">-d</span> <span class="hljs-literal">--scale</span> peer=<span class="hljs-number">10</span></code></pre>
+
+
+
+<p>The magic word here is <strong><code>--scale</code></strong>. This tells Docker Compose to spin up 1 instance of the <code>signalling</code> server, 1 instance of the <code>client</code>, and <strong>10 instances</strong> of the <code>peer</code> service.</p>
+
+
+
+<p>Looking at <code>docker-compose.yml</code>, we see the network topology:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>signalling</code></strong>: The bootstrap server. It exposes port 3000, so that, we can connect to it from our machine outside Docker.</li>
+
+
+
+<li><strong><code>client</code></strong>: The CLI tool. It depends on <code>signalling</code>. This can be run on our machine bare-metal.</li>
+
+
+
+<li><strong><code>peer</code></strong>: The worker nodes. They also depend on <code>signalling</code>.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Solving the &#8220;Thundering Herd&#8221; Problem</h3>
+
+
+
+<p>If we launch 50 peers simultaneously, they will all try to hit the WebSocket server and eventually each other at the same exact millisecond. This can cause network stall and connection timeouts.<br>To solve this, we add a small <strong>Jitter</strong> to our peer startup(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/peer-entry.sh">peer-entry.sh</a></code>). It spreads the load over 30 seconds, thus, ensuring the network bootstraps smoothly. This simulates how the network behaves in real life as all peers cannot start at the exact same time in real-life.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="#!/bin/sh
+# peer-entry.sh
+
+# Generate a random delay between 0 and 30 seconds
+DELAY=$(awk -v max=&quot;$STARTUP_DELAY_MAX&quot; 'BEGIN{srand(); print int(rand()*(max+1))}')
+
+echo &quot;Startup delay: ${DELAY}s&quot;
+sleep &quot;$DELAY&quot;
+
+# Start the node
+exec &quot;$@&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-bash"><span class="hljs-meta">#!/bin/sh</span>
+<span class="hljs-comment"># peer-entry.sh</span>
+
+<span class="hljs-comment"># Generate a random delay between 0 and 30 seconds</span>
+DELAY=$(awk -v max=<span class="hljs-string">&quot;<span class="hljs-variable">$STARTUP_DELAY_MAX</span>&quot;</span> <span class="hljs-string">&apos;BEGIN{srand(); print int(rand()*(max+1))}&apos;</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Startup delay: <span class="hljs-variable">${DELAY}</span>s&quot;</span>
+<span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;<span class="hljs-variable">$DELAY</span>&quot;</span>
+
+<span class="hljs-comment"># Start the node</span>
+<span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span></code></pre>
+
+
+
+<h3 class="wp-block-heading">The Interactive Client</h3>
+
+
+
+<p>Once the swarm is running, we need a way to control it. We can check the logs manually, but that&#8217;s messy and hard. Instead, the project provides a &#8220;<em>God Mode</em>&#8221; client.<br>The client(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/client.js">src/peer/client.js</a></code>) connects to the mesh just like any other peer and indeed behaves as a peer, but it exposes its routing table, events and commands in an interface directly to your terminal.</p>
+
+
+
+<p>The CLI accepts several commands that trigger the internal <code>PeerNode</code> methods.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>peers</code></strong>: Calls <code>node.conn.getConnectedPeers()</code>. Shows who we are directly connected to via WebRTC.</li>
+
+
+
+<li><strong><code>store &lt;key> &lt;value></code></strong>: Triggers <code>node.storeValue()</code>. Will show &#8220;Store complete (quorum reached)&#8221; if it succeeds.</li>
+
+
+
+<li><strong><code>get &lt;key></code></strong>: Triggers <code>node.findValue()</code>. It will perform the lookup and print the result.</li>
+
+
+
+<li><strong><code>find &lt;nodeId></code></strong>: Triggers <code>iterativeFindNode</code>. Useful for debugging routing paths.</li>
+
+
+
+<li><strong><code>dump</code></strong>: Dumps the entire routing table (all buckets).</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Putting it all together</h3>
+
+
+
+<p>Finally, here is how you simulate a Kademlia network on your machine.</p>
+
+
+
+<p><strong>Step 1: Start the Swarm</strong><br>Boot up a network with 25 peers.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- all --peers 25" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> all <span class="hljs-literal">--peers</span> <span class="hljs-number">25</span></code></pre>
+
+
+
+<p><em>Wait about 30 seconds for the startup jitter to finish and the mesh to form.</em></p>
+
+
+
+<p><strong>Step 2: Enter the Client</strong></p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="# In a new terminal
+$ npm run client" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-comment"># In a new terminal</span>
+<span class="hljs-variable">$</span> npm run client</code></pre>
+
+
+
+<p><strong>Step 3: Check Connections</strong><br>Inside the client REPL:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; peers
+Connected peers: [ 'a1b2...', 'c3d4...' ]" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; peers
+Connected peers: [ <span class="hljs-string">&apos;a1b2...&apos;</span>, <span class="hljs-string">&apos;c3d4...&apos;</span> ]</code></pre>
+
+
+
+<p>You should see at least one or two peers.</p>
+
+
+
+<p><strong>Step 4: Store Data</strong><br>Let&#8217;s save a value into the cloud.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; store 67 &quot;My value&quot;
+Store complete (quorum reached)" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; store <span class="hljs-number">67</span> <span class="hljs-string">&quot;My value&quot;</span>
+Store complete (quorum reached)</code></pre>
+
+
+
+<p>Behind the scenes, our client hashed &#8220;67&#8221;, found the 10 closest nodes among the 25 running containers, and replicated the data to them.</p>
+
+
+
+<p><strong>Step 5: Retrieve Data</strong><br>Now, let&#8217;s ask the network for it back.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; get 67
+Value found: &quot;My value&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; get <span class="hljs-number">67</span>
+Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
+
+
+
+<p><strong>Step 6: Scale Up</strong><br>Want to see how it handles growth? Leave the client open, and in another terminal run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- up --peers 35" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> up <span class="hljs-literal">--peers</span> <span class="hljs-number">35</span></code></pre>
+
+
+
+<p>Docker will add 10 <em>new</em> peers to the existing network. The existing nodes will see them, add them to buckets, and the network topology will evolve automatically.</p>
+
+
+
+<h3 class="wp-block-heading">Real-world limitations</h3>
+
+
+
+<p>While <a href="https://github.com/DarkMatter-999/WebRTC-DHT">WebRTC-DHT</a> is a fully functional Kademlia implementation, it is designed for <strong>education and prototyping</strong>, not high-stakes production environments. If you plan to build the next IPFS or BitTorrent, you must address these constraints:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>NAT Traversal (STUN only):</strong> This project relies solely on public STUN servers (<code>stun.l.google.com</code>). This works for most home connections but will fail behind strict corporate firewalls or Symmetric NATs. A production system requires <strong>TURN</strong> servers to relay traffic when direct P2P connections fail.</li>
+
+
+
+<li><strong>Memory-Only Storage:</strong> Data is stored in a JavaScript Map. If a node crashes or the container restarts, its specific shard of data is lost. Real systems must persist data to disk (e.g., LevelDB, SQLite) so that data survives application restarts.</li>
+
+
+
+<li><strong>Security &amp; Auth:</strong> There is no authentication mechanism, we trust all nodes. Anyone who knows the signalling server address can join the swarm. This makes the network vulnerable to <strong>Sybil Attacks</strong> (flooding the network with fake nodes to poison routing tables) or data tampering.</li>
+
+
+
+<li><strong>Performance:</strong> Node.js with the <code>wrtc</code> binding is heavy. High-throughput distributed systems are typically implemented in Systems Languages (Rust, Go, C++) to avoid Garbage Collection pauses and minimize memory footprint per peer.</li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots"/>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>We have walked through the entire stack of <strong>WebRTC-DHT</strong>:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Architecture:</strong> We saw how the code separates Networking, Routing, and Logic.</li>
+
+
+
+<li><strong>Hybrid Signalling:</strong> We learned how to bootstrap via WebSockets and switch to P2P signalling.</li>
+
+
+
+<li><strong>Routing Table:</strong> We explored XOR distance, buckets, and LRU eviction.</li>
+
+
+
+<li><strong>Core Logic:</strong> We dissected the iterative lookup and quorum storage algorithms.</li>
+
+
+
+<li><strong>Orchestration:</strong> We used Docker to simulate a swarm and handle thundering herds.</li>
+</ol>
+
+
+
+<p>This project serves as a compact, readable reference for anyone wanting to understand how decentralized networks like IPFS or BitTorrent actually work under the hood.</p>
+
+
+
+<p><strong>Happy Hacking!</strong></p>
+
+
+
+<p></p>
+<p>The post <a href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>WordPress Block Themes: Block Themes and Block Patterns Explained</title>
 		<link>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
 					<comments>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
@@ -1789,246 +2973,6 @@ wp.<span class="hljs-property">hooks</span>.<span class="hljs-title function_">a
 ]]></content:encoded>
 					
 					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WordPress Block Editor: Block Filters Explained</title>
-		<link>https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/</link>
-					<comments>https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Tue, 29 Apr 2025 14:09:43 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[blogging]]></category>
-		<category><![CDATA[javascript]]></category>
-		<category><![CDATA[react]]></category>
-		<category><![CDATA[web-development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=839</guid>
-
-					<description><![CDATA[<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify existing blocks — tweak how they behave, change their appearance, or even alter how they save data. That’s where block filters come in. [&#8230;]</p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>As WordPress developers, we&#8217;ve come to appreciate the power and flexibility of the Block Editor (a.k.a. Gutenberg). While creating custom blocks is often the go-to approach, sometimes we just want to modify <strong>existing blocks</strong> — tweak how they behave, change their appearance, or even alter how they save data.</p>
-
-
-
-<p>That’s where <strong>block filters</strong> come in.</p>
-
-
-
-<p>In this blog, we’ll explore what block filters are, how we can use them to extend core or third-party blocks, and walk through real-world examples using code.</p>
-
-
-
-<h2 class="wp-block-heading">What Are Block Filters in WordPress?</h2>
-
-
-
-<p>Block filters are part of the <strong>WordPress hook system</strong> applied to Gutenberg blocks. They allow us to hook into various parts of a block’s lifecycle:</p>
-
-
-
-<ul class="wp-block-list">
-<li>When it&#8217;s registered</li>
-
-
-
-<li>When it&#8217;s rendered in the editor</li>
-
-
-
-<li>When it saves data</li>
-
-
-
-<li>And more</li>
-</ul>
-
-
-
-<p>This gives us fine-grained control without having to create a block from scratch.</p>
-
-
-
-<h2 class="wp-block-heading">Why Use Block Filters?</h2>
-
-
-
-<p>Here are a few scenarios where block filters are incredibly useful:</p>
-
-
-
-<ul class="wp-block-list">
-<li>Adding custom class names to core blocks (like <code>core/paragraph</code>)</li>
-
-
-
-<li>Injecting custom attributes (eg-, adding alignment or tracking options)</li>
-
-
-
-<li>Replacing or wrapping a block’s default edit or save component</li>
-
-
-
-<li>Changing default settings or restricting block features</li>
-</ul>
-
-
-
-<h2 class="wp-block-heading">Common Block Filters</h2>
-
-
-
-<p>Here are some of the most used filters:</p>
-
-
-
-<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Filter</th><th>Description</th></tr></thead><tbody><tr><td><code>blocks.registerBlockType</code></td><td>Modify block settings when it&#8217;s registered</td></tr><tr><td><code>editor.BlockEdit</code></td><td>Override or wrap the block&#8217;s edit component</td></tr><tr><td><code>blocks.getSaveContent.extraProps</code></td><td>Inject extra props (eg-, class) into saved markup</td></tr><tr><td><code>blocks.getBlockDefaultClassName</code></td><td>Override default class names</td></tr><tr><td><code>blocks.getSaveElement</code></td><td>Modify the output of the block&#8217;s save function<br></td></tr></tbody></table></figure>
-
-
-
-<h3 class="wp-block-heading">1. Add a Custom Class to All Paragraph Blocks</h3>
-
-
-
-<p>Let’s say we want every <code>core/paragraph</code> block to get a custom class like <code>my-custom-paragraph</code>.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">addCustomClassName</span>(<span class="hljs-params"> props, blockType, attributes </span>) {
-    <span class="hljs-keyword">if</span> ( blockType.<span class="hljs-property">name</span> === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
-        <span class="hljs-keyword">return</span> {
-            ...props,
-            <span class="hljs-attr">className</span>: <span class="hljs-string">`<span class="hljs-subst">${props.className || <span class="hljs-string">&apos;&apos;</span>}</span> my-custom-paragraph`</span>,
-        };
-    }
-    <span class="hljs-keyword">return</span> props;
-}
-
-<span class="hljs-title function_">addFilter</span>(
-    <span class="hljs-string">&apos;blocks.getSaveContent.extraProps&apos;</span>,
-    <span class="hljs-string">&apos;my-plugin/add-custom-class&apos;</span>,
-    addCustomClassName
-);
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">2. Modify Block Settings on Registration</h3>
-
-
-
-<p>What if we want to disable the &#8220;drop cap&#8221; feature from the paragraph block?</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">modifyBlockSettings</span>(<span class="hljs-params"> settings, name </span>) {
-    <span class="hljs-keyword">if</span> ( name === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
-        <span class="hljs-keyword">return</span> {
-            ...settings,
-            <span class="hljs-attr">supports</span>: {
-                ...settings.<span class="hljs-property">supports</span>,
-                <span class="hljs-attr">dropCap</span>: <span class="hljs-literal">false</span>,
-            },
-        };
-    }
-    <span class="hljs-keyword">return</span> settings;
-}
-
-<span class="hljs-title function_">addFilter</span>(
-    <span class="hljs-string">&apos;blocks.registerBlockType&apos;</span>,
-    <span class="hljs-string">&apos;my-plugin/modify-paragraph-settings&apos;</span>,
-    modifyBlockSettings
-);
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">3. Wrap the Block&#8217;s Edit Component</h3>
-
-
-
-<p>Need to inject UI or logic into a block&#8217;s editor UI? We can wrap the <code>edit</code> function using <code>editor.BlockEdit</code>.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-keyword">const</span> { addFilter } = wp.<span class="hljs-property">hooks</span>;
-<span class="hljs-keyword">const</span> { createHigherOrderComponent } = wp.<span class="hljs-property">compose</span>;
-<span class="hljs-keyword">const</span> { <span class="hljs-title class_">Fragment</span> } = wp.<span class="hljs-property">element</span>;
-
-<span class="hljs-keyword">const</span> withCustomEditWrapper = <span class="hljs-title function_">createHigherOrderComponent</span>( <span class="hljs-function">(<span class="hljs-params"> BlockEdit </span>) =&gt;</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params"> props </span>) =&gt;</span> {
-        <span class="hljs-keyword">if</span> ( props.<span class="hljs-property">name</span> === <span class="hljs-string">&apos;core/paragraph&apos;</span> ) {
-            <span class="hljs-keyword">return</span> (
-                <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Fragment</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">border:</span> &apos;<span class="hljs-attr">1px</span> <span class="hljs-attr">solid</span> <span class="hljs-attr">red</span>&apos;, <span class="hljs-attr">padding:</span> &apos;<span class="hljs-attr">10px</span>&apos; }}&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Custom UI:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> You’re editing a paragraph!
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">BlockEdit</span> { <span class="hljs-attr">...props</span> } /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">Fragment</span>&gt;</span></span>
-            );
-        }
-        <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">BlockEdit</span> { <span class="hljs-attr">...props</span> } /&gt;</span></span>;
-    };
-}, <span class="hljs-string">&apos;withCustomEditWrapper&apos;</span> );
-
-<span class="hljs-title function_">addFilter</span>(
-    <span class="hljs-string">&apos;editor.BlockEdit&apos;</span>,
-    <span class="hljs-string">&apos;my-plugin/custom-block-edit&apos;</span>,
-    withCustomEditWrapper
-);
-</code></pre>
-
-
-
-<h2 class="wp-block-heading">Enqueuing the JavaScript</h2>
-
-
-
-<p>To make all this work, we’ll need to enqueue our JS file in the editor.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-php">
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">my_plugin_enqueue_editor_assets</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-title function_ invoke__">wp_enqueue_script</span>(
-        <span class="hljs-string">&apos;my-plugin-block-filters&apos;</span>,
-        <span class="hljs-title function_ invoke__">plugin_dir_url</span>( <span class="hljs-keyword">__FILE__</span> ) . <span class="hljs-string">&apos;my-plugin.js&apos;</span>,
-        <span class="hljs-keyword">array</span>( <span class="hljs-string">&apos;wp-blocks&apos;</span>, <span class="hljs-string">&apos;wp-hooks&apos;</span>, <span class="hljs-string">&apos;wp-element&apos;</span>, <span class="hljs-string">&apos;wp-compose&apos;</span>, <span class="hljs-string">&apos;wp-editor&apos;</span> ),
-        <span class="hljs-string">&apos;1.0.0&apos;</span>,
-        <span class="hljs-literal">true</span>
-    );
-}
-<span class="hljs-title function_ invoke__">add_action</span>( <span class="hljs-string">&apos;enqueue_block_editor_assets&apos;</span>, <span class="hljs-string">&apos;my_plugin_enqueue_editor_assets&apos;</span> );
-</code></pre>
-
-
-
-<h2 class="wp-block-heading">Final Thoughts</h2>
-
-
-
-<p>Block filters are a powerful tool in our WordPress development toolkit. They let us modify existing blocks in a clean, extensible way — without forking or rewriting them. Whether we&#8217;re improving the editorial experience or enforcing consistent branding, filters help us tailor Gutenberg to our needs.</p>
-
-
-
-<p></p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/">WordPress Block Editor: Block Filters Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+	<!-- This site is optimized with the Yoast SEO plugin v26.7 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="A deep dive into building a Kademlia Distributed Hash Table (DHT) from scratch using Node.js and WebRTC while solving common challenges.">
+	<link rel="canonical" href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Building a Kademlia DHT over WebRTC - Lakshyajeet's Blog">
+	<meta property="og:description" content="A deep dive into building a Kademlia Distributed Hash Table (DHT) from scratch using Node.js and WebRTC while solving common challenges.">
+	<meta property="og:url" content="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">
+	<meta property="og:site_name" content="Lakshyajeet's Blog">
+	<meta property="article:published_time" content="2026-01-20T08:43:19+00:00">
+	<meta property="og:image" content="https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png">
+	<meta property="og:image:width" content="2048">
+	<meta property="og:image:height" content="2048">
+	<meta property="og:image:type" content="image/png">
+	<meta name="author" content="lakshyajeet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="lakshyajeet">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="14 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#article","isPartOf":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/"},"author":{"name":"lakshyajeet","@id":"https://lakshyajeet.in/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"headline":"Building a Kademlia DHT over WebRTC","datePublished":"2026-01-20T08:43:19+00:00","mainEntityOfPage":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/"},"wordCount":2997,"publisher":{"@id":"https://lakshyajeet.in/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"image":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#primaryimage"},"thumbnailUrl":"https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/","url":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/","name":"Building a Kademlia DHT over WebRTC - Lakshyajeet's Blog","isPartOf":{"@id":"https://lakshyajeet.in/#website"},"primaryImageOfPage":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#primaryimage"},"image":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#primaryimage"},"thumbnailUrl":"https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png","datePublished":"2026-01-20T08:43:19+00:00","description":"A deep dive into building a Kademlia Distributed Hash Table (DHT) from scratch using Node.js and WebRTC while solving common challenges.","breadcrumb":{"@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#primaryimage","url":"https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png","contentUrl":"https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png","width":2048,"height":2048},{"@type":"BreadcrumbList","@id":"https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lakshyajeet.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://lakshyajeet.in/blog/"},{"@type":"ListItem","position":3,"name":"Building a Kademlia DHT over WebRTC"}]},{"@type":"WebSite","@id":"https://lakshyajeet.in/#website","url":"https://lakshyajeet.in/","name":"Lakshyajeet's Blog","description":"","publisher":{"@id":"https://lakshyajeet.in/#/schema/person/a2544f21ad29d03768185cdf9ab84efc"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://lakshyajeet.in/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"https://lakshyajeet.in/#/schema/person/a2544f21ad29d03768185cdf9ab84efc","name":"lakshyajeet","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://lakshyajeet.in/#/schema/person/image/","url":"https://lakshyajeet.in/wp-content/uploads/2025/01/cropped-nyan-1.gif","contentUrl":"https://lakshyajeet.in/wp-content/uploads/2025/01/cropped-nyan-1.gif","width":512,"height":512,"caption":"lakshyajeet"},"logo":{"@id":"https://lakshyajeet.in/#/schema/person/image/"},"url":"https://lakshyajeet.in/author/lakshyajeet/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<title>Building a Kademlia DHT over WebRTC - Lakshyajeet's Blog</title>
+<link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Feed" href="https://lakshyajeet.in/feed/">
+<link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Comments Feed" href="https://lakshyajeet.in/comments/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-navigation-link-inline-css">
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{outline:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/navigation-link/style.min.css */
+</style>
+<style id="wp-block-navigation-inline-css">
+.wp-block-navigation{position:relative}.wp-block-navigation ul{margin-bottom:0;margin-left:0;margin-top:0;padding-left:0}.wp-block-navigation ul,.wp-block-navigation ul li{list-style:none;padding:0}.wp-block-navigation .wp-block-navigation-item{align-items:center;background-color:inherit;display:flex;position:relative}.wp-block-navigation .wp-block-navigation-item .wp-block-navigation__submenu-container:empty{display:none}.wp-block-navigation .wp-block-navigation-item__content{display:block;z-index:1}.wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content{color:inherit}.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content,.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:active,.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:focus{text-decoration:underline}.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content,.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:active,.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:focus{text-decoration:line-through}.wp-block-navigation :where(a),.wp-block-navigation :where(a:active),.wp-block-navigation :where(a:focus){text-decoration:none}.wp-block-navigation .wp-block-navigation__submenu-icon{align-self:center;background-color:inherit;border:none;color:currentColor;display:inline-block;font-size:inherit;height:.6em;line-height:0;margin-left:.25em;padding:0;width:.6em}.wp-block-navigation .wp-block-navigation__submenu-icon svg{display:inline-block;stroke:currentColor;height:inherit;margin-top:.075em;width:inherit}.wp-block-navigation{--navigation-layout-justification-setting:flex-start;--navigation-layout-direction:row;--navigation-layout-wrap:wrap;--navigation-layout-justify:flex-start;--navigation-layout-align:center}.wp-block-navigation.is-vertical{--navigation-layout-direction:column;--navigation-layout-justify:initial;--navigation-layout-align:flex-start}.wp-block-navigation.no-wrap{--navigation-layout-wrap:nowrap}.wp-block-navigation.items-justified-center{--navigation-layout-justification-setting:center;--navigation-layout-justify:center}.wp-block-navigation.items-justified-center.is-vertical{--navigation-layout-align:center}.wp-block-navigation.items-justified-right{--navigation-layout-justification-setting:flex-end;--navigation-layout-justify:flex-end}.wp-block-navigation.items-justified-right.is-vertical{--navigation-layout-align:flex-end}.wp-block-navigation.items-justified-space-between{--navigation-layout-justification-setting:space-between;--navigation-layout-justify:space-between}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{align-items:normal;background-color:inherit;color:inherit;display:flex;flex-direction:column;opacity:0;position:absolute;z-index:2}@media not (prefers-reduced-motion){.wp-block-navigation .has-child .wp-block-navigation__submenu-container{transition:opacity .1s linear}}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{height:0;overflow:hidden;visibility:hidden;width:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container>.wp-block-navigation-item>.wp-block-navigation-item__content{display:flex;flex-grow:1;padding:.5em 1em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container>.wp-block-navigation-item>.wp-block-navigation-item__content .wp-block-navigation__submenu-icon{margin-left:auto;margin-right:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation-item__content{margin:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{left:-1px;top:100%}@media (min-width:782px){.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:100%;top:-1px}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container:before{background:#0000;content:"";display:block;height:100%;position:absolute;right:100%;width:.5em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon{margin-right:.25em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon svg{transform:rotate(-90deg)}}.wp-block-navigation .has-child .wp-block-navigation-submenu__toggle[aria-expanded=true]~.wp-block-navigation__submenu-container,.wp-block-navigation .has-child:not(.open-on-click):hover>.wp-block-navigation__submenu-container,.wp-block-navigation .has-child:not(.open-on-click):not(.open-on-hover-click):focus-within>.wp-block-navigation__submenu-container{height:auto;min-width:200px;opacity:1;overflow:visible;visibility:visible;width:auto}.wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container{left:0;top:100%}@media (min-width:782px){.wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:100%;top:0}}.wp-block-navigation-submenu{display:flex;position:relative}.wp-block-navigation-submenu .wp-block-navigation__submenu-icon svg{stroke:currentColor}button.wp-block-navigation-item__content{background-color:initial;border:none;color:currentColor;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-align:left;text-transform:inherit}.wp-block-navigation-submenu__toggle{cursor:pointer}.wp-block-navigation-submenu__toggle[aria-expanded=true]+.wp-block-navigation__submenu-icon>svg,.wp-block-navigation-submenu__toggle[aria-expanded=true]>svg{transform:rotate(180deg)}.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle{padding-left:0;padding-right:.85em}.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle+.wp-block-navigation__submenu-icon{margin-left:-.6em;pointer-events:none}.wp-block-navigation-item.open-on-click button.wp-block-navigation-item__content:not(.wp-block-navigation-submenu__toggle){padding:0}.wp-block-navigation .wp-block-page-list,.wp-block-navigation__container,.wp-block-navigation__responsive-close,.wp-block-navigation__responsive-container,.wp-block-navigation__responsive-container-content,.wp-block-navigation__responsive-dialog{gap:inherit}:where(.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button)),:where(.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button)){padding:.5em 1em}:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button)),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button)),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content){padding:.5em 1em}.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container{left:auto;right:0}.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:-1px;right:-1px}@media (min-width:782px){.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:auto;right:100%}}.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container{background-color:#fff;border:1px solid #00000026}.wp-block-navigation.has-background .wp-block-navigation__submenu-container{background-color:inherit}.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container{color:#000}.wp-block-navigation__container{align-items:var(--navigation-layout-align,initial);display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial);list-style:none;margin:0;padding-left:0}.wp-block-navigation__container .is-responsive{display:none}.wp-block-navigation__container:only-child,.wp-block-page-list:only-child{flex-grow:1}@keyframes overlay-menu__fade-in-animation{0%{opacity:0;transform:translateY(.5em)}to{opacity:1;transform:translateY(0)}}.wp-block-navigation__responsive-container{bottom:0;display:none;left:0;position:fixed;right:0;top:0}.wp-block-navigation__responsive-container :where(.wp-block-navigation-item a){color:inherit}.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content{align-items:var(--navigation-layout-align,initial);display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation__responsive-container:not(.is-menu-open.is-menu-open){background-color:inherit!important;color:inherit!important}.wp-block-navigation__responsive-container.is-menu-open{background-color:inherit;display:flex;flex-direction:column}@media not (prefers-reduced-motion){.wp-block-navigation__responsive-container.is-menu-open{animation:overlay-menu__fade-in-animation .1s ease-out;animation-fill-mode:forwards}}.wp-block-navigation__responsive-container.is-menu-open{overflow:auto;padding:clamp(1rem,var(--wp--style--root--padding-top),20rem) clamp(1rem,var(--wp--style--root--padding-right),20rem) clamp(1rem,var(--wp--style--root--padding-bottom),20rem) clamp(1rem,var(--wp--style--root--padding-left),20rem);z-index:100000}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content{align-items:var(--navigation-layout-justification-setting,inherit);display:flex;flex-direction:column;flex-wrap:nowrap;overflow:visible;padding-top:calc(2rem + 24px)}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-page-list{justify-content:flex-start}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon{display:none}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container{border:none;height:auto;min-width:200px;opacity:1;overflow:initial;padding-left:2rem;padding-right:2rem;position:static;visibility:visible;width:auto}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container{gap:inherit}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container{padding-top:var(--wp--style--block-gap,2em)}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item__content{padding:0}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-page-list{align-items:var(--navigation-layout-justification-setting,initial);display:flex;flex-direction:column}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item .wp-block-navigation__submenu-container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list{background:#0000!important;color:inherit!important}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container{left:auto;right:auto}@media (min-width:600px){.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open){background-color:inherit;display:block;position:relative;width:100%;z-index:auto}.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) .wp-block-navigation__responsive-container-close{display:none}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container{left:0}}.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open{background-color:#fff}.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open{color:#000}.wp-block-navigation__toggle_button_label{font-size:1rem;font-weight:700}.wp-block-navigation__responsive-container-close,.wp-block-navigation__responsive-container-open{background:#0000;border:none;color:currentColor;cursor:pointer;margin:0;padding:0;text-transform:inherit;vertical-align:middle}.wp-block-navigation__responsive-container-close svg,.wp-block-navigation__responsive-container-open svg{fill:currentColor;display:block;height:24px;pointer-events:none;width:24px}.wp-block-navigation__responsive-container-open{display:flex}.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open{font-family:inherit;font-size:inherit;font-weight:inherit}@media (min-width:600px){.wp-block-navigation__responsive-container-open:not(.always-shown){display:none}}.wp-block-navigation__responsive-container-close{position:absolute;right:0;top:0;z-index:2}.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close{font-family:inherit;font-size:inherit;font-weight:inherit}.wp-block-navigation__responsive-close{width:100%}.has-modal-open .wp-block-navigation__responsive-close{margin-left:auto;margin-right:auto;max-width:var(--wp--style--global--wide-size,100%)}.wp-block-navigation__responsive-close:focus{outline:none}.is-menu-open .wp-block-navigation__responsive-close,.is-menu-open .wp-block-navigation__responsive-container-content,.is-menu-open .wp-block-navigation__responsive-dialog{box-sizing:border-box}.wp-block-navigation__responsive-dialog{position:relative}.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog{margin-top:46px}@media (min-width:782px){.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog{margin-top:32px}}html.has-modal-open{overflow:hidden}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/navigation/style.min.css */
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/group/style.min.css */
+</style>
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-title/style.min.css */
+</style>
+<style id="wp-block-post-author-inline-css">
+.wp-block-post-author{box-sizing:border-box;display:flex;flex-wrap:wrap}.wp-block-post-author__byline{font-size:.5em;margin-bottom:0;margin-top:0;width:100%}.wp-block-post-author__avatar{margin-right:1em}.wp-block-post-author__bio{font-size:.7em;margin-bottom:.7em}.wp-block-post-author__content{flex-basis:0;flex-grow:1}.wp-block-post-author__name{margin:0}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-author/style.min.css */
+</style>
+<link rel="stylesheet" id="wp-block-cover-css" href="https://lakshyajeet.in/wp-includes/blocks/cover/style.min.css?ver=6.9" media="all">
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="dm-hcb-highlighted-code-block-style-inline-css">
+.dm-hcb-code-preview pre{display:block;margin:0;overflow-x:auto;padding:0;width:100%}.dm-hcb-code-input textarea{max-width:calc(100% - 2em);padding:1em;width:calc(100% - 2em)}.dm-hcb-code-preview>pre,.wp-block-dm-hcb-highlighted-code-block{position:relative}.dm-hcb-code-preview>pre>button,.wp-block-dm-hcb-highlighted-code-block>button{border:.5px solid;border-radius:3px;cursor:pointer;font-size:.85em;margin:0;padding:.2em .5em;position:absolute;right:.5em;top:.5em;z-index:10}.dm-hcb-code-preview>pre>button>svg,.wp-block-dm-hcb-highlighted-code-block>button>svg{fill:currentcolor;vertical-align:middle;width:1em}.wp-block-dm-hcb-highlighted-code-block button span{margin-left:.5em}
+
+/*# sourceURL=https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/blocks/highlighted-code-block/index.css */
+</style>
+<style id="wp-block-image-inline-css">
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/image/style.min.css */
+</style>
+<style id="wp-block-separator-inline-css">
+@charset "UTF-8";.wp-block-separator{border:none;border-top:2px solid}:root :where(.wp-block-separator.is-style-dots){height:auto;line-height:1;text-align:center}:root :where(.wp-block-separator.is-style-dots):before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}.wp-block-separator.is-style-dots{background:none!important;border:none!important}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/separator/style.min.css */
+</style>
+<style id="wp-block-post-content-inline-css">
+.wp-block-post-content{display:flow-root}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-content/style.min.css */
+</style>
+<style id="wp-block-post-navigation-link-inline-css">
+.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-navigation-link/style.min.css */
+</style>
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/site-title/style.min.css */
+</style>
+<style id="wp-block-columns-inline-css">
+.wp-block-columns{box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns{align-items:normal!important}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:1.25em 2.375em}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:break-word}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/columns/style.min.css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<link rel="stylesheet" id="dm-hcb-highlight-theme-block-css" href="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/themes/atom-one-dark.min.css?ver=1765782624" media="all">
+<link rel="stylesheet" id="main-css" href="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/css/screen.css?ver=8e490d9a54619be17e1c" media="all">
+<link rel="stylesheet" id="hand-css" href="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/css/hand.css?ver=b5c2dce8010766234f58" media="print" onload="this.media='all'">
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--base: hsl(259 86% 8%);--wp--preset--color--base-dark: hsl(250 35% 10%);--wp--preset--color--base-light: hsl(257 58% 12%);--wp--preset--color--base-front: hsl(255 100% 5%);--wp--preset--color--contrast: hsl(250 100% 100%);--wp--preset--color--contrast-muted: hsl(251 65% 79%);--wp--preset--color--highlight: hsl(255 36% 49%);--wp--preset--color--border: hsl(257 47% 37%);--wp--preset--color--border-muted: hsl(262 69% 25%);--wp--preset--color--primary: hsl(252 100% 82%);--wp--preset--color--secondary: hsl(63 47% 49%);--wp--preset--color--tertiery: hsl(272 100% 50%);--wp--preset--color--shadow: 0px 2px 2px oklch(0 0 0 / 0.2), 0px 4px 4px oklch(0 0 0 / 0.1);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base) 97%, var(--wp--preset--color--base-light));--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.536), 20px);--wp--preset--font-size--large: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.246), 36px);--wp--preset--font-size--x-large: clamp(25.014px, 1.563rem + ((1vw - 3.2px) * 1.517), 42px);--wp--preset--font-size--extra-small: 0.75rem;--wp--preset--font-size--normal: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.179), 1rem);--wp--preset--font-size--extra-large: clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 1.071), 2rem);--wp--preset--font-size--xxl: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 1.796), 3rem);--wp--preset--font-size--huge: clamp(2.2rem, 2.2rem + ((1vw - 0.2rem) * 2.571), 4rem);--wp--preset--font-size--extra-huge: clamp(2.835rem, 2.835rem + ((1vw - 0.2rem) * 3.807), 5.5rem);--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--galada: Galada, sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1440px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--base-dark);color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--poppins);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.357), 18px);line-height: 1.6;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast);text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-base-dark-color{color: var(--wp--preset--color--base-dark) !important;}.has-base-light-color{color: var(--wp--preset--color--base-light) !important;}.has-base-front-color{color: var(--wp--preset--color--base-front) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-color{color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-color{color: var(--wp--preset--color--highlight) !important;}.has-border-color{color: var(--wp--preset--color--border) !important;}.has-border-muted-color{color: var(--wp--preset--color--border-muted) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-tertiery-color{color: var(--wp--preset--color--tertiery) !important;}.has-shadow-color{color: var(--wp--preset--color--shadow) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-base-dark-background-color{background-color: var(--wp--preset--color--base-dark) !important;}.has-base-light-background-color{background-color: var(--wp--preset--color--base-light) !important;}.has-base-front-background-color{background-color: var(--wp--preset--color--base-front) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-background-color{background-color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-background-color{background-color: var(--wp--preset--color--highlight) !important;}.has-border-background-color{background-color: var(--wp--preset--color--border) !important;}.has-border-muted-background-color{background-color: var(--wp--preset--color--border-muted) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-tertiery-background-color{background-color: var(--wp--preset--color--tertiery) !important;}.has-shadow-background-color{background-color: var(--wp--preset--color--shadow) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-base-dark-border-color{border-color: var(--wp--preset--color--base-dark) !important;}.has-base-light-border-color{border-color: var(--wp--preset--color--base-light) !important;}.has-base-front-border-color{border-color: var(--wp--preset--color--base-front) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-border-color{border-color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-border-color{border-color: var(--wp--preset--color--highlight) !important;}.has-border-border-color{border-color: var(--wp--preset--color--border) !important;}.has-border-muted-border-color{border-color: var(--wp--preset--color--border-muted) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-tertiery-border-color{border-color: var(--wp--preset--color--tertiery) !important;}.has-shadow-border-color{border-color: var(--wp--preset--color--shadow) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-primary-gradient-gradient-background{background: var(--wp--preset--gradient--primary-gradient) !important;}.has-primary-gradient-hover-gradient-background{background: var(--wp--preset--gradient--primary-gradient-hover) !important;}.has-hero-gradient-gradient-background{background: var(--wp--preset--gradient--hero-gradient) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-extra-small-font-size{font-size: var(--wp--preset--font-size--extra-small) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}.has-extra-large-font-size{font-size: var(--wp--preset--font-size--extra-large) !important;}.has-xxl-font-size{font-size: var(--wp--preset--font-size--xxl) !important;}.has-huge-font-size{font-size: var(--wp--preset--font-size--huge) !important;}.has-extra-huge-font-size{font-size: var(--wp--preset--font-size--extra-huge) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-galada-font-family{font-family: var(--wp--preset--font-family--galada) !important;}
+:root :where(.wp-block-cover){background-color: var(--wp--preset--color--base-dark);}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="core-block-supports-inline-css">
+.wp-container-core-group-is-layout-13d46e68{flex-wrap:nowrap;gap:0;justify-content:space-between;}.wp-container-core-group-is-layout-3018ce38 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:1200px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-3018ce38 > .alignwide{max-width:1440px;}.wp-container-core-group-is-layout-3018ce38 .alignfull{max-width:none;}.wp-container-core-group-is-layout-3018ce38 > .alignfull{margin-right:calc(var(--wp--preset--spacing--60) * -1);margin-left:calc(var(--wp--preset--spacing--60) * -1);}.wp-elements-66e2171ccf4754254e7e9d295c1d8aab a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-group-is-layout-0747478d > .alignfull{margin-right:calc(var(--wp--preset--spacing--50) * -1);margin-left:calc(var(--wp--preset--spacing--50) * -1);}.wp-container-core-group-is-layout-609ade12{flex-wrap:nowrap;justify-content:space-between;align-items:center;}.wp-container-core-group-is-layout-bea02a06 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:800px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-bea02a06 > .alignwide{max-width:800px;}.wp-container-core-group-is-layout-bea02a06 .alignfull{max-width:none;}.wp-container-core-group-is-layout-b6c1f246{flex-direction:column;align-items:center;justify-content:center;}.wp-container-core-navigation-is-layout-734eb2c2{flex-direction:column;align-items:center;}.wp-container-core-group-is-layout-e278f9a3{flex-wrap:nowrap;gap:var(--wp--preset--spacing--30);justify-content:center;}.wp-container-core-columns-is-layout-643ced6b{flex-wrap:nowrap;gap:var(--wp--preset--spacing--60) var(--wp--preset--spacing--60);}.wp-container-core-group-is-layout-196b58ae > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:800px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-196b58ae > .alignwide{max-width:800px;}.wp-container-core-group-is-layout-196b58ae .alignfull{max-width:none;}.wp-container-core-group-is-layout-196b58ae > .alignfull{margin-right:calc(var(--wp--preset--spacing--30) * -1);margin-left:calc(var(--wp--preset--spacing--30) * -1);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<style id="wp-block-template-skip-link-inline-css">
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+/*# sourceURL=wp-block-template-skip-link-inline-css */
+</style>
+<link rel="stylesheet" id="dm-hcb-highlight-theme-css" href="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/themes/atom-one-dark.min.css?ver=1765782624" media="all">
+<style id="tss-style-base-inline-css">
+:root.is-style-base {
+--wp--preset--color--base: hsl(259 86% 8%);--wp--preset--color--base-dark: hsl(250 35% 10%);--wp--preset--color--base-light: hsl(257 58% 12%);--wp--preset--color--base-front: hsl(255 100% 5%);--wp--preset--color--contrast: hsl(250 100% 100%);--wp--preset--color--contrast-muted: hsl(251 65% 79%);--wp--preset--color--highlight: hsl(255 36% 49%);--wp--preset--color--border: hsl(257 47% 37%);--wp--preset--color--border-muted: hsl(262 69% 25%);--wp--preset--color--primary: hsl(252 100% 82%);--wp--preset--color--secondary: hsl(63 47% 49%);--wp--preset--color--tertiery: hsl(272 100% 50%);--wp--preset--color--shadow: 0px 2px 2px oklch(0 0 0 / 0.2), 0px 4px 4px oklch(0 0 0 / 0.1);--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base) 97%, var(--wp--preset--color--base-light));--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);--wp--preset--font-size--extra-small: 0.75rem;--wp--preset--font-size--small: 0.875rem;--wp--preset--font-size--normal: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.179), 1rem);--wp--preset--font-size--medium: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.357), 1.125rem);--wp--preset--font-size--large: clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.737), 1.5rem);--wp--preset--font-size--extra-large: clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 1.071), 2rem);--wp--preset--font-size--xxl: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 1.796), 3rem);--wp--preset--font-size--huge: clamp(2.2rem, 2.2rem + ((1vw - 0.2rem) * 2.571), 4rem);--wp--preset--font-size--extra-huge: clamp(2.835rem, 2.835rem + ((1vw - 0.2rem) * 3.807), 5.5rem);--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--galada: Galada, sans-serif;
+}
+:root.is-style-base {
+--wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1440px;
+}
+.is-style-base :where(body) {
+margin: 0;
+}
+.is-style-base .wp-site-blocks > .alignleft {
+float: left; margin-right: 2em;
+}
+.is-style-base .wp-site-blocks > .alignright {
+float: right; margin-left: 2em;
+}
+.is-style-base .wp-site-blocks > .aligncenter {
+justify-content: center; margin-left: auto; margin-right: auto;
+}
+.is-style-base :where(.wp-site-blocks) > * {
+margin-block-start: ; margin-block-end: 0;
+}
+.is-style-base :where(.wp-site-blocks) > :first-child {
+margin-block-start: 0;
+}
+.is-style-base :where(.wp-site-blocks) > :last-child {
+margin-block-end: 0;
+}
+:root.is-style-base {
+--wp--style--block-gap: ;
+}
+.is-style-base .is-layout-flow > .alignleft {
+float: left;margin-inline-start: 0;margin-inline-end: 2em;
+}
+.is-style-base .is-layout-flow > .alignright {
+float: right;margin-inline-start: 2em;margin-inline-end: 0;
+}
+.is-style-base .is-layout-flow > .aligncenter {
+margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > .alignleft {
+float: left;margin-inline-start: 0;margin-inline-end: 2em;
+}
+.is-style-base .is-layout-constrained > .alignright {
+float: right;margin-inline-start: 2em;margin-inline-end: 0;
+}
+.is-style-base .is-layout-constrained > .aligncenter {
+margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > .alignwide {
+max-width: var(--wp--style--global--wide-size);
+}
+.is-style-base body .is-layout-flex {
+display: flex;
+}
+.is-style-base .is-layout-flex {
+flex-wrap: wrap;align-items: center;
+}
+.is-style-base .is-layout-flex > :is(*, .is-style-base div) {
+margin: 0;
+}
+.is-style-base body .is-layout-grid {
+display: grid;
+}
+.is-style-base .is-layout-grid > :is(*, .is-style-base div) {
+margin: 0;
+}
+.is-style-base body {
+background-color: var(--wp--preset--color--base-dark);color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--poppins);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.357), 18px);line-height: 1.6;
+}
+.is-style-base a:where(:not(.wp-element-button)) {
+color: var(--wp--preset--color--contrast);
+}
+.is-style-base .has-base-color {
+color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-color {
+color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-color {
+color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-color {
+color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-color {
+color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-color {
+color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-color {
+color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-color {
+color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-color {
+color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-color {
+color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-color {
+color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-color {
+color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-color {
+color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-base-background-color {
+background-color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-background-color {
+background-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-background-color {
+background-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-background-color {
+background-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-background-color {
+background-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-background-color {
+background-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-background-color {
+background-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-background-color {
+background-color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-background-color {
+background-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-background-color {
+background-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-background-color {
+background-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-background-color {
+background-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-background-color {
+background-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-base-border-color {
+border-color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-border-color {
+border-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-border-color {
+border-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-border-color {
+border-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-border-color {
+border-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-border-color {
+border-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-border-color {
+border-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-border-color {
+border-color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-border-color {
+border-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-border-color {
+border-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-border-color {
+border-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-border-color {
+border-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-border-color {
+border-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-primary-gradient-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient) !important;
+}
+.is-style-base .has-primary-gradient-hover-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient-hover) !important;
+}
+.is-style-base .has-hero-gradient-gradient-background {
+background: var(--wp--preset--gradient--hero-gradient) !important;
+}
+.is-style-base .has-extra-small-font-size {
+font-size: var(--wp--preset--font-size--extra-small) !important;
+}
+.is-style-base .has-small-font-size {
+font-size: var(--wp--preset--font-size--small) !important;
+}
+.is-style-base .has-normal-font-size {
+font-size: var(--wp--preset--font-size--normal) !important;
+}
+.is-style-base .has-medium-font-size {
+font-size: var(--wp--preset--font-size--medium) !important;
+}
+.is-style-base .has-large-font-size {
+font-size: var(--wp--preset--font-size--large) !important;
+}
+.is-style-base .has-extra-large-font-size {
+font-size: var(--wp--preset--font-size--extra-large) !important;
+}
+.is-style-base .has-xxl-font-size {
+font-size: var(--wp--preset--font-size--xxl) !important;
+}
+.is-style-base .has-huge-font-size {
+font-size: var(--wp--preset--font-size--huge) !important;
+}
+.is-style-base .has-extra-huge-font-size {
+font-size: var(--wp--preset--font-size--extra-huge) !important;
+}
+.is-style-base .has-poppins-font-family {
+font-family: var(--wp--preset--font-family--poppins) !important;
+}
+.is-style-base .has-galada-font-family {
+font-family: var(--wp--preset--font-family--galada) !important;
+}
+
+/*# sourceURL=tss-style-base-inline-css */
+</style>
+<style id="tss-style-01-light-inline-css">
+:root.is-style-01-light {
+--wp--preset--color--base: hsl(250 100% 99%);
+--wp--preset--color--base-dark: hsl(255 40% 93%);
+--wp--preset--color--base-light: hsl(252 100% 100%);
+--wp--preset--color--base-front: hsl(250 30% 85%);
+--wp--preset--color--contrast: hsl(255 35% 10%);
+--wp--preset--color--contrast-muted: hsl(255 25% 30%);
+--wp--preset--color--highlight: hsl(255 45% 55%);
+--wp--preset--color--border: hsl(257 25% 80%);
+--wp--preset--color--border-muted: hsl(260 20% 90%);
+--wp--preset--color--primary: hsl(252 100% 50%);
+--wp--preset--color--secondary: hsl(63 47% 49%);
+--wp--preset--color--tertiery: hsl(272 100% 50%);
+--wp--preset--color--shadow: 0px 2px 4px oklch(0 0 0 / 0.1), 0px 8px 8px oklch(0 0 0 / 0.05);
+--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base-light) 97%, var(--wp--preset--color--base));
+--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));
+--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);
+}
+.is-style-01-light :where(body) {
+margin: 0;
+}
+.is-style-01-light .wp-site-blocks > .alignleft {
+float: left;
+margin-right: 2em;
+}
+.is-style-01-light .wp-site-blocks > .alignright {
+float: right;
+margin-left: 2em;
+}
+.is-style-01-light .wp-site-blocks > .aligncenter {
+justify-content: center;
+margin-left: auto;
+margin-right: auto;
+}
+.is-style-01-light :where(.wp-site-blocks) > * {
+margin-block-start:;
+margin-block-end: 0;
+}
+.is-style-01-light :where(.wp-site-blocks) > :first-child {
+margin-block-start: 0;
+}
+.is-style-01-light :where(.wp-site-blocks) > :last-child {
+margin-block-end: 0;
+}
+:root.is-style-01-light {
+--wp--style--block-gap:;
+}
+.is-style-01-light .is-layout-flow > .alignleft {
+float: left;
+margin-inline-start: 0;
+margin-inline-end: 2em;
+}
+.is-style-01-light .is-layout-flow > .alignright {
+float: right;
+margin-inline-start: 2em;
+margin-inline-end: 0;
+}
+.is-style-01-light .is-layout-flow > .aligncenter {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light .is-layout-constrained > .alignleft {
+float: left;
+margin-inline-start: 0;
+margin-inline-end: 2em;
+}
+.is-style-01-light .is-layout-constrained > .alignright {
+float: right;
+margin-inline-start: 2em;
+margin-inline-end: 0;
+}
+.is-style-01-light .is-layout-constrained > .aligncenter {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light body .is-layout-flex {
+display: flex;
+}
+.is-style-01-light .is-layout-flex {
+flex-wrap: wrap;
+align-items: center;
+}
+.is-style-01-light .is-layout-flex > :is(*, .is-style-01-light div) {
+margin: 0;
+}
+.is-style-01-light body .is-layout-grid {
+display: grid;
+}
+.is-style-01-light .is-layout-grid > :is(*, .is-style-01-light div) {
+margin: 0;
+}
+.is-style-01-light body {
+background-color: var(--wp--preset--color--base-light);
+color: var(--wp--preset--color--contrast);
+font-family: var(--wp--preset--font-family--poppins);
+line-height: 1.6;
+}
+.is-style-01-light a:where(:not(.wp-element-button)) {
+color: var(--wp--preset--color--highlight);
+}
+.is-style-01-light .has-base-color {
+color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-color {
+color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-color {
+color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-color {
+color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-color {
+color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-color {
+color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-color {
+color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-color {
+color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-color {
+color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-color {
+color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-color {
+color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-color {
+color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-color {
+color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-base-background-color {
+background-color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-background-color {
+background-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-background-color {
+background-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-background-color {
+background-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-background-color {
+background-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-background-color {
+background-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-background-color {
+background-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-background-color {
+background-color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-background-color {
+background-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-background-color {
+background-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-background-color {
+background-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-background-color {
+background-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-background-color {
+background-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-base-border-color {
+border-color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-border-color {
+border-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-border-color {
+border-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-border-color {
+border-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-border-color {
+border-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-border-color {
+border-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-border-color {
+border-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-border-color {
+border-color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-border-color {
+border-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-border-color {
+border-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-border-color {
+border-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-border-color {
+border-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-border-color {
+border-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-primary-gradient-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient) !important;
+}
+.is-style-01-light .has-primary-gradient-hover-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient-hover) !important;
+}
+.is-style-01-light .has-hero-gradient-gradient-background {
+background: var(--wp--preset--gradient--hero-gradient) !important;
+}
+
+/*# sourceURL=tss-style-01-light-inline-css */
+</style>
+<script src="https://lakshyajeet.in/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script src="https://lakshyajeet.in/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script src="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/blocks/highlighted-code-block/view.js?ver=a6eb1df7a76fbfecb87d" id="dm-hcb-highlighted-code-block-view-script-js" defer data-wp-strategy="defer"></script>
+<script src="https://lakshyajeet.in/wp-content/plugins/WordPress-Theme-Style-Switcher/assets/build/blocks/theme-switcher-block/view.js?ver=b642223eb58f56ba99b4" id="dm-tss-theme-style-switcher-view-script-js" defer data-wp-strategy="defer"></script>
+<script src="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/js/screen.js?ver=5e5cd2388f786cec7f14" id="main-js-js" defer data-wp-strategy="defer"></script>
+<link rel="https://api.w.org/" href="https://lakshyajeet.in/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://lakshyajeet.in/wp-json/wp/v2/posts/1233"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lakshyajeet.in/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.9">
+<link rel="shortlink" href="https://lakshyajeet.in/?p=1233">
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress/interactivity":"https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=8964710565a1d258501f"}}
+</script>
+<link rel="modulepreload" href="https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=8964710565a1d258501f" id="@wordpress/interactivity-js-modulepreload" fetchpriority="low">
+<style class="wp-fonts-local">
+@font-face{font-family:Poppins;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/poppins-regular.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Galada;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/galada-regular.woff2') format('woff2');font-stretch:normal;}
+</style>
+<link rel="icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png" sizes="32x32">
+<link rel="icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png">
+<meta name="msapplication-TileImage" content="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png">
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-1233 single-format-standard wp-embed-responsive wp-theme-darkmatter">
+
+<div class="wp-site-blocks"><header class="site-header wp-block-template-part">
+<div class="wp-block-group dm-header has-primary-gradient-gradient-background has-primary-gradient-hover-gradient-background has-background is-layout-constrained wp-container-core-group-is-layout-3018ce38 wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--60)">
+<div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-13d46e68 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+<h2 class="wp-block-heading"><a href="https://lakshyajeet.in/" data-type="page" data-id="960">Lakshyajeet.</a></h2>
+
+
+<nav class="is-responsive wp-block-navigation is-layout-flex wp-block-navigation-is-layout-flex" aria-label="Navigation" data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7.5h16v1.5H4z"></path><path d="M4 15h16v1.5H4z"></path></svg></button>
+				<div class="wp-block-navigation__responsive-container" id="modal-1" data-wp-class--has-modal-open="state.isMenuOpen" data-wp-class--is-menu-open="state.isMenuOpen" data-wp-watch="callbacks.initMenu" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on--focusout="actions.handleMenuFocusout" tabindex="-1">
+					<div class="wp-block-navigation__responsive-close" tabindex="-1">
+						<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="state.ariaModal" data-wp-bind--aria-label="state.ariaLabel" data-wp-bind--role="state.roleAttribute">
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
+							<div class="wp-block-navigation__responsive-container-content" data-wp-watch="callbacks.focusFirstElement" id="modal-1-content">
+								<ul class="wp-block-navigation__container is-responsive wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/blog/"><span class="wp-block-navigation-item__label">Blog</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/dm_project"><span class="wp-block-navigation-item__label">Projects</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/about/"><span class="wp-block-navigation-item__label">About</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+				</div></nav></div>
+</div>
+</header>
+
+
+<main class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-bea02a06 wp-block-group-is-layout-constrained">
+<div class="wp-block-cover is-light has-contrast-color has-text-color has-link-color wp-elements-66e2171ccf4754254e7e9d295c1d8aab"><span aria-hidden="true" class="wp-block-cover__background has-base-dark-background-color has-background-dim"></span><img width="2048" height="2048" src="https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png" class="wp-block-cover__image-background wp-post-image" alt="" data-object-fit="cover" decoding="async" fetchpriority="high" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/dht.png 2048w, https://lakshyajeet.in/wp-content/uploads/2026/01/dht-300x300.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/dht-1024x1024.png 1024w, https://lakshyajeet.in/wp-content/uploads/2026/01/dht-150x150.png 150w, https://lakshyajeet.in/wp-content/uploads/2026/01/dht-768x768.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/dht-1536x1536.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px"><div class="wp-block-cover__inner-container is-layout-constrained wp-block-cover-is-layout-constrained">
+<div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-0747478d wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><h2 class="has-text-align-left wp-block-post-title has-huge-font-size">Building a Kademlia DHT over WebRTC</h2>
+
+
+
+<div class="wp-block-post-author"><div class="wp-block-post-author__content"><p class="wp-block-post-author__name"><a href="https://lakshyajeet.in/author/lakshyajeet/" target="_blank">lakshyajeet</a></p><p class="wp-block-post-author__bio"></p></div></div></div>
+</div></div>
+
+
+<div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow">
+<p>Distributed Hash Tables (DHTs) are the backbone of decentralized file systems (like IPFS) and peer-to-peer networks (like BitTorrent). However, implementing one from scratch is often daunting due to the complexity of node discovery, routing, and NAT traversal.</p>
+
+
+
+<p>The <strong><a href="https://github.com/DarkMatter-999/WebRTC-DHT">WebRTC-DHT</a></strong> project offers a clean, educational implementation of the Kademlia protocol running on Node.js. It leverages <strong>WebRTC</strong> for peer-to-peer data transport allowing for NAT traversal via STUN and introduces a hybrid signalling mechanism that transitions from a centralized WebSocket server to a fully decentralized mesh.</p>
+
+
+
+<p>In this article, we will dissect the architecture, explore the core Kademlia logic, and understand how to orchestrate a P2P swarm using Docker.</p>
+
+
+
+<p>All the code is available at the Github Repo: <a href="https://github.com/DarkMatter-999/WebRTC-DHT">DarkMatter-999/WebRTC-DHT</a></p>
+
+
+
+<h2 class="wp-block-heading">The Problem, The Solution, and The Architecture</h2>
+
+
+
+<p>Distributed systems are notoriously difficult to build. If we want to create a database where data is shared across let’s say 100 computers, and any 10 of them disappear at any moment without losing data, we face three massive challenges.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Discovery</strong>: How do nodes find each other?</li>
+
+
+
+<li><strong>Connectivity</strong>: How do they talk to each other?</li>
+
+
+
+<li><strong>Routing</strong>: How do they find specific nodes with the data we want?</li>
+</ul>
+
+
+
+<p><strong>WebRTC-DHT</strong> is a reference implementation that solves these challenges using <strong>Kademlia</strong> (the routing algorithm behind BitTorrent) and <strong>WebRTC</strong> (for peer-to-peer connectivity).</p>
+
+
+
+<h3 class="wp-block-heading">What are we building?</h3>
+
+
+
+<p>We are looking at a <strong>Node.js based Distributed Hash Table (DHT)</strong>.<br>Think of a standard JavaScript <code>Map</code>:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="const map = new Map();
+map.set('my-key', 'my-value');" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apos;my-key&apos;</span>, <span class="hljs-string">&apos;my-value&apos;</span>);</code></pre>
+
+
+
+<p>This data lives in the memory of <strong>one</strong> computer. If that computer crashes, the data is gone.</p>
+
+
+
+<p>In this project, we are building a network where that <code>Map</code> is sliced up and spread across hundreds of peers. So that when we run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="node.storeValue('my-key', 'my-value');" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript">node.<span class="hljs-title function_">storeValue</span>(<span class="hljs-string">&apos;my-key&apos;</span>, <span class="hljs-string">&apos;my-value&apos;</span>);</code></pre>
+
+
+
+<p>The system calculates the hash of <code>'my-key'</code>, finds the peers/nodes in the network whose IDs are mathematically “closest” to that hash, and stores the data on them.</p>
+
+
+
+<h3 class="wp-block-heading">The Tech Stack</h3>
+
+
+
+<p>The project relies on a few specific libraries to make this happen. To keep the implementation bare-bones and educational, the project relies on only a few essential libraries:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>wrtc</code></strong>: This is a Node.js binding for the WebRTC API. Usually, WebRTC is for browsers (Chrome/Firefox), but this library lets our Node.js server processes act like browsers to establish Peer-to-Peer (P2P) data channels.</li>
+
+
+
+<li><strong><code>ws</code></strong>: A standard WebSocket library. We use this <em>only</em> for the initial handshake (signalling).</li>
+
+
+
+<li><strong>Docker</strong>: This is used to provide orchestration layer to simulate a whole network on our machine.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Architecture &amp; File Structure</h3>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="635" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png" alt="Kademlia Architecture Diagram for the project" class="wp-image-1250" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png 1024w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-300x186.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-768x476.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image.png 1095w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<h4 class="wp-block-heading">A. The “Physical” Layer (Networking)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Signalling server is a centralized WebSocket server(<strong><code>src/signalling/index.js</code></strong>). Nodes connect here first to say “I exist.” It introduces them to their first few peers, then steps back.</li>
+
+
+
+<li>The Connection Manager class(<strong><code>src/peer/connection-manager.js</code></strong>) handles the dirty work of WebRTC. It manages ICE candidates, SDP offers, and maintains the list of open sockets (DataChannels) to other peers.</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading">B. The “Logical” Layer (Kademlia)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Routing Table(<strong><code>src/peer/routing-table.js</code></strong>) it doesn’t send data, it just remembers <em>who</em> we know. It organizes peers into “Buckets” based on their ID distance. This is pure Kademlia logic.</li>
+
+
+
+<li>The nodes speak a custom binary protocol to save bandwidth. The utility functions convert JavaScript objects into compact Buffers (e.g., packing a <code>STORE</code> command into bytes).</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading">C. The “Application” Layer (The Brain)</h4>
+
+
+
+<ul class="wp-block-list">
+<li>The Peer Node class(<strong><code>src/peer/peer-node.js</code></strong>). This ties everything together. It owns the Storage (the actual data), runs the Routing Table, and executes the complex algorithms to find data (<code>findValue</code>) or store it (<code>storeValue</code>).</li>
+</ul>
+
+
+
+<p>Now, with the basics all clear we can move to nuts and bolts of the system.</p>
+
+
+
+<h2 class="wp-block-heading">Networking &amp; Hybrid Signalling</h2>
+
+
+
+<p>In a distributed network, the hardest part is often just saying “Hello.”</p>
+
+
+
+<p>This project uses <strong>WebRTC</strong>, which is famous for its ability to punch through firewalls and offers a P2P connection between the nodes. But, this P2P connection starts with a catch, before any two peers can connect directly, they must exchange setup data (SDP offers, Answers and ICE candidates), this process is done through a third-party called <strong>Signalling</strong>. </p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png" alt="Networking &amp; Hybrid Signalling" class="wp-image-1251" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png 815w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-300x292.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-768x746.png 768w" sizes="auto, (max-width: 815px) 100vw, 815px"></figure>
+
+
+
+<p>While most implementation of WebRTC stick with a permanent WebSocket server in the middle for signalling, going with the spirit of decentralization and to avoid a single point of failure, we use a <strong>Hybrid Strategy</strong>.</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Bootstrap</strong>: Use a WebSocket server to find the <em>first</em> few peers.</li>
+
+
+
+<li><strong>Decentralization</strong>: Once connected, use the existing peer connections to route signals and offers to new peers.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">The Signalling Server</h3>
+
+
+
+<p>Open <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/signalling/index.js">src/signalling/index.js</a></code>, you might be surprised to see by how small the file is (~100 lines). That’s intentional as this server is <strong>dumb</strong>. It does not know anything about the DHT logic, it just passes notes between the peers.<br>When a node starts, it first connects here.</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Register</strong>: The node sends <code>type: 'register'</code> with its ID.</li>
+
+
+
+<li><strong>Discovery:</strong> The node sends <code>type: 'get-peers'</code>.</li>
+
+
+
+<li><strong>Introduction:</strong> The server calculates the XOR distance between the requester and everyone else it knows, returning the 5 closest peers.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/signalling/index.js (Excerpt)
+case 'get-peers':
+  // ... (logic to calculate distance) ...
+  // Return top 5 closest peers so the new node has someone to talk to
+  ws.send(JSON.stringify({ type: 'peers', peers: closestPeers }));
+  break;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/signalling/index.js (Excerpt)</span>
+<span class="hljs-keyword">case</span> <span class="hljs-string">&apos;get-peers&apos;</span>:
+  <span class="hljs-comment">// ... (logic to calculate distance) ...</span>
+  <span class="hljs-comment">// Return top 5 closest peers so the new node has someone to talk to</span>
+  ws.<span class="hljs-title function_">send</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;peers&apos;</span>, <span class="hljs-attr">peers</span>: closestPeers }));
+  <span class="hljs-keyword">break</span>;</code></pre>
+
+
+
+<p>Once the node receives this list, it disconnects from the logic of the server and moves to the <strong>ConnectionManager</strong>.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>The Switchboard: ConnectionManager</strong></h3>
+
+
+
+<p>The heavy lifting happens in <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/connection-manager.js">src/peer/connection-manager.js</a></code>. This class manages the lifecycle of peer connections.</p>
+
+
+
+<p>The most critical function in this file is <code>_sendSignal</code>. This function decides <em>how</em> to send the connection setup data to a target peer.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/connection-manager.js
+
+_sendSignal(peerIdHex, type, payload) {
+  // STRATEGY 1: The Easy Way
+  // If we are still connected to the WebSocket server, use it.
+  if (WebSocket.OPEN === this.socket?.readyState) {
+    this._sendSignalWS(wstype, peerIdHex, payload);
+    return;
+  }
+
+  // STRATEGY 2: The Decentralized Way (The Cool Part)
+  // If no server, we route the signal through the DHT mesh we already have!
+  if (!this.routeSignal) return; // (Safety check)
+
+  // Wrap the signal in a DHT packet
+  const msg = encodeSignal(type, {
+    from: this.nodeIdHex,
+    to: peerIdHex,
+    payload,
+  });
+
+  // Ask the routing table: &quot;Who is closest to this target peer?&quot;
+  const next = this.routeSignal(peerIdHex);
+
+  // Send the signal to those neighbors, asking them to forward it.
+  for (const hex of next) {
+    const peer = this.peers.get(hex);
+    if (peer?.channel?.readyState === 'open') {
+      peer.channel.send(msg);
+    }
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/connection-manager.js</span>
+
+<span class="hljs-title function_">_sendSignal</span>(<span class="hljs-params">peerIdHex, type, payload</span>) {
+  <span class="hljs-comment">// STRATEGY 1: The Easy Way</span>
+  <span class="hljs-comment">// If we are still connected to the WebSocket server, use it.</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">socket</span>?.<span class="hljs-property">readyState</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_sendSignalWS</span>(wstype, peerIdHex, payload);
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">// STRATEGY 2: The Decentralized Way (The Cool Part)</span>
+  <span class="hljs-comment">// If no server, we route the signal through the DHT mesh we already have!</span>
+  <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">routeSignal</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// (Safety check)</span>
+
+  <span class="hljs-comment">// Wrap the signal in a DHT packet</span>
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-title function_">encodeSignal</span>(type, {
+    <span class="hljs-attr">from</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeIdHex</span>,
+    <span class="hljs-attr">to</span>: peerIdHex,
+    payload,
+  });
+
+  <span class="hljs-comment">// Ask the routing table: &quot;Who is closest to this target peer?&quot;</span>
+  <span class="hljs-keyword">const</span> next = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">routeSignal</span>(peerIdHex);
+
+  <span class="hljs-comment">// Send the signal to those neighbors, asking them to forward it.</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> hex <span class="hljs-keyword">of</span> next) {
+    <span class="hljs-keyword">const</span> peer = <span class="hljs-variable language_">this</span>.<span class="hljs-property">peers</span>.<span class="hljs-title function_">get</span>(hex);
+    <span class="hljs-keyword">if</span> (peer?.<span class="hljs-property">channel</span>?.<span class="hljs-property">readyState</span> === <span class="hljs-string">&apos;open&apos;</span>) {
+      peer.<span class="hljs-property">channel</span>.<span class="hljs-title function_">send</span>(msg);
+    }
+  }
+}</code></pre>
+
+
+
+<p>This is the key to decentralization. Once we have a few friends in the network, we no longer need the signalling server. If we want to connect to a stranger, we just ask our friends to pass the note along until it reaches the stranger, Kademlia makes it very efficient by organizing the network into a structured <strong>Distributed Hash Table (DHT)</strong> where every participant is assigned a unique ID. Instead of broadcasting a request to everyone or wandering aimlessly through a list of friends. </p>
+
+
+
+<p>Kademlia uses a <strong>logical distance metric (XOR)</strong> to “map” the network, when you ask your friends to pass a note, they don’t just pass it to anyone, they pass it to the person they know whose ID is numerically “closer” to the stranger’s ID. This creates a routing system where the number of hops required to find anyone stays very small, specifically scaling at a rate of <em>O(log n)</em>, meaning even in a network of millions, you can reach a stranger in just a few steps.</p>
+
+
+
+<h3 class="wp-block-heading">Handling Incoming Signals</h3>
+
+
+
+<p>When a signal arrives (either via WebSocket or forwarded by another peer), <code>_handleDhtSignal</code> processes it.<br>There is a subtle but important piece of code here for <strong>Deduplication</strong>. In a mesh network, you might receive the same forwarded message from three different neighbors. We must process it only once.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/connection-manager.js
+
+async _handleDhtSignal(buf) {
+  const { type, payload } = decodeSignal(buf);
+  const { messageId } = payload;
+
+  // Have we seen this message ID recently?
+  const now = Date.now();
+  const ts = this.seenSignalIds.get(messageId);
+  if (ts &amp;&amp; now - ts &lt; SEEN_SIGNAL_TTL) return; // Ignore duplicate
+
+  this.seenSignalIds.set(messageId, now); // Mark as seen
+
+  // Is this meant for me?
+  if (payload.to !== this.nodeIdHex) {
+    // Forwarding logic would go here
+    // ...
+    return;
+  }
+
+  // It is for me! Process the Offer/Answer/ICE...
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/connection-manager.js</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">_handleDhtSignal</span>(<span class="hljs-params">buf</span>) {
+  <span class="hljs-keyword">const</span> { type, payload } = <span class="hljs-title function_">decodeSignal</span>(buf);
+  <span class="hljs-keyword">const</span> { messageId } = payload;
+
+  <span class="hljs-comment">// Have we seen this message ID recently?</span>
+  <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+  <span class="hljs-keyword">const</span> ts = <span class="hljs-variable language_">this</span>.<span class="hljs-property">seenSignalIds</span>.<span class="hljs-title function_">get</span>(messageId);
+  <span class="hljs-keyword">if</span> (ts &amp;&amp; now - ts &lt; <span class="hljs-variable constant_">SEEN_SIGNAL_TTL</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// Ignore duplicate</span>
+
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">seenSignalIds</span>.<span class="hljs-title function_">set</span>(messageId, now); <span class="hljs-comment">// Mark as seen</span>
+
+  <span class="hljs-comment">// Is this meant for me?</span>
+  <span class="hljs-keyword">if</span> (payload.<span class="hljs-property">to</span> !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeIdHex</span>) {
+    <span class="hljs-comment">// Forwarding logic would go here</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">// It is for me! Process the Offer/Answer/ICE...</span>
+}</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots">
+
+
+
+<h2 class="wp-block-heading">The Routing Table</h2>
+
+
+
+<p>Now that our nodes can exchange binary messages, they need to know <em>who</em> to send those messages to. If we have 10,000 nodes in a network, we can’t simply keep a list of everyone in memory, that doesn’t scale.<br>Instead, Kademlia uses a clever strategy: <strong><em>Know a lot about your neighbors, and a little about everyone else.</em></strong></p>
+
+
+
+<p>This logic lives in <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/routing-table.js">src/peer/routing-table.js</a></code>. It is arguably the most mathematically interesting part of the project.</p>
+
+
+
+<h3 class="wp-block-heading">The Metric: XOR Distance</h3>
+
+
+
+<p>How do we define <em>“distance”</em> on internet? Latency? Hops? Geographical location?<br>Kademlia ignores all of that. It defines the distance purely mathematically using the <strong>XOR</strong> operation on Node IDs.</p>
+
+
+
+<p>If Node A is <code>0101</code> and Node B is <code>0100</code>, the distance between them is <code>0001</code>.</p>
+
+
+
+<p>This has a powerful property of <strong>Unidirectionality</strong>. For any point <em>x</em> and distance <em>d</em>, there is exactly one point <em>y</em> such that distance(<em>x</em>, <em>y</em>) = <em>d</em>. This eliminates “routing loops” naturally.</p>
+
+
+
+<p>In <code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/utils.js">src/peer/utils.js</a></code>, we see the raw buffer implementation:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/utils.js
+
+export function xorDistance(a, b) {
+  const buf = Buffer.alloc(a.length);
+  for (let i = 0; i &lt; a.length; i++) {
+    buf[i] = a[i] ^ b[i]; // Bitwise XOR
+  }
+  return buf;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/utils.js</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">xorDistance</span>(<span class="hljs-params">a, b</span>) {
+  <span class="hljs-keyword">const</span> buf = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">alloc</span>(a.<span class="hljs-property">length</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; a.<span class="hljs-property">length</span>; i++) {
+    buf[i] = a[i] ^ b[i]; <span class="hljs-comment">// Bitwise XOR</span>
+  }
+  <span class="hljs-keyword">return</span> buf;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">K-Buckets</h3>
+
+
+
+<p>The routing table isn’t just one big list. It is an array of <strong>Buckets</strong>.<br>Since our Node IDs are 256 bits (<em>SHA-256</em>), the routing table has <strong>256 buckets</strong>.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Bucket 0</strong>: Stores nodes that share the first 0 bits with us (very far away).</li>
+
+
+
+<li><strong>Bucket 255</strong>: Stores nodes that differ only at the very last bit (immediate neighbors).</li>
+</ul>
+
+
+
+<p>This creates a logarithmic view of the network. We have highly detailed knowledge of nodes close to us, and sparse knowledge of nodes far away.</p>
+
+
+
+<p>How do we decide which bucket a peer goes into? We find the <strong>First Differing Bit</strong> (or leading zero count of the XOR distance).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js
+
+_bucketIndex(nodeId) {
+  const dist = xorDistance(this.nodeId, nodeId);
+
+  // Scan byte by byte
+  for (let i = 0; i &lt; dist.length; i++) {
+    if (dist[i] === 0) continue; // Bytes are identical, keep going
+
+    // Found a differing byte, now find the specific bit
+    for (let bit = 0; bit &lt; 8; bit++) {
+      if (dist[i] &amp; (0x80 &gt;&gt; bit)) {
+        return i * 8 + bit; // Return the exact bit position (0-255)
+      }
+    }
+  }
+  return this.buckets.length - 1;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js</span>
+
+<span class="hljs-title function_">_bucketIndex</span>(<span class="hljs-params">nodeId</span>) {
+  <span class="hljs-keyword">const</span> dist = <span class="hljs-title function_">xorDistance</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">nodeId</span>, nodeId);
+
+  <span class="hljs-comment">// Scan byte by byte</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; dist.<span class="hljs-property">length</span>; i++) {
+    <span class="hljs-keyword">if</span> (dist[i] === <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// Bytes are identical, keep going</span>
+
+    <span class="hljs-comment">// Found a differing byte, now find the specific bit</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> bit = <span class="hljs-number">0</span>; bit &lt; <span class="hljs-number">8</span>; bit++) {
+      <span class="hljs-keyword">if</span> (dist[i] &amp; (<span class="hljs-number">0x80</span> &gt;&gt; bit)) {
+        <span class="hljs-keyword">return</span> i * <span class="hljs-number">8</span> + bit; <span class="hljs-comment">// Return the exact bit position (0-255)</span>
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">Managing Buckets: The “k=20” Rule</h3>
+
+
+
+<p>Each bucket has a size limit, usually denoted as the <em>k</em> (default is 20 in this project).<br>Why limit it, you might ask? To keep the traffic low. If we know 20 nodes in a specific region of the ID space, that is statistically enough to route messages successfully even if half of them go offline any time.</p>
+
+
+
+<p>But what happens when we meet a new node and the corresponding bucket is <strong>Full</strong>? This is where Kademlia’s “Eviction Policy” comes in.</p>
+
+
+
+<h4 class="wp-block-heading">The “Wait and See” Strategy</h4>
+
+
+
+<p>We do <strong>not</strong> simply drop the new node. Nor do we blindly drop the old node. We favor stability (old reliable nodes) over novelty (new unverified nodes).</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Update:</strong> If the node is already in the bucket, move it to the tail (mark as recently seen).</li>
+
+
+
+<li><strong>Add:</strong> If the bucket has space (<em>&lt; 20</em>), just add it.</li>
+
+
+
+<li><strong>Standby:</strong> If the bucket is <strong>Full</strong>, we put the new node into a separate <code>replacements</code> list.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js (Excerpt)
+
+if (bucket.nodes.length &lt; this.k) {
+  bucket.nodes.push(nodeId);
+  return { action: 'added' };
+}
+
+// Bucket is full. Don't add yet. Store as a replacement candidate.
+if (!bucket.replacements.some((id) =&gt; id.equals(nodeId))) {
+  bucket.replacements.push(nodeId);
+  // Keep the replacement list small too
+  if (bucket.replacements.length &gt; this.k) {
+    bucket.replacements.shift();
+  }
+}
+return { action: 'full', bucketIndex: i };" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js (Excerpt)</span>
+
+<span class="hljs-keyword">if</span> (bucket.<span class="hljs-property">nodes</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">k</span>) {
+  bucket.<span class="hljs-property">nodes</span>.<span class="hljs-title function_">push</span>(nodeId);
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">action</span>: <span class="hljs-string">&apos;added&apos;</span> };
+}
+
+<span class="hljs-comment">// Bucket is full. Don&apos;t add yet. Store as a replacement candidate.</span>
+<span class="hljs-keyword">if</span> (!bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> id.<span class="hljs-title function_">equals</span>(nodeId))) {
+  bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">push</span>(nodeId);
+  <span class="hljs-comment">// Keep the replacement list small too</span>
+  <span class="hljs-keyword">if</span> (bucket.<span class="hljs-property">replacements</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">k</span>) {
+    bucket.<span class="hljs-property">replacements</span>.<span class="hljs-title function_">shift</span>();
+  }
+}
+<span class="hljs-keyword">return</span> { <span class="hljs-attr">action</span>: <span class="hljs-string">&apos;full&apos;</span>, <span class="hljs-attr">bucketIndex</span>: i };</code></pre>
+
+
+
+<p><strong>So when does the new node actually get in?</strong><br>Later, in the background, <code>PeerNode</code> checks the “Least Recently Seen” node in that full bucket. It pings it.</p>
+
+
+
+<ul class="wp-block-list">
+<li>If the old node responds: It stays. The new node stays in the waiting list.</li>
+
+
+
+<li>If the old node is dead: It is evicted. The new node is promoted from <code>replacements</code> to <code>nodes</code>.</li>
+</ul>
+
+
+
+<p>This guarantees that our routing table is filled with robust, long-lived peers.</p>
+
+
+
+<h3 class="wp-block-heading">Finding Neighbors</h3>
+
+
+
+<p>Finally, the most used function in our entire DHT is <code>findClosest</code>. When we want to look up a key, we need to ask the nodes mathematically closest to it.<br>This function aggregates nodes from the target bucket, and then moves outwards to the adjacent buckets until sufficient candidates are found.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/routing-table.js
+
+findClosest(targetId, count = this.k) {
+  const results = [];
+  const start = this._bucketIndex(targetId);
+
+  // We check buckets [start], [start+1], [start-1], [start+2]...
+  // expanding outward from the target distance.
+  for (let d = 0; d &lt; this.buckets.length &amp;&amp; results.length &lt; count; d++) {
+    const i = d % 2 === 0 ? start + d : start - d;
+    if (i &lt; 0 || i &gt;= this.buckets.length) continue;
+
+    const bucket = this.buckets[i];
+    results.push(...bucket.nodes);
+  }
+
+  // Finally, sort everything by XOR distance to the target
+  results.sort((a, b) =&gt;
+    compareDistance(xorDistance(a, targetId), xorDistance(b, targetId))
+  );
+
+  return results.slice(0, count);
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/routing-table.js</span>
+
+<span class="hljs-title function_">findClosest</span>(<span class="hljs-params">targetId, count = <span class="hljs-variable language_">this</span>.k</span>) {
+  <span class="hljs-keyword">const</span> results = [];
+  <span class="hljs-keyword">const</span> start = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_bucketIndex</span>(targetId);
+
+  <span class="hljs-comment">// We check buckets [start], [start+1], [start-1], [start+2]...</span>
+  <span class="hljs-comment">// expanding outward from the target distance.</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span> &amp;&amp; results.<span class="hljs-property">length</span> &lt; count; d++) {
+    <span class="hljs-keyword">const</span> i = d % <span class="hljs-number">2</span> === <span class="hljs-number">0</span> ? start + d : start - d;
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">0</span> || i &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>.<span class="hljs-property">length</span>) <span class="hljs-keyword">continue</span>;
+
+    <span class="hljs-keyword">const</span> bucket = <span class="hljs-variable language_">this</span>.<span class="hljs-property">buckets</span>[i];
+    results.<span class="hljs-title function_">push</span>(...bucket.<span class="hljs-property">nodes</span>);
+  }
+
+  <span class="hljs-comment">// Finally, sort everything by XOR distance to the target</span>
+  results.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span>
+    <span class="hljs-title function_">compareDistance</span>(<span class="hljs-title function_">xorDistance</span>(a, targetId), <span class="hljs-title function_">xorDistance</span>(b, targetId))
+  );
+
+  <span class="hljs-keyword">return</span> results.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, count);
+}</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots">
+
+
+
+<h2 class="wp-block-heading">The Core Logic (PeerNode)</h2>
+
+
+
+<p>We have the phone lines (WebRTC/ConnectionManager) and the phone book (RoutingTable). Now we need the operator.<br><code>PeerNode</code>(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/peer-node.js">src/peer/peer-node.js</a></code>) is the brain of the operation. It is where the actual “Kademlia” happens, it orchestrates the complex operation of asking peers for information, collecting responses, and deciding where to go next. It is responsible for <strong>Iterative Lookups</strong>, <strong>Data Persistence</strong>, and <strong>Network Maintenance</strong>.</p>
+
+
+
+<h3 class="wp-block-heading">The Search: <code>iterativeFindNode</code></h3>
+
+
+
+<p>This is the most critical algorithm in any DHT, when we want to find a node (or a piece of data/value), you can’t just ask any one of the neighbors and hope they know. We have to crawl the network, getting closer to the target one step at a time.</p>
+
+
+
+<p>Kademlia uses an <strong><em>alpha</em>-parallel</strong> search (where <em>alpha=3</em> in this project).</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="964" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png" alt="Iterative Find Node algorithm" class="wp-image-1252" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png 964w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-283x300.png 283w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-768x816.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2.png 970w" sizes="auto, (max-width: 964px) 100vw, 964px"></figure>
+
+
+
+<p>The process is as follows:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Shortlist:</strong> Pick the 20 closest nodes we already know.</li>
+
+
+
+<li><strong>Parallel Query:</strong> Pick the top 3 (<em>alpha</em>) nodes we haven’t asked yet.</li>
+
+
+
+<li><strong>Ask:</strong> Send <code>FIND_NODE</code> requests to them simultaneously.</li>
+
+
+
+<li><strong>Update:</strong> They reply with <em>their</em> closest neighbors. We add these new nodes to our shortlist.</li>
+
+
+
+<li><strong>Repeat:</strong> Sort the list, pick the next 3, and loop until we stop finding closer nodes.</li>
+</ol>
+
+
+
+<p>This logic guarantees that even in a network of millions, we can find a target in <em>O(log N)</em> hops (usually just 3 or 4 jumps).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js (Simplified)
+
+async iterativeFindNode(targetNodeId) {
+  let shortlist = this.routingTable.findClosest(targetNodeId, this.K);
+  
+  // The loop runs until we stop making progress or hit a max limit
+  while (rounds++ &lt; MAX_ROUNDS) {
+    
+    // Pick 'alpha' (3) unqueried nodes
+    const batch = shortlist.filter(n =&gt; !queried.has(n)).slice(0, this.ALPHA);
+    
+    // Blast out requests in parallel
+    const responses = await Promise.all(
+      batch.map(node =&gt; this.sendFindNode(node, targetNodeId))
+    );
+
+    // Add new nodes discovered from responses to the shortlist
+    for (const nodes of responses) {
+      updateShortlist(shortlist, nodes);
+    }
+
+    // Sort by distance again
+    shortlist.sort(/* sort by distance to target */);
+  }
+
+  return shortlist;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js (Simplified)</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">iterativeFindNode</span>(<span class="hljs-params">targetNodeId</span>) {
+  <span class="hljs-keyword">let</span> shortlist = <span class="hljs-variable language_">this</span>.<span class="hljs-property">routingTable</span>.<span class="hljs-title function_">findClosest</span>(targetNodeId, <span class="hljs-variable language_">this</span>.<span class="hljs-property">K</span>);
+  
+  <span class="hljs-comment">// The loop runs until we stop making progress or hit a max limit</span>
+  <span class="hljs-keyword">while</span> (rounds++ &lt; <span class="hljs-variable constant_">MAX_ROUNDS</span>) {
+    
+    <span class="hljs-comment">// Pick &apos;alpha&apos; (3) unqueried nodes</span>
+    <span class="hljs-keyword">const</span> batch = shortlist.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> !queried.<span class="hljs-title function_">has</span>(n)).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">ALPHA</span>);
+    
+    <span class="hljs-comment">// Blast out requests in parallel</span>
+    <span class="hljs-keyword">const</span> responses = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(
+      batch.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">node</span> =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sendFindNode</span>(node, targetNodeId))
+    );
+
+    <span class="hljs-comment">// Add new nodes discovered from responses to the shortlist</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> nodes <span class="hljs-keyword">of</span> responses) {
+      <span class="hljs-title function_">updateShortlist</span>(shortlist, nodes);
+    }
+
+    <span class="hljs-comment">// Sort by distance again</span>
+    shortlist.<span class="hljs-title function_">sort</span>(<span class="hljs-comment">/* sort by distance to target */</span>);
+  }
+
+  <span class="hljs-keyword">return</span> shortlist;
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Memory: <code>storeValue</code> and Quorums</h3>
+
+
+
+<p>A DHT isn’t useful if it loses data when a node goes offline. To prevent this, we never store data on just a <em>single</em> node. We store it on the  <em><strong>k </strong></em><strong>closest nodes</strong> (where <em>k=20</em>).</p>
+
+
+
+<p>However, we don’t need <em>all</em> 20 nodes to confirm success. We wait for a <strong>Write Quorum</strong> (<em>w</em>).</p>
+
+
+
+<ul class="wp-block-list">
+<li><em>k = 20</em></li>
+
+
+
+<li><em>W = [k/2] = 10</em></li>
+</ul>
+
+
+
+<p>This means if 10 nodes accept our data, we consider it <em>saved</em>. This ensures high availability. Even if 9 nodes crash immediately after the write, the data survives on the 10th node (and eventually with others).</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js
+
+async storeValue(key, value) {
+  // 1. Find the 20 closest nodes to the Key's hash
+  const closest = await this.iterativeFindNode(keyId);
+  
+  const W = Math.ceil(this.K / 2); // 10
+  let acks = 0;
+
+  // 2. Send STORE command to them
+  for (const hex of targets) {
+    const ok = await this.conn.send(hex, /* STORE command */);
+    
+    if (ok) {
+      acks++;
+      // 3. Stop once we hit Quorum
+      if (acks &gt;= W) break;
+    }
+  }
+
+  if (acks &lt; W) {
+    throw new Error(`STORE failed: quorum not reached (${acks}/${W})`);
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-title function_">storeValue</span>(<span class="hljs-params">key, value</span>) {
+  <span class="hljs-comment">// 1. Find the 20 closest nodes to the Key&apos;s hash</span>
+  <span class="hljs-keyword">const</span> closest = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">iterativeFindNode</span>(keyId);
+  
+  <span class="hljs-keyword">const</span> W = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">K</span> / <span class="hljs-number">2</span>); <span class="hljs-comment">// 10</span>
+  <span class="hljs-keyword">let</span> acks = <span class="hljs-number">0</span>;
+
+  <span class="hljs-comment">// 2. Send STORE command to them</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> hex <span class="hljs-keyword">of</span> targets) {
+    <span class="hljs-keyword">const</span> ok = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">conn</span>.<span class="hljs-title function_">send</span>(hex, <span class="hljs-comment">/* STORE command */</span>);
+    
+    <span class="hljs-keyword">if</span> (ok) {
+      acks++;
+      <span class="hljs-comment">// 3. Stop once we hit Quorum</span>
+      <span class="hljs-keyword">if</span> (acks &gt;= W) <span class="hljs-keyword">break</span>;
+    }
+  }
+
+  <span class="hljs-keyword">if</span> (acks &lt; W) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`STORE failed: quorum not reached (<span class="hljs-subst">${acks}</span>/<span class="hljs-subst">${W}</span>)`</span>);
+  }
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Retrieval: <code>findValue</code> &amp; Repair</h3>
+
+
+
+<p>Retrieving data (<code>findValue</code>) looks very similar to <code>iterativeFindNode</code>, with two key differences:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Early Exit:</strong> If a peer replies with the <em>Data</em> instead of a list of nodes, the search stops immediately.</li>
+
+
+
+<li><strong>Opportunistic Replication (Repair):</strong> This is a cool optimization.</li>
+</ol>
+
+
+
+<p>Imagine you find the data on Node D. But Node A, Node B, and Node C were mathematically <em>closer</em> to the key but didn’t have it (maybe they were offline when it was published).<br>Since we are walking past A, B, and C anyway, we should fix that!</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// src/peer/peer-node.js (Excerpt from findValue)
+
+if (res.record) {
+  // We found the data!
+  bestRecord = res.record;
+
+  // Look for a node that was CLOSER than the one who had the data
+  const closer = shortlist.find(n =&gt; isCloser(n, responder));
+
+  // &quot;Store-back&quot;: Give the data to that closer node so the next person finds it faster
+  if (closer) {
+    this.conn.send(closer, encodeStore(keyId, bestRecord));
+  }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// src/peer/peer-node.js (Excerpt from findValue)</span>
+
+<span class="hljs-keyword">if</span> (res.<span class="hljs-property">record</span>) {
+  <span class="hljs-comment">// We found the data!</span>
+  bestRecord = res.<span class="hljs-property">record</span>;
+
+  <span class="hljs-comment">// Look for a node that was CLOSER than the one who had the data</span>
+  <span class="hljs-keyword">const</span> closer = shortlist.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> <span class="hljs-title function_">isCloser</span>(n, responder));
+
+  <span class="hljs-comment">// &quot;Store-back&quot;: Give the data to that closer node so the next person finds it faster</span>
+  <span class="hljs-keyword">if</span> (closer) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">conn</span>.<span class="hljs-title function_">send</span>(closer, <span class="hljs-title function_">encodeStore</span>(keyId, bestRecord));
+  }
+}</code></pre>
+
+
+
+<p>This “<em>Store-back</em>” mechanism ensures that popular data naturally migrates to the nodes where it “<em>belongs</em>” (the closest ones), keeping the network efficient.</p>
+
+
+
+<h3 class="wp-block-heading">The Gardening: Maintenance Timers</h3>
+
+
+
+<p>This is my favorite example of emergent behavior derived from simple rules. A DHT is like a living organism. Nodes join, leave, and crash. Data expires. If we did nothing, the routing tables would rot and data would vanish.</p>
+
+
+
+<p>In <code>node.start()</code>, several background timers are launched to act as janitors:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Bucket Refresh:</strong> Pick a random ID in a bucket’s range and search for it. This forces us to find new peers in that specific area of the network, keeping the routing table full.</li>
+
+
+
+<li><strong>Republish:</strong> If <em>I</em> am the original author of a piece of data, I must re-upload it every hour so peers know it’s still valid.</li>
+
+
+
+<li><strong>Replica Repair:</strong> If I am holding data for someone else, I check if I am still one of the closest nodes. If not, I move the data to someone closer.</li>
+
+
+
+<li><strong>Liveness Checks:</strong> Ping the oldest nodes in my routing table. If they don’t answer, evict them and replace them with fresh nodes.</li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots">
+
+
+
+<h2 class="wp-block-heading">Orchestration &amp; Usage (Running the Swarm)</h2>
+
+
+
+<p>We have explored the code and understood the logic. Now, let’s play with it.</p>
+
+
+
+<p>Developing a Distributed system is hard because we can’t easily run 50 copies of our app on our machine manually. We need <strong>Orchestration</strong>. The project includes a dedicated orchestration layer built using <strong>Docker Compose</strong>.<br></p>
+
+
+
+<h3 class="wp-block-heading">The Orchestrator</h3>
+
+
+
+<p>Instead of writing <code>docker</code> commands, the project includes a helper script(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/index.js">index.js</a></code>) at the root directory.<br>When you run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- up --peers 10" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> up <span class="hljs-literal">--peers</span> <span class="hljs-number">10</span></code></pre>
+
+
+
+<p>The script parses the arguments and executes:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ docker compose -f docker-compose.yml up -d --scale peer=10" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> docker compose <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml up <span class="hljs-literal">-d</span> <span class="hljs-literal">--scale</span> peer=<span class="hljs-number">10</span></code></pre>
+
+
+
+<p>The magic word here is <strong><code>--scale</code></strong>. This tells Docker Compose to spin up 1 instance of the <code>signalling</code> server, 1 instance of the <code>client</code>, and <strong>10 instances</strong> of the <code>peer</code> service.</p>
+
+
+
+<p>Looking at <code>docker-compose.yml</code>, we see the network topology:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>signalling</code></strong>: The bootstrap server. It exposes port 3000, so that, we can connect to it from our machine outside Docker.</li>
+
+
+
+<li><strong><code>client</code></strong>: The CLI tool. It depends on <code>signalling</code>. This can be run on our machine bare-metal.</li>
+
+
+
+<li><strong><code>peer</code></strong>: The worker nodes. They also depend on <code>signalling</code>.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Solving the “Thundering Herd” Problem</h3>
+
+
+
+<p>If we launch 50 peers simultaneously, they will all try to hit the WebSocket server and eventually each other at the same exact millisecond. This can cause network stall and connection timeouts.<br>To solve this, we add a small <strong>Jitter</strong> to our peer startup(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/peer-entry.sh">peer-entry.sh</a></code>). It spreads the load over 30 seconds, thus, ensuring the network bootstraps smoothly. This simulates how the network behaves in real life as all peers cannot start at the exact same time in real-life.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="#!/bin/sh
+# peer-entry.sh
+
+# Generate a random delay between 0 and 30 seconds
+DELAY=$(awk -v max=&quot;$STARTUP_DELAY_MAX&quot; 'BEGIN{srand(); print int(rand()*(max+1))}')
+
+echo &quot;Startup delay: ${DELAY}s&quot;
+sleep &quot;$DELAY&quot;
+
+# Start the node
+exec &quot;$@&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-bash"><span class="hljs-meta">#!/bin/sh</span>
+<span class="hljs-comment"># peer-entry.sh</span>
+
+<span class="hljs-comment"># Generate a random delay between 0 and 30 seconds</span>
+DELAY=$(awk -v max=<span class="hljs-string">&quot;<span class="hljs-variable">$STARTUP_DELAY_MAX</span>&quot;</span> <span class="hljs-string">&apos;BEGIN{srand(); print int(rand()*(max+1))}&apos;</span>)
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Startup delay: <span class="hljs-variable">${DELAY}</span>s&quot;</span>
+<span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;<span class="hljs-variable">$DELAY</span>&quot;</span>
+
+<span class="hljs-comment"># Start the node</span>
+<span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span></code></pre>
+
+
+
+<h3 class="wp-block-heading">The Interactive Client</h3>
+
+
+
+<p>Once the swarm is running, we need a way to control it. We can check the logs manually, but that’s messy and hard. Instead, the project provides a “<em>God Mode</em>” client.<br>The client(<code><a href="https://github.com/DarkMatter-999/WebRTC-DHT/blob/master/src/peer/client.js">src/peer/client.js</a></code>) connects to the mesh just like any other peer and indeed behaves as a peer, but it exposes its routing table, events and commands in an interface directly to your terminal.</p>
+
+
+
+<p>The CLI accepts several commands that trigger the internal <code>PeerNode</code> methods.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong><code>peers</code></strong>: Calls <code>node.conn.getConnectedPeers()</code>. Shows who we are directly connected to via WebRTC.</li>
+
+
+
+<li><strong><code>store &lt;key&gt; &lt;value&gt;</code></strong>: Triggers <code>node.storeValue()</code>. Will show “Store complete (quorum reached)” if it succeeds.</li>
+
+
+
+<li><strong><code>get &lt;key&gt;</code></strong>: Triggers <code>node.findValue()</code>. It will perform the lookup and print the result.</li>
+
+
+
+<li><strong><code>find &lt;nodeId&gt;</code></strong>: Triggers <code>iterativeFindNode</code>. Useful for debugging routing paths.</li>
+
+
+
+<li><strong><code>dump</code></strong>: Dumps the entire routing table (all buckets).</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Putting it all together</h3>
+
+
+
+<p>Finally, here is how you simulate a Kademlia network on your machine.</p>
+
+
+
+<p><strong>Step 1: Start the Swarm</strong><br>Boot up a network with 25 peers.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- all --peers 25" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> all <span class="hljs-literal">--peers</span> <span class="hljs-number">25</span></code></pre>
+
+
+
+<p><em>Wait about 30 seconds for the startup jitter to finish and the mesh to form.</em></p>
+
+
+
+<p><strong>Step 2: Enter the Client</strong></p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="# In a new terminal
+$ npm run client" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-comment"># In a new terminal</span>
+<span class="hljs-variable">$</span> npm run client</code></pre>
+
+
+
+<p><strong>Step 3: Check Connections</strong><br>Inside the client REPL:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; peers
+Connected peers: [ 'a1b2...', 'c3d4...' ]" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; peers
+Connected peers: [ <span class="hljs-string">&apos;a1b2...&apos;</span>, <span class="hljs-string">&apos;c3d4...&apos;</span> ]</code></pre>
+
+
+
+<p>You should see at least one or two peers.</p>
+
+
+
+<p><strong>Step 4: Store Data</strong><br>Let’s save a value into the cloud.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; store 67 &quot;My value&quot;
+Store complete (quorum reached)" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; store <span class="hljs-number">67</span> <span class="hljs-string">&quot;My value&quot;</span>
+Store complete (quorum reached)</code></pre>
+
+
+
+<p>Behind the scenes, our client hashed “67”, found the 10 closest nodes among the 25 running containers, and replicated the data to them.</p>
+
+
+
+<p><strong>Step 5: Retrieve Data</strong><br>Now, let’s ask the network for it back.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="&gt; get 67
+Value found: &quot;My value&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell">&gt; get <span class="hljs-number">67</span>
+Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
+
+
+
+<p><strong>Step 6: Scale Up</strong><br>Want to see how it handles growth? Leave the client open, and in another terminal run:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="$ npm run docker -- up --peers 35" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-powershell"><span class="hljs-variable">$</span> npm run docker <span class="hljs-literal">--</span> up <span class="hljs-literal">--peers</span> <span class="hljs-number">35</span></code></pre>
+
+
+
+<p>Docker will add 10 <em>new</em> peers to the existing network. The existing nodes will see them, add them to buckets, and the network topology will evolve automatically.</p>
+
+
+
+<h3 class="wp-block-heading">Real-world limitations</h3>
+
+
+
+<p>While <a href="https://github.com/DarkMatter-999/WebRTC-DHT">WebRTC-DHT</a> is a fully functional Kademlia implementation, it is designed for <strong>education and prototyping</strong>, not high-stakes production environments. If you plan to build the next IPFS or BitTorrent, you must address these constraints:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>NAT Traversal (STUN only):</strong> This project relies solely on public STUN servers (<code>stun.l.google.com</code>). This works for most home connections but will fail behind strict corporate firewalls or Symmetric NATs. A production system requires <strong>TURN</strong> servers to relay traffic when direct P2P connections fail.</li>
+
+
+
+<li><strong>Memory-Only Storage:</strong> Data is stored in a JavaScript Map. If a node crashes or the container restarts, its specific shard of data is lost. Real systems must persist data to disk (e.g., LevelDB, SQLite) so that data survives application restarts.</li>
+
+
+
+<li><strong>Security &amp; Auth:</strong> There is no authentication mechanism, we trust all nodes. Anyone who knows the signalling server address can join the swarm. This makes the network vulnerable to <strong>Sybil Attacks</strong> (flooding the network with fake nodes to poison routing tables) or data tampering.</li>
+
+
+
+<li><strong>Performance:</strong> Node.js with the <code>wrtc</code> binding is heavy. High-throughput distributed systems are typically implemented in Systems Languages (Rust, Go, C++) to avoid Garbage Collection pauses and minimize memory footprint per peer.</li>
+</ol>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots">
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>We have walked through the entire stack of <strong>WebRTC-DHT</strong>:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Architecture:</strong> We saw how the code separates Networking, Routing, and Logic.</li>
+
+
+
+<li><strong>Hybrid Signalling:</strong> We learned how to bootstrap via WebSockets and switch to P2P signalling.</li>
+
+
+
+<li><strong>Routing Table:</strong> We explored XOR distance, buckets, and LRU eviction.</li>
+
+
+
+<li><strong>Core Logic:</strong> We dissected the iterative lookup and quorum storage algorithms.</li>
+
+
+
+<li><strong>Orchestration:</strong> We used Docker to simulate a swarm and handle thundering herds.</li>
+</ol>
+
+
+
+<p>This project serves as a compact, readable reference for anyone wanting to understand how decentralized networks like IPFS or BitTorrent actually work under the hood.</p>
+
+
+
+<p><strong>Happy Hacking!</strong></p>
+
+
+
+<p></p>
+</div>
+
+
+<div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-609ade12 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--40);padding-right:0;padding-bottom:var(--wp--preset--spacing--40);padding-left:0;font-size:clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.737), 1.5rem);"><div class="post-navigation-link-previous wp-block-post-navigation-link"><span class="wp-block-post-navigation-link__arrow-previous is-arrow-chevron" aria-hidden="true">«</span><a href="https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/" rel="prev"><span class="post-navigation-link__label">Previous:</span> <span class="post-navigation-link__title">WordPress Block Themes: Block Themes and Block Patterns Explained</span></a></div>
+
+<div class="post-navigation-link-next has-text-align-left wp-block-post-navigation-link"></div></div>
+</main>
+
+
+<footer class="site-footer wp-block-template-part">
+<div class="wp-block-group dm-footer has-base-light-background-color has-background is-layout-constrained wp-container-core-group-is-layout-196b58ae wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-is-layout-643ced6b wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<div class="wp-block-group is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-b6c1f246 wp-block-group-is-layout-flex">
+
+<h1 class="wp-block-site-title has-extra-large-font-size"><a href="https://lakshyajeet.in/" target="_self" rel="home">Lakshyajeet's Blog</a></h1>
+
+
+<div class="theme-style-switcher-block wp-block-buttons" data-tss-block="true" data-display="dropdown"></div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h4 class="wp-block-heading has-text-align-center" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+        Navigation
+      </h4>
+
+
+
+<div class="wp-block-group alignwide is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-e278f9a3 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:0;padding-right:var(--wp--preset--spacing--30);padding-bottom:0;padding-left:var(--wp--preset--spacing--30)"><nav class="items-justified-center is-vertical wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-734eb2c2 wp-block-navigation-is-layout-flex" aria-label="Navigation 2"><ul class="wp-block-navigation__container items-justified-center is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/blog/"><span class="wp-block-navigation-item__label">Blog</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/dm_project"><span class="wp-block-navigation-item__label">Projects</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/about/"><span class="wp-block-navigation-item__label">About</span></a></li></ul></nav></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h4 class="wp-block-heading has-text-align-center" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+        My Socials
+      </h4>
+
+
+
+<div class="wp-block-group alignwide is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-e278f9a3 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:0;padding-right:var(--wp--preset--spacing--30);padding-bottom:0;padding-left:var(--wp--preset--spacing--30)"><nav class="items-justified-center is-vertical wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-734eb2c2 wp-block-navigation-is-layout-flex" aria-label="Socials"><ul class="wp-block-navigation__container items-justified-center is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://github.com/DarkMatter-999"><span class="wp-block-navigation-item__label">Github</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.linkedin.com/in/darkmatter999/"><span class="wp-block-navigation-item__label">Linkedin</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://x.com/darkmatter_999"><span class="wp-block-navigation-item__label">Twitter</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://leetcode.com/lakshyajeet"><span class="wp-block-navigation-item__label">Leetcode</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.codechef.com/users/lakshyajeet"><span class="wp-block-navigation-item__label">Codechef</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.hackerrank.com/lakshyajeet"><span class="wp-block-navigation-item__label">HackerRank</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://profiles.wordpress.org/lakshyajeet/"><span class="wp-block-navigation-item__label">WordPress</span></a></li></ul></nav></div>
+</div>
+</div>
+
+
+
+<p class="has-text-align-center" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+    Made with 💜 | LSG 2025
+  </p>
+</div>
+</footer></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/darkmatter/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="module" src="https://lakshyajeet.in/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=b0f909c3ec791c383210" id="@wordpress/block-library/navigation/view-js-module" fetchpriority="low" data-wp-router-options="{&quot;loadOnClientNavigation&quot;:true}"></script>
+<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+//# sourceURL=wp-block-template-skip-link-js-after
+</script>
+<script id="tss-main-js-before">
+window.tss_data = {"variations":[{"slug":"00-default","title":"Dark"},{"slug":"01-light","title":"Light"}],"useMappedNames":1,"isBlockTheme":true};
+//# sourceURL=tss-main-js-before
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://lakshyajeet.in/wp-includes/js/wp-emoji-release.min.js?ver=6.9"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://lakshyajeet.in/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>
