@@ -2,20 +2,20 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/blog/</loc>
-		<lastmod>2026-01-21T05:35:53+00:00</lastmod>
+		<lastmod>2026-02-26T05:57:36+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/04/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/wordpress-rest-api-internals/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/03/image-1-scaled.png?w=360</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -41,22 +41,22 @@
 		<loc>https://lakshyajeet.in/debugging-in-wordpress-with-xdebug/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-11-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-11-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-12-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-12-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-13-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-13-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-14-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-14-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-15-1.png?w=426</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-15-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-16-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-16-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -71,46 +71,46 @@
 		<loc>https://lakshyajeet.in/mastering-wordpress-seo-phpunit-testing/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-9-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-9-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/wordpress-administration/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-8-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-8-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/wordpress-the-essentials/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-4-1.png?w=872</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-4-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-5-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-5-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-6-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-6-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-7-1.png?w=548</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-7-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/getting-started-with-the-wordpress-block-and-site-editor/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-17.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-17.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-2.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-2-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-3-1.png?w=324</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -120,7 +120,7 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/https-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-10-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-10-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -130,7 +130,7 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/dns-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-7-edited-1.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-7-edited-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -147,16 +147,16 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/os-1.jpeg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-2-1.png?w=474</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1-2.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-3-1.png?w=652</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-4-1.png?w=750</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-4-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-5-1.png?w=750</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-5-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -177,7 +177,7 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/spongebob-rainbow-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-11.png?w=681</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-11.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -187,7 +187,7 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/htmlcss-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/image-1-1.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-3.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -227,7 +227,7 @@
 		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-iv/</loc>
 		<lastmod>2025-12-04T09:41:24+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/image-10-1-scaled.png?w=1024</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-10-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -362,7 +362,7 @@
 		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-theme-initialization-process/</loc>
 		<lastmod>2025-12-04T09:48:22+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/04/image-2.png?w=461</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -405,7 +405,7 @@
 		<loc>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/</loc>
 		<lastmod>2025-12-04T09:50:57+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/05/image-1.png?w=271</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -443,13 +443,23 @@
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/dht.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/image.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/image-2.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/rust-in-wordpress-craboptimize/</loc>
+		<lastmod>2026-02-26T05:57:36+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp</image:loc>
 		</image:image>
 	</url>
 </urlset>

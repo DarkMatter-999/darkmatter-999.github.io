@@ -12,13 +12,13 @@
 	<atom:link href="https://lakshyajeet.in/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Wed, 21 Jan 2026 05:35:53 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 26 Feb 2026 05:57:36 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9</generator>
+	<generator>https://wordpress.org/?v=6.9.1</generator>
 
 <image>
 	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
@@ -28,6 +28,1379 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Rust in WordPress: The Architectural overview of CrabOptimize</title>
+		<link>https://lakshyajeet.in/rust-in-wordpress-craboptimize/</link>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Thu, 26 Feb 2026 05:57:36 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1320</guid>
+
+					<description><![CDATA[<p>WordPress has relied on server-side PHP and C-libraries for image processing for over two decades. CrabOptimize changes the game by moving this heavy lifting entirely to the user's browser. Explore this technical deep-dive into how we bridge traditional PHP with a modern Rust and WebAssembly (WASM) frontend to deliver blazing-fast, multi-threaded AVIF and WebP optimization.</p>
+<p>The post <a href="https://lakshyajeet.in/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>WordPress has run on PHP for over two decades. While the jump from PHP 7.4 to the 8.0x series introduced significant performance gains through <strong>Just-In-Time (JIT) compilation</strong>, the language still functions as a high-level manager for <strong>dynamic libraries built on C code</strong> (like GD and ImageMagick) to handle performance-critical tasks. <strong>CrabOptimize</strong> represents an architectural experiment: What if we offload this heavy lifting from the WordPress server to the user&#8217;s browser using Rust and WebAssembly (WASM)?</p>
+
+
+
+<p>This blog explores the engineering behind CrabOptimize, a plugin that brings high-performance, fully client-side enhancements to the WordPress media library. By compiling Rust, known for its memory safety and speed, into WebAssembly, we bypass the limitations of server-side processing entirely. This not only reduces CPU requirements for the server but also modernizes the WordPress media workflow by introducing concurrent, multi-threaded processing on the client-side. This is a technical deep dive into how we bridge the gap between the traditional PHP backend and a modern Rust/WASM frontend.</p>
+
+
+
+<p><strong>Source Repository:</strong>&nbsp;<a href="https://github.com/DarkMatter-999/CrabOptimize/">DarkMatter-999/CrabOptimize</a></p>
+
+
+
+<figure class="wp-block-video"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.mp4" playsinline></video></figure>
+
+
+
+<h2 class="wp-block-heading">The Reality: Do We Really Need Client-Side Processing?</h2>
+
+
+
+<p>Let&#8217;s face it, the majority of WordPress websites aren&#8217;t being overwhelmed by hundreds of simultaneous image uploads. The majority of the time, only a few editors add media to an article. This has been handled flawlessly for years by WordPress&#8217;s built-in GD and ImageMagick integrations.</p>
+
+
+
+<p>But sticking with server-side image processing comes with headaches:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>The Portability Nightmare:</strong>&nbsp;Portability is a pain. Server environments are all over the place. One host might run an ancient GD library. Another might have ImageMagick, but with missing modules for new formats like AVIF. Cheaper shared hosting can be even worse, with tight PHP memory limits that choke on large images.</li>
+
+
+
+<li><strong>Bandwidth and Storage:</strong> New image formats like <strong>AVIF</strong> can offer a <strong>10x to 50x improvement</strong> in file size compared to traditional JPEGs, yet many WordPress environments are stuck with rigid server configs, making it tough to switch to better formats. If you run a site with user-generated content or front-end uploads, this turns into a real problem.</li>
+</ol>
+
+
+
+<p>But beyond solving practical problems, my motivation for this project was much simpler: <strong>I like Rust, and I like WordPress. Why not put them together?</strong></p>
+
+
+
+<h2 class="wp-block-heading">Why Rust + WebAssembly?</h2>
+
+
+
+<p>If we want to process images before they touch the server, we have to do it in the browser. But why not simply use JavaScript?<br>JavaScript is undoubtedly quick. However, when you attempt to encode an AVIF image using complex matrix math across millions of pixels, native JS becomes slow. Additionally, it is by default single-threaded. We require a powerful tool that runs directly within the browser.</p>
+
+
+
+<p><span><strong style="font-weight: bold;">WebAssembly (WAS</strong>M)</span> provides near-native execution speed. However, it is not a language; rather, it is merely a compilation target. Other than the fact I like Rust, I chose Rust to build the engine as:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Zero-Cost Abstractions &amp; Speed:</strong>&nbsp;Without a garbage collector, Rust provides C-like performance. As a result, our compiled.wasm file is lightning fast and small (less than 500KB).</li>
+
+
+
+<li><strong>Memory Safety:</strong>&nbsp;Processing images involves moving large amounts of raw data (ArrayBuffers) between the WASM module and the JavaScript heap. Rust&#8217;s stringent guidelines help us prevent memory leaks.</li>
+
+
+
+<li><strong>The Ecosystem:</strong>&nbsp;The Rust ecosystem is fantastic. There are pure-Rust libraries (such as image and ravif) for features like AVIF encoding, and tools like <code>wasm-pack</code> and <code>wasm-bindgen</code> make life easier. There are also no messy dependencies on C code that are difficult to compile for WASM.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">Intercepting the Media Library: Hijacking the Upload Stream!</h2>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%">
+<p>It&#8217;s not easy to integrate Rust and WASM into WordPress&#8217;s media workflow. The primary obstacle? The sandbox for browsers. WASM cannot simply grab a file while it is uploading because it cannot directly interact with the DOM or network.</p>
+
+
+
+<p><strong>CrabOptimize</strong> uses a JavaScript &#8220;<em>bridge</em>&#8221; to address this. Before it ever reaches the server, it replaces the original image with the optimized one after intercepting the typical WordPress upload event and sending the raw file to the Rust/WASM module for processing.</p>
+
+
+
+<p>Standard WordPress uploads flow directly from the User Interface (UI) to the PHP Server.&nbsp;<code>UI -&gt; FormData -&gt; POST Request -&gt; PHP ($_FILES)</code></p>
+
+
+
+<p>CrabOptimize alters this pipeline by injecting a client-side processing step:&nbsp;<code>UI -&gt; Interceptor -&gt; Rust/WASM (AVIF Conversion) -&gt; Modified FormData -&gt; POST Request -&gt; PHP</code></p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%">
+<figure class="wp-block-image alignleft size-large is-resized"><img fetchpriority="high" decoding="async" width="708" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp" alt="Project workflow overview." class="wp-image-1326" style="width:auto;height:600px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp 708w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-207x300.webp 207w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-768x1111.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1062x1536.webp 1062w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp 1100w" sizes="(max-width: 708px) 100vw, 708px" /></figure>
+</div>
+</div>
+
+
+
+<p>We target two distinct upload mechanisms in WordPress: the modern&nbsp;<strong>REST API (<code>apiFetch</code>)</strong>&nbsp;used by the Block Editor (Gutenberg), and the legacy&nbsp;<strong>Plupload</strong>&nbsp;library used in the Classic Editor and Media Modal.</p>
+
+
+
+<h3 class="wp-block-heading">The Modern Stack:&nbsp;<code>apiFetch</code>&nbsp;Middleware</h3>
+
+
+
+<p>The Block Editor communicates with the WordPress backend via the REST API. Specifically, it uses the&nbsp;<code>@wordpress/api-fetch</code>&nbsp;package. This package supports&nbsp;<strong>middleware</strong>, allowing us to inspect and modify requests before they are sent.</p>
+
+
+
+<p>In&nbsp;<code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/assets/src/js/editor.ts">assets/src/js/editor.ts</a></code>, we register a middleware that listens specifically for media uploads.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/editor.ts
+
+const mediaUploadMiddleware = async ( options: any, next: any ) =&gt; {
+    // 1. Detect if this is a Media Upload POST request
+    if (
+        'POST' === options.method &amp;&amp;
+        options.path?.includes( '/wp/v2/media' ) &amp;&amp;
+        options.body instanceof FormData
+    ) {
+        const file = options.body.get( 'file' );
+        
+        // 2. Filter: Only process if it's a valid File object and optimization is enabled
+        if ( file instanceof File &amp;&amp; ! keepUnoptimizedFile() ) {
+            
+            // 3. The Bridge to Rust: processFile() wraps the WASM worker interaction
+            const processed = await processFile( file ); 
+            
+            // 4. Client-Side Thumbnail Generation (calling Rust resizing logic)
+            const originalDims = await getImageDimensions( file );
+            const imageSizes = window?.dmCrabSettingsMain?.imageSizes || {};
+            const thumbnails = await generateThumbnails( file, originalDims, imageSizes );
+
+            // 5. Payload Swap: Replace original file with the WASM-generated AVIF
+            options.body.set( 'file', processed, processed.name );
+            
+            // 6. Append Metadata: Send generated thumbnails as a JSON string
+            if ( thumbnails.length &gt; 0 ) {
+                options.body.append( 'crab_thumbnails', JSON.stringify( thumbnails ) );
+            }
+            
+            // Flag the upload so PHP knows to skip server-side processing
+            if ( 'image/avif' === processed.type ) {
+                options.body.append( 'is_crab_optimized', 'true' );
+            }
+        }
+    }
+    // Continue the request chain
+    return next( options );
+};
+
+// Register the middleware
+wp.apiFetch.use( mediaUploadMiddleware );" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/editor.ts</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">mediaUploadMiddleware</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"> options: any, next: any </span>) =&gt; {
+    <span class="hljs-comment">// 1. Detect if this is a Media Upload POST request</span>
+    <span class="hljs-keyword">if</span> (
+        <span class="hljs-string">&apos;POST&apos;</span> === options.<span class="hljs-property">method</span> &amp;&amp;
+        options.<span class="hljs-property">path</span>?.<span class="hljs-title function_">includes</span>( <span class="hljs-string">&apos;/wp/v2/media&apos;</span> ) &amp;&amp;
+        options.<span class="hljs-property">body</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">FormData</span>
+    ) {
+        <span class="hljs-keyword">const</span> file = options.<span class="hljs-property">body</span>.<span class="hljs-title function_">get</span>( <span class="hljs-string">&apos;file&apos;</span> );
+        
+        <span class="hljs-comment">// 2. Filter: Only process if it&apos;s a valid File object and optimization is enabled</span>
+        <span class="hljs-keyword">if</span> ( file <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">File</span> &amp;&amp; ! <span class="hljs-title function_">keepUnoptimizedFile</span>() ) {
+            
+            <span class="hljs-comment">// 3. The Bridge to Rust: processFile() wraps the WASM worker interaction</span>
+            <span class="hljs-keyword">const</span> processed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">processFile</span>( file ); 
+            
+            <span class="hljs-comment">// 4. Client-Side Thumbnail Generation (calling Rust resizing logic)</span>
+            <span class="hljs-keyword">const</span> originalDims = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getImageDimensions</span>( file );
+            <span class="hljs-keyword">const</span> imageSizes = <span class="hljs-variable language_">window</span>?.<span class="hljs-property">dmCrabSettingsMain</span>?.<span class="hljs-property">imageSizes</span> || {};
+            <span class="hljs-keyword">const</span> thumbnails = <span class="hljs-keyword">await</span> <span class="hljs-title function_">generateThumbnails</span>( file, originalDims, imageSizes );
+
+            <span class="hljs-comment">// 5. Payload Swap: Replace original file with the WASM-generated AVIF</span>
+            options.<span class="hljs-property">body</span>.<span class="hljs-title function_">set</span>( <span class="hljs-string">&apos;file&apos;</span>, processed, processed.<span class="hljs-property">name</span> );
+            
+            <span class="hljs-comment">// 6. Append Metadata: Send generated thumbnails as a JSON string</span>
+            <span class="hljs-keyword">if</span> ( thumbnails.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> ) {
+                options.<span class="hljs-property">body</span>.<span class="hljs-title function_">append</span>( <span class="hljs-string">&apos;crab_thumbnails&apos;</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>( thumbnails ) );
+            }
+            
+            <span class="hljs-comment">// Flag the upload so PHP knows to skip server-side processing</span>
+            <span class="hljs-keyword">if</span> ( <span class="hljs-string">&apos;image/avif&apos;</span> === processed.<span class="hljs-property">type</span> ) {
+                options.<span class="hljs-property">body</span>.<span class="hljs-title function_">append</span>( <span class="hljs-string">&apos;is_crab_optimized&apos;</span>, <span class="hljs-string">&apos;true&apos;</span> );
+            }
+        }
+    }
+    <span class="hljs-comment">// Continue the request chain</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>( options );
+};
+
+<span class="hljs-comment">// Register the middleware</span>
+wp.<span class="hljs-property">apiFetch</span>.<span class="hljs-title function_">use</span>( mediaUploadMiddleware );</code></pre>
+
+
+
+<p><strong>Key Takeaway:</strong>&nbsp;The&nbsp;<code>await processFile(file)</code>&nbsp;line is where the JavaScript thread yields control to the Web Worker running our Rust code. The browser UI remains responsive, but the upload request is effectively &#8220;paused&#8221; until the WASM module returns the processed binary.</p>
+
+
+
+<h3 class="wp-block-heading">The Legacy Stack: Hijacking&nbsp;<code>plupload</code></h3>
+
+
+
+<p>The classic media uploader relies on&nbsp;<code>plupload</code>. Unlike&nbsp;<code>apiFetch</code>,&nbsp;<code>plupload</code>&nbsp;doesn&#8217;t have a modern middleware system. To inject our WASM processing here, we have to be more aggressive: we wrap the global&nbsp;<code>plupload.Uploader</code>&nbsp;constructor.</p>
+
+
+
+<p>This ensures that&nbsp;<em>any</em>&nbsp;instance of a uploader created by WordPress (or other plugins) inherits our event listeners.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/editor.ts
+
+const hookLegacyPlupload = () =&gt; {
+    if ( ! ( window as any ).plupload ) { return; }
+    
+    // Store reference to original constructor
+    const OriginalUploader = ( window as any ).plupload.Uploader;
+
+    // Overwrite with our wrapper
+    ( window as any ).plupload.Uploader = function ( settings: any ) {
+        const instance = new OriginalUploader( settings );
+        
+        // Inject our event handling logic
+        setupUploaderEvents( instance ); 
+        
+        return instance;
+    };
+    
+    // Maintain prototype chain for compatibility
+    ( window as any ).plupload.Uploader.prototype = OriginalUploader.prototype;
+    Object.assign( ( window as any ).plupload.Uploader, OriginalUploader );
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/editor.ts</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">hookLegacyPlupload</span> = (<span class="hljs-params"></span>) =&gt; {
+    <span class="hljs-keyword">if</span> ( ! ( <span class="hljs-variable language_">window</span> <span class="hljs-keyword">as</span> any ).<span class="hljs-property">plupload</span> ) { <span class="hljs-keyword">return</span>; }
+    
+    <span class="hljs-comment">// Store reference to original constructor</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title class_">OriginalUploader</span> = ( <span class="hljs-variable language_">window</span> <span class="hljs-keyword">as</span> any ).<span class="hljs-property">plupload</span>.<span class="hljs-property">Uploader</span>;
+
+    <span class="hljs-comment">// Overwrite with our wrapper</span>
+    ( <span class="hljs-variable language_">window</span> <span class="hljs-keyword">as</span> any ).<span class="hljs-property">plupload</span>.<span class="hljs-property">Uploader</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"> settings: any </span>) {
+        <span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">OriginalUploader</span>( settings );
+        
+        <span class="hljs-comment">// Inject our event handling logic</span>
+        <span class="hljs-title function_">setupUploaderEvents</span>( instance ); 
+        
+        <span class="hljs-keyword">return</span> instance;
+    };
+    
+    <span class="hljs-comment">// Maintain prototype chain for compatibility</span>
+    ( <span class="hljs-variable language_">window</span> <span class="hljs-keyword">as</span> any ).<span class="hljs-property">plupload</span>.<span class="hljs-property">Uploader</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-title class_">OriginalUploader</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;
+    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>( ( <span class="hljs-variable language_">window</span> <span class="hljs-keyword">as</span> any ).<span class="hljs-property">plupload</span>.<span class="hljs-property">Uploader</span>, <span class="hljs-title class_">OriginalUploader</span> );
+};</code></pre>
+
+
+
+<p>In&nbsp;<code>setupUploaderEvents</code>, we bind to&nbsp;<code>BeforeUpload</code>. This is critical,&nbsp;<code>plupload</code>&nbsp;manages a queue, we must intercept the file object in the queue, pass it to our Rust worker, wait for the conversion, and then&nbsp;<strong>mutate the file object in the queue</strong>&nbsp;before&nbsp;<code>plupload</code>&nbsp;actually opens the network stream.</p>
+
+
+
+<h3 class="wp-block-heading">Server-Side Reassembly (PHP)</h3>
+
+
+
+<p>Once the Rust/WASM/JavaScript layer has done its job, it sends a&nbsp;<code>POST</code>&nbsp;request containing:</p>
+
+
+
+<ol class="wp-block-list">
+<li>The&nbsp;<strong>Main Image</strong>&nbsp;(now an optimized AVIF file).</li>
+
+
+
+<li>A&nbsp;<strong>JSON String</strong>&nbsp;containing base64-encoded thumbnails (also optimized AVIFs).</li>
+
+
+
+<li>A flag:&nbsp;<code>is_crab_optimized</code>.</li>
+</ol>
+
+
+
+<p>The PHP side,&nbsp;<code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/include/classes/class-media.php">class-media.php</a></code>, acts as a receiver. It doesn&#8217;t need to invoke ImageMagick or GD. It simply saves the data it receives.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// include/classes/class-media.php
+
+public function handle_thumbnails( $metadata, $attachment_id ) {
+    // Check if client sent pre-computed thumbnails
+    if ( ! isset( $_REQUEST['crab_thumbnails'] ) ) { return $metadata; }
+
+    // Decode the JSON payload from the WASM client
+    $thumbnails = json_decode( sanitize_text_field( wp_unslash( $_REQUEST['crab_thumbnails'] ) ), true );
+
+    $file_path  = get_attached_file( $attachment_id );
+    $upload_dir = dirname( $file_path );
+
+    foreach ( $thumbnails as $thumb ) {
+        // Decode base64 AVIF data back to binary
+        $decoded_data = base64_decode( $thumb['data'] ); 
+        
+        // Write directly to disk - No server CPU processing required
+        // ... (file writing logic) ...
+
+        // Update WordPress metadata
+        $metadata['sizes'][ $size_name ] = array(
+            'file'      =&gt; $thumb_filename,
+            'width'     =&gt; $width,
+            'height'    =&gt; $height,
+            'mime-type' =&gt; 'image/avif',
+        );
+    }
+    return $metadata;
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-php"><span class="hljs-comment">// include/classes/class-media.php</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle_thumbnails</span>(<span class="hljs-params"> <span class="hljs-variable">$metadata</span>, <span class="hljs-variable">$attachment_id</span> </span>) </span>{
+    <span class="hljs-comment">// Check if client sent pre-computed thumbnails</span>
+    <span class="hljs-keyword">if</span> ( ! <span class="hljs-keyword">isset</span>( <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&apos;crab_thumbnails&apos;</span>] ) ) { <span class="hljs-keyword">return</span> <span class="hljs-variable">$metadata</span>; }
+
+    <span class="hljs-comment">// Decode the JSON payload from the WASM client</span>
+    <span class="hljs-variable">$thumbnails</span> = <span class="hljs-title function_ invoke__">json_decode</span>( <span class="hljs-title function_ invoke__">sanitize_text_field</span>( <span class="hljs-title function_ invoke__">wp_unslash</span>( <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&apos;crab_thumbnails&apos;</span>] ) ), <span class="hljs-literal">true</span> );
+
+    <span class="hljs-variable">$file_path</span>  = <span class="hljs-title function_ invoke__">get_attached_file</span>( <span class="hljs-variable">$attachment_id</span> );
+    <span class="hljs-variable">$upload_dir</span> = <span class="hljs-title function_ invoke__">dirname</span>( <span class="hljs-variable">$file_path</span> );
+
+    <span class="hljs-keyword">foreach</span> ( <span class="hljs-variable">$thumbnails</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$thumb</span> ) {
+        <span class="hljs-comment">// Decode base64 AVIF data back to binary</span>
+        <span class="hljs-variable">$decoded_data</span> = <span class="hljs-title function_ invoke__">base64_decode</span>( <span class="hljs-variable">$thumb</span>[<span class="hljs-string">&apos;data&apos;</span>] ); 
+        
+        <span class="hljs-comment">// Write directly to disk - No server CPU processing required</span>
+        <span class="hljs-comment">// ... (file writing logic) ...</span>
+
+        <span class="hljs-comment">// Update WordPress metadata</span>
+        <span class="hljs-variable">$metadata</span>[<span class="hljs-string">&apos;sizes&apos;</span>][ <span class="hljs-variable">$size_name</span> ] = <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">&apos;file&apos;</span>      =&gt; <span class="hljs-variable">$thumb_filename</span>,
+            <span class="hljs-string">&apos;width&apos;</span>     =&gt; <span class="hljs-variable">$width</span>,
+            <span class="hljs-string">&apos;height&apos;</span>    =&gt; <span class="hljs-variable">$height</span>,
+            <span class="hljs-string">&apos;mime-type&apos;</span> =&gt; <span class="hljs-string">&apos;image/avif&apos;</span>,
+        );
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$metadata</span>;
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading">The Rust Core: Compiling Image Processing to WASM</h2>
+
+
+
+<p>We established how the upload process is intercepted by JavaScript. We currently have a File object in our memory. Converting that raw binary data (JPEG/PNG) into a highly compressed AVIF image within the browser is the difficult part.</p>
+
+
+
+<p>Rust to WebAssembly (WASM) compilation provides speed that is nearly equal to native code. Additionally, you have control over memory and type safety, which JavaScript simply does not provide. The finest aspect? The user&#8217;s device, not your servers, is where all the hard work takes place.</p>
+
+
+
+<h3 class="wp-block-heading">The Rust Toolchain</h3>
+
+
+
+<p>CrabOptimize’s engine is a Rust library sitting in <code>wasm/</code>. We use <code>wasm-pack</code> to turn it into a .wasm binary and generate the JS “glue” code that hooks everything up.</p>
+
+
+
+<p>In <code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/wasm/Cargo.toml">Cargo.toml</a></code>, the crate-type is <code>cdylib</code>. That’s required for WASM modules that need to talk to JavaScript.</p>
+
+
+
+<p>Here’s what makes this work: </p>
+
+
+
+<ul class="wp-block-list">
+<li><code>wasm-bindgen</code>: This is the bridge. It lets Rust and JS share complex data, strings, arrays, objects, without headaches. </li>
+
+
+
+<li><code>image</code>: A Rust library that decodes JPEG and PNG files into raw RGBA pixels. </li>
+
+
+
+<li><code>ravif</code>: A pure Rust AVIF encoder. It’s fast, optimized for WASM, and doesn’t need any outside C libraries.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">The Optimization Logic (<code>lib.rs</code>)</h3>
+
+
+
+<p>The best part of the Rust toolchain is that we can simply mark any public function with&nbsp;<code>#[wasm_bindgen]</code> macro. This annotation tells the compiler:&nbsp;<em>&#8220;Make this function available to JavaScript.&#8221;</em></p>
+
+
+
+<p>Here is the actual implementation from&nbsp;<code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/wasm/src/lib.rs">wasm/src/lib.rs</a></code>:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="use image::load_from_memory;
+use ravif::*;
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn convert_to_avif(data: &amp;[u8], quality: f32, speed: u8) -&gt; Result<Vec<u8&gt;, JsValue&gt; {
+    // 1. Decode the Input
+    // We take a slice of bytes (&amp;[u8]) representing the raw file.
+    // The 'image' crate decodes this into a dynamic image object.
+    let img = load_from_memory(data)
+        .map_err(|e| JsValue::from_str(&amp;e.to_string()))?
+        .to_rgba8(); // We need raw RGBA pixels for the encoder
+
+    // 2. Prepare for Encoding
+    let width = img.width() as usize;
+    let height = img.height() as usize;
+    let pixels = img.into_raw();
+
+    // 3. Encode to AVIF
+    // 'ravif' takes the raw RGBA buffer and compresses it.
+    let res = Encoder::new()
+        .with_quality(quality) // 0.0 - 100.0
+        .with_speed(speed)     // 0 - 10 (10 is fastest/lowest compression)
+        .encode_rgba(Img::new(&amp;pixels, width, height))
+        .map_err(|e| JsValue::from_str(&amp;format!(&quot;AVIF Error: {:?}&quot;, e)))?;
+
+    // 4. Return the Result
+    // We return a Vec<u8&gt; (byte vector). wasm-bindgen automatically
+    // converts this into a JavaScript Uint8Array.
+    Ok(res.avif_file)
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-rust"><span class="hljs-keyword">use</span> image::load_from_memory;
+<span class="hljs-keyword">use</span> ravif::*;
+<span class="hljs-keyword">use</span> wasm_bindgen::prelude::*;
+
+<span class="hljs-meta">#[wasm_bindgen]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">convert_to_avif</span>(data: &amp;[<span class="hljs-type">u8</span>], quality: <span class="hljs-type">f32</span>, speed: <span class="hljs-type">u8</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u8</span>&gt;, JsValue&gt; {
+    <span class="hljs-comment">// 1. Decode the Input</span>
+    <span class="hljs-comment">// We take a slice of bytes (&amp;[u8]) representing the raw file.</span>
+    <span class="hljs-comment">// The &apos;image&apos; crate decodes this into a dynamic image object.</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">img</span> = <span class="hljs-title function_ invoke__">load_from_memory</span>(data)
+        .<span class="hljs-title function_ invoke__">map_err</span>(|e| JsValue::<span class="hljs-title function_ invoke__">from_str</span>(&amp;e.<span class="hljs-title function_ invoke__">to_string</span>()))?
+        .<span class="hljs-title function_ invoke__">to_rgba8</span>(); <span class="hljs-comment">// We need raw RGBA pixels for the encoder</span>
+
+    <span class="hljs-comment">// 2. Prepare for Encoding</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">width</span> = img.<span class="hljs-title function_ invoke__">width</span>() <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>;
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">height</span> = img.<span class="hljs-title function_ invoke__">height</span>() <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>;
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">pixels</span> = img.<span class="hljs-title function_ invoke__">into_raw</span>();
+
+    <span class="hljs-comment">// 3. Encode to AVIF</span>
+    <span class="hljs-comment">// &apos;ravif&apos; takes the raw RGBA buffer and compresses it.</span>
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = Encoder::<span class="hljs-title function_ invoke__">new</span>()
+        .<span class="hljs-title function_ invoke__">with_quality</span>(quality) <span class="hljs-comment">// 0.0 - 100.0</span>
+        .<span class="hljs-title function_ invoke__">with_speed</span>(speed)     <span class="hljs-comment">// 0 - 10 (10 is fastest/lowest compression)</span>
+        .<span class="hljs-title function_ invoke__">encode_rgba</span>(Img::<span class="hljs-title function_ invoke__">new</span>(&amp;pixels, width, height))
+        .<span class="hljs-title function_ invoke__">map_err</span>(|e| JsValue::<span class="hljs-title function_ invoke__">from_str</span>(&amp;<span class="hljs-built_in">format!</span>(<span class="hljs-string">&quot;AVIF Error: {:?}&quot;</span>, e)))?;
+
+    <span class="hljs-comment">// 4. Return the Result</span>
+    <span class="hljs-comment">// We return a Vec&lt;u8&gt; (byte vector). wasm-bindgen automatically</span>
+    <span class="hljs-comment">// converts this into a JavaScript Uint8Array.</span>
+    <span class="hljs-title function_ invoke__">Ok</span>(res.avif_file)
+}</code></pre>
+
+
+
+<p>One of the most expensive operations in WASM is crossing the boundary between JavaScript and Rust, particularly when transferring big data sets like images.</p>
+
+
+
+<ul class="wp-block-list">
+<li>Input: The file is read by JS into an <code>ArrayBuffer</code>, which <code>wasm-bindgen</code> allows Rust to view as <code>&amp;[u8]</code>.</li>
+
+
+
+<li>Processing: The image is decoded into raw RGBA pixels by Rust.</li>
+
+
+
+<li>Output: ravif compresses it into a new Vec&lt;u8&gt;, AVIF image. </li>
+
+
+
+<li>Return: After Rust returns Vec&lt;u8&gt; back, and <code>wasm-bindgen</code> converts it to a <code>Uint8Array</code> for JavaScript.</li>
+</ul>
+
+
+
+<p>This copy overhead is negligible compared to the time saved by using WASM for the compression algorithm itself when compared to JavaScript.</p>
+
+
+
+<h3 class="wp-block-heading">Dynamic Resizing in Rust</h3>
+
+
+
+<p>CrabOptimize doesn’t just convert; it resizes too. That’s handy for thumbnails and previews (more on that later). Here’s the second function:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="use image::imageops::FilterType;
+
+#[wasm_bindgen]
+pub fn convert_to_avif_resize(
+    data: &amp;[u8], 
+    quality: f32, 
+    speed: u8, 
+    target_width: u32, 
+    target_height: u32, 
+    crop: bool
+) -&gt; Result<Vec<u8&gt;, JsValue&gt; {
+    
+    let mut img = load_from_memory(data)
+        .map_err(|e| JsValue::from_str(&amp;e.to_string()))?;
+
+    // Perform Resizing / Cropping using Rust's 'image' crate
+    if crop {
+        img = img.resize_to_fill(target_width, target_height, FilterType::Lanczos3);
+    } else {
+        img = img.resize(target_width, target_height, FilterType::Lanczos3);
+    }
+
+    let rgba = img.to_rgba8();
+    
+    // ... encoding logic (same as above) ...
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-rust"><span class="hljs-keyword">use</span> image::imageops::FilterType;
+
+<span class="hljs-meta">#[wasm_bindgen]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">convert_to_avif_resize</span>(
+    data: &amp;[<span class="hljs-type">u8</span>], 
+    quality: <span class="hljs-type">f32</span>, 
+    speed: <span class="hljs-type">u8</span>, 
+    target_width: <span class="hljs-type">u32</span>, 
+    target_height: <span class="hljs-type">u32</span>, 
+    crop: <span class="hljs-type">bool</span>
+) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u8</span>&gt;, JsValue&gt; {
+    
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">img</span> = <span class="hljs-title function_ invoke__">load_from_memory</span>(data)
+        .<span class="hljs-title function_ invoke__">map_err</span>(|e| JsValue::<span class="hljs-title function_ invoke__">from_str</span>(&amp;e.<span class="hljs-title function_ invoke__">to_string</span>()))?;
+
+    <span class="hljs-comment">// Perform Resizing / Cropping using Rust&apos;s &apos;image&apos; crate</span>
+    <span class="hljs-keyword">if</span> crop {
+        img = img.<span class="hljs-title function_ invoke__">resize_to_fill</span>(target_width, target_height, FilterType::Lanczos3);
+    } <span class="hljs-keyword">else</span> {
+        img = img.<span class="hljs-title function_ invoke__">resize</span>(target_width, target_height, FilterType::Lanczos3);
+    }
+
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">rgba</span> = img.<span class="hljs-title function_ invoke__">to_rgba8</span>();
+    
+    <span class="hljs-comment">// ... encoding logic (same as above) ...</span>
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading">The Hybrid Build Pipeline: Cargo meets npm</h2>
+
+
+
+<p>CrabOptimize&#8217;s development was not like other plugin projects. It is a combination of PHP, React, and Rust. Each feature requires working with code written in three distinct languages:</p>
+
+
+
+<ul class="wp-block-list">
+<li>PHP for the server-side logic and hooks </li>
+
+
+
+<li>TypeScript for the client UI and interception </li>
+
+
+
+<li>Rust for the primary image processing system</li>
+</ul>
+
+
+
+<p>It&#8217;ll be very repetitive and tiring if you attempted to manually construct every component-<code>cargo build</code>, <code>tsc</code>, copy files, and lint PHP. I therefore combined everything into a single build pipeline. All three languages are synchronized with a single command.</p>
+
+
+
+<h3 class="wp-block-heading">1. <code>npm</code>: The Brains of the Operation</h3>
+
+
+
+<p>We treat <code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/package.json">package.json</a></code> as the main control. Although Rust has its own build tools, setup is made simple by using npm scripts to wrap everything. You&#8217;re ready if you have Rust and Node.js. The standard suspects, Webpack, Babel, and SCSS, are handled by <code>@wordpress/scripts</code>. However, it is unaware of our WebAssembly requirements. Thus, we include a pre-build phase.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// package.json
+
+&quot;scripts&quot;: {
+    // 1. The Rust Step: Compile WASM first
+    &quot;build:wasm&quot;: &quot;wasm-pack build wasm --target web --out-dir ../assets/wasm&quot;,
+    
+    // 2. The JS Step: Bundle TS and link the WASM glue code
+    &quot;build:js&quot;: &quot;wp-scripts build --webpack-src-dir=assets/src --output-path=assets/build&quot;,
+    
+    // 3. The Combined Command
+    &quot;build&quot;: &quot;npm run build:wasm &amp;&amp; npm run build:js&quot;,
+    
+    // 4. Dev Mode: Watch for changes
+    &quot;start&quot;: &quot;npm run build:wasm &amp;&amp; wp-scripts start --webpack-src-dir=assets/src --output-path=assets/build&quot;
+}," type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-json"><span class="hljs-comment">// package.json</span>
+
+<span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">// 1. The Rust Step: Compile WASM first</span>
+    <span class="hljs-attr">&quot;build:wasm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wasm-pack build wasm --target web --out-dir ../assets/wasm&quot;</span><span class="hljs-punctuation">,</span>
+    
+    <span class="hljs-comment">// 2. The JS Step: Bundle TS and link the WASM glue code</span>
+    <span class="hljs-attr">&quot;build:js&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wp-scripts build --webpack-src-dir=assets/src --output-path=assets/build&quot;</span><span class="hljs-punctuation">,</span>
+    
+    <span class="hljs-comment">// 3. The Combined Command</span>
+    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run build:wasm &amp;&amp; npm run build:js&quot;</span><span class="hljs-punctuation">,</span>
+    
+    <span class="hljs-comment">// 4. Dev Mode: Watch for changes</span>
+    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npm run build:wasm &amp;&amp; wp-scripts start --webpack-src-dir=assets/src --output-path=assets/build&quot;</span>
+<span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span></code></pre>
+
+
+
+<p><br>The workflow goes like this:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>npm run build</code>:wasm kicks off <code>wasm-pack</code>, which compiles our Rust code (<code>wasm/src/lib.rs</code>) into a .wasm file and spits out the matching JS glue code. </li>
+
+
+
+<li><code>npm run build:js</code> fires up Webpack to bundle the TypeScript, which imports that WASM glue from the first step. </li>
+
+
+
+<li>Webpack bundles everything into <code>editor.js</code>, ready for the browser.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">2. Rust and Webpack: Making WASM Play Nice</h3>
+
+
+
+<p>Webpack doesn&#8217;t really know what to do with .wasm files, right out of the box or the glue code that <code>wasm-pack</code> produces. Things become jumbled even with Webpack 5&#8217;s experimental WASM support. With <code>--target web</code>, we allow <code>wasm-pack</code> to do the heavy lifting and provide us with ES modules that we can import straight away.<br>We load the module in our TypeScript using dynamic imports:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/crab-worker.ts
+
+// We import the init function and specific methods from the pkg folder 
+// generated by step 1 of the build process.
+import init, { convert_to_avif } from '../../../wasm/pkg/craboptimize_wasm';
+
+// ...
+await init(); // Boot the WASM module
+// ..." type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/crab-worker.ts</span>
+
+<span class="hljs-comment">// We import the init function and specific methods from the pkg folder </span>
+<span class="hljs-comment">// generated by step 1 of the build process.</span>
+<span class="hljs-keyword">import</span> init, { convert_to_avif } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../wasm/pkg/craboptimize_wasm&apos;</span>;
+
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">init</span>(); <span class="hljs-comment">// Boot the WASM module</span>
+<span class="hljs-comment">// ...</span></code></pre>
+
+
+
+<p>This works because&nbsp;<code>npm run build:wasm</code>&nbsp;runs&nbsp;<em>before</em>&nbsp;Webpack starts looking for files.</p>
+
+
+
+<h3 class="wp-block-heading">3. Enforcing Quality Across 3 Languages</h3>
+
+
+
+<p>If you mess up in Rust, you can crash the worker. Screw up TypeScript, break the UI. Botch PHP, and you might take down the server. So, its good to be strict about code quality everywhere.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>PHP</strong>: We use <code>PHP_CodeSniffer</code> and stick to WordPress Coding Standards. </li>
+
+
+
+<li><strong>JavaScript/TypeScript</strong>: ESLint and Prettier (through <code>@wordpress/scripts</code>) keep our React and TS code clean. </li>
+
+
+
+<li><strong>Rust</strong>: <code>cargo fmt</code> auto-formats our code, and <code>cargo clippy</code> catches mistakes and performance issues.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Multithreading in the Browser: Workers &amp; Queues</h2>
+
+
+
+<p>We looked at how CrabOptimize generates a whole batch of thumbnails for every upload. When a user uploads a large raw image (20 MB), the browser must first decode it, resize and encode it multiple times.</p>
+
+
+
+<p>The WordPress editor would simply lock up if we attempted to accomplish all of that on the Main Thread, which is the one running your user interface. No typing, no scrolling, and most definitely no &#8220;Publish&#8221;; a &#8220;Page Unresponsive&#8221; alert may even appear. Not the best. What is the answer, then? Web Workers are used by CrabOptimize to enable multi-threading. We approach the browser as a multilane highway rather than a one-way street. We distribute the workload evenly among CPU cores while maintaining a fluid user interface throughout.</p>
+
+
+
+<h3 class="wp-block-heading">The Worker: An Isolated Rust Environment</h3>
+
+
+
+<p>A Web Worker has its own memory and operates in a separate thread. It can run WebAssembly but is unable to access the DOM. Our Rust code is hosted by a worker script that we created in <a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/assets/src/js/crab-worker.ts">assets/src/js/crab-worker.ts</a>.</p>
+
+
+
+<ul class="wp-block-list">
+<li>When a message arrives, the worker unpacks the data: file buffer, file name, quality, speed, width, height, crop settings. </li>
+
+
+
+<li>It loads the WASM binary only once per worker. No need to download it multiple times. </li>
+
+
+
+<li>It converts the file buffer into a format Rust can process. </li>
+
+
+
+<li>Then it runs the Rust code. This blocks the worker thread, but the Main Thread stays free-so the UI doesn’t stutter. </li>
+
+
+
+<li>When it’s finished, it uses Transferable Objects to send the AVIF buffer back to the main thread. No copying, just instant memory transfer. </li>
+
+
+
+<li>If something fails, the worker catches the error and sends it back. </li>
+</ul>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/crab-worker.ts
+import init, { convert_to_avif, convert_to_avif_resize } from '../../../wasm/pkg/craboptimize_wasm';
+
+let wasmReady = false;
+
+self.onmessage = async ( e: MessageEvent ) =&gt; {
+    // 1. Unpack Payload
+    const { fileBuffer, fileName, quality, speed, width, height, crop } = e.data;
+
+    // 2. Initialize WASM (Lazy Loading)
+    // We only load the .wasm binary once per worker to save bandwidth/time
+    if ( ! wasmReady ) {
+        await init();
+        wasmReady = true;
+    }
+
+    try {
+        // 3. Zero-Copy Transfer
+        // We cast the buffer to a view that Rust can understand
+        const input = new Uint8Array( fileBuffer );
+        
+        // 4. Execute Rust Logic
+        // This blocks the Worker thread, but NOT the Main thread
+        const avif = width &gt; 0 &amp;&amp; height &gt; 0
+            ? convert_to_avif_resize( input, quality, speed, width, height, crop )
+            : convert_to_avif( input, quality, speed );
+
+        // 5. Return Result
+        // We use 'Transferable Objects' ([avif.buffer]) to move memory 
+        // back to the main thread instantly without copying.
+        self.postMessage(
+            { 
+                avifBuffer: avif.buffer, 
+                fileName: fileName.replace( /\.[^/.]+$/, '' ) + '.avif' 
+            },
+            [ avif.buffer ] as any 
+        );
+    } catch ( err ) {
+        self.postMessage( { error: err.message } );
+    }
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/crab-worker.ts</span>
+<span class="hljs-keyword">import</span> init, { convert_to_avif, convert_to_avif_resize } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../wasm/pkg/craboptimize_wasm&apos;</span>;
+
+<span class="hljs-keyword">let</span> wasmReady = <span class="hljs-literal">false</span>;
+
+self.<span class="hljs-property">onmessage</span> = <span class="hljs-title function_">async</span> ( <span class="hljs-attr">e</span>: <span class="hljs-title class_">MessageEvent</span> ) =&gt; {
+    <span class="hljs-comment">// 1. Unpack Payload</span>
+    <span class="hljs-keyword">const</span> { fileBuffer, fileName, quality, speed, width, height, crop } = e.<span class="hljs-property">data</span>;
+
+    <span class="hljs-comment">// 2. Initialize WASM (Lazy Loading)</span>
+    <span class="hljs-comment">// We only load the .wasm binary once per worker to save bandwidth/time</span>
+    <span class="hljs-keyword">if</span> ( ! wasmReady ) {
+        <span class="hljs-keyword">await</span> <span class="hljs-title function_">init</span>();
+        wasmReady = <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// 3. Zero-Copy Transfer</span>
+        <span class="hljs-comment">// We cast the buffer to a view that Rust can understand</span>
+        <span class="hljs-keyword">const</span> input = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>( fileBuffer );
+        
+        <span class="hljs-comment">// 4. Execute Rust Logic</span>
+        <span class="hljs-comment">// This blocks the Worker thread, but NOT the Main thread</span>
+        <span class="hljs-keyword">const</span> avif = width &gt; <span class="hljs-number">0</span> &amp;&amp; height &gt; <span class="hljs-number">0</span>
+            ? <span class="hljs-title function_">convert_to_avif_resize</span>( input, quality, speed, width, height, crop )
+            : <span class="hljs-title function_">convert_to_avif</span>( input, quality, speed );
+
+        <span class="hljs-comment">// 5. Return Result</span>
+        <span class="hljs-comment">// We use &apos;Transferable Objects&apos; ([avif.buffer]) to move memory </span>
+        <span class="hljs-comment">// back to the main thread instantly without copying.</span>
+        self.<span class="hljs-title function_">postMessage</span>(
+            { 
+                <span class="hljs-attr">avifBuffer</span>: avif.<span class="hljs-property">buffer</span>, 
+                <span class="hljs-attr">fileName</span>: fileName.<span class="hljs-title function_">replace</span>( <span class="hljs-regexp">/\.[^/.]+$/</span>, <span class="hljs-string">&apos;&apos;</span> ) + <span class="hljs-string">&apos;.avif&apos;</span> 
+            },
+            [ avif.<span class="hljs-property">buffer</span> ] <span class="hljs-keyword">as</span> any 
+        );
+    } <span class="hljs-keyword">catch</span> ( err ) {
+        self.<span class="hljs-title function_">postMessage</span>( { <span class="hljs-attr">error</span>: err.<span class="hljs-property">message</span> } );
+    }
+};</code></pre>
+
+
+
+<p>Performance note: That buffer transfer is crucial. By transferring memory ownership, we avoid the slow and wasteful process of cloning large images between threads.</p>
+
+
+
+<h3 class="wp-block-heading">The Queue: Managing Concurrency</h3>
+
+
+
+<div class="wp-block-group is-layout-constrained wp-block-group-is-layout-constrained">
+<p>We would undoubtedly run out of memory and most likely crash the browser if we started a new Worker for each thumbnail, perhaps 50 at once for a big upload. We use a scheduler (CrabQueue) for this reason.</p>
+
+
+
+<p>Depending on the user&#8217;s hardware, CrabQueue regulates the number of workers that can operate simultaneously. In order to make efficient use of the CPU without overtaxing it, it restricts the number of concurrent tasks. Every time you add a task, CrabQueue decides whether to queue it or start it right away. It selects and initiates the next task when a slot becomes available. It looks for any pending tasks after a task is finished. Processing proceeds without overtaxing the system in this manner.</p>
+</div>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/crab-queue.ts
+
+// Determine logical cores. 
+// Cap at 6 to prevent hogging all resources on high-end machines.
+// Min at 2 to ensure some parallelism.
+const MAX_CONCURRENCY = Math.min( navigator.hardwareConcurrency || 2, 6 );
+
+export class CrabQueue {
+    private running = 0;
+    private queue: Array<{ task: () =&gt; Promise<any&gt;, resolve: any, reject: any }&gt; = [];
+
+    // Add a task to the pile
+    async add<T&gt;( task: () =&gt; Promise<T&gt; ): Promise<T&gt; {
+        return new Promise( ( resolve, reject ) =&gt; {
+            this.queue.push( { task, resolve, reject } );
+            this.process(); // Trigger the loop
+        });
+    }
+
+    private async process() {
+        // Stop if we hit the limit or run out of tasks
+        if ( this.running &gt;= MAX_CONCURRENCY || this.queue.length === 0 ) {
+            return;
+        }
+
+        // Dequeue next job
+        this.running++;
+        const { task, resolve, reject } = this.queue.shift()!;
+
+        try {
+            const result = await task(); // Spawn the worker
+            resolve( result );
+        } catch ( err ) {
+            reject( err );
+        } finally {
+            this.running--;
+            this.process(); // Recursively check for next job
+        }
+    }
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/crab-queue.ts</span>
+
+<span class="hljs-comment">// Determine logical cores. </span>
+<span class="hljs-comment">// Cap at 6 to prevent hogging all resources on high-end machines.</span>
+<span class="hljs-comment">// Min at 2 to ensure some parallelism.</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_CONCURRENCY</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>( navigator.<span class="hljs-property">hardwareConcurrency</span> || <span class="hljs-number">2</span>, <span class="hljs-number">6</span> );
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CrabQueue</span> {
+    private running = <span class="hljs-number">0</span>;
+    private <span class="hljs-attr">queue</span>: <span class="hljs-title class_">Array</span>&lt;{ <span class="hljs-attr">task</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;any&gt;, <span class="hljs-attr">resolve</span>: any, <span class="hljs-attr">reject</span>: any }&gt; = [];
+
+    <span class="hljs-comment">// Add a task to the pile</span>
+    <span class="hljs-keyword">async</span> add&lt;T&gt;( <span class="hljs-attr">task</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;T&gt; ): <span class="hljs-title class_">Promise</span>&lt;T&gt; {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>( <span class="hljs-function">(<span class="hljs-params"> resolve, reject </span>) =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">queue</span>.<span class="hljs-title function_">push</span>( { task, resolve, reject } );
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">process</span>(); <span class="hljs-comment">// Trigger the loop</span>
+        });
+    }
+
+    private <span class="hljs-keyword">async</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Stop if we hit the limit or run out of tasks</span>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-variable language_">this</span>.<span class="hljs-property">running</span> &gt;= <span class="hljs-variable constant_">MAX_CONCURRENCY</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">queue</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span> ) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Dequeue next job</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">running</span>++;
+        <span class="hljs-keyword">const</span> { task, resolve, reject } = <span class="hljs-variable language_">this</span>.<span class="hljs-property">queue</span>.<span class="hljs-title function_">shift</span>()!;
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">task</span>(); <span class="hljs-comment">// Spawn the worker</span>
+            <span class="hljs-title function_">resolve</span>( result );
+        } <span class="hljs-keyword">catch</span> ( err ) {
+            <span class="hljs-title function_">reject</span>( err );
+        } <span class="hljs-keyword">finally</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">running</span>--;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">process</span>(); <span class="hljs-comment">// Recursively check for next job</span>
+        }
+    }
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Orchestration</h3>
+
+
+
+<p>When the user drops a file,&nbsp;<code>processFile</code> wraps the worker interaction inside a closure and submits it to the&nbsp;<code>CrabQueue</code>.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/editor.ts
+
+// Global queue instance
+const crabQueue = new CrabQueue();
+
+const processFile = ( file: File, ...args ): Promise<File&gt; =&gt; {
+    
+    // We don't run immediately. We ask the queue.
+    return crabQueue.add( async () =&gt; {
+        return new Promise( ( resolve, reject ) =&gt; {
+            
+            // Spin up a worker for this specific job
+            const worker = new Worker( 
+                new URL( './crab-worker.ts', import.meta.url ) 
+            );
+            
+            // ... handle messages ...
+            
+            // Send data to worker
+            worker.postMessage( /* payload */, [ buffer ] );
+        });
+    });
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// assets/src/js/editor.ts</span>
+
+<span class="hljs-comment">// Global queue instance</span>
+<span class="hljs-keyword">const</span> crabQueue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CrabQueue</span>();
+
+<span class="hljs-keyword">const</span> processFile = ( <span class="hljs-attr">file</span>: <span class="hljs-title class_">File</span>, ...args ): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">File</span>&gt; =&gt; {
+    
+    <span class="hljs-comment">// We don&apos;t run immediately. We ask the queue.</span>
+    <span class="hljs-keyword">return</span> crabQueue.<span class="hljs-title function_">add</span>( <span class="hljs-title function_">async</span> () =&gt; {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>( <span class="hljs-function">(<span class="hljs-params"> resolve, reject </span>) =&gt;</span> {
+            
+            <span class="hljs-comment">// Spin up a worker for this specific job</span>
+            <span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>( 
+                <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>( <span class="hljs-string">&apos;./crab-worker.ts&apos;</span>, <span class="hljs-keyword">import</span>.<span class="hljs-property">meta</span>.<span class="hljs-property">url</span> ) 
+            );
+            
+            <span class="hljs-comment">// ... handle messages ...</span>
+            
+            <span class="hljs-comment">// Send data to worker</span>
+            worker.<span class="hljs-title function_">postMessage</span>( <span class="hljs-comment">/* payload */</span>, [ buffer ] );
+        });
+    });
+};</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Result: Scalable Performance<a href="http://localhost:6419/04.md#the-result-scalable-performance"></a></h3>
+
+
+
+<p>By combining&nbsp;<strong>Web Workers</strong>&nbsp;with a&nbsp;<strong>Concurrency Queue</strong>, CrabOptimize achieves a balance between speed and stability:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Responsiveness:</strong>&nbsp;The UI thread never handles image processing. The editor remains fluid.</li>
+
+
+
+<li><strong>Scalability:</strong>&nbsp;A user on a powerful desktop (16 cores) will process images significantly faster than a user on a budget laptop (2 cores), as the queue automatically adjusts&nbsp;<code>MAX_CONCURRENCY</code>.</li>
+
+
+
+<li><strong>Stability:</strong>&nbsp;The queue prevents &#8220;Out of Memory&#8221; crashes during bulk uploads.</li>
+</ol>
+
+
+
+<h2 class="wp-block-heading">State Management: Passing Data from PHP to WASM</h2>
+
+
+
+<p>We’ve got this lightning-fast image engine, but let’s face it: users don’t want a black box. They wish to change thumbnails, reduce file sizes, adjust quality, or maintain backups. All of a sudden, you&#8217;re dealing with a state management problem that affects the entire stack rather than just building an engine.</p>
+
+
+
+<p>This creates a distributed state problem.</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>The Source of Truth:</strong>&nbsp;The configuration lives in the WordPress Database (MySQL), managed by&nbsp;<strong>PHP</strong>.</li>
+
+
+
+<li><strong>The Orchestrator:</strong>&nbsp;The upload logic lives in the Browser&#8217;s Main Thread, managed by&nbsp;<strong>JavaScript</strong>.</li>
+
+
+
+<li><strong>The Executioner:</strong>&nbsp;The image processing lives in a background Worker Thread, managed by&nbsp;<strong>Rust/WASM</strong>.</li>
+</ol>
+
+
+
+<p>Data must flow seamlessly through this chain:&nbsp;<code>DB -&gt; PHP -&gt; HTML -&gt; JS -&gt; Worker -&gt; WASM</code>.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">1. The Source: WordPress Settings API (PHP)</h3>
+
+
+
+<p>Everything begins with the WordPress Settings API. Inside <code><a href="https://github.com/DarkMatter-999/CrabOptimize/blob/master/include/classes/class-settings.php">include/classes/class-settings.php</a></code>, we register all the toggles and sliders users want:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// include/classes/class-settings.php
+
+public function register_settings() {
+    register_setting( 'dm_crab_optimize_settings_group', 'dm_crab_optimize_quality', array(
+        'type' =&gt; 'number',
+        'sanitize_callback' =&gt; array( $this, 'sanitize_quality' ), // Ensure 0-100
+        'default' =&gt; 70
+    ) );
+    
+    register_setting( 'dm_crab_optimize_settings_group', 'dm_crab_optimize_speed', array(
+        'type' =&gt; 'integer', 
+        'sanitize_callback' =&gt; array( $this, 'sanitize_speed' ), // Ensure 0-10
+        'default' =&gt; 6 
+    ) );
+    
+    // ... toggles for keeping originals, generating thumbs, etc.
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-php"><span class="hljs-comment">// include/classes/class-settings.php</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register_settings</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-title function_ invoke__">register_setting</span>( <span class="hljs-string">&apos;dm_crab_optimize_settings_group&apos;</span>, <span class="hljs-string">&apos;dm_crab_optimize_quality&apos;</span>, <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&apos;type&apos;</span> =&gt; <span class="hljs-string">&apos;number&apos;</span>,
+        <span class="hljs-string">&apos;sanitize_callback&apos;</span> =&gt; <span class="hljs-keyword">array</span>( <span class="hljs-variable">$this</span>, <span class="hljs-string">&apos;sanitize_quality&apos;</span> ), <span class="hljs-comment">// Ensure 0-100</span>
+        <span class="hljs-string">&apos;default&apos;</span> =&gt; <span class="hljs-number">70</span>
+    ) );
+    
+    <span class="hljs-title function_ invoke__">register_setting</span>( <span class="hljs-string">&apos;dm_crab_optimize_settings_group&apos;</span>, <span class="hljs-string">&apos;dm_crab_optimize_speed&apos;</span>, <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&apos;type&apos;</span> =&gt; <span class="hljs-string">&apos;integer&apos;</span>, 
+        <span class="hljs-string">&apos;sanitize_callback&apos;</span> =&gt; <span class="hljs-keyword">array</span>( <span class="hljs-variable">$this</span>, <span class="hljs-string">&apos;sanitize_speed&apos;</span> ), <span class="hljs-comment">// Ensure 0-10</span>
+        <span class="hljs-string">&apos;default&apos;</span> =&gt; <span class="hljs-number">6</span> 
+    ) );
+    
+    <span class="hljs-comment">// ... toggles for keeping originals, generating thumbs, etc.</span>
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">2. The Bridge: Embedding State in the DOM</h3>
+
+
+
+<p>Browsers can’t directly reach into MySQL. So, we use send the settings by en-queuing the values inside scripts to pull PHP values and inject them as a JSON object on the window.</p>
+
+
+
+<p>During the&nbsp;<code>admin_enqueue_scripts</code>&nbsp;hook, we fetch the values from the database and serialize them into a JSON object attached to the global&nbsp;<code>window</code>&nbsp;object.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// include/classes/class-assets.php
+
+public function enqueue_settings_script() {
+    // 1. Fetch from DB
+    $quality = (float) get_option( 'dm_crab_optimize_quality', 70 );
+    $speed   = (int) get_option( 'dm_crab_optimize_speed', 6 );
+    $sizes   = wp_get_registered_image_subsizes();
+
+    // 2. Serialize to JSON
+    $data = array(
+        'quality'            =&gt; $quality,
+        'speed'              =&gt; $speed,
+        'imageSizes'         =&gt; $sizes,
+        'saveUnoptimized'    =&gt; (bool) get_option( 'dm_crab_optimize_keep_optimized', 0 ),
+        'generateThumbnails' =&gt; (bool) get_option( 'dm_crab_optimize_generate_thumbnails', 0 ),
+    );
+
+    // 3. Inject into HTML head
+    wp_add_inline_script(
+        'dm-crab-settings-main',
+        'window.dmCrabSettingsMain = ' . wp_json_encode( $data ) . ';',
+        'before'
+    );
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-php"><span class="hljs-comment">// include/classes/class-assets.php</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enqueue_settings_script</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// 1. Fetch from DB</span>
+    <span class="hljs-variable">$quality</span> = (<span class="hljs-keyword">float</span>) <span class="hljs-title function_ invoke__">get_option</span>( <span class="hljs-string">&apos;dm_crab_optimize_quality&apos;</span>, <span class="hljs-number">70</span> );
+    <span class="hljs-variable">$speed</span>   = (<span class="hljs-keyword">int</span>) <span class="hljs-title function_ invoke__">get_option</span>( <span class="hljs-string">&apos;dm_crab_optimize_speed&apos;</span>, <span class="hljs-number">6</span> );
+    <span class="hljs-variable">$sizes</span>   = <span class="hljs-title function_ invoke__">wp_get_registered_image_subsizes</span>();
+
+    <span class="hljs-comment">// 2. Serialize to JSON</span>
+    <span class="hljs-variable">$data</span> = <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&apos;quality&apos;</span>            =&gt; <span class="hljs-variable">$quality</span>,
+        <span class="hljs-string">&apos;speed&apos;</span>              =&gt; <span class="hljs-variable">$speed</span>,
+        <span class="hljs-string">&apos;imageSizes&apos;</span>         =&gt; <span class="hljs-variable">$sizes</span>,
+        <span class="hljs-string">&apos;saveUnoptimized&apos;</span>    =&gt; (<span class="hljs-keyword">bool</span>) <span class="hljs-title function_ invoke__">get_option</span>( <span class="hljs-string">&apos;dm_crab_optimize_keep_optimized&apos;</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">&apos;generateThumbnails&apos;</span> =&gt; (<span class="hljs-keyword">bool</span>) <span class="hljs-title function_ invoke__">get_option</span>( <span class="hljs-string">&apos;dm_crab_optimize_generate_thumbnails&apos;</span>, <span class="hljs-number">0</span> ),
+    );
+
+    <span class="hljs-comment">// 3. Inject into HTML head</span>
+    <span class="hljs-title function_ invoke__">wp_add_inline_script</span>(
+        <span class="hljs-string">&apos;dm-crab-settings-main&apos;</span>,
+        <span class="hljs-string">&apos;window.dmCrabSettingsMain = &apos;</span> . <span class="hljs-title function_ invoke__">wp_json_encode</span>( <span class="hljs-variable">$data</span> ) . <span class="hljs-string">&apos;;&apos;</span>,
+        <span class="hljs-string">&apos;before&apos;</span>
+    );
+}</code></pre>
+
+
+
+<h3 class="wp-block-heading">The Orchestrator: Type-Safe Access (TypeScript)</h3>
+
+
+
+<p>In our TypeScript source, we define an interface for this global object to ensure type safety. We avoid accessing&nbsp;<code>window.dmCrabSettingsMain</code>&nbsp;directly throughout the codebase; instead, we use helper accessors.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/settings.ts
+
+interface CrabSettings {
+    quality: number;
+    speed: number;
+    saveUnoptimized: boolean;
+    // ...
+}
+
+declare global {
+    interface Window {
+        dmCrabSettingsMain: CrabSettings;
+    }
+}
+
+export const getQualitySetting = (): number =&gt; {
+    // Robust fallback if the localized script fails
+    const q = window?.dmCrabSettingsMain?.quality;
+    return ( typeof q === 'number' ) ? Math.max( 0, Math.min( 100, q ) ) : 70;
+};
+
+export const getSpeedSetting = (): number =&gt; {
+    const s = window?.dmCrabSettingsMain?.speed;
+    return ( typeof s === 'number' ) ? Math.max( 0, Math.min( 10, s ) ) : 6;
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-typescript"><span class="hljs-comment">// assets/src/js/settings.ts</span>
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">CrabSettings</span> {
+    <span class="hljs-attr">quality</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">speed</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">saveUnoptimized</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">declare</span> <span class="hljs-variable language_">global</span> {
+    <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Window</span> {
+        <span class="hljs-attr">dmCrabSettingsMain</span>: <span class="hljs-title class_">CrabSettings</span>;
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getQualitySetting = (): <span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> {
+    <span class="hljs-comment">// Robust fallback if the localized script fails</span>
+    <span class="hljs-keyword">const</span> q = <span class="hljs-variable language_">window</span>?.<span class="hljs-property">dmCrabSettingsMain</span>?.<span class="hljs-property">quality</span>;
+    <span class="hljs-keyword">return</span> ( <span class="hljs-keyword">typeof</span> q === <span class="hljs-string">&apos;number&apos;</span> ) ? <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>( <span class="hljs-number">0</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>( <span class="hljs-number">100</span>, q ) ) : <span class="hljs-number">70</span>;
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getSpeedSetting = (): <span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> s = <span class="hljs-variable language_">window</span>?.<span class="hljs-property">dmCrabSettingsMain</span>?.<span class="hljs-property">speed</span>;
+    <span class="hljs-keyword">return</span> ( <span class="hljs-keyword">typeof</span> s === <span class="hljs-string">&apos;number&apos;</span> ) ? <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>( <span class="hljs-number">0</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>( <span class="hljs-number">10</span>, s ) ) : <span class="hljs-number">6</span>;
+};</code></pre>
+
+
+
+<h3 class="wp-block-heading">4. The Crossing: Main Thread to Worker</h3>
+
+
+
+<p>This is the critical bottleneck.&nbsp;<strong>Web Workers do not share the&nbsp;<code>window</code>&nbsp;object.</strong>&nbsp;The worker thread has no access to&nbsp;<code>window.dmCrabSettingsMain</code>.</p>
+
+
+
+<p>If we tried to read&nbsp;<code>getQualitySetting()</code>&nbsp;inside&nbsp;<code>crab-worker.ts</code>, it would crash.</p>
+
+
+
+<p>Therefore, the&nbsp;<strong>Main Thread</strong>&nbsp;must read the configuration and pass it as a&nbsp;<em>message payload</em>&nbsp;to the worker for every single job.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// assets/src/js/editor.ts (Main Thread)
+
+const processFile = ( file: File ): Promise<File&gt; =&gt; {
+    return crabQueue.add( async () =&gt; {
+        // ... worker setup ...
+        
+        worker.postMessage( {
+            fileBuffer: buffer,
+
+            quality: getQualitySetting(), // Reads from window
+            speed: getSpeedSetting(),     // Reads from window
+            // ...
+        }, [ buffer ] );
+    });
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-typescript"><span class="hljs-comment">// assets/src/js/editor.ts (Main Thread)</span>
+
+<span class="hljs-keyword">const</span> processFile = ( <span class="hljs-attr">file</span>: <span class="hljs-title class_">File</span> ): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">File</span>&gt; =&gt; {
+    <span class="hljs-keyword">return</span> crabQueue.<span class="hljs-title function_">add</span>( <span class="hljs-title function_">async</span> () =&gt; {
+        <span class="hljs-comment">// ... worker setup ...</span>
+        
+        worker.<span class="hljs-title function_">postMessage</span>( {
+            <span class="hljs-attr">fileBuffer</span>: buffer,
+
+            <span class="hljs-attr">quality</span>: <span class="hljs-title function_">getQualitySetting</span>(), <span class="hljs-comment">// Reads from window</span>
+            <span class="hljs-attr">speed</span>: <span class="hljs-title function_">getSpeedSetting</span>(),     <span class="hljs-comment">// Reads from window</span>
+            <span class="hljs-comment">// ...</span>
+        }, [ buffer ] );
+    });
+};</code></pre>
+
+
+
+<h3 class="wp-block-heading">5. The Execution: Rust Consumption</h3>
+
+
+
+<p>Finally, the&nbsp;<code>crab-worker.ts</code>&nbsp;receives the message and invokes the Rust function. The Rust function signature in&nbsp;<code>lib.rs</code>&nbsp;was designed specifically to accept these dynamic parameters.<br></p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// wasm/src/lib.rs
+
+#[wasm_bindgen]
+pub fn convert_to_avif(
+    data: &amp;[u8], 
+    quality: f32, // Received from JS -&gt; Worker -&gt; Rust
+    speed: u8     // Received from JS -&gt; Worker -&gt; Rust
+) -&gt; Result<Vec<u8&gt;, JsValue&gt; {
+    
+    let res = Encoder::new()
+        .with_quality(quality)
+        .with_speed(speed)
+        .encode_rgba(...)
+    
+    // ...
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-rust"><span class="hljs-comment">// wasm/src/lib.rs</span>
+
+<span class="hljs-meta">#[wasm_bindgen]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">convert_to_avif</span>(
+    data: &amp;[<span class="hljs-type">u8</span>], 
+    quality: <span class="hljs-type">f32</span>, <span class="hljs-comment">// Received from JS -&gt; Worker -&gt; Rust</span>
+    speed: <span class="hljs-type">u8</span>     <span class="hljs-comment">// Received from JS -&gt; Worker -&gt; Rust</span>
+) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u8</span>&gt;, JsValue&gt; {
+    
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = Encoder::<span class="hljs-title function_ invoke__">new</span>()
+        .<span class="hljs-title function_ invoke__">with_quality</span>(quality)
+        .<span class="hljs-title function_ invoke__">with_speed</span>(speed)
+        .<span class="hljs-title function_ invoke__">encode_rgba</span>(...)
+    
+    <span class="hljs-comment">// ...</span>
+}</code></pre>
+
+
+
+<h2 class="wp-block-heading">Limitations and Future Enhancements</h2>
+
+
+
+<p>CrabOptimize started as an experiment to bridge Rust, WebAssembly, and WordPress, but it has rapidly evolved into a comprehensive optimization suite. With recent updates, the plugin now supports&nbsp;<strong>bulk migration of existing media</strong>, allows choosing between&nbsp;<strong>AVIF and WebP</strong>, and respects&nbsp;<strong>filetype exclusions</strong>&nbsp;to skip optimization for specific formats.</p>
+
+
+
+<p>However, shifting the heavy lifting from the server to the client-side is not a silver bullet. This architecture introduces its own unique set of challenges. Let’s look at the current limitations of this approach and where the project is headed next.</p>
+
+
+
+<h3 class="wp-block-heading">The Limitations of Client-Side Processing</h3>
+
+
+
+<p><strong>1. The &#8220;Browser-Tab&#8221; Bottleneck for Bulk Migrations</strong><br>While the newly added bulk migration tool is fantastic for retroactively optimizing your media library, it is entirely bound to the browser&#8217;s lifecycle. Because the processing happens via WASM and Web Workers on the client device, the user&nbsp;<em>must</em>&nbsp;keep the WordPress admin tab open. If the browser is closed or the device goes to sleep, the migration halts.</p>
+
+
+
+<p><strong>2. Invisible Uploads (WP-CLI and Server-Side Integrations)</strong><br>CrabOptimize works its magic by hijacking browser events (<code>apiFetch</code>&nbsp;and&nbsp;<code>plupload</code>). But what happens if an image never touches the browser? If a plugin automatically pulls images from an external API, or if a developer imports media via WP-CLI, the browser is completely bypassed. These uploads will fallback to WordPress’s default server-side processing, missing out on our Rust/WASM optimizations.</p>
+
+
+
+<p><strong>3. Hardware Disparities and Mobile Browsers</strong><br>While the&nbsp;CrabQueue&nbsp;dynamically limits concurrency based on the device&#8217;s CPU cores, compiling large images into AVIF or WebP is still a mathematically intense task. A user uploading a batch of 20MB raw images from an older mobile phone or a low-end laptop will experience significantly slower processing times compared to someone on an flagship machine. It costs the server nothing, but it taxes the user&#8217;s battery and CPU.</p>
+
+
+
+<h3 class="wp-block-heading">Future Enhancements: Where Do We Go From Here?</h3>
+
+
+
+<p><strong>1. A Hybrid Fallback Engine (Server-Side Rust)<br></strong>To catch uploads generated by WP-CLI, REST API integrations, or weak mobile devices, we could introduce a hybrid architecture. If CrabOptimize detects that the client-side environment is unsuitable, or bypassed entirely, it could fallback to a pre-compiled server-side Rust binary or a graceful PHP degradation to process the image natively on the server.</p>
+
+
+
+<p><strong>2. Dynamic WASM Module Loading</strong><br>Now that the plugin supports both AVIF and WebP, our&nbsp;.wasm&nbsp;binary has grown because it must bundle the logic for multiple codecs. As we add support for future formats like JPEG XL (JXL), we risk bloating the initial plugin download. A future enhancement will involve Code Splitting for WebAssembly: dynamically fetching only the specific&nbsp;<code>.wasm</code>&nbsp;codec the user has selected in their settings, keeping the initial payload incredibly lightweight.</p>
+
+
+
+<p><strong>3. Advanced Client-Side Manipulation</strong><br>Since we already have raw RGBA pixels loaded into memory inside a secure Rust environment, the possibilities for client-side image manipulation are endless. Future updates could include:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Privacy First:</strong>&nbsp;Stripping sensitive EXIF data (like GPS coordinates) before the image ever hits the network.</li>
+
+
+
+<li><strong>On-the-fly Watermarking:</strong>&nbsp;Applying text or image watermarks natively in the browser via Rust’s&nbsp;image&nbsp;crate.</li>
+
+
+
+<li><strong>Smart Cropping:</strong>&nbsp;Using lightweight algorithms to detect the focal point of an image and cropping thumbnails intelligently, all without touching the server&#8217;s CPU.</li>
+</ul>
+
+
+
+<p>CrabOptimize proves that the browser is no longer just a client for WordPress, it&#8217;s a powerful edge-computing node. By combining the safety of Rust with the ubiquity of WebAssembly, we are just scratching the surface of what modern WordPress development can look like.</p>
+
+
+
+<p></p>
+<p>The post <a href="https://lakshyajeet.in/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+		
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.mp4" length="2666376" type="video/mp4" />
+
+			</item>
+		<item>
 		<title>Building a Kademlia DHT over WebRTC</title>
 		<link>https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/</link>
 		
@@ -138,7 +1511,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="635" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png" alt="Kademlia Architecture Diagram for the project" class="wp-image-1250" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png 1024w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-300x186.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-768x476.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image.png 1095w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img decoding="async" width="1095" height="679" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp 1095w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-300x186.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1024x635.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="(max-width: 1095px) 100vw, 1095px" /></figure>
 
 
 
@@ -196,7 +1569,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png" alt="Networking &amp; Hybrid Signalling" class="wp-image-1251" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png 815w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-300x292.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-768x746.png 768w" sizes="(max-width: 815px) 100vw, 815px" /></figure>
+<figure class="wp-block-image size-full"><img decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp 815w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-300x292.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="(max-width: 815px) 100vw, 815px" /></figure>
 
 
 
@@ -680,7 +2053,7 @@ findClosest(targetId, count = this.k) {
 
 
 
-<figure class="wp-block-image size-large is-resized"><img decoding="async" width="964" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png" alt="Iterative Find Node algorithm" class="wp-image-1252" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png 964w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-283x300.png 283w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-768x816.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2.png 970w" sizes="(max-width: 964px) 100vw, 964px" /></figure>
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="970" height="1030" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp" alt="Iterative Find Node algorithm" class="wp-image-1259" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp 970w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-283x300.webp 283w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-964x1024.webp 964w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-768x816.webp 768w" sizes="auto, (max-width: 970px) 100vw, 970px" /></figure>
 
 
 
@@ -2714,7 +4087,7 @@ Text Domain: my-block-theme
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" src="http://192.168.1.19:8080/wp-content/uploads/2025/05/image.png?w=271" alt="" class="wp-image-854"/></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="271" height="416" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp" alt="" class="wp-image-1273" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp 271w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-195x300.webp 195w" sizes="auto, (max-width: 271px) 100vw, 271px" /></figure>
 
 
 
@@ -2804,175 +4177,6 @@ Text Domain: my-block-theme
 ]]></content:encoded>
 					
 					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WordPress Block Editor: Block Supports Explained</title>
-		<link>https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/</link>
-					<comments>https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Wed, 30 Apr 2025 14:31:37 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[blogging]]></category>
-		<category><![CDATA[blogging-tips]]></category>
-		<category><![CDATA[non-classe]]></category>
-		<category><![CDATA[technology]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=845</guid>
-
-					<description><![CDATA[<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how Block Supports work is essential. In this blog, we&#8217;ll explore what Block Supports are, how to use them, and how can someone implement it in our own custom [&#8230;]</p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>As WordPress developers and site creators, we love the flexibility the Block Editor (Gutenberg) offers us. Whether we’re building custom blocks or fine-tuning user experiences, understanding how <strong>Block Supports</strong> work is essential.</p>
-
-
-
-<p>In this blog, we&#8217;ll explore what <strong>Block Supports</strong> are, how to use them, and how can someone implement it in our own custom blocks.</p>
-
-
-
-<h3 class="wp-block-heading">What Are Block Supports?</h3>
-
-
-
-<p>Block Supports are built-in features provided by the WordPress Block Editor that we can <strong>opt into</strong> when developing our custom blocks. These supports allow us to <strong>enable additional UI controls</strong> — like typography, color, spacing, borders, and more — directly in the editor sidebar for our blocks.</p>
-
-
-
-<p>This means we don’t have to manually code UI panels or handle CSS ourselves for many of these features — WordPress does that for us when we enable supports.</p>
-
-
-
-<h3 class="wp-block-heading">Why Use Block Supports?</h3>
-
-
-
-<ul class="wp-block-list">
-<li>We save development time.</li>
-
-
-
-<li>We make our blocks consistent with core WordPress blocks.</li>
-
-
-
-<li>We give users a better editing experience with built-in controls.</li>
-</ul>
-
-
-
-<h3 class="wp-block-heading">How to Use Block Supports in a Custom Block</h3>
-
-
-
-<p>Let’s walk through how to add block supports to a custom block. This involves registering our block using <code>registerBlockType</code> and adding the <code>supports</code> key.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-comment">// my-custom-block.js</span>
-<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
-<span class="hljs-keyword">import</span> { __ } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/i18n&apos;</span>;
-<span class="hljs-keyword">import</span> { useBlockProps } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
-
-<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/my-custom-block&apos;</span>, {
-    <span class="hljs-attr">title</span>: <span class="hljs-title function_">__</span>(<span class="hljs-string">&apos;My Custom Block&apos;</span>, <span class="hljs-string">&apos;myplugin&apos;</span>),
-    <span class="hljs-attr">icon</span>: <span class="hljs-string">&apos;smiley&apos;</span>,
-    <span class="hljs-attr">category</span>: <span class="hljs-string">&apos;design&apos;</span>,
-    <span class="hljs-attr">supports</span>: {
-        <span class="hljs-attr">color</span>: {
-            <span class="hljs-attr">text</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">background</span>: <span class="hljs-literal">true</span>,
-        },
-        <span class="hljs-attr">spacing</span>: {
-            <span class="hljs-attr">margin</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">padding</span>: <span class="hljs-literal">true</span>,
-        },
-        <span class="hljs-attr">typography</span>: {
-            <span class="hljs-attr">fontSize</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">lineHeight</span>: <span class="hljs-literal">true</span>,
-        },
-        <span class="hljs-attr">border</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">align</span>: [<span class="hljs-string">&apos;wide&apos;</span>, <span class="hljs-string">&apos;full&apos;</span>],
-    },
-    <span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes }</span>) {
-        <span class="hljs-keyword">const</span> blockProps = <span class="hljs-title function_">useBlockProps</span>();
-
-        <span class="hljs-keyword">return</span> (
-            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>}&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is our custom block with block supports.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-        );
-    },
-    <span class="hljs-title function_">save</span>(<span class="hljs-params">{ attributes }</span>) {
-        <span class="hljs-keyword">const</span> blockProps = useBlockProps.<span class="hljs-title function_">save</span>();
-        <span class="hljs-keyword">return</span> (
-            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> {<span class="hljs-attr">...blockProps</span>}&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is our custom block with block supports.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-        );
-    }
-});
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">Common Block Supports We Can Use</h3>
-
-
-
-<p>Here’s a quick overview of common supports:</p>
-
-
-
-<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Support</th><th>Description</th></tr></thead><tbody><tr><td><code>color</code></td><td>Enables text/background color controls</td></tr><tr><td><code>typography</code></td><td>Adds font size and line-height controls</td></tr><tr><td><code>spacing</code></td><td>Adds padding and margin settings</td></tr><tr><td><code>border</code></td><td>Allows setting border radius, width, etc</td></tr><tr><td><code>align</code></td><td>Enables block alignment (wide/full)</td></tr><tr><td><code>html</code></td><td>Allows editing the block’s HTML</td></tr></tbody></table></figure>
-
-
-
-<p><strong>CSS Variables</strong>: When using block supports, the editor outputs inline styles or CSS variables. Always check the frontend for consistent rendering.</p>
-
-
-
-<p><strong>Opt-Out</strong>: If we want to disable certain supports for a core block (e.g., removing color options from the Paragraph block), we can use block filters like <code>blocks.registerBlockType</code>.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-comment">// Disable color support for Paragraph block</span>
-wp.<span class="hljs-property">hooks</span>.<span class="hljs-title function_">addFilter</span>(
-    <span class="hljs-string">&apos;blocks.registerBlockType&apos;</span>,
-    <span class="hljs-string">&apos;myplugin/remove-paragraph-supports&apos;</span>,
-    <span class="hljs-function">(<span class="hljs-params">settings, name</span>) =&gt;</span> {
-        <span class="hljs-keyword">if</span> (name === <span class="hljs-string">&apos;core/paragraph&apos;</span>) {
-            settings.<span class="hljs-property">supports</span> = {
-                ...settings.<span class="hljs-property">supports</span>,
-                <span class="hljs-attr">color</span>: <span class="hljs-literal">false</span>,
-            };
-        }
-        <span class="hljs-keyword">return</span> settings;
-    }
-);
-</code></pre>
-
-
-
-<h2 class="wp-block-heading">Conclusion</h2>
-
-
-
-<p>Block supports are a powerful and underused part of the WordPress block development toolkit. By enabling them, we create more flexible, future-proof, and user-friendly blocks — without reinventing the wheel.</p>
-
-
-
-<p></p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/">WordPress Block Editor: Block Supports Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-	<!-- This site is optimized with the Yoast SEO plugin v26.8 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<!-- This site is optimized with the Yoast SEO plugin v27.0 - https://yoast.com/product/yoast-seo-wordpress/ -->
 	<meta name="description" content="A deep dive into building a Kademlia Distributed Hash Table (DHT) from scratch using Node.js and WebRTC while solving common challenges.">
 	<link rel="canonical" href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">
 	<meta property="og:locale" content="en_US">
@@ -33,8 +33,8 @@
 <title>Building a Kademlia DHT over WebRTC - Lakshyajeet's Blog</title>
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Feed" href="https://lakshyajeet.in/feed/">
 <link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Comments Feed" href="https://lakshyajeet.in/comments/feed/">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F&amp;format=xml">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flakshyajeet.in%2Fbuilding-a-kademlia-dht-over-webrtc%2F&amp;format=xml">
 <style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -67,7 +67,7 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 .wp-block-post-author{box-sizing:border-box;display:flex;flex-wrap:wrap}.wp-block-post-author__byline{font-size:.5em;margin-bottom:0;margin-top:0;width:100%}.wp-block-post-author__avatar{margin-right:1em}.wp-block-post-author__bio{font-size:.7em;margin-bottom:.7em}.wp-block-post-author__content{flex-basis:0;flex-grow:1}.wp-block-post-author__name{margin:0}
 /*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-author/style.min.css */
 </style>
-<link rel="stylesheet" id="wp-block-cover-css" href="https://lakshyajeet.in/wp-includes/blocks/cover/style.min.css?ver=6.9" media="all">
+<link rel="stylesheet" id="wp-block-cover-css" href="https://lakshyajeet.in/wp-includes/blocks/cover/style.min.css?ver=6.9.1" media="all">
 <style id="wp-block-paragraph-inline-css">
 .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
 /*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/paragraph/style.min.css */
@@ -650,12 +650,12 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 <script src="https://lakshyajeet.in/wp-content/plugins/WordPress-Theme-Style-Switcher/assets/build/blocks/theme-switcher-block/view.js?ver=a6e2d025c46bd4df6a02" id="dm-tss-theme-style-switcher-view-script-js" defer data-wp-strategy="defer"></script>
 <script src="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/js/screen.js?ver=5e5cd2388f786cec7f14" id="main-js-js" defer data-wp-strategy="defer"></script>
 <link rel="https://api.w.org/" href="https://lakshyajeet.in/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://lakshyajeet.in/wp-json/wp/v2/posts/1233"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lakshyajeet.in/xmlrpc.php?rsd">
-<meta name="generator" content="WordPress 6.9">
+<meta name="generator" content="WordPress 6.9.1">
 <link rel="shortlink" href="https://lakshyajeet.in/?p=1233">
 <script type="importmap" id="wp-importmap">
-{"imports":{"@wordpress/interactivity":"https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=8964710565a1d258501f"}}
+{"imports":{"@wordpress/interactivity":"https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=66c613f68580994bb00a"}}
 </script>
-<link rel="modulepreload" href="https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=8964710565a1d258501f" id="@wordpress/interactivity-js-modulepreload" fetchpriority="low">
+<link rel="modulepreload" href="https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=66c613f68580994bb00a" id="@wordpress/interactivity-js-modulepreload" fetchpriority="low">
 <style class="wp-fonts-local">
 @font-face{font-family:Poppins;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/poppins-regular.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:Galada;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/galada-regular.woff2') format('woff2');font-stretch:normal;}
@@ -798,7 +798,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="635" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png" alt="Kademlia Architecture Diagram for the project" class="wp-image-1250" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1024x635.png 1024w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-300x186.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-768x476.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image.png 1095w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+<figure class="wp-block-image size-large"><img decoding="async" width="1095" height="679" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp 1095w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-300x186.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1024x635.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="(max-width: 1095px) 100vw, 1095px"></figure>
 
 
 
@@ -856,7 +856,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png" alt="Networking &amp; Hybrid Signalling" class="wp-image-1251" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-1.png 815w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-300x292.png 300w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-1-768x746.png 768w" sizes="auto, (max-width: 815px) 100vw, 815px"></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp 815w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-300x292.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="auto, (max-width: 815px) 100vw, 815px"></figure>
 
 
 
@@ -1340,7 +1340,7 @@ findClosest(targetId, count = this.k) {
 
 
 
-<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="964" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png" alt="Iterative Find Node algorithm" class="wp-image-1252" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-964x1024.png 964w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-283x300.png 283w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2-768x816.png 768w, https://lakshyajeet.in/wp-content/uploads/2026/01/image-2.png 970w" sizes="auto, (max-width: 964px) 100vw, 964px"></figure>
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="970" height="1030" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp" alt="Iterative Find Node algorithm" class="wp-image-1259" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp 970w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-283x300.webp 283w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-964x1024.webp 964w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-768x816.webp 768w" sizes="auto, (max-width: 970px) 100vw, 970px"></figure>
 
 
 
@@ -1870,7 +1870,7 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 
 <div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-609ade12 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--40);padding-right:0;padding-bottom:var(--wp--preset--spacing--40);padding-left:0;font-size:clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.737), 1.5rem);"><div class="post-navigation-link-previous wp-block-post-navigation-link"><span class="wp-block-post-navigation-link__arrow-previous is-arrow-chevron" aria-hidden="true">«</span><a href="https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/" rel="prev"><span class="post-navigation-link__label">Previous:</span> <span class="post-navigation-link__title">WordPress Block Themes: Block Themes and Block Patterns Explained</span></a></div>
 
-<div class="post-navigation-link-next has-text-align-left wp-block-post-navigation-link"></div></div>
+<div class="post-navigation-link-next has-text-align-left wp-block-post-navigation-link"><a href="https://lakshyajeet.in/rust-in-wordpress-craboptimize/" rel="next"><span class="post-navigation-link__label">Next:</span> <span class="post-navigation-link__title">Rust in WordPress: The Architectural overview of CrabOptimize</span></a><span class="wp-block-post-navigation-link__arrow-next is-arrow-chevron" aria-hidden="true">»</span></div></div>
 </main>
 
 
@@ -1971,7 +1971,7 @@ window.tss_data = {"variations":[{"slug":"00-default","title":"Dark"},{"slug":"0
 //# sourceURL=tss-main-js-before
 </script>
 <script id="wp-emoji-settings" type="application/json">
-{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://lakshyajeet.in/wp-includes/js/wp-emoji-release.min.js?ver=6.9"}}
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://lakshyajeet.in/wp-includes/js/wp-emoji-release.min.js?ver=6.9.1"}}
 </script>
 <script type="module">
 /*! This file is auto-generated */
