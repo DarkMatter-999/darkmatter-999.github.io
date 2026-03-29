@@ -12,13 +12,13 @@
 	<atom:link href="https://lakshyajeet.in/author/lakshyajeet/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Thu, 26 Feb 2026 05:57:36 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 29 Mar 2026 20:34:49 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.1</generator>
+	<generator>https://wordpress.org/?v=6.9.4</generator>
 
 <image>
 	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
@@ -28,6 +28,224 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Slashing Token Bloat: Mastering Context with Code Mode AI Agents</title>
+		<link>https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/</link>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Sun, 29 Mar 2026 20:13:46 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1335</guid>
+
+					<description><![CDATA[<p>AI agents in software development have evolved from passive text generators to autonomous systems. Code Mode agents reduce token bloat and context rot by dynamically executing scripts, while orchestrator-subagent architectures, skill injection, and secure sandboxing ensure efficient, scalable, and safe AI workflows.</p>
+<p>The post <a href="https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/">Slashing Token Bloat: Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>The integrations for Large Language Models into software development life-cycle has undergone a significant change in a very less time. In the emergent stages, the Language Models functioned as passive text generators or sophisticated autocomplete, relying entirely on constant human prompting and oversight.<br>However, the engineering paradigm has shifted towards autonomous, agentic systems capable of self orchestrating complex software engineering workflows without continuous human intervention. Central to this architecture is the establishment of universal integration frameworks, most notably the Model Context Protocol. </p>
+
+
+
+<p>The Model Context Protocol(MCP) is an open, standardized architecture that allows an LLM to interface securely with external data sources, enterprise APIs, and local environments. It works by formalizing the communication layer between the underlying model and the environments. It allows developers to build systems not limited by an LLM&#8217;s training data, but instead are actively connected to real-time applications.</p>
+
+
+
+<p>Historically, agents have interacted with these environments through a mechanism known as <strong>direct tool calling</strong>. Under this, developers are required to explicitly define a strict, deterministic JSON schema for every available tool, function or data source. The LLM would process the user&#8217;s request, generate a highly structured JSON response matching one of these pre-defined schemas, and the host application would intercept this JSON object to execute the corresponding function. While this deterministic approach proved to be highly effective for various applications, it tends to be the bottleneck when scaled to high complexity and high volume workflows. </p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="2560" height="672" src="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp" alt="Context overflow in traditional systems" class="wp-image-1345" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-300x79.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1024x269.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-768x201.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1536x403.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-2048x537.webp 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>Exposing a massive API surface requires injecting hundreds of lines of tool definitions into the model context directly into the model&#8217;s system prompt even if we don&#8217;t need to use most of the tools at any time. This approach leads to <strong>excessive token usage</strong>, higher processing latency and the worst of all, &#8220;<em>context rot</em>,&#8221; where the model&#8217;s self-attention mechanism degrades under the weight of excessive information, causing it to hallucinate and forget early instructions or leading to enter infinite loops.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img decoding="async" width="2560" height="1125" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp" alt="Context saving using Code Mode harness" class="wp-image-1346" style="width:780px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-300x132.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1024x450.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-768x337.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1536x675.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-2048x900.webp 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<p>To resolve these architectural bottlenecks, a new paradigm has emerged, referred as &#8220;Code Mode.&#8221; Rather than forcing the agent to select from a static list of pre-defined JSON schemas, the Code Mode paradigm provides the agent an interactive interpreter defined entirely by executable programming languages. Under this, the agent dynamically writes, evaluates, and executes scripts to discover tools, manipulate data, and interact with the external tools.</p>
+
+
+
+<p>The architectural principles discussed here are heavily exemplified by my project repository at <a href="https://github.com/DarkMatter-999/Kymic">DarkMatter-999/Kymic</a>,</p>
+
+
+
+<h2 class="wp-block-heading">The Latent Crisis of Context Rot and Token Inefficiency</h2>
+
+
+
+<p>To fully understand the need of Code Mode agents, we my identify the primary architectural problem with the current tool-calling mechanism. In the standard implementations, the client application is burdened with the responsibility of injecting every single tool&#8217;s description, parameters, data types and return structures into context using the initial system prompt. The model must retain all this in its active memory in order to successfully complete a task.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img decoding="async" width="2337" height="606" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp" alt="Traditional tool calling architecture." class="wp-image-1340" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp 2337w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-300x78.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1024x266.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-768x199.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1536x398.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-2048x531.webp 2048w" sizes="(max-width: 2337px) 100vw, 2337px" /></figure>
+
+
+
+<p>For complex integrations, like the complete Github API or Cloudflare API, this static injection technique consumes an astronomical volume of tokens. A large scale API integration can consume tokens equal to the total context size of the model, this problem gets amplified when there are more than one large scale MCP server installed, often consuming more that the total context limit of the model even before the user can enter their first prompt. This leads to the standard tool calling approach fundamentally unscalable.</p>
+
+
+
+<p>Furthermore, traditional tool calling mandates that every piece of retrieved data must flow directly back through the model&#8217;s context window. In a standard workflow, if an agent queries a database to analyze performance metrics and receives an unformatted payload containing ten thousand rows of data, those ten thousand rows are appended directly to the conversation history. The model is then forced to read through this massive influx of noise to extract the relevant signals. This floods the context window, drastically increasing application programming interface processing costs, introducing severe latency, and drastically increasing the likelihood of context rot. Context rot occurs when the sheer volume of tokens dilutes the model&#8217;s attention mechanism; the model becomes disoriented by the vast amounts of intermediate data and forgets the user&#8217;s original overarching objective.</p>
+
+
+
+<h2 class="wp-block-heading">Context Efficiency and the Architecture of Code Mode Agents</h2>
+
+
+
+<p>The Code Mode paradigm, as implemented in this project, tries use to use best of both worlds, by altering the interaction dynamic but shifting integration burden away from static prompt to a dynamic execution environment. The fundamental concept is the the MCP servers do not add their extension array to tools to the models context at every request, instead the agent is provided with a minimial set of foundational capabilities. It is granted access to a JS interactive REPL environment, when the agent is tasked to solve a complex problem, it does not reply on pre-loaded knowledge of every system and tool. Instead, it writes a short, targeted script to query the available tools and capabilities and only use the required modules. </p>
+
+
+
+<p>This on-demand discovery mechanism ensures that the models fixed token footprint remains virtually unchanged regardless of whether there are ten or ten thousand functional endpoints residing behind the Model Context Protocol gateway, despite of whether there are ten or ten thousand functional endpoints residing behind the Model Context Protocol gateway.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2518" height="1293" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemode.webp" alt="Code Mode tool calling architecture." class="wp-image-1341" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemode.webp 2518w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-300x154.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-1024x526.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-768x394.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-1536x789.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-2048x1052.webp 2048w" sizes="auto, (max-width: 2518px) 100vw, 2518px" /></figure>
+
+
+
+<p>Empirical <a href="https://blog.cloudflare.com/code-mode-mcp/#:~:text=For%20a%20large%20API%20like%20the%20Cloudflare%20API%2C%20Code%20Mode%20reduces%20the%20number%20of%20input%20tokens%20used%20by%2099.9%25.%20An%20equivalent%20MCP%20server%20without%20Code%20Mode%20would%20consume%201.17%20million%20tokens%20%E2%80%94%C2%A0more%20than%20the%20entire%20context%20window%20of%20the%20most%20advanced%20foundation%20models.">figures published by industry leaders</a> demonstrate the absolute superiority of this approach. Implementing Code Mode has shown to reduce the token usage from 150,000 tokens to just under 2,000 tokens for specific data-heavy tasks, representing a cost-efficiency of over 98.7 percent.</p>
+
+
+
+<p>Beyond raw token economics, the methodology fundamentally reduces the number of round-trips over the network required to perform multiple a complex chain of logic. By batching multiple operations into a single script, the agent bypasses the repetative tool selection loop. It can also execute conditional statements, parse intermediate results and reformat data as needed in a single step.</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><td><strong>Scenario Complexity Level</strong></td><td><strong>Traditional JSON Tool Calling</strong></td><td><strong>Code Mode Script Execution</strong></td><td><strong>Overall Performance Improvement</strong></td></tr></thead><tbody><tr><td>Simple Complexity (2-3 tools)</td><td>3 distinct network iterations</td><td>1 batched code execution</td><td>67% reduction in execution time</td></tr><tr><td>Medium Complexity (4-7 tools)</td><td>8 distinct network iterations</td><td>1 batched code execution</td><td>88% reduction in execution time</td></tr><tr><td>High Complexity (8+ tools)</td><td>16 distinct network iterations</td><td>1 batched code execution</td><td>94% reduction in execution time</td></tr></tbody></table></figure>
+
+
+
+<h2 class="wp-block-heading">Exploiting AI Bias: Programming Languages as Native Action Spaces</h2>
+
+
+
+<p>Within the artificial intelligence safely and natural language processing, the concept of &#8220;bias&#8221; is overwhelmingly used through the ethical lens. Researchers extensively analyse and study how a model might inherit harmful societal stereotypes, unfair preferences or generate unequal representation based on <strong>flawed training data</strong>. However, for our purposes of agentic software engineering, there exists a secondary form of bias, which prove advantageous to us: the extreme statistical proneness of Large Language Models towards the formal programming languages.</p>
+
+
+
+<p>Modern frontier models have been pre-trained on staggering amount of high-quality production code repositories. They have ingested terabytes of data from millions or repository covering virtually every major programming paradigm, library, framework, etc. Because the language model has seen so much code throughout its foundational training phase, its internal neural representations are highly optimized for structural logic, syntax, dependency management, and algorithmic flow.</p>
+
+
+
+<p>This inherit AI bias towards code makes it perfect choice to define the entire agentic workflow. Because the model understands the execution environment it possesses the emergent ability to read, write, debug and self-correct code autonomously. In traditional architecture, if a JSON tool call fails the model struggles to work out why, leading to frequent possibly infinite retry loops. However, if a code execution fails it returns a standard stack trace pinpointing the exact problem to the model, it dynamically revises its script and continues with the execution without human intervention.</p>
+
+
+
+<h2 class="wp-block-heading">Orchestrator-Subagent Architectures and the Subagents MCP</h2>
+
+
+
+<p>While Code Mode drastically improves efficiency for individual agents, in reality for highly sophisticated tasks eventually exceeding the reasoning capacity of any single, monolithic model it bound to happen. When a single agent is tasked with simultaneously architecting front-end, backend, database migrations, security and test coverage, it is forced to balance the contradictory information leading to degraded performance.</p>
+
+
+
+<p>To counter these limitations, the projects implements a Orchestrator-Subagent architecture. In this paradigm, a primary &#8220;Orchestrator&#8221; agent is deployed not to execute the granular tasks directly, but to function as an autonomous system manager and planner. Through this MCP server, the main agent can choose to spawn any number of sub-agents, delegating specific tasks to them. This provides advantages such as: Context Isolation and Parallel execution capabilities.</p>
+
+
+
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/03/subagents.mp4" playsinline></video></figure>
+
+
+
+<p>Every agent executes within its own completely independent sandbox. For example, if the main orchestrator agent identifies a security issue it assigns it to a subagent. This subagent is provisioned for this specific purpose and explores its domain without its context window being polluted by any other agent executing a different task.</p>
+
+
+
+<p>Crucially, once a subagent completes its assigned task, it does not return its entire conversational history, trial-and-error logs, or intermediate failures to the orchestrator. Instead, the subagent acts as a context compressor. It distills its comprehensive findings into a highly condensed, relevant summary, returning only the finalized response regarding what it actually accomplished. This mechanism ensures that the main orchestrator agent remains exceptionally lightweight, agile, and completely free from context rot.</p>
+
+
+
+<h2 class="wp-block-heading">Dynamic Expertise Injection via the Skill MCP</h2>
+
+
+
+<p>In sophisticated agents systems, a very important distinction must be drawn between the fundamental &#8220;Tools&#8221; and applied &#8220;Skills.&#8221; MCP servers traditionally only expose the external capabilities, but this does not mean that the agent understands the optimal methodology for applying and using those tools. Instead of adding all the skills to the context, we again leverage the same idea as in the code mode. Through the Skill MCP, the model sees two primary tools: the ability to &#8220;search for skills&#8221; and the ability to &#8220;get info about a skill.&#8221; When an agent encounters a novel problem or is assigned a complex task, it initiates a workflow by first searching for skill using relevant keywords and then retrieving the exact skill it wants from the <em>Top K</em> results.</p>
+
+
+
+<p>This perfectly mirrors the progressive disclosure technique, the LLM dynamically injects expert workflows into tits context window only when it is needed to solve a task at hand.</p>
+
+
+
+<h2 class="wp-block-heading">Transcending the Chat: The Canvas MCP and Browser-Native Interfaces</h2>
+
+
+
+<p>In a browser-native Code Mode implementation, the primary chat interface is strictly reserved for conversational dialogue, model reasoning, user instruction, and high-level progress reporting. However, when the agent generates complex structural output that cannot be easily comprehended as raw text, such as a dynamic data visualization, an intricate architectural diagram, an interactive code diff, a form, it utilizes the Canvas MCP.</p>
+
+
+
+<p>The Canvas MCP operates as a stateful, interactive rendering engine. The agent emits structured html or writes front-end execution scripts that the Canvas MCP server instantly translates into visuals displayed in an interactive sidebar. This architectural separation of concerns creates a non-blocking user experience.</p>
+
+
+
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/03/canvas.mp4" playsinline></video></figure>
+
+
+
+<h2 class="wp-block-heading">Defense in Depth: Node.js Virtual Machines and Docker Sandboxing</h2>
+
+
+
+<p>The immense utility of the Code Mode paradigm is directly linked to its greatest and most critical vulnerability: Arbitrary Code Execution. Because the entire architecture relies on the agent executing dynamic scripts to navigate its environment, discover tools, and implement solutions, any malicious instruction injected into the agent&#8217;s context could theoretically be executed by the underlying runtime environment.</p>
+
+
+
+<p>Because the Code Mode architecture inherently involves running extensive file operations and explicitly grants the model the theoretical capability to change system files, a robust, defense-in-depth sandboxing strategy is absolutely mandatory. Operating system-level approaches that merely attempt to sandbox the agent process itself are fundamentally insufficient, as the agent continually requires active access to dependencies, networking interfaces, and file systems to complete its automated tasks. Therefore, the architecture employs a rigorous, multi-layered security model utilizing Node.js virtual machines, comprehensive Docker containerization, and strict directory confinement.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2493" height="2523" src="https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp" alt="" class="wp-image-1347" style="width:700px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp 2493w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-296x300.webp 296w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-1012x1024.webp 1012w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-768x777.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-1518x1536.webp 1518w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-2024x2048.webp 2024w" sizes="auto, (max-width: 2493px) 100vw, 2493px" /></figure>
+
+
+
+<h3 class="wp-block-heading">Tier 1: The Node.js Virtual Machine Isolate</h3>
+
+
+
+<p>For rapid, data transformation, mathematical calculation, string formatting, or purely logical operations, spinning up a full containerized environment for every single command introduces unacceptable, cascading latency. Instead, lightweight JavaScript execution is handled securely via the Node.js <code>vm</code> module, utilizing isolated V8 engine contexts. This allows the agent to execute raw code within a highly restricted, heavily monitored context that natively strips away all access to core Node.js modules, such as <code>fs</code> (file system access) and <code>child_process</code> (spawning external commands). Within this Node.js virtual machine isolate, the agent can parse complex JSON structures, manipulate data arrays, and verify algorithmic logic instantaneously, completely devoid of any risk of interacting with or compromising the host system.</p>
+
+
+
+<h3 class="wp-block-heading">Tier 2: Comprehensive Docker Containerization</h3>
+
+
+
+<p>While the V8 isolate handles pure logic, tasks that explicitly require CLI access, package installation, network requests, or complex multi-file compilation require a more capable environment. However, this environment cannot be the host machine. To counter the threat of system compromise, the entire application is run under a secure Docker container.</p>
+
+
+
+<p>The agent is granted the autonomy to install dependencies, run test suites, and execute bash scripts, but it does so entirely within the  bounds of the docker container. Even if an agent hallucinates a catastrophically destructive command, or falls victim to a prompt injection attack, the damage is strictly contained within the Docker container. The host machine&#8217;s kernel, personal files, and network credentials remain completely isolated and secure.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>The transition from static, deterministic JSON tool schemas to dynamic Code Mode execution environments represents a fundamental maturation in the discipline of artificial intelligence engineering. By wrapping Model Context Protocol servers in executable programming paradigms, developers completely bypass the catastrophic context rot that plagues most advanced API integrations, achieving near-perfect token efficiency through progressive disclosure. This specific architecture succeeds precisely because it aligns with the inherent training biases of modern foundation models, which process programmatic structures natively and leverage standard execution traces for autonomous self-correction.</p>
+
+
+
+<p>When this power is scaled, it inherently demands an orchestrator-subagent architecture. By delegating tasks through a dedicated Subagents MCP, the system maintains pristine context hygiene, compresses intelligence into actionable summaries, and leverages massive parallel processing to cut execution latency. Furthermore, by utilizing a Skill MCP, the orchestrator dynamically discovers and loads necessary workflows and enterprise guidelines only when required. The extension of this highly robust architecture to the web browser via dedicated Canvas MCP servers translates the raw, textual data into rich, interactive, and non-blocking visual experiences. Ultimately, the immense, unbridled power of arbitrary code execution necessitates uncompromising security boundaries. The meticulously engineered, hybrid approach utilizing Node.js isolates for synchronous logic, Docker containers for environmental virtualization, and rigid <code>/tmp</code> directory restrictions ensures that these agents can operate with unprecedented autonomy. This precise confluence of context efficiency, scalable subagent orchestration, dynamic skill acquisition, browser-native UI integration, and rigorous, multi-layered sandboxing firmly establishes Code Mode as the definitive blueprint for the next generation of secure, autonomous software development.</p>
+
+
+
+<p></p>
+<p>The post <a href="https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/">Slashing Token Bloat: Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+		
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/03/subagents.mp4" length="540218" type="video/mp4" />
+<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/03/canvas.mp4" length="838032" type="video/mp4" />
+
+			</item>
+		<item>
 		<title>Rust in WordPress: The Architectural overview of CrabOptimize</title>
 		<link>https://lakshyajeet.in/rust-in-wordpress-craboptimize/</link>
 		
@@ -132,7 +350,7 @@
 
 
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%">
-<figure class="wp-block-image alignleft size-large is-resized"><img fetchpriority="high" decoding="async" width="708" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp" alt="Project workflow overview." class="wp-image-1326" style="width:auto;height:600px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp 708w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-207x300.webp 207w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-768x1111.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1062x1536.webp 1062w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp 1100w" sizes="(max-width: 708px) 100vw, 708px" /></figure>
+<figure class="wp-block-image alignleft size-large is-resized"><img loading="lazy" decoding="async" width="708" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp" alt="Project workflow overview." class="wp-image-1326" style="width:auto;height:600px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp 708w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-207x300.webp 207w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-768x1111.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1062x1536.webp 1062w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp 1100w" sizes="auto, (max-width: 708px) 100vw, 708px" /></figure>
 </div>
 </div>
 
@@ -1511,7 +1729,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" width="1095" height="679" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp 1095w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-300x186.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1024x635.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="(max-width: 1095px) 100vw, 1095px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1095" height="679" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp 1095w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-300x186.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1024x635.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="auto, (max-width: 1095px) 100vw, 1095px" /></figure>
 
 
 
@@ -1569,7 +1787,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp 815w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-300x292.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="(max-width: 815px) 100vw, 815px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp 815w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-300x292.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="auto, (max-width: 815px) 100vw, 815px" /></figure>
 
 
 
@@ -3953,230 +4171,6 @@ Text Domain: my-block-theme
 ]]></content:encoded>
 					
 					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WordPress Block Editor: Block Attributes and Controls</title>
-		<link>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/</link>
-					<comments>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Fri, 02 May 2025 16:25:16 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[digital-marketing]]></category>
-		<category><![CDATA[javascript]]></category>
-		<category><![CDATA[technology]]></category>
-		<category><![CDATA[web-development]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=850</guid>
-
-					<description><![CDATA[<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor. In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. What Are Block Attributes? In simple [&#8230;]</p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>As WordPress developers, these two concepts are core to how we build rich, interactive, and dynamic content editing experiences in the Block Editor.</p>
-
-
-
-<p>In this blog post, we&#8217;ll explore what block attributes and controls are, how they work, and how we can use them effectively in our custom blocks. </p>
-
-
-
-<h2 class="wp-block-heading">What Are Block Attributes?</h2>
-
-
-
-<p>In simple terms, <strong>block attributes</strong> are the data fields that define the content or behavior of a block. Think of them as the settings or properties that make our block unique and functional.</p>
-
-
-
-<p>For example, a “Heading” block might have the following attributes:</p>
-
-
-
-<ul class="wp-block-list">
-<li><code>content</code>: The text of the heading.</li>
-
-
-
-<li><code>level</code>: The heading level (e.g., h2, h3).</li>
-
-
-
-<li><code>align</code>: Text alignment.</li>
-</ul>
-
-
-
-<h3 class="wp-block-heading">Defining Attributes in a Block</h3>
-
-
-
-<p>When we register a block using <code>registerBlockType</code>, we define the attributes in the configuration:</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/alert-box&apos;</span>, {
-  <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;Alert Box&apos;</span>,
-  <span class="hljs-attr">icon</span>: <span class="hljs-string">&apos;warning&apos;</span>,
-  <span class="hljs-attr">category</span>: <span class="hljs-string">&apos;widgets&apos;</span>,
-
-  <span class="hljs-attr">attributes</span>: {
-    <span class="hljs-attr">message</span>: {
-      <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
-      <span class="hljs-attr">default</span>: <span class="hljs-string">&apos;This is an alert box!&apos;</span>,
-    },
-    <span class="hljs-attr">backgroundColor</span>: {
-      <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;string&apos;</span>,
-      <span class="hljs-attr">default</span>: <span class="hljs-string">&apos;#ffcc00&apos;</span>,
-    },
-  },
-
-  <span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes, setAttributes }</span>) {
-    <span class="hljs-keyword">const</span> { message, backgroundColor } = attributes;
-
-    <span class="hljs-keyword">return</span> (
-      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor</span> }}&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">RichText</span>
-          <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span>
-          <span class="hljs-attr">value</span>=<span class="hljs-string">{message}</span>
-          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(value)</span> =&gt;</span> setAttributes({ message: value })}
-        /&gt;
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-    );
-  },
-
-  <span class="hljs-title function_">save</span>(<span class="hljs-params">{ attributes }</span>) {
-    <span class="hljs-keyword">return</span> (
-      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor:</span> <span class="hljs-attr">attributes.backgroundColor</span> }}&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">RichText.Content</span> <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{attributes.message}</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-    );
-  },
-});
-</code></pre>
-
-
-
-<h2 class="wp-block-heading">What Are Controls in the Block Editor?</h2>
-
-
-
-<p><strong>Controls</strong> are the UI elements we use to let users change a block’s attributes. These can include:</p>
-
-
-
-<ul class="wp-block-list">
-<li>Text inputs</li>
-
-
-
-<li>Color pickers</li>
-
-
-
-<li>Toggle switches</li>
-
-
-
-<li>Dropdowns</li>
-</ul>
-
-
-
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="271" height="416" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp" alt="" class="wp-image-1273" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp 271w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-195x300.webp 195w" sizes="auto, (max-width: 271px) 100vw, 271px" /></figure>
-
-
-
-<h3 class="wp-block-heading">Adding Inspector Controls</h3>
-
-
-
-<p>To let users modify attributes, we add UI controls using components from <code>@wordpress/components</code> inside the block&#8217;s <code>edit</code> function.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">PanelBody</span>, <span class="hljs-title class_">ColorPalette</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/components&apos;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InspectorControls</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
-
-<span class="hljs-title function_">edit</span>(<span class="hljs-params">{ attributes, setAttributes }</span>) {
-  <span class="hljs-keyword">const</span> { backgroundColor } = attributes;
-
-  <span class="hljs-keyword">const</span> colors = [
-    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Yellow&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#ffcc00&apos;</span> },
-    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Red&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#ff4444&apos;</span> },
-    { <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Green&apos;</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&apos;#44ff44&apos;</span> },
-  ];
-
-  <span class="hljs-keyword">return</span> (
-    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">InspectorControls</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">PanelBody</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Background Color&quot;</span> <span class="hljs-attr">initialOpen</span>=<span class="hljs-string">{true}</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">ColorPalette</span>
-            <span class="hljs-attr">colors</span>=<span class="hljs-string">{colors}</span>
-            <span class="hljs-attr">value</span>=<span class="hljs-string">{backgroundColor}</span>
-            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(color)</span> =&gt;</span> setAttributes({ backgroundColor: color })}
-          /&gt;
-        <span class="hljs-tag">&lt;/<span class="hljs-name">PanelBody</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">InspectorControls</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor</span> }}&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">RichText</span>
-          <span class="hljs-attr">tagName</span>=<span class="hljs-string">&quot;p&quot;</span>
-          <span class="hljs-attr">value</span>=<span class="hljs-string">{attributes.message}</span>
-          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(value)</span> =&gt;</span> setAttributes({ message: value })}
-        /&gt;
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/&gt;</span></span>
-  );
-}
-</code></pre>
-
-
-
-<h2 class="wp-block-heading">How Attributes and Controls Work Together</h2>
-
-
-
-<p>The relationship is simple but powerful:</p>
-
-
-
-<ul class="wp-block-list">
-<li><strong>Attributes</strong> hold the data.</li>
-
-
-
-<li><strong>Controls</strong> let users change that data.</li>
-
-
-
-<li><strong>The block</strong> reflects those changes live in the editor and in the saved content.</li>
-</ul>
-
-
-
-<p>This structure allows us to build dynamic blocks that are reusable and fully customizable from the editor.</p>
-
-
-
-<h2 class="wp-block-heading">Summary</h2>
-
-
-
-<p>In Gutenberg block development, <strong>attributes</strong> are the data model, and <strong>controls</strong> are the interface. When we define them thoughtfully and use them properly, we can create flexible and intuitive content editing experiences that our users love.</p>
-
-
-
-<p>By understanding how these parts work together, we&#8217;re able to build blocks that are both user-friendly and developer-friendly.</p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/">WordPress Block Editor: Block Attributes and Controls</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
