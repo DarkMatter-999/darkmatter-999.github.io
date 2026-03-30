@@ -12,7 +12,7 @@
 	<atom:link href="https://lakshyajeet.in/author/lakshyajeet/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Sun, 29 Mar 2026 20:34:49 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 30 Mar 2026 11:51:47 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,8 +28,8 @@
 	<height>32</height>
 </image> 
 	<item>
-		<title>Slashing Token Bloat: Mastering Context with Code Mode AI Agents</title>
-		<link>https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/</link>
+		<title>Mastering Context with Code Mode AI Agents</title>
+		<link>https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/</link>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Sun, 29 Mar 2026 20:13:46 +0000</pubDate>
@@ -37,7 +37,7 @@
 		<guid isPermaLink="false">https://lakshyajeet.in/?p=1335</guid>
 
 					<description><![CDATA[<p>AI agents in software development have evolved from passive text generators to autonomous systems. Code Mode agents reduce token bloat and context rot by dynamically executing scripts, while orchestrator-subagent architectures, skill injection, and secure sandboxing ensure efficient, scalable, and safe AI workflows.</p>
-<p>The post <a href="https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/">Slashing Token Bloat: Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p>The integrations for Large Language Models into software development life-cycle has undergone a significant change in a very less time. In the emergent stages, the Language Models functioned as passive text generators or sophisticated autocomplete, relying entirely on constant human prompting and oversight.<br>However, the engineering paradigm has shifted towards autonomous, agentic systems capable of self orchestrating complex software engineering workflows without continuous human intervention. Central to this architecture is the establishment of universal integration frameworks, most notably the Model Context Protocol. </p>
@@ -237,7 +237,7 @@
 
 
 <p></p>
-<p>The post <a href="https://lakshyajeet.in/slashing-token-bloat-mastering-context-with-code-mode-ai-agents/">Slashing Token Bloat: Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
