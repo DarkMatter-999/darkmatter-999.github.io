@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/blog/</loc>
-		<lastmod>2026-04-28T14:06:06+00:00</lastmod>
+		<lastmod>2026-04-28T19:02:08+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
@@ -486,9 +486,9 @@
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/porting-gutenberg-to-frappe/</loc>
-		<lastmod>2026-04-28T14:06:06+00:00</lastmod>
+		<lastmod>2026-04-28T19:02:08+00:00</lastmod>
 		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-1.webp</image:loc>
 		</image:image>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp</image:loc>
