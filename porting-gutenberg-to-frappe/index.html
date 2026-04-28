@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.5 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<meta name="description" content="Integrate the WordPress Gutenberg editor into Frappe Framework. A deep dive into React-Python orchestration and Vite pipeline..">
+	<link rel="canonical" href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Porting Gutenberg to Frappe - Lakshyajeet's Blog">
+	<meta property="og:description" content="Integrate the WordPress Gutenberg editor into Frappe Framework. A deep dive into React-Python orchestration and Vite pipeline..">
+	<meta property="og:url" content="https://lakshyajeet.in/porting-gutenberg-to-frappe/">
+	<meta property="og:site_name" content="Lakshyajeet's Blog">
+	<meta property="article:published_time" content="2026-04-28T14:06:06+00:00">
+	<meta property="og:image" content="https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat.webp">
+	<meta property="og:image:width" content="1920">
+	<meta property="og:image:height" content="1080">
+	<meta property="og:image:type" content="image/webp">
+	<meta name="author" content="lakshyajeet">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="lakshyajeet">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="10 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"Article","@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#article","isPartOf":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/"},"author":{"name":"lakshyajeet","@id":"https:\/\/lakshyajeet.in\/#\/schema\/person\/a2544f21ad29d03768185cdf9ab84efc"},"headline":"Porting Gutenberg to Frappe","datePublished":"2026-04-28T14:06:06+00:00","mainEntityOfPage":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/"},"wordCount":1949,"publisher":{"@id":"https:\/\/lakshyajeet.in\/#\/schema\/person\/a2544f21ad29d03768185cdf9ab84efc"},"image":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#primaryimage"},"thumbnailUrl":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2026\/04\/block-editor-feat.webp","inLanguage":"en-US"},{"@type":"WebPage","@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/","url":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/","name":"Porting Gutenberg to Frappe - Lakshyajeet's Blog","isPartOf":{"@id":"https:\/\/lakshyajeet.in\/#website"},"primaryImageOfPage":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#primaryimage"},"image":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#primaryimage"},"thumbnailUrl":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2026\/04\/block-editor-feat.webp","datePublished":"2026-04-28T14:06:06+00:00","description":"Integrate the WordPress Gutenberg editor into Frappe Framework. A deep dive into React-Python orchestration and Vite pipeline..","breadcrumb":{"@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#primaryimage","url":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2026\/04\/block-editor-feat.webp","contentUrl":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2026\/04\/block-editor-feat.webp","width":1920,"height":1080},{"@type":"BreadcrumbList","@id":"https:\/\/lakshyajeet.in\/porting-gutenberg-to-frappe\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/lakshyajeet.in\/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https:\/\/lakshyajeet.in\/blog\/"},{"@type":"ListItem","position":3,"name":"Porting Gutenberg to Frappe"}]},{"@type":"WebSite","@id":"https:\/\/lakshyajeet.in\/#website","url":"https:\/\/lakshyajeet.in\/","name":"Lakshyajeet's Blog","description":"","publisher":{"@id":"https:\/\/lakshyajeet.in\/#\/schema\/person\/a2544f21ad29d03768185cdf9ab84efc"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/lakshyajeet.in\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":["Person","Organization"],"@id":"https:\/\/lakshyajeet.in\/#\/schema\/person\/a2544f21ad29d03768185cdf9ab84efc","name":"lakshyajeet","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2025\/01\/cropped-nyan-1.gif","url":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2025\/01\/cropped-nyan-1.gif","contentUrl":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2025\/01\/cropped-nyan-1.gif","width":512,"height":512,"caption":"lakshyajeet"},"logo":{"@id":"https:\/\/lakshyajeet.in\/wp-content\/uploads\/2025\/01\/cropped-nyan-1.gif"},"url":"https:\/\/lakshyajeet.in\/author\/lakshyajeet\/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<title>Porting Gutenberg to Frappe - Lakshyajeet's Blog</title>
+<link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Feed" href="https://lakshyajeet.in/feed/">
+<link rel="alternate" type="application/rss+xml" title="Lakshyajeet's Blog » Comments Feed" href="https://lakshyajeet.in/comments/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flakshyajeet.in%2Fporting-gutenberg-to-frappe%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lakshyajeet.in/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flakshyajeet.in%2Fporting-gutenberg-to-frappe%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-navigation-link-inline-css">
+.wp-block-navigation .wp-block-navigation-item__label{overflow-wrap:break-word}.wp-block-navigation .wp-block-navigation-item__description{display:none}.link-ui-tools{outline:1px solid #f0f0f0;padding:8px}.link-ui-block-inserter{padding-top:8px}.link-ui-block-inserter__back{margin-left:8px;text-transform:uppercase}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/navigation-link/style.min.css */
+</style>
+<style id="wp-block-navigation-inline-css">
+.wp-block-navigation{position:relative}.wp-block-navigation ul{margin-bottom:0;margin-left:0;margin-top:0;padding-left:0}.wp-block-navigation ul,.wp-block-navigation ul li{list-style:none;padding:0}.wp-block-navigation .wp-block-navigation-item{align-items:center;background-color:inherit;display:flex;position:relative}.wp-block-navigation .wp-block-navigation-item .wp-block-navigation__submenu-container:empty{display:none}.wp-block-navigation .wp-block-navigation-item__content{display:block;z-index:1}.wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content{color:inherit}.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content,.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:active,.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:focus{text-decoration:underline}.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content,.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:active,.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:focus{text-decoration:line-through}.wp-block-navigation :where(a),.wp-block-navigation :where(a:active),.wp-block-navigation :where(a:focus){text-decoration:none}.wp-block-navigation .wp-block-navigation__submenu-icon{align-self:center;background-color:inherit;border:none;color:currentColor;display:inline-block;font-size:inherit;height:.6em;line-height:0;margin-left:.25em;padding:0;width:.6em}.wp-block-navigation .wp-block-navigation__submenu-icon svg{display:inline-block;stroke:currentColor;height:inherit;margin-top:.075em;width:inherit}.wp-block-navigation{--navigation-layout-justification-setting:flex-start;--navigation-layout-direction:row;--navigation-layout-wrap:wrap;--navigation-layout-justify:flex-start;--navigation-layout-align:center}.wp-block-navigation.is-vertical{--navigation-layout-direction:column;--navigation-layout-justify:initial;--navigation-layout-align:flex-start}.wp-block-navigation.no-wrap{--navigation-layout-wrap:nowrap}.wp-block-navigation.items-justified-center{--navigation-layout-justification-setting:center;--navigation-layout-justify:center}.wp-block-navigation.items-justified-center.is-vertical{--navigation-layout-align:center}.wp-block-navigation.items-justified-right{--navigation-layout-justification-setting:flex-end;--navigation-layout-justify:flex-end}.wp-block-navigation.items-justified-right.is-vertical{--navigation-layout-align:flex-end}.wp-block-navigation.items-justified-space-between{--navigation-layout-justification-setting:space-between;--navigation-layout-justify:space-between}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{align-items:normal;background-color:inherit;color:inherit;display:flex;flex-direction:column;opacity:0;position:absolute;z-index:2}@media not (prefers-reduced-motion){.wp-block-navigation .has-child .wp-block-navigation__submenu-container{transition:opacity .1s linear}}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{height:0;overflow:hidden;visibility:hidden;width:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container>.wp-block-navigation-item>.wp-block-navigation-item__content{display:flex;flex-grow:1;padding:.5em 1em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container>.wp-block-navigation-item>.wp-block-navigation-item__content .wp-block-navigation__submenu-icon{margin-left:auto;margin-right:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation-item__content{margin:0}.wp-block-navigation .has-child .wp-block-navigation__submenu-container{left:-1px;top:100%}@media (min-width:782px){.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:100%;top:-1px}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container:before{background:#0000;content:"";display:block;height:100%;position:absolute;right:100%;width:.5em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon{margin-right:.25em}.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon svg{transform:rotate(-90deg)}}.wp-block-navigation .has-child .wp-block-navigation-submenu__toggle[aria-expanded=true]~.wp-block-navigation__submenu-container,.wp-block-navigation .has-child:not(.open-on-click):hover>.wp-block-navigation__submenu-container,.wp-block-navigation .has-child:not(.open-on-click):not(.open-on-hover-click):focus-within>.wp-block-navigation__submenu-container{height:auto;min-width:200px;opacity:1;overflow:visible;visibility:visible;width:auto}.wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container{left:0;top:100%}@media (min-width:782px){.wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:100%;top:0}}.wp-block-navigation-submenu{display:flex;position:relative}.wp-block-navigation-submenu .wp-block-navigation__submenu-icon svg{stroke:currentColor}button.wp-block-navigation-item__content{background-color:initial;border:none;color:currentColor;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-align:left;text-transform:inherit}.wp-block-navigation-submenu__toggle{cursor:pointer}.wp-block-navigation-submenu__toggle[aria-expanded=true]+.wp-block-navigation__submenu-icon>svg,.wp-block-navigation-submenu__toggle[aria-expanded=true]>svg{transform:rotate(180deg)}.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle{padding-left:0;padding-right:.85em}.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle+.wp-block-navigation__submenu-icon{margin-left:-.6em;pointer-events:none}.wp-block-navigation-item.open-on-click button.wp-block-navigation-item__content:not(.wp-block-navigation-submenu__toggle){padding:0}.wp-block-navigation .wp-block-page-list,.wp-block-navigation__container,.wp-block-navigation__responsive-close,.wp-block-navigation__responsive-container,.wp-block-navigation__responsive-container-content,.wp-block-navigation__responsive-dialog{gap:inherit}:where(.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button)),:where(.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button)){padding:.5em 1em}:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button)),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button)),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content),:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content){padding:.5em 1em}.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container{left:auto;right:0}.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:-1px;right:-1px}@media (min-width:782px){.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-right .wp-block-page-list>.has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between .wp-block-page-list>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,.wp-block-navigation.items-justified-space-between>.wp-block-navigation__container>.has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container{left:auto;right:100%}}.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container{background-color:#fff;border:1px solid #00000026}.wp-block-navigation.has-background .wp-block-navigation__submenu-container{background-color:inherit}.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container{color:#000}.wp-block-navigation__container{align-items:var(--navigation-layout-align,initial);display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial);list-style:none;margin:0;padding-left:0}.wp-block-navigation__container .is-responsive{display:none}.wp-block-navigation__container:only-child,.wp-block-page-list:only-child{flex-grow:1}@keyframes overlay-menu__fade-in-animation{0%{opacity:0;transform:translateY(.5em)}to{opacity:1;transform:translateY(0)}}.wp-block-navigation__responsive-container{bottom:0;display:none;left:0;position:fixed;right:0;top:0}.wp-block-navigation__responsive-container :where(.wp-block-navigation-item a){color:inherit}.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content{align-items:var(--navigation-layout-align,initial);display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation__responsive-container:not(.is-menu-open.is-menu-open){background-color:inherit!important;color:inherit!important}.wp-block-navigation__responsive-container.is-menu-open{background-color:inherit;display:flex;flex-direction:column}@media not (prefers-reduced-motion){.wp-block-navigation__responsive-container.is-menu-open{animation:overlay-menu__fade-in-animation .1s ease-out;animation-fill-mode:forwards}}.wp-block-navigation__responsive-container.is-menu-open{overflow:auto;padding:clamp(1rem,var(--wp--style--root--padding-top),20rem) clamp(1rem,var(--wp--style--root--padding-right),20rem) clamp(1rem,var(--wp--style--root--padding-bottom),20rem) clamp(1rem,var(--wp--style--root--padding-left),20rem);z-index:100000}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content{align-items:var(--navigation-layout-justification-setting,inherit);display:flex;flex-direction:column;flex-wrap:nowrap;overflow:visible;padding-top:calc(2rem + 24px)}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-page-list{justify-content:flex-start}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon{display:none}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container{border:none;height:auto;min-width:200px;opacity:1;overflow:initial;padding-left:2rem;padding-right:2rem;position:static;visibility:visible;width:auto}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container{gap:inherit}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container{padding-top:var(--wp--style--block-gap,2em)}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item__content{padding:0}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation-item,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-page-list{align-items:var(--navigation-layout-justification-setting,initial);display:flex;flex-direction:column}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item .wp-block-navigation__submenu-container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,.wp-block-navigation__responsive-container.is-menu-open .wp-block-page-list{background:#0000!important;color:inherit!important}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container{left:auto;right:auto}@media (min-width:600px){.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open){background-color:inherit;display:block;position:relative;width:100%;z-index:auto}.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) .wp-block-navigation__responsive-container-close{display:none}.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container{left:0}}.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open{background-color:#fff}.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open{color:#000}.wp-block-navigation__toggle_button_label{font-size:1rem;font-weight:700}.wp-block-navigation__responsive-container-close,.wp-block-navigation__responsive-container-open{background:#0000;border:none;color:currentColor;cursor:pointer;margin:0;padding:0;text-transform:inherit;vertical-align:middle}.wp-block-navigation__responsive-container-close svg,.wp-block-navigation__responsive-container-open svg{fill:currentColor;display:block;height:24px;pointer-events:none;width:24px}.wp-block-navigation__responsive-container-open{display:flex}.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open{font-family:inherit;font-size:inherit;font-weight:inherit}@media (min-width:600px){.wp-block-navigation__responsive-container-open:not(.always-shown){display:none}}.wp-block-navigation__responsive-container-close{position:absolute;right:0;top:0;z-index:2}.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close{font-family:inherit;font-size:inherit;font-weight:inherit}.wp-block-navigation__responsive-close{width:100%}.has-modal-open .wp-block-navigation__responsive-close{margin-left:auto;margin-right:auto;max-width:var(--wp--style--global--wide-size,100%)}.wp-block-navigation__responsive-close:focus{outline:none}.is-menu-open .wp-block-navigation__responsive-close,.is-menu-open .wp-block-navigation__responsive-container-content,.is-menu-open .wp-block-navigation__responsive-dialog{box-sizing:border-box}.wp-block-navigation__responsive-dialog{position:relative}.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog{margin-top:46px}@media (min-width:782px){.has-modal-open .admin-bar .is-menu-open .wp-block-navigation__responsive-dialog{margin-top:32px}}html.has-modal-open{overflow:hidden}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/navigation/style.min.css */
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/group/style.min.css */
+</style>
+<style id="wp-block-post-title-inline-css">
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title :where(a){display:inline-block;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-title/style.min.css */
+</style>
+<style id="wp-block-post-author-inline-css">
+.wp-block-post-author{box-sizing:border-box;display:flex;flex-wrap:wrap}.wp-block-post-author__byline{font-size:.5em;margin-bottom:0;margin-top:0;width:100%}.wp-block-post-author__avatar{margin-right:1em}.wp-block-post-author__bio{font-size:.7em;margin-bottom:.7em}.wp-block-post-author__content{flex-basis:0;flex-grow:1}.wp-block-post-author__name{margin:0}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-author/style.min.css */
+</style>
+<link rel="stylesheet" id="wp-block-cover-css" href="https://lakshyajeet.in/wp-includes/blocks/cover/style.min.css?ver=6.9.4" media="all">
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id="wp-block-video-inline-css">
+.wp-block-video{box-sizing:border-box}.wp-block-video video{height:auto;vertical-align:middle;width:100%}@supports (position:sticky){.wp-block-video [poster]{object-fit:cover}}.wp-block-video.aligncenter{text-align:center}.wp-block-video :where(figcaption){margin-bottom:1em;margin-top:.5em}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/video/style.min.css */
+</style>
+<style id="wp-block-image-inline-css">
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/image/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="dm-hcb-highlighted-code-block-style-inline-css">
+.dm-hcb-code-preview pre{display:block;margin:0;overflow-x:auto;padding:0;width:100%}.dm-hcb-code-input textarea{max-width:calc(100% - 2em);padding:1em;width:calc(100% - 2em)}.dm-hcb-code-preview>pre,.wp-block-dm-hcb-highlighted-code-block{position:relative}.dm-hcb-code-preview>pre>button,.wp-block-dm-hcb-highlighted-code-block>button{border:.5px solid;border-radius:3px;cursor:pointer;font-size:.85em;margin:0;padding:.2em .5em;position:absolute;right:.5em;top:.5em;z-index:10}.dm-hcb-code-preview>pre>button>svg,.wp-block-dm-hcb-highlighted-code-block>button>svg{fill:currentcolor;vertical-align:middle;width:1em}.wp-block-dm-hcb-highlighted-code-block button span{margin-left:.5em}
+
+/*# sourceURL=https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/blocks/highlighted-code-block/index.css */
+</style>
+<style id="wp-block-post-content-inline-css">
+.wp-block-post-content{display:flow-root}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-content/style.min.css */
+</style>
+<style id="wp-block-post-navigation-link-inline-css">
+.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous{display:inline-block;margin-right:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-previous:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next{display:inline-block;margin-left:1ch}.wp-block-post-navigation-link .wp-block-post-navigation-link__arrow-next:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-post-navigation-link.has-text-align-left[style*="writing-mode: vertical-lr"],.wp-block-post-navigation-link.has-text-align-right[style*="writing-mode: vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/post-navigation-link/style.min.css */
+</style>
+<style id="wp-block-site-title-inline-css">
+.wp-block-site-title{box-sizing:border-box}.wp-block-site-title :where(a){color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:inherit}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/site-title/style.min.css */
+</style>
+<style id="wp-block-columns-inline-css">
+.wp-block-columns{box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns{align-items:normal!important}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:1.25em 2.375em}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:break-word}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+/*# sourceURL=https://lakshyajeet.in/wp-includes/blocks/columns/style.min.css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<link rel="stylesheet" id="dm-hcb-highlight-theme-block-css" href="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/themes/atom-one-dark.min.css?ver=1765782624" media="all">
+<link rel="stylesheet" id="main-css" href="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/css/screen.css?ver=8e490d9a54619be17e1c" media="all">
+<link rel="stylesheet" id="hand-css" href="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/css/hand.css?ver=b5c2dce8010766234f58" media="print" onload="this.media='all'">
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--base: hsl(259 86% 8%);--wp--preset--color--base-dark: hsl(250 35% 10%);--wp--preset--color--base-light: hsl(257 58% 12%);--wp--preset--color--base-front: hsl(255 100% 5%);--wp--preset--color--contrast: hsl(250 100% 100%);--wp--preset--color--contrast-muted: hsl(251 65% 79%);--wp--preset--color--highlight: hsl(255 36% 49%);--wp--preset--color--border: hsl(257 47% 37%);--wp--preset--color--border-muted: hsl(262 69% 25%);--wp--preset--color--primary: hsl(252 100% 82%);--wp--preset--color--secondary: hsl(63 47% 49%);--wp--preset--color--tertiery: hsl(272 100% 50%);--wp--preset--color--shadow: 0px 2px 2px oklch(0 0 0 / 0.2), 0px 4px 4px oklch(0 0 0 / 0.1);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base) 97%, var(--wp--preset--color--base-light));--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.536), 20px);--wp--preset--font-size--large: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.246), 36px);--wp--preset--font-size--x-large: clamp(25.014px, 1.563rem + ((1vw - 3.2px) * 1.517), 42px);--wp--preset--font-size--extra-small: 0.75rem;--wp--preset--font-size--normal: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.179), 1rem);--wp--preset--font-size--extra-large: clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 1.071), 2rem);--wp--preset--font-size--xxl: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 1.796), 3rem);--wp--preset--font-size--huge: clamp(2.2rem, 2.2rem + ((1vw - 0.2rem) * 2.571), 4rem);--wp--preset--font-size--extra-huge: clamp(2.835rem, 2.835rem + ((1vw - 0.2rem) * 3.807), 5.5rem);--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--galada: Galada, sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1440px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--base-dark);color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--poppins);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.357), 18px);line-height: 1.6;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--contrast);text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-base-dark-color{color: var(--wp--preset--color--base-dark) !important;}.has-base-light-color{color: var(--wp--preset--color--base-light) !important;}.has-base-front-color{color: var(--wp--preset--color--base-front) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-color{color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-color{color: var(--wp--preset--color--highlight) !important;}.has-border-color{color: var(--wp--preset--color--border) !important;}.has-border-muted-color{color: var(--wp--preset--color--border-muted) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-tertiery-color{color: var(--wp--preset--color--tertiery) !important;}.has-shadow-color{color: var(--wp--preset--color--shadow) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-base-dark-background-color{background-color: var(--wp--preset--color--base-dark) !important;}.has-base-light-background-color{background-color: var(--wp--preset--color--base-light) !important;}.has-base-front-background-color{background-color: var(--wp--preset--color--base-front) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-background-color{background-color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-background-color{background-color: var(--wp--preset--color--highlight) !important;}.has-border-background-color{background-color: var(--wp--preset--color--border) !important;}.has-border-muted-background-color{background-color: var(--wp--preset--color--border-muted) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-tertiery-background-color{background-color: var(--wp--preset--color--tertiery) !important;}.has-shadow-background-color{background-color: var(--wp--preset--color--shadow) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-base-dark-border-color{border-color: var(--wp--preset--color--base-dark) !important;}.has-base-light-border-color{border-color: var(--wp--preset--color--base-light) !important;}.has-base-front-border-color{border-color: var(--wp--preset--color--base-front) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-contrast-muted-border-color{border-color: var(--wp--preset--color--contrast-muted) !important;}.has-highlight-border-color{border-color: var(--wp--preset--color--highlight) !important;}.has-border-border-color{border-color: var(--wp--preset--color--border) !important;}.has-border-muted-border-color{border-color: var(--wp--preset--color--border-muted) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-tertiery-border-color{border-color: var(--wp--preset--color--tertiery) !important;}.has-shadow-border-color{border-color: var(--wp--preset--color--shadow) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-primary-gradient-gradient-background{background: var(--wp--preset--gradient--primary-gradient) !important;}.has-primary-gradient-hover-gradient-background{background: var(--wp--preset--gradient--primary-gradient-hover) !important;}.has-hero-gradient-gradient-background{background: var(--wp--preset--gradient--hero-gradient) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-extra-small-font-size{font-size: var(--wp--preset--font-size--extra-small) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}.has-extra-large-font-size{font-size: var(--wp--preset--font-size--extra-large) !important;}.has-xxl-font-size{font-size: var(--wp--preset--font-size--xxl) !important;}.has-huge-font-size{font-size: var(--wp--preset--font-size--huge) !important;}.has-extra-huge-font-size{font-size: var(--wp--preset--font-size--extra-huge) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-galada-font-family{font-family: var(--wp--preset--font-family--galada) !important;}
+:root :where(.wp-block-cover){background-color: var(--wp--preset--color--base-dark);}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="core-block-supports-inline-css">
+.wp-container-core-group-is-layout-13d46e68{flex-wrap:nowrap;gap:0;justify-content:space-between;}.wp-container-core-group-is-layout-3018ce38 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:1200px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-3018ce38 > .alignwide{max-width:1440px;}.wp-container-core-group-is-layout-3018ce38 .alignfull{max-width:none;}.wp-container-core-group-is-layout-3018ce38 > .alignfull{margin-right:calc(var(--wp--preset--spacing--60) * -1);margin-left:calc(var(--wp--preset--spacing--60) * -1);}.wp-elements-66e2171ccf4754254e7e9d295c1d8aab a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-group-is-layout-0747478d > .alignfull{margin-right:calc(var(--wp--preset--spacing--50) * -1);margin-left:calc(var(--wp--preset--spacing--50) * -1);}.wp-container-core-group-is-layout-609ade12{flex-wrap:nowrap;justify-content:space-between;align-items:center;}.wp-container-core-group-is-layout-bea02a06 > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:800px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-bea02a06 > .alignwide{max-width:800px;}.wp-container-core-group-is-layout-bea02a06 .alignfull{max-width:none;}.wp-container-core-group-is-layout-b6c1f246{flex-direction:column;align-items:center;justify-content:center;}.wp-container-core-navigation-is-layout-734eb2c2{flex-direction:column;align-items:center;}.wp-container-core-group-is-layout-e278f9a3{flex-wrap:nowrap;gap:var(--wp--preset--spacing--30);justify-content:center;}.wp-container-core-columns-is-layout-643ced6b{flex-wrap:nowrap;gap:var(--wp--preset--spacing--60) var(--wp--preset--spacing--60);}.wp-container-core-group-is-layout-196b58ae > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width:800px;margin-left:auto !important;margin-right:auto !important;}.wp-container-core-group-is-layout-196b58ae > .alignwide{max-width:800px;}.wp-container-core-group-is-layout-196b58ae .alignfull{max-width:none;}.wp-container-core-group-is-layout-196b58ae > .alignfull{margin-right:calc(var(--wp--preset--spacing--30) * -1);margin-left:calc(var(--wp--preset--spacing--30) * -1);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<style id="wp-block-template-skip-link-inline-css">
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+/*# sourceURL=wp-block-template-skip-link-inline-css */
+</style>
+<link rel="stylesheet" id="dm-hcb-highlight-theme-css" href="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/themes/atom-one-dark.min.css?ver=1765782624" media="all">
+<style id="tss-style-base-inline-css">
+:root.is-style-base {
+--wp--preset--color--base: hsl(259 86% 8%);--wp--preset--color--base-dark: hsl(250 35% 10%);--wp--preset--color--base-light: hsl(257 58% 12%);--wp--preset--color--base-front: hsl(255 100% 5%);--wp--preset--color--contrast: hsl(250 100% 100%);--wp--preset--color--contrast-muted: hsl(251 65% 79%);--wp--preset--color--highlight: hsl(255 36% 49%);--wp--preset--color--border: hsl(257 47% 37%);--wp--preset--color--border-muted: hsl(262 69% 25%);--wp--preset--color--primary: hsl(252 100% 82%);--wp--preset--color--secondary: hsl(63 47% 49%);--wp--preset--color--tertiery: hsl(272 100% 50%);--wp--preset--color--shadow: 0px 2px 2px oklch(0 0 0 / 0.2), 0px 4px 4px oklch(0 0 0 / 0.1);--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base) 97%, var(--wp--preset--color--base-light));--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);--wp--preset--font-size--extra-small: 0.75rem;--wp--preset--font-size--small: 0.875rem;--wp--preset--font-size--normal: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.179), 1rem);--wp--preset--font-size--medium: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.357), 1.125rem);--wp--preset--font-size--large: clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.737), 1.5rem);--wp--preset--font-size--extra-large: clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 1.071), 2rem);--wp--preset--font-size--xxl: clamp(1.743rem, 1.743rem + ((1vw - 0.2rem) * 1.796), 3rem);--wp--preset--font-size--huge: clamp(2.2rem, 2.2rem + ((1vw - 0.2rem) * 2.571), 4rem);--wp--preset--font-size--extra-huge: clamp(2.835rem, 2.835rem + ((1vw - 0.2rem) * 3.807), 5.5rem);--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--galada: Galada, sans-serif;
+}
+:root.is-style-base {
+--wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1440px;
+}
+.is-style-base :where(body) {
+margin: 0;
+}
+.is-style-base .wp-site-blocks > .alignleft {
+float: left; margin-right: 2em;
+}
+.is-style-base .wp-site-blocks > .alignright {
+float: right; margin-left: 2em;
+}
+.is-style-base .wp-site-blocks > .aligncenter {
+justify-content: center; margin-left: auto; margin-right: auto;
+}
+.is-style-base :where(.wp-site-blocks) > * {
+margin-block-start: ; margin-block-end: 0;
+}
+.is-style-base :where(.wp-site-blocks) > :first-child {
+margin-block-start: 0;
+}
+.is-style-base :where(.wp-site-blocks) > :last-child {
+margin-block-end: 0;
+}
+:root.is-style-base {
+--wp--style--block-gap: ;
+}
+.is-style-base .is-layout-flow > .alignleft {
+float: left;margin-inline-start: 0;margin-inline-end: 2em;
+}
+.is-style-base .is-layout-flow > .alignright {
+float: right;margin-inline-start: 2em;margin-inline-end: 0;
+}
+.is-style-base .is-layout-flow > .aligncenter {
+margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > .alignleft {
+float: left;margin-inline-start: 0;margin-inline-end: 2em;
+}
+.is-style-base .is-layout-constrained > .alignright {
+float: right;margin-inline-start: 2em;margin-inline-end: 0;
+}
+.is-style-base .is-layout-constrained > .aligncenter {
+margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;
+}
+.is-style-base .is-layout-constrained > .alignwide {
+max-width: var(--wp--style--global--wide-size);
+}
+.is-style-base body .is-layout-flex {
+display: flex;
+}
+.is-style-base .is-layout-flex {
+flex-wrap: wrap;align-items: center;
+}
+.is-style-base .is-layout-flex > :is(*, .is-style-base div) {
+margin: 0;
+}
+.is-style-base body .is-layout-grid {
+display: grid;
+}
+.is-style-base .is-layout-grid > :is(*, .is-style-base div) {
+margin: 0;
+}
+.is-style-base body {
+background-color: var(--wp--preset--color--base-dark);color: var(--wp--preset--color--contrast);font-family: var(--wp--preset--font-family--poppins);font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.357), 18px);line-height: 1.6;
+}
+.is-style-base a:where(:not(.wp-element-button)) {
+color: var(--wp--preset--color--contrast);
+}
+.is-style-base .has-base-color {
+color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-color {
+color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-color {
+color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-color {
+color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-color {
+color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-color {
+color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-color {
+color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-color {
+color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-color {
+color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-color {
+color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-color {
+color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-color {
+color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-color {
+color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-base-background-color {
+background-color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-background-color {
+background-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-background-color {
+background-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-background-color {
+background-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-background-color {
+background-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-background-color {
+background-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-background-color {
+background-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-background-color {
+background-color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-background-color {
+background-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-background-color {
+background-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-background-color {
+background-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-background-color {
+background-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-background-color {
+background-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-base-border-color {
+border-color: var(--wp--preset--color--base) !important;
+}
+.is-style-base .has-base-dark-border-color {
+border-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-base .has-base-light-border-color {
+border-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-base .has-base-front-border-color {
+border-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-base .has-contrast-border-color {
+border-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-base .has-contrast-muted-border-color {
+border-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-base .has-highlight-border-color {
+border-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-base .has-border-border-color {
+border-color: var(--wp--preset--color--border) !important;
+}
+.is-style-base .has-border-muted-border-color {
+border-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-base .has-primary-border-color {
+border-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-base .has-secondary-border-color {
+border-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-base .has-tertiery-border-color {
+border-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-base .has-shadow-border-color {
+border-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-base .has-primary-gradient-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient) !important;
+}
+.is-style-base .has-primary-gradient-hover-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient-hover) !important;
+}
+.is-style-base .has-hero-gradient-gradient-background {
+background: var(--wp--preset--gradient--hero-gradient) !important;
+}
+.is-style-base .has-extra-small-font-size {
+font-size: var(--wp--preset--font-size--extra-small) !important;
+}
+.is-style-base .has-small-font-size {
+font-size: var(--wp--preset--font-size--small) !important;
+}
+.is-style-base .has-normal-font-size {
+font-size: var(--wp--preset--font-size--normal) !important;
+}
+.is-style-base .has-medium-font-size {
+font-size: var(--wp--preset--font-size--medium) !important;
+}
+.is-style-base .has-large-font-size {
+font-size: var(--wp--preset--font-size--large) !important;
+}
+.is-style-base .has-extra-large-font-size {
+font-size: var(--wp--preset--font-size--extra-large) !important;
+}
+.is-style-base .has-xxl-font-size {
+font-size: var(--wp--preset--font-size--xxl) !important;
+}
+.is-style-base .has-huge-font-size {
+font-size: var(--wp--preset--font-size--huge) !important;
+}
+.is-style-base .has-extra-huge-font-size {
+font-size: var(--wp--preset--font-size--extra-huge) !important;
+}
+.is-style-base .has-poppins-font-family {
+font-family: var(--wp--preset--font-family--poppins) !important;
+}
+.is-style-base .has-galada-font-family {
+font-family: var(--wp--preset--font-family--galada) !important;
+}
+
+/*# sourceURL=tss-style-base-inline-css */
+</style>
+<style id="tss-style-01-light-inline-css">
+:root.is-style-01-light {
+--wp--preset--color--base: hsl(250 100% 99%);
+--wp--preset--color--base-dark: hsl(255 40% 93%);
+--wp--preset--color--base-light: hsl(252 100% 100%);
+--wp--preset--color--base-front: hsl(250 30% 85%);
+--wp--preset--color--contrast: hsl(255 35% 10%);
+--wp--preset--color--contrast-muted: hsl(255 25% 30%);
+--wp--preset--color--highlight: hsl(255 45% 55%);
+--wp--preset--color--border: hsl(257 25% 80%);
+--wp--preset--color--border-muted: hsl(260 20% 90%);
+--wp--preset--color--primary: hsl(252 100% 50%);
+--wp--preset--color--secondary: hsl(63 47% 49%);
+--wp--preset--color--tertiery: hsl(272 100% 50%);
+--wp--preset--color--shadow: 0px 2px 4px oklch(0 0 0 / 0.1), 0px 8px 8px oklch(0 0 0 / 0.05);
+--wp--preset--gradient--primary-gradient: linear-gradient(0deg, var(--wp--preset--color--base-light) 97%, var(--wp--preset--color--base));
+--wp--preset--gradient--primary-gradient-hover: linear-gradient(0deg, var(--wp--preset--color--base), var(--wp--preset--color--base-light));
+--wp--preset--gradient--hero-gradient: radial-gradient(at 22% 62%, rgb(126, 104, 222) 0px, transparent 50%), radial-gradient(at 90% 39%, rgb(167, 70, 246) 0px, transparent 50%), radial-gradient(at 74% 83%, rgb(68, 108, 218) 0px, transparent 50%), radial-gradient(at 14% 10%, rgb(255, 92, 220) 0px, transparent 50%), radial-gradient(at 57% 16%, rgb(219, 95, 247) 0px, transparent 50%), radial-gradient(at 2% 83%, rgb(255, 194, 148) 0px, transparent 50%);
+}
+.is-style-01-light :where(body) {
+margin: 0;
+}
+.is-style-01-light .wp-site-blocks > .alignleft {
+float: left;
+margin-right: 2em;
+}
+.is-style-01-light .wp-site-blocks > .alignright {
+float: right;
+margin-left: 2em;
+}
+.is-style-01-light .wp-site-blocks > .aligncenter {
+justify-content: center;
+margin-left: auto;
+margin-right: auto;
+}
+.is-style-01-light :where(.wp-site-blocks) > * {
+margin-block-start:;
+margin-block-end: 0;
+}
+.is-style-01-light :where(.wp-site-blocks) > :first-child {
+margin-block-start: 0;
+}
+.is-style-01-light :where(.wp-site-blocks) > :last-child {
+margin-block-end: 0;
+}
+:root.is-style-01-light {
+--wp--style--block-gap:;
+}
+.is-style-01-light .is-layout-flow > .alignleft {
+float: left;
+margin-inline-start: 0;
+margin-inline-end: 2em;
+}
+.is-style-01-light .is-layout-flow > .alignright {
+float: right;
+margin-inline-start: 2em;
+margin-inline-end: 0;
+}
+.is-style-01-light .is-layout-flow > .aligncenter {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light .is-layout-constrained > .alignleft {
+float: left;
+margin-inline-start: 0;
+margin-inline-end: 2em;
+}
+.is-style-01-light .is-layout-constrained > .alignright {
+float: right;
+margin-inline-start: 2em;
+margin-inline-end: 0;
+}
+.is-style-01-light .is-layout-constrained > .aligncenter {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+margin-left: auto !important;
+margin-right: auto !important;
+}
+.is-style-01-light body .is-layout-flex {
+display: flex;
+}
+.is-style-01-light .is-layout-flex {
+flex-wrap: wrap;
+align-items: center;
+}
+.is-style-01-light .is-layout-flex > :is(*, .is-style-01-light div) {
+margin: 0;
+}
+.is-style-01-light body .is-layout-grid {
+display: grid;
+}
+.is-style-01-light .is-layout-grid > :is(*, .is-style-01-light div) {
+margin: 0;
+}
+.is-style-01-light body {
+background-color: var(--wp--preset--color--base-light);
+color: var(--wp--preset--color--contrast);
+font-family: var(--wp--preset--font-family--poppins);
+line-height: 1.6;
+}
+.is-style-01-light a:where(:not(.wp-element-button)) {
+color: var(--wp--preset--color--highlight);
+}
+.is-style-01-light .has-base-color {
+color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-color {
+color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-color {
+color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-color {
+color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-color {
+color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-color {
+color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-color {
+color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-color {
+color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-color {
+color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-color {
+color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-color {
+color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-color {
+color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-color {
+color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-base-background-color {
+background-color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-background-color {
+background-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-background-color {
+background-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-background-color {
+background-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-background-color {
+background-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-background-color {
+background-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-background-color {
+background-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-background-color {
+background-color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-background-color {
+background-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-background-color {
+background-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-background-color {
+background-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-background-color {
+background-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-background-color {
+background-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-base-border-color {
+border-color: var(--wp--preset--color--base) !important;
+}
+.is-style-01-light .has-base-dark-border-color {
+border-color: var(--wp--preset--color--base-dark) !important;
+}
+.is-style-01-light .has-base-light-border-color {
+border-color: var(--wp--preset--color--base-light) !important;
+}
+.is-style-01-light .has-base-front-border-color {
+border-color: var(--wp--preset--color--base-front) !important;
+}
+.is-style-01-light .has-contrast-border-color {
+border-color: var(--wp--preset--color--contrast) !important;
+}
+.is-style-01-light .has-contrast-muted-border-color {
+border-color: var(--wp--preset--color--contrast-muted) !important;
+}
+.is-style-01-light .has-highlight-border-color {
+border-color: var(--wp--preset--color--highlight) !important;
+}
+.is-style-01-light .has-border-border-color {
+border-color: var(--wp--preset--color--border) !important;
+}
+.is-style-01-light .has-border-muted-border-color {
+border-color: var(--wp--preset--color--border-muted) !important;
+}
+.is-style-01-light .has-primary-border-color {
+border-color: var(--wp--preset--color--primary) !important;
+}
+.is-style-01-light .has-secondary-border-color {
+border-color: var(--wp--preset--color--secondary) !important;
+}
+.is-style-01-light .has-tertiery-border-color {
+border-color: var(--wp--preset--color--tertiery) !important;
+}
+.is-style-01-light .has-shadow-border-color {
+border-color: var(--wp--preset--color--shadow) !important;
+}
+.is-style-01-light .has-primary-gradient-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient) !important;
+}
+.is-style-01-light .has-primary-gradient-hover-gradient-background {
+background: var(--wp--preset--gradient--primary-gradient-hover) !important;
+}
+.is-style-01-light .has-hero-gradient-gradient-background {
+background: var(--wp--preset--gradient--hero-gradient) !important;
+}
+
+/*# sourceURL=tss-style-01-light-inline-css */
+</style>
+<script src="https://lakshyajeet.in/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script src="https://lakshyajeet.in/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script src="https://lakshyajeet.in/wp-content/plugins/Syntax-Highlighted-Code-blocks/assets/build/blocks/highlighted-code-block/view.js?ver=a6eb1df7a76fbfecb87d" id="dm-hcb-highlighted-code-block-view-script-js" defer data-wp-strategy="defer"></script>
+<script src="https://lakshyajeet.in/wp-content/plugins/WordPress-Theme-Style-Switcher/assets/build/blocks/theme-switcher-block/view.js?ver=a6e2d025c46bd4df6a02" id="dm-tss-theme-style-switcher-view-script-js" defer data-wp-strategy="defer"></script>
+<script src="https://lakshyajeet.in/wp-content/themes/darkmatter/assets/build/js/screen.js?ver=5e5cd2388f786cec7f14" id="main-js-js" defer data-wp-strategy="defer"></script>
+<link rel="https://api.w.org/" href="https://lakshyajeet.in/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://lakshyajeet.in/wp-json/wp/v2/posts/1359"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lakshyajeet.in/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.9.4">
+<link rel="shortlink" href="https://lakshyajeet.in/?p=1359">
+<script type="importmap" id="wp-importmap">
+{"imports":{"@wordpress/interactivity":"https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=66c613f68580994bb00a"}}
+</script>
+<link rel="modulepreload" href="https://lakshyajeet.in/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=66c613f68580994bb00a" id="@wordpress/interactivity-js-modulepreload" fetchpriority="low">
+<style class="wp-fonts-local">
+@font-face{font-family:Poppins;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/poppins-regular.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Galada;font-style:normal;font-weight:100 200 300 400 500 600 700 800 900;font-display:swap;src:url('https://lakshyajeet.in/wp-content/themes/darkmatter/assets/fonts/galada-regular.woff2') format('woff2');font-stretch:normal;}
+</style>
+<link rel="icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png" sizes="32x32">
+<link rel="icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png">
+<meta name="msapplication-TileImage" content="https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-300x300.png">
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-1359 single-format-standard wp-embed-responsive wp-theme-darkmatter">
+
+<div class="wp-site-blocks"><header class="site-header wp-block-template-part">
+<div class="wp-block-group dm-header has-primary-gradient-gradient-background has-primary-gradient-hover-gradient-background has-background is-layout-constrained wp-container-core-group-is-layout-3018ce38 wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--60)">
+<div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-13d46e68 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+<h2 class="wp-block-heading"><a href="https://lakshyajeet.in/" data-type="page" data-id="960">Lakshyajeet.</a></h2>
+
+
+<nav class="is-responsive wp-block-navigation is-layout-flex wp-block-navigation-is-layout-flex" aria-label="Navigation" data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" data-wp-on--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7.5h16v1.5H4z"></path><path d="M4 15h16v1.5H4z"></path></svg></button>
+				<div class="wp-block-navigation__responsive-container" id="modal-1" data-wp-class--has-modal-open="state.isMenuOpen" data-wp-class--is-menu-open="state.isMenuOpen" data-wp-watch="callbacks.initMenu" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on--focusout="actions.handleMenuFocusout" tabindex="-1">
+					<div class="wp-block-navigation__responsive-close" tabindex="-1">
+						<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="state.ariaModal" data-wp-bind--aria-label="state.ariaLabel" data-wp-bind--role="state.roleAttribute">
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" data-wp-on--click="actions.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
+							<div class="wp-block-navigation__responsive-container-content" data-wp-watch="callbacks.focusFirstElement" id="modal-1-content">
+								<ul class="wp-block-navigation__container is-responsive wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/blog/"><span class="wp-block-navigation-item__label">Blog</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/dm_project"><span class="wp-block-navigation-item__label">Projects</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/about/"><span class="wp-block-navigation-item__label">About</span></a></li></ul>
+							</div>
+						</div>
+					</div>
+				</div></nav></div>
+</div>
+</header>
+
+
+<main class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-bea02a06 wp-block-group-is-layout-constrained">
+<div class="wp-block-cover is-light has-contrast-color has-text-color has-link-color wp-elements-66e2171ccf4754254e7e9d295c1d8aab"><span aria-hidden="true" class="wp-block-cover__background has-base-dark-background-color has-background-dim"></span><img width="1920" height="1080" src="https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat.webp" class="wp-block-cover__image-background wp-post-image" alt="" data-object-fit="cover" decoding="async" fetchpriority="high" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat.webp 1920w, https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-300x169.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-1024x576.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-768x432.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-1536x864.webp 1536w" sizes="(max-width: 1920px) 100vw, 1920px"><div class="wp-block-cover__inner-container is-layout-constrained wp-block-cover-is-layout-constrained">
+<div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-0747478d wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><h2 class="has-text-align-left wp-block-post-title has-huge-font-size">Porting Gutenberg to Frappe</h2>
+
+
+
+<div class="wp-block-post-author"><div class="wp-block-post-author__content"><p class="wp-block-post-author__name"><a href="https://lakshyajeet.in/author/lakshyajeet/" target="_blank">lakshyajeet</a></p><p class="wp-block-post-author__bio"></p></div></div></div>
+</div></div>
+
+
+<div class="entry-content wp-block-post-content is-layout-flow wp-block-post-content-is-layout-flow">
+<p>Building content-heavy web pages inside the Frappe Framework has relied on a familiar, battle-tested pipeline: a standard Web Page DocType, a Rich Text editor or serial page builder, and a Jinja template to render it to the end user. It works. It has powered thousands of ERPNext sites, documentation portals, and marketing pages. While it works, having used WordPress’s block editor, Frappe’s default editor feels too basic.</p>
+
+
+
+<p>Like most of my projects, this one also started with a “What if…?”: what if we could have WordPress Block Editor’s editing experience inside Frappe?</p>
+
+
+
+<p><strong>I am well aware that <a href="https://frappe.io/builder" target="_blank" rel="noreferrer noopener">Frappe Builder</a> exists to solve exactly this problem.</strong> However, my motivation was two-fold: first, it was a fascinating technical challenge that gave me the experience to embed Gutenberg portably into almost any environment. Second, I wanted to achieve a specific balance, a lightweight, “editor-first” experience that remains feature-rich without the overhead of a full-scale site builder.</p>
+
+
+
+<p>In this article, we will explore the mechanics of injecting a <strong>modern React-based editor</strong> into <strong>Frappe’s hybrid jQuery and Vue-driven UI</strong>, serializing block-delimited markup into MariaDB, and dynamically generating CSS via modern Vite asset pipelines.</p>
+
+
+
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
+
+
+
+<h2 class="wp-block-heading">Rethinking How We Build Content</h2>
+
+
+
+<p>For basic, text-heavy content like blog posts or standard “About Us” pages, the legacy WYSIWYG (What You See Is What You Get) approach works perfectly, It’s a familiar and low-friction way that doesn’t require complex state management or heavy client side JS to function.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption">Frappe’s Rich text editor</figcaption></figure>
+
+
+
+<p>However, as the requirements shift towards more complex pages like interactive landing pages, or documentation the limitation of traditional editor becomes difficult to work with and maintain.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>The “Span Soup” Problem:</strong> Traditional editors lack structural awareness, when a user tried to build a complex layout with multiple interactive elements, they often end up fighting each other. This inevitably leads to “span soup”- deeply nested tags, forced styles and redundant content so that it does not break responsive design on mobile.</li>
+
+
+
+<li><strong>Performance and Editing Constraints:</strong> As pages grow more complex, it becomes difficult to manage and edit them, especially when we add more elements: complex layouts, interactive components, or nested containers, the editing experience becomes increasingly sluggish.</li>
+</ul>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px"><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
+
+
+
+<p>On a personal level, <strong>I just genuinely appreciate the Gutenberg component ecosystem, so why not use it?</strong> The WordPress block editor provides a beautiful, drag-and-drop authoring experience that content creators already know and love. I wanted that exact user experience, but backed by Frappe’s Python based backend.</p>
+
+
+
+<h2 class="wp-block-heading">Why WordPress Gutenberg in Frappe?</h2>
+
+
+
+<p>When looking to replace the legacy editor, the obvious alternative usually is to build a custom editor on our own, and as mentioned previously that is exactly what <a href="https://frappe.io/builder" target="_blank" rel="noreferrer noopener">Frappe Builder</a> has done.</p>
+
+
+
+<p>So why did I choose to import <em><code>@wordpress/block-editor</code></em> into a non-WordPress, Python environment?</p>
+
+
+
+<p>This is not a silver bullet, and bringing massive WordPress NPM packages into Frappe carries bundle-size overhead with it, but the architectural tradeoffs are actually quite favorable:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Zero-cost Abstractions (The Data Model)</strong>: Gutenberg elegantly stores the block structures as standard HTML with annotated JSON comments (<code>&lt;!-- wp:paragraph {"align":"center"} --&gt; &lt;p&gt;Text&lt;/p&gt; &lt;!-- /wp:paragraph --&gt;</code>). This means Frappe doesn’t need any complex relational schema or dedicated block table to store page data. It can store the entire AST (Abstract Syntax Tree) as a single Long Text string, and Gutenberg parses it back into a React state tree effortlessly.</li>
+
+
+
+<li><strong>The Component Ecosystem</strong>:<strong> </strong>By utilizing <code>@wordpress/block-library</code>, we instantly inherit dozens of highly tested, accessible, and responsive blocks (Code snippets, Tables, Columns, Audio, Video) without writing a single line of UI code ourselves. If someday we want to add our own block it is a very straightforward process as building a block in WordPress is quite easy and very highly documented.</li>
+
+
+
+<li><strong>Memory Safety &amp; State Management:</strong> Gutenberg leverages highly optimized React data stores (@wordpress/data, built heavily on Redux principles), ensuring that even pages with thousands of nested blocks won’t crash the browser’s main thread. It handles focus management, history tracking (undo/redo), and deeply nested block state with incredible efficiency.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading"> Intercepting the Workflow: The Architecture</h2>
+
+
+
+<p>The main obstacle in integrating a React-based block editor into Frappe is the fundamental environment mismatch. WordPress Block Editor expects to talk to a PHP backend via the WP REST API. It expects WordPress global variables. Frappe, on the other hand, expects a Vue.js based frontend with a Python based backend.</p>
+
+
+
+<p>So we basically want to “hijack” the standard Frappe DocType rendering cycle and inject a React root over the existing DOM.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p>To build this bridge, we intercept the standard “Web Page” DocType in Frappe using a client script (<a href="https://github.com/DarkMatter-999/block_editor_frappe/blob/develop/block_editor_frappe/public/js/block_editor_web_page.js"><code>block_editor_web_page.js</code></a>). Add a custom “Block Editor” option to the content type, create a custom DOM node, and mount our React application as an overlay to it and create few custom fields to store our content data in the backend.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frappe/public/js/block_editor_web_page.js
+
+let editor_node = null;
+let editor_manager = null;
+
+frappe.ui.form.on(&quot;Web Page&quot;, {
+    setup_editor: function (frm) {
+        // We check if the Vite-compiled React bundle has successfully attached 
+        // the mount function to the global window object. If not, the script fails gracefully
+        // and falls back to standard Frappe rendering.
+        if (!window.mountDMBlockEditor) {
+            console.error(&quot;Block Editor React bundle is missing.&quot;);
+            return;
+        }
+
+        // We utilize the Frappe form lifecycle to mount our React app.
+        // We isolate the React DOM tree inside a dedicated 'editor_node' to prevent 
+        // Frappe's global jQuery logic from accidentally mutating React's virtual DOM.
+        if (!editor_manager) {
+            editor_manager = window.mountDMBlockEditor(
+                editor_node,
+                {
+                    // Pass Frappe's current DB state down into React as props.
+                    // React treats Frappe's database as the single source of truth upon initialization.
+                    title: frm.get_title() || &quot;&quot;,
+                    content: frm.doc.block_editor_html_internal || &quot;&quot;,
+                    route: frm.doc.route || &quot;&quot;,
+                    published: frm.doc.published || 0,
+                    meta_title: frm.doc.meta_title || &quot;&quot;,
+                    meta_description: frm.doc.meta_description || &quot;&quot;,
+                },
+                // The 'onChange' callback. Every time React's state changes (keystrokes), 
+                // we push the serialized string back into Frappe's internal DocType state.
+                // This ensures Frappe's native &quot;Save&quot; button still works perfectly if the user clicks it.
+                (raw_content) =&gt; {
+                    frm.set_value(&quot;block_editor_html_internal&quot;, raw_content);
+                },
+                // The 'onClose' callback hides the React overlay, returning the user to the Desk.
+                () =&gt; {
+                    editor_node.style.display = &quot;none&quot;;
+                },
+                // The 'onSave' callback. When the user clicks the blue 'Save' button *inside* React, 
+                // we push all final metadata up to the Frappe form and trigger a backend save.
+                (title, rendered_content, route, published, meta_title, meta_description) =&gt; {
+                    frm.set_value(&quot;title&quot;, title);
+                    frm.set_value(&quot;block_editor_html_rendered&quot;, rendered_content);
+                    frm.set_value(&quot;route&quot;, route);
+                    frm.set_value(&quot;published&quot;, published);
+                    frm.set_value(&quot;meta_title&quot;, meta_title);
+                    frm.set_value(&quot;meta_description&quot;, meta_description);
+                    frm.save();
+                },
+                frm.doc.name,
+            );
+        } else {
+            // If the React app is already mounted in memory, we don't remount. 
+            // We just trigger an update method to push new Frappe data down the tree.
+            editor_manager.update(frm.doc.block_editor_html_internal || &quot;&quot;, frm.doc.name);
+        }
+    }
+});" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frappe/public/js/block_editor_web_page.js</span>
+
+<span class="hljs-keyword">let</span> editor_node = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> editor_manager = <span class="hljs-literal">null</span>;
+
+frappe.<span class="hljs-property">ui</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;Web Page&quot;</span>, {
+    <span class="hljs-attr">setup_editor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">frm</span>) {
+        <span class="hljs-comment">// We check if the Vite-compiled React bundle has successfully attached </span>
+        <span class="hljs-comment">// the mount function to the global window object. If not, the script fails gracefully</span>
+        <span class="hljs-comment">// and falls back to standard Frappe rendering.</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">mountDMBlockEditor</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Block Editor React bundle is missing.&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// We utilize the Frappe form lifecycle to mount our React app.</span>
+        <span class="hljs-comment">// We isolate the React DOM tree inside a dedicated &apos;editor_node&apos; to prevent </span>
+        <span class="hljs-comment">// Frappe&apos;s global jQuery logic from accidentally mutating React&apos;s virtual DOM.</span>
+        <span class="hljs-keyword">if</span> (!editor_manager) {
+            editor_manager = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">mountDMBlockEditor</span>(
+                editor_node,
+                {
+                    <span class="hljs-comment">// Pass Frappe&apos;s current DB state down into React as props.</span>
+                    <span class="hljs-comment">// React treats Frappe&apos;s database as the single source of truth upon initialization.</span>
+                    <span class="hljs-attr">title</span>: frm.<span class="hljs-title function_">get_title</span>() || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">content</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">block_editor_html_internal</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">route</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">route</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">published</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">published</span> || <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">meta_title</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">meta_title</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">meta_description</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">meta_description</span> || <span class="hljs-string">&quot;&quot;</span>,
+                },
+                <span class="hljs-comment">// The &apos;onChange&apos; callback. Every time React&apos;s state changes (keystrokes), </span>
+                <span class="hljs-comment">// we push the serialized string back into Frappe&apos;s internal DocType state.</span>
+                <span class="hljs-comment">// This ensures Frappe&apos;s native &quot;Save&quot; button still works perfectly if the user clicks it.</span>
+                <span class="hljs-function">(<span class="hljs-params">raw_content</span>) =&gt;</span> {
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;block_editor_html_internal&quot;</span>, raw_content);
+                },
+                <span class="hljs-comment">// The &apos;onClose&apos; callback hides the React overlay, returning the user to the Desk.</span>
+                <span class="hljs-function">() =&gt;</span> {
+                    editor_node.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span>;
+                },
+                <span class="hljs-comment">// The &apos;onSave&apos; callback. When the user clicks the blue &apos;Save&apos; button *inside* React, </span>
+                <span class="hljs-comment">// we push all final metadata up to the Frappe form and trigger a backend save.</span>
+                <span class="hljs-function">(<span class="hljs-params">title, rendered_content, route, published, meta_title, meta_description</span>) =&gt;</span> {
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;title&quot;</span>, title);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;block_editor_html_rendered&quot;</span>, rendered_content);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;route&quot;</span>, route);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;published&quot;</span>, published);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;meta_title&quot;</span>, meta_title);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;meta_description&quot;</span>, meta_description);
+                    frm.<span class="hljs-title function_">save</span>();
+                },
+                frm.<span class="hljs-property">doc</span>.<span class="hljs-property">name</span>,
+            );
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// If the React app is already mounted in memory, we don&apos;t remount. </span>
+            <span class="hljs-comment">// We just trigger an update method to push new Frappe data down the tree.</span>
+            editor_manager.<span class="hljs-title function_">update</span>(frm.<span class="hljs-property">doc</span>.<span class="hljs-property">block_editor_html_internal</span> || <span class="hljs-string">&quot;&quot;</span>, frm.<span class="hljs-property">doc</span>.<span class="hljs-property">name</span>);
+        }
+    }
+});</code></pre>
+
+
+
+<p><strong>The Legacy Stack Fallback:</strong> Notice how we manage the <code>content_type</code> toggle in the codebase. If the user switches the <code>content_type</code> dropdown back to “HTML” or “Markdown”, the script automatically unmounts the React node and restores Frappe’s standard editor options. This ensures backwards compatibility for older pages that were not built using blocks.</p>
+
+
+
+<h2 class="wp-block-heading">Deep Dive into Serialization</h2>
+
+
+
+<p>This is where the heavy lifting happens. Once React is mounted, the Gutenberg engine needs to parse Frappe’s raw database string back into a living React AST (Abstract Syntax Tree), allow the user to edit it in a visual canvas, and then serialize it back out.</p>
+
+
+
+<p>To do this effectively and securely, we maintain two distinct, hidden fields in the Frappe Web Page database schema:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>block_editor_html_internal (Source of Truth):</strong> Contains the WordPress block grammar (HTML annotated with JSON comments). This is used strictly to re-hydrate the React editor. It is never shown to the public.</li>
+
+
+
+<li><strong>block_editor_html_rendered (Production Output):</strong> Contains pure, sanitized, static HTML with all CSS utility classes applied. This is what the Frappe Jinja template serves to public visitors.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/src/BlockEditor.tsx
+
+import { parse, serialize, getSaveContent, type BlockInstance } from &quot;@wordpress/blocks&quot;;
+import { BlockEditorProvider, BlockList, WritingFlow } from &quot;@wordpress/block-editor&quot;;
+import { createElement, RawHTML, useState, useRef } from &quot;@wordpress/element&quot;;
+
+export function BlockEditor({ value, onChange, onSave }: BlockEditorProps) {
+  
+  // We lazily initialize the parser only once on component mount. 
+  // 'value' is the raw string from Frappe's DB (e.g., &lt;!-- wp:paragraph --&gt;&lt;p&gt;Hi&lt;/p&gt;&lt;!-- /wp:paragraph --&gt;). 
+  // parse() tokenizes this massive string and converts it into a structured array of React BlockInstances.
+  const [blocks, setBlocks] = useState&lt;BlockInstance[]&gt;(() =&gt; {
+    initEditor();
+    return parse(value) ||[];
+  });
+
+  // Every time the user types a letter or drags a block, this function fires.
+  // We serialize the AST back to a WP-commented string and send it to the Frappe JS Bridge.
+  const handleInput = (newBlocks: BlockInstance[]) =&gt; {
+    setBlocks(newBlocks);
+    
+    // Serialization overhead is mitigated by React's batched state updates.
+    const serializedContent = serialize(newBlocks);
+    setIsDirty(serializedContent !== lastSavedRef.current);
+    
+    onChange?.(serializedContent);
+  };
+
+  // When the user hits 'Save', we must generate the final, clean HTML for the public website.
+  // We recursively map over the AST. For each block, we map Gutenberg attributes
+  // into actual frontend CSS classes.
+  const getRenderedHTML = (blocks: BlockInstance[]): string =&gt; {
+    const renderBlocks = (blocks: BlockInstance[]): string =&gt; {
+      return blocks.map((block) =&gt; {
+        // Extract attributes and inject dynamic layout classes (e.g., is-layout-flex)
+        const attributes = {
+          ...block.attributes,
+          className: getBlockContextualClasses(block.name, block.attributes),
+        };
+        
+        const innerHtmlString = block.innerBlocks.length &gt; 0 ? renderBlocks(block.innerBlocks) : &quot;&quot;;
+        
+        // `getSaveContent` executes the block's specific save() React function, 
+        // stripping away WP comments and returning pure, production-ready HTML.
+        return getSaveContent(
+          block.name,
+          attributes,
+          createElement(RawHTML, { children: innerHtmlString }) as any
+        );
+      }).join(&quot;&quot;);
+    };
+
+    return renderBlocks(blocks);
+  };
+
+  // ... (UI Render Logic Omitted for Brevity)
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/src/BlockEditor.tsx</span>
+
+<span class="hljs-keyword">import</span> { parse, serialize, getSaveContent, type <span class="hljs-title class_">BlockInstance</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/blocks&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">BlockEditorProvider</span>, <span class="hljs-title class_">BlockList</span>, <span class="hljs-title class_">WritingFlow</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/block-editor&quot;</span>;
+<span class="hljs-keyword">import</span> { createElement, <span class="hljs-title class_">RawHTML</span>, useState, useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/element&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">BlockEditor</span>(<span class="hljs-params">{ value, onChange, onSave }: BlockEditorProps</span>) {
+  
+  <span class="hljs-comment">// We lazily initialize the parser only once on component mount. </span>
+  <span class="hljs-comment">// &apos;value&apos; is the raw string from Frappe&apos;s DB (e.g., &lt;!-- wp:paragraph --&gt;&lt;p&gt;Hi&lt;/p&gt;&lt;!-- /wp:paragraph --&gt;). </span>
+  <span class="hljs-comment">// parse() tokenizes this massive string and converts it into a structured array of React BlockInstances.</span>
+  <span class="hljs-keyword">const</span> [blocks, setBlocks] = useState&lt;<span class="hljs-title class_">BlockInstance</span>[]&gt;(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">initEditor</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">parse</span>(value) ||[];
+  });
+
+  <span class="hljs-comment">// Every time the user types a letter or drags a block, this function fires.</span>
+  <span class="hljs-comment">// We serialize the AST back to a WP-commented string and send it to the Frappe JS Bridge.</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">newBlocks: BlockInstance[]</span>) =&gt; {
+    <span class="hljs-title function_">setBlocks</span>(newBlocks);
+    
+    <span class="hljs-comment">// Serialization overhead is mitigated by React&apos;s batched state updates.</span>
+    <span class="hljs-keyword">const</span> serializedContent = <span class="hljs-title function_">serialize</span>(newBlocks);
+    <span class="hljs-title function_">setIsDirty</span>(serializedContent !== lastSavedRef.<span class="hljs-property">current</span>);
+    
+    onChange?.(serializedContent);
+  };
+
+  <span class="hljs-comment">// When the user hits &apos;Save&apos;, we must generate the final, clean HTML for the public website.</span>
+  <span class="hljs-comment">// We recursively map over the AST. For each block, we map Gutenberg attributes</span>
+  <span class="hljs-comment">// into actual frontend CSS classes.</span>
+  <span class="hljs-keyword">const</span> getRenderedHTML = (<span class="hljs-attr">blocks</span>: <span class="hljs-title class_">BlockInstance</span>[]): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> renderBlocks = (<span class="hljs-attr">blocks</span>: <span class="hljs-title class_">BlockInstance</span>[]): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> blocks.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">block</span>) =&gt;</span> {
+        <span class="hljs-comment">// Extract attributes and inject dynamic layout classes (e.g., is-layout-flex)</span>
+        <span class="hljs-keyword">const</span> attributes = {
+          ...block.<span class="hljs-property">attributes</span>,
+          <span class="hljs-attr">className</span>: <span class="hljs-title function_">getBlockContextualClasses</span>(block.<span class="hljs-property">name</span>, block.<span class="hljs-property">attributes</span>),
+        };
+        
+        <span class="hljs-keyword">const</span> innerHtmlString = block.<span class="hljs-property">innerBlocks</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> ? <span class="hljs-title function_">renderBlocks</span>(block.<span class="hljs-property">innerBlocks</span>) : <span class="hljs-string">&quot;&quot;</span>;
+        
+        <span class="hljs-comment">// `getSaveContent` executes the block&apos;s specific save() React function, </span>
+        <span class="hljs-comment">// stripping away WP comments and returning pure, production-ready HTML.</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">getSaveContent</span>(
+          block.<span class="hljs-property">name</span>,
+          attributes,
+          <span class="hljs-title function_">createElement</span>(<span class="hljs-title class_">RawHTML</span>, { <span class="hljs-attr">children</span>: innerHtmlString }) <span class="hljs-keyword">as</span> any
+        );
+      }).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+    };
+
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">renderBlocks</span>(blocks);
+  };
+
+  <span class="hljs-comment">// ... (UI Render Logic Omitted for Brevity)</span>
+}</code></pre>
+
+
+
+<p>Data enters as a raw string from Frappe, gets tokenized by <code>@wordpress/blocks</code>, is manipulated by the user inside the <code>&lt;BlockList /&gt;</code> canvas, and exits via our custom recursive <code>getRenderedHTML</code> function. This architectural pattern cleanly separates the editor’s internal state concerns from the public output, ensuring that the frontend website only ever renders clean HTML, requiring zero JavaScript on the client side to display the page.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-300x138.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-768x352.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<h2 class="wp-block-heading">The Build Pipeline / Orchestration</h2>
+
+
+
+<p>Combining a Python/Jinja backend with a modern React/TypeScript frontend requires careful orchestration. We cannot simply run a Node.js development server in production; the React application must be compiled into static assets that Frappe’s bench CLI can serve via Nginx or Werkzeug. </p>
+
+
+
+<p>We achieve this via <strong>Vite</strong>, compiling the React application into distinct bundles placed directly into Frappe’s standard <code>/public</code> directory.</p>
+
+
+
+<p>Furthermore, we solved a massive design problem during this build phase: <strong>How do we ensure the editor’s visual styles (colors, spacing, typography) perfectly match the public website’s styles without writing duplicate CSS?</strong></p>
+
+
+
+<p>In a standard WordPress environment, this is handled by <code>theme.json</code>. Because we don’t have WordPress, we created a single source of truth (<code>editorSettings.ts</code>) and built a highly custom Vite Virtual Module plugin to dynamically generate CSS at build time.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/vite.config.ts
+
+import { defineConfig, type Plugin } from &quot;vite&quot;;
+import { generateThemeCss } from &quot;./src/utils/generateThemeCss&quot;;
+
+// Vite plugins allow us to intercept imports at compile time. 
+// We create a &quot;virtual&quot; module that doesn't actually exist on the hard drive. 
+function virtualWpThemePlugin(): Plugin {
+  const virtualModuleId = &quot;virtual:wp-theme.css&quot;;
+  const resolvedVirtualModuleId = &quot;\0&quot; + virtualModuleId;
+
+  return {
+    name: &quot;vite-plugin-wp-theme-generator&quot;,
+    resolveId(id) {
+      // If the code requests our virtual CSS file, intercept the resolution.
+      if (id === virtualModuleId) return resolvedVirtualModuleId;
+    },
+    load(id) {
+      // When the React app imports &quot;virtual:wp-theme.css&quot;, Vite triggers this load function.
+      // We parse the JSON editorSettings and dynamically generate thousands of lines 
+      // of CSS variables (--wp--preset--color) and utility classes (.has-black-color) in memory.
+      if (id === resolvedVirtualModuleId) {
+        return generateThemeCss();
+      }
+    },
+  };
+}
+
+export default defineConfig(({ mode }) =&gt; {
+  const isFrontend = process.env.BUILD_TARGET === &quot;frontend&quot;;
+
+  return {
+    plugins:[
+      virtualWpThemePlugin(), 
+      react(),
+      babel({ plugins: [[&quot;babel-plugin-react-compiler&quot;, { target: &quot;18&quot; }]] })
+    ],
+    build: {
+      // We output the compiled React application directly into Frappe's app asset folder.
+      // This allows Frappe's native web server to serve the JS/CSS without a separate Node instance.
+      outDir: &quot;../block_editor_frappe/public/vite&quot;,
+      emptyOutDir: false,
+      cssCodeSplit: false,
+      rollupOptions: {
+        input: isFrontend
+          ? resolve(__dirname, &quot;src/scripts/frontendStyles.ts&quot;)
+          : resolve(__dirname, &quot;src/main.tsx&quot;),
+        output: {
+          // Predictable file naming ensures our Frappe Python backend 
+          // can easily link these exact assets in the Jinja templates without needing complex manifest lookups.
+          entryFileNames: isFrontend ? &quot;js/block_editor_frontend.js&quot; : &quot;js/block_editor_main.js&quot;,
+          assetFileNames: isFrontend ? &quot;css/block_editor_frontend.css&quot; : &quot;css/block_editor_main.css&quot;,
+        },
+      },
+    },
+  };
+});" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/vite.config.ts</span>
+
+<span class="hljs-keyword">import</span> { defineConfig, type <span class="hljs-title class_">Plugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite&quot;</span>;
+<span class="hljs-keyword">import</span> { generateThemeCss } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./src/utils/generateThemeCss&quot;</span>;
+
+<span class="hljs-comment">// Vite plugins allow us to intercept imports at compile time. </span>
+<span class="hljs-comment">// We create a &quot;virtual&quot; module that doesn&apos;t actually exist on the hard drive. </span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">virtualWpThemePlugin</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Plugin</span> {
+  <span class="hljs-keyword">const</span> virtualModuleId = <span class="hljs-string">&quot;virtual:wp-theme.css&quot;</span>;
+  <span class="hljs-keyword">const</span> resolvedVirtualModuleId = <span class="hljs-string">&quot;\0&quot;</span> + virtualModuleId;
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;vite-plugin-wp-theme-generator&quot;</span>,
+    <span class="hljs-title function_">resolveId</span>(<span class="hljs-params">id</span>) {
+      <span class="hljs-comment">// If the code requests our virtual CSS file, intercept the resolution.</span>
+      <span class="hljs-keyword">if</span> (id === virtualModuleId) <span class="hljs-keyword">return</span> resolvedVirtualModuleId;
+    },
+    <span class="hljs-title function_">load</span>(<span class="hljs-params">id</span>) {
+      <span class="hljs-comment">// When the React app imports &quot;virtual:wp-theme.css&quot;, Vite triggers this load function.</span>
+      <span class="hljs-comment">// We parse the JSON editorSettings and dynamically generate thousands of lines </span>
+      <span class="hljs-comment">// of CSS variables (--wp--preset--color) and utility classes (.has-black-color) in memory.</span>
+      <span class="hljs-keyword">if</span> (id === resolvedVirtualModuleId) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">generateThemeCss</span>();
+      }
+    },
+  };
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">{ mode }</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> isFrontend = process.<span class="hljs-property">env</span>.<span class="hljs-property">BUILD_TARGET</span> === <span class="hljs-string">&quot;frontend&quot;</span>;
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">plugins</span>:[
+      <span class="hljs-title function_">virtualWpThemePlugin</span>(), 
+      <span class="hljs-title function_">react</span>(),
+      <span class="hljs-title function_">babel</span>({ <span class="hljs-attr">plugins</span>: [[<span class="hljs-string">&quot;babel-plugin-react-compiler&quot;</span>, { <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;18&quot;</span> }]] })
+    ],
+    <span class="hljs-attr">build</span>: {
+      <span class="hljs-comment">// We output the compiled React application directly into Frappe&apos;s app asset folder.</span>
+      <span class="hljs-comment">// This allows Frappe&apos;s native web server to serve the JS/CSS without a separate Node instance.</span>
+      <span class="hljs-attr">outDir</span>: <span class="hljs-string">&quot;../block_editor_frappe/public/vite&quot;</span>,
+      <span class="hljs-attr">emptyOutDir</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">cssCodeSplit</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">rollupOptions</span>: {
+        <span class="hljs-attr">input</span>: isFrontend
+          ? <span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;src/scripts/frontendStyles.ts&quot;</span>)
+          : <span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;src/main.tsx&quot;</span>),
+        <span class="hljs-attr">output</span>: {
+          <span class="hljs-comment">// Predictable file naming ensures our Frappe Python backend </span>
+          <span class="hljs-comment">// can easily link these exact assets in the Jinja templates without needing complex manifest lookups.</span>
+          <span class="hljs-attr">entryFileNames</span>: isFrontend ? <span class="hljs-string">&quot;js/block_editor_frontend.js&quot;</span> : <span class="hljs-string">&quot;js/block_editor_main.js&quot;</span>,
+          <span class="hljs-attr">assetFileNames</span>: isFrontend ? <span class="hljs-string">&quot;css/block_editor_frontend.css&quot;</span> : <span class="hljs-string">&quot;css/block_editor_main.css&quot;</span>,
+        },
+      },
+    },
+  };
+});</code></pre>
+
+
+
+<p>To tie it all together natively, we leverage Frappe’s <code>after_install</code> hook in <code>hooks.py</code> to automatically trigger an <code>npm install</code> and <code>npm run build</code> via Python’s <code>subprocess</code> module.</p>
+
+
+
+<p>Code quality is strictly enforced across the language chasm: <code>ruff</code> lints the Python logic, while <code>eslint</code> and <code>prettier</code> ensure the React codebase remains pristine, all bound together by a unified <code>.pre-commit-config.yaml</code>.</p>
+
+
+
+<h2 class="wp-block-heading">State Management: Passing Data Across the Stack</h2>
+
+
+
+<p>The “distributed state problem” is the bane of modern hybrid architectures. How do we get the DocType state from a MariaDB row, pass it through a Python controller, feed it into a legacy jQuery client script, and safely inject it into an isolated React context all while ensuring data remains strictly typed?</p>
+
+
+
+<p>We solve this using a unidirectional data flow governed by a global window registry acting as an API boundary.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/src/main.tsx
+
+// We declare a global TypeScript interface. This creates a strict contract 
+// so the legacy jQuery application (Frappe Desk) knows exactly what data shapes 
+// it must provide to instantiate the React application.
+declare global {
+  interface Window {
+    mountDMBlockEditor: (
+      element: HTMLElement,
+      props: {
+        content: string;
+        title: string;
+        route: string;
+        published: number;
+        meta_title: string;
+        meta_description: string;
+      },
+      onChange: (content: string) =&gt; void,
+      onClose: () =&gt; void,
+      onSave: (title: string, rendered: string, route: string, published: number, meta_title: string, meta_description: string) =&gt; void,
+      docName: string,
+    ) =&gt; void;
+  }
+}
+
+let root: Root | null = null;
+
+window.mountDMBlockEditor = (element, props, onChange, onClose, onSave, docName) =&gt; {
+  if (!root) {
+    root = createRoot(element); // Initialize the React 18 Root
+  }
+
+  // We destructure the database state passed from Frappe and inject it 
+  // directly into the React BlockEditor as props. React now &quot;owns&quot; the UI state.
+  const { content, title, route, published, meta_title, meta_description } = props;
+
+  const render = (newContent: string, newDocName: string) =&gt; {
+    root?.render(
+      &lt;StrictMode&gt;
+        &lt;BlockEditor
+          key={newDocName} // Changing the key forces a full React remount if the Frappe doc changes
+          value={newContent}
+          title={title}
+          route={route}
+          published={published}
+          meta_title={meta_title}
+          meta_description={meta_description}
+          onChange={onChange}
+          onClose={onClose}
+          onSave={onSave}
+        /&gt;
+      &lt;/StrictMode&gt;,
+    );
+  };
+
+  render(content, docName);
+
+  // We return an API object back to the Frappe JS script.
+  // This allows Frappe to programmatically update the React state if the database 
+  // changes via background events, or destroy the React instance entirely to free memory.
+  return {
+    update: render,
+    unmount: () =&gt; {
+      root?.unmount();
+      root = null;
+    },
+  };
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/src/main.tsx</span>
+
+<span class="hljs-comment">// We declare a global TypeScript interface. This creates a strict contract </span>
+<span class="hljs-comment">// so the legacy jQuery application (Frappe Desk) knows exactly what data shapes </span>
+<span class="hljs-comment">// it must provide to instantiate the React application.</span>
+declare <span class="hljs-variable language_">global</span> {
+  interface <span class="hljs-title class_">Window</span> {
+    <span class="hljs-attr">mountDMBlockEditor</span>: <span class="hljs-function">(<span class="hljs-params">
+      element: HTMLElement,
+      props: {
+        content: string;
+        title: string;
+        route: string;
+        published: number;
+        meta_title: string;
+        meta_description: string;
+      },
+      onChange: (content: string) =&gt; <span class="hljs-keyword">void</span>,
+      onClose: () =&gt; <span class="hljs-keyword">void</span>,
+      onSave: (title: string, rendered: string, route: string, published: number, meta_title: string, meta_description: string) =&gt; <span class="hljs-keyword">void</span>,
+      docName: string,
+    </span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+  }
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">root</span>: <span class="hljs-title class_">Root</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">mountDMBlockEditor</span> = <span class="hljs-function">(<span class="hljs-params">element, props, onChange, onClose, onSave, docName</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!root) {
+    root = <span class="hljs-title function_">createRoot</span>(element); <span class="hljs-comment">// Initialize the React 18 Root</span>
+  }
+
+  <span class="hljs-comment">// We destructure the database state passed from Frappe and inject it </span>
+  <span class="hljs-comment">// directly into the React BlockEditor as props. React now &quot;owns&quot; the UI state.</span>
+  <span class="hljs-keyword">const</span> { content, title, route, published, meta_title, meta_description } = props;
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">render</span> = (<span class="hljs-params">newContent: string, newDocName: string</span>) =&gt; {
+    root?.<span class="hljs-title function_">render</span>(
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">StrictMode</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">BlockEditor</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{newDocName}</span> // <span class="hljs-attr">Changing</span> <span class="hljs-attr">the</span> <span class="hljs-attr">key</span> <span class="hljs-attr">forces</span> <span class="hljs-attr">a</span> <span class="hljs-attr">full</span> <span class="hljs-attr">React</span> <span class="hljs-attr">remount</span> <span class="hljs-attr">if</span> <span class="hljs-attr">the</span> <span class="hljs-attr">Frappe</span> <span class="hljs-attr">doc</span> <span class="hljs-attr">changes</span>
+          <span class="hljs-attr">value</span>=<span class="hljs-string">{newContent}</span>
+          <span class="hljs-attr">title</span>=<span class="hljs-string">{title}</span>
+          <span class="hljs-attr">route</span>=<span class="hljs-string">{route}</span>
+          <span class="hljs-attr">published</span>=<span class="hljs-string">{published}</span>
+          <span class="hljs-attr">meta_title</span>=<span class="hljs-string">{meta_title}</span>
+          <span class="hljs-attr">meta_description</span>=<span class="hljs-string">{meta_description}</span>
+          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{onChange}</span>
+          <span class="hljs-attr">onClose</span>=<span class="hljs-string">{onClose}</span>
+          <span class="hljs-attr">onSave</span>=<span class="hljs-string">{onSave}</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">StrictMode</span>&gt;</span></span>,
+    );
+  };
+
+  <span class="hljs-title function_">render</span>(content, docName);
+
+  <span class="hljs-comment">// We return an API object back to the Frappe JS script.</span>
+  <span class="hljs-comment">// This allows Frappe to programmatically update the React state if the database </span>
+  <span class="hljs-comment">// changes via background events, or destroy the React instance entirely to free memory.</span>
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">update</span>: render,
+    <span class="hljs-attr">unmount</span>: <span class="hljs-function">() =&gt;</span> {
+      root?.<span class="hljs-title function_">unmount</span>();
+      root = <span class="hljs-literal">null</span>;
+    },
+  };
+};</code></pre>
+
+
+
+<p>This unidirectional setup eliminates race conditions. React completely owns the UI state and memory lifecycle, but Frappe remains the single source of truth for the persistent data.</p>
+
+
+
+<p>To serve this to the end user, we utilize Frappe’s Python override hooks. The backend implementation is intentionally minimal, acting only as a data router:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="# block_editor_frappe/overrides/web_page.py
+
+from frappe.website.doctype.web_page.web_page import WebPage
+
+class BlockEditorWebPage(WebPage):
+    def get_context(self, context):
+        super().get_context(context)
+
+        # If the user didn't select &quot;Block Editor&quot;, we fall back to standard Frappe rendering.
+        if self.content_type != &quot;Block Editor&quot;:
+            return
+
+        # Inject the pure, rendered HTML into the Jinja context.
+        # This completely bypasses the need for the frontend to run React to see the page.
+        context.block_editor_content = self.block_editor_html_rendered or &quot;&quot;
+
+        # Point the renderer to our custom Jinja template that includes our Vite CSS assets.
+        context.template = &quot;block_editor_frappe/templates/pages/web_page_block_editor.html&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-python"><span class="hljs-comment"># block_editor_frappe/overrides/web_page.py</span>
+
+<span class="hljs-keyword">from</span> frappe.website.doctype.web_page.web_page <span class="hljs-keyword">import</span> WebPage
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BlockEditorWebPage</span>(<span class="hljs-title class_ inherited__">WebPage</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_context</span>(<span class="hljs-params">self, context</span>):
+        <span class="hljs-built_in">super</span>().get_context(context)
+
+        <span class="hljs-comment"># If the user didn&apos;t select &quot;Block Editor&quot;, we fall back to standard Frappe rendering.</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.content_type != <span class="hljs-string">&quot;Block Editor&quot;</span>:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># Inject the pure, rendered HTML into the Jinja context.</span>
+        <span class="hljs-comment"># This completely bypasses the need for the frontend to run React to see the page.</span>
+        context.block_editor_content = <span class="hljs-variable language_">self</span>.block_editor_html_rendered <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&quot;</span>
+
+        <span class="hljs-comment"># Point the renderer to our custom Jinja template that includes our Vite CSS assets.</span>
+        context.template = <span class="hljs-string">&quot;block_editor_frappe/templates/pages/web_page_block_editor.html&quot;</span></code></pre>
+
+
+
+<p>The simplicity of this Python class is the entire point: the React frontend does all the heavy analytical lifting and serialization, and the backend simply serves the resulting static string at light speed.</p>
+
+
+
+<h2 class="wp-block-heading">Limitations and Future Enhancements</h2>
+
+
+
+<p>While I am extemely content with this implementation, but <strong>we must be honest about its current constraints.</strong> Mashing two massive ecosystems together results in inevitable friction points:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>WordPress API Reliance:</strong> Some native Gutenberg blocks (like dynamic Post Grids, Navigation Menus, or Search) attempt to fetch data dynamically via WordPress REST API endpoints (/wp-json/). Because Frappe doesn’t possess these specific endpoints, those complex dynamic blocks currently fail to render and must be filtered out of the block registry.</li>
+
+
+
+<li><strong>Asset Management Disconnect:</strong> Currently, dragging and dropping an image into the editor embeds it as a Base64 string or relies on external URLs. It completely bypasses Frappe’s native File Manager DocType. This means images uploaded via the editor don’t show up in the standard Frappe file list, breaking centralized asset management and potentially inflating the database size.</li>
+
+
+
+<li><strong>Environment Bypasses:</strong> If a user edits the <code>block_editor_html_internal</code> string directly via a Python script or the Frappe REST API (bypassing the React UI), the <code>block_editor_html_rendered</code> field will not update automatically, causing a synchronization mismatch between the database and the public website.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading"><strong>Where do we go from here?</strong></h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Frappe Native Block API Middleware:</strong> We can build a custom Python/JS middleware layer that intercepts Gutenberg’s outgoing WP REST API calls and maps them to Frappe DocType queries. This would allow a native block to dynamically fetch ERPNext data (e.g., embedding a live, filtered grid of Item DocTypes directly into a Web Page layout). Instead we can also simply create new blocks for our usecase which do not even depend on WordPress APIs and used Frappe’s  API natively. </li>
+
+
+
+<li><strong>Media Upload Bridging:</strong> We can also add custom React hook that intercepts the block editor’s image drop event, reroutes the file to Frappe’s upload_file endpoint, and returns the generated Frappe File URL back to the image block, perfectly synchronizing the two systems. Maybe we can have a Media Library modal equivalent here.</li>
+
+
+
+<li><strong>Code-editor Mode:</strong> Like in WordPress, adding a code editor mode here will be or very helpful for debugging and checking the exact markup generated by the editor.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Porting the WordPress Gutenberg editor into the Frappe Framework was more than just a pursuit of a “prettier” UI; it was a deep dive into reconciling two fundamentally different architectural philosophies. By successfully embedding a <strong>React-based, state-driven editor</strong> into Frappe’s <strong>jQuery and Vue-driven ecosystem</strong>, this project proves that we don’t have to choose between the robustness of a Python backend and the world-class authoring experience of modern JavaScript libraries.</p>
+
+
+
+<p>While challenges remain, specifically regarding the alignment of asset management and the “hijacking” of WordPress-specific API calls, the foundation is solid. This integration opens the door for a new class of Frappe-powered websites: those that demand the <strong>technical rigor of an ERP</strong> and the <strong>aesthetic flexibility of a modern CMS</strong>.</p>
+
+
+
+<p>Ultimately, this project demonstrates that with the right orchestration of build tools and state management, we can bypass the limitations of a “basic” editor and provide content creators with a truly professional, block-first experience without leaving the Frappe ecosystem.</p>
+
+
+
+<p></p>
+</div>
+
+
+<div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-609ade12 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--40);padding-right:0;padding-bottom:var(--wp--preset--spacing--40);padding-left:0;font-size:clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.737), 1.5rem);"><div class="post-navigation-link-previous wp-block-post-navigation-link"><span class="wp-block-post-navigation-link__arrow-previous is-arrow-chevron" aria-hidden="true">«</span><a href="https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/" rel="prev"><span class="post-navigation-link__label">Previous:</span> <span class="post-navigation-link__title">Mastering Context with Code Mode AI Agents</span></a></div>
+
+<div class="post-navigation-link-next has-text-align-left wp-block-post-navigation-link"></div></div>
+</main>
+
+
+<footer class="site-footer wp-block-template-part">
+<div class="wp-block-group dm-footer has-base-light-background-color has-background is-layout-constrained wp-container-core-group-is-layout-196b58ae wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-is-layout-643ced6b wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<div class="wp-block-group is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-b6c1f246 wp-block-group-is-layout-flex">
+
+<h1 class="wp-block-site-title has-extra-large-font-size"><a href="https://lakshyajeet.in/" target="_self" rel="home">Lakshyajeet's Blog</a></h1>
+
+
+<div class="theme-style-switcher-block wp-block-buttons" data-tss-block="true" data-display="dropdown"></div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h4 class="wp-block-heading has-text-align-center" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+        Navigation
+      </h4>
+
+
+
+<div class="wp-block-group alignwide is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-e278f9a3 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:0;padding-right:var(--wp--preset--spacing--30);padding-bottom:0;padding-left:var(--wp--preset--spacing--30)"><nav class="items-justified-center is-vertical wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-734eb2c2 wp-block-navigation-is-layout-flex" aria-label="Navigation 2"><ul class="wp-block-navigation__container items-justified-center is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/blog/"><span class="wp-block-navigation-item__label">Blog</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/dm_project"><span class="wp-block-navigation-item__label">Projects</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://lakshyajeet.in/about/"><span class="wp-block-navigation-item__label">About</span></a></li></ul></nav></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<h4 class="wp-block-heading has-text-align-center" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)">
+        My Socials
+      </h4>
+
+
+
+<div class="wp-block-group alignwide is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-e278f9a3 wp-block-group-is-layout-flex" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20);padding-top:0;padding-right:var(--wp--preset--spacing--30);padding-bottom:0;padding-left:var(--wp--preset--spacing--30)"><nav class="items-justified-center is-vertical wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-734eb2c2 wp-block-navigation-is-layout-flex" aria-label="Socials"><ul class="wp-block-navigation__container items-justified-center is-vertical wp-block-navigation"><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://github.com/DarkMatter-999"><span class="wp-block-navigation-item__label">Github</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.linkedin.com/in/darkmatter999/"><span class="wp-block-navigation-item__label">Linkedin</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://x.com/darkmatter_999"><span class="wp-block-navigation-item__label">Twitter</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://leetcode.com/lakshyajeet"><span class="wp-block-navigation-item__label">Leetcode</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.codechef.com/users/lakshyajeet"><span class="wp-block-navigation-item__label">Codechef</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://www.hackerrank.com/lakshyajeet"><span class="wp-block-navigation-item__label">HackerRank</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://profiles.wordpress.org/lakshyajeet/"><span class="wp-block-navigation-item__label">WordPress</span></a></li></ul></nav></div>
+</div>
+</div>
+
+
+
+<p class="has-text-align-center" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+    Made with 💜 | LSG 2025
+  </p>
+</div>
+</footer></div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/darkmatter/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="module" src="https://lakshyajeet.in/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=b0f909c3ec791c383210" id="@wordpress/block-library/navigation/view-js-module" fetchpriority="low" data-wp-router-options="{&quot;loadOnClientNavigation&quot;:true}"></script>
+<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+//# sourceURL=wp-block-template-skip-link-js-after
+</script>
+<script id="tss-main-js-before">
+window.tss_data = {"variations":[{"slug":"00-default","title":"Dark"},{"slug":"01-light","title":"Light"}],"useMappedNames":1,"isBlockTheme":true};
+//# sourceURL=tss-main-js-before
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://lakshyajeet.in/wp-includes/js/wp-emoji-release.min.js?ver=6.9.4"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://lakshyajeet.in/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

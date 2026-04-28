@@ -12,7 +12,7 @@
 	<atom:link href="https://lakshyajeet.in/author/lakshyajeet/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Mon, 30 Mar 2026 11:51:47 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 28 Apr 2026 14:06:06 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,805 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Porting Gutenberg to Frappe</title>
+		<link>https://lakshyajeet.in/porting-gutenberg-to-frappe/</link>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2026 14:06:06 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1359</guid>
+
+					<description><![CDATA[<p>Frappe’s default web page builder is reliable, but it often lacks the structural flexibility of modern block-based editors. In this technical deep dive, I explore how I ported WordPress’s Gutenberg editor into the Frappe ecosystem, reconciling React state management with MariaDB storage and bypassing the limitations of traditional WYSIWYG editors without sacrificing the robustness of the Frappe backend.</p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Building content-heavy web pages inside the Frappe Framework has relied on a familiar, battle-tested pipeline: a standard Web Page DocType, a Rich Text editor or serial page builder, and a Jinja template to render it to the end user. It works. It has powered thousands of ERPNext sites, documentation portals, and marketing pages. While it works, having used WordPress&#8217;s block editor, Frappe&#8217;s default editor feels too basic.</p>
+
+
+
+<p>Like most of my projects, this one also started with a &#8220;What if&#8230;?&#8221;: what if we could have WordPress Block Editor&#8217;s editing experience inside Frappe?</p>
+
+
+
+<p><strong>I am well aware that <a href="https://frappe.io/builder" target="_blank" rel="noreferrer noopener">Frappe Builder</a> exists to solve exactly this problem.</strong> However, my motivation was two-fold: first, it was a fascinating technical challenge that gave me the experience to embed Gutenberg portably into almost any environment. Second, I wanted to achieve a specific balance, a lightweight, &#8220;editor-first&#8221; experience that remains feature-rich without the overhead of a full-scale site builder.</p>
+
+
+
+<p>In this article, we will explore the mechanics of injecting a <strong>modern React-based editor</strong> into <strong>Frappe’s hybrid jQuery and Vue-driven UI</strong>, serializing block-delimited markup into MariaDB, and dynamically generating CSS via modern Vite asset pipelines.</p>
+
+
+
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
+
+
+
+<h2 class="wp-block-heading">Rethinking How We Build Content</h2>
+
+
+
+<p>For basic, text-heavy content like blog posts or standard &#8220;About Us&#8221; pages, the legacy WYSIWYG (What You See Is What You Get) approach works perfectly, It&#8217;s a familiar and low-friction way that doesn&#8217;t require complex state management or heavy client side JS to function.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img fetchpriority="high" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
+
+
+
+<p>However, as the requirements shift towards more complex pages like interactive landing pages, or documentation the limitation of traditional editor becomes difficult to work with and maintain.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>The &#8220;Span Soup&#8221; Problem:</strong> Traditional editors lack structural awareness, when a user tried to build a complex layout with multiple interactive elements, they often end up fighting each other. This inevitably leads to &#8220;span soup&#8221;- deeply nested tags, forced styles and redundant content so that it does not break responsive design on mobile.</li>
+
+
+
+<li><strong>Performance and Editing Constraints:</strong> As pages grow more complex, it becomes difficult to manage and edit them, especially when we add more elements: complex layouts, interactive components, or nested containers, the editing experience becomes increasingly sluggish.</li>
+</ul>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
+
+
+
+<p>On a personal level,&nbsp;<strong>I just genuinely appreciate the Gutenberg component ecosystem, so why not use it?</strong>&nbsp;The WordPress block editor provides a beautiful, drag-and-drop authoring experience that content creators already know and love. I wanted that exact user experience, but backed by Frappe’s Python based backend.</p>
+
+
+
+<h2 class="wp-block-heading">Why WordPress Gutenberg in Frappe?</h2>
+
+
+
+<p>When looking to replace the legacy editor, the obvious alternative usually is to build a custom editor on our own, and as mentioned previously that is exactly what <a href="https://frappe.io/builder" target="_blank" rel="noreferrer noopener">Frappe Builder</a> has done.</p>
+
+
+
+<p>So why did I choose to import <em><code>@wordpress/block-editor</code></em>&nbsp;into a non-WordPress, Python environment?</p>
+
+
+
+<p>This is not a silver bullet, and bringing massive WordPress NPM packages into Frappe carries bundle-size overhead with it, but the architectural tradeoffs are actually quite favorable:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Zero-cost Abstractions (The Data Model)</strong>: Gutenberg elegantly stores the block structures as standard HTML with annotated JSON comments (<code>&lt;!-- wp:paragraph {"align":"center"} --&gt; &lt;p&gt;Text&lt;/p&gt; &lt;!-- /wp:paragraph --&gt;</code>). This means Frappe doesn&#8217;t need any complex relational schema or dedicated block table to store page data. It can store the entire AST (Abstract Syntax Tree) as a single Long Text string, and Gutenberg parses it back into a React state tree effortlessly.</li>
+
+
+
+<li><strong>The Component Ecosystem</strong>:<strong> </strong>By utilizing&nbsp;<code>@wordpress/block-library</code>, we instantly inherit dozens of highly tested, accessible, and responsive blocks (Code snippets, Tables, Columns, Audio, Video) without writing a single line of UI code ourselves. If someday we want to add our own block it is a very straightforward process as building a block in WordPress is quite easy and very highly documented.</li>
+
+
+
+<li><strong>Memory Safety &amp; State Management:</strong>&nbsp;Gutenberg leverages highly optimized React data stores (@wordpress/data, built heavily on Redux principles), ensuring that even pages with thousands of nested blocks won&#8217;t crash the browser&#8217;s main thread. It handles focus management, history tracking (undo/redo), and deeply nested block state with incredible efficiency.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">&nbsp;Intercepting the Workflow: The Architecture</h2>
+
+
+
+<p>The main obstacle in integrating a React-based block editor into Frappe is the fundamental environment mismatch. WordPress Block Editor expects to talk to a PHP backend via the WP REST API. It expects WordPress global variables. Frappe, on the other hand, expects a Vue.js based frontend with a Python based backend.</p>
+
+
+
+<p>So we basically want to &#8220;hijack&#8221; the standard Frappe DocType rendering cycle and inject a React root over the existing DOM.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>To build this bridge, we intercept the standard &#8220;Web Page&#8221; DocType in Frappe using a client script (<a href="https://github.com/DarkMatter-999/block_editor_frappe/blob/develop/block_editor_frappe/public/js/block_editor_web_page.js"><code>block_editor_web_page.js</code></a>). Add a custom &#8220;Block Editor&#8221; option to the content type, create a custom DOM node, and mount our React application as an overlay to it and create few custom fields to store our content data in the backend.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frappe/public/js/block_editor_web_page.js
+
+let editor_node = null;
+let editor_manager = null;
+
+frappe.ui.form.on(&quot;Web Page&quot;, {
+    setup_editor: function (frm) {
+        // We check if the Vite-compiled React bundle has successfully attached 
+        // the mount function to the global window object. If not, the script fails gracefully
+        // and falls back to standard Frappe rendering.
+        if (!window.mountDMBlockEditor) {
+            console.error(&quot;Block Editor React bundle is missing.&quot;);
+            return;
+        }
+
+        // We utilize the Frappe form lifecycle to mount our React app.
+        // We isolate the React DOM tree inside a dedicated 'editor_node' to prevent 
+        // Frappe's global jQuery logic from accidentally mutating React's virtual DOM.
+        if (!editor_manager) {
+            editor_manager = window.mountDMBlockEditor(
+                editor_node,
+                {
+                    // Pass Frappe's current DB state down into React as props.
+                    // React treats Frappe's database as the single source of truth upon initialization.
+                    title: frm.get_title() || &quot;&quot;,
+                    content: frm.doc.block_editor_html_internal || &quot;&quot;,
+                    route: frm.doc.route || &quot;&quot;,
+                    published: frm.doc.published || 0,
+                    meta_title: frm.doc.meta_title || &quot;&quot;,
+                    meta_description: frm.doc.meta_description || &quot;&quot;,
+                },
+                // The 'onChange' callback. Every time React's state changes (keystrokes), 
+                // we push the serialized string back into Frappe's internal DocType state.
+                // This ensures Frappe's native &quot;Save&quot; button still works perfectly if the user clicks it.
+                (raw_content) =&gt; {
+                    frm.set_value(&quot;block_editor_html_internal&quot;, raw_content);
+                },
+                // The 'onClose' callback hides the React overlay, returning the user to the Desk.
+                () =&gt; {
+                    editor_node.style.display = &quot;none&quot;;
+                },
+                // The 'onSave' callback. When the user clicks the blue 'Save' button *inside* React, 
+                // we push all final metadata up to the Frappe form and trigger a backend save.
+                (title, rendered_content, route, published, meta_title, meta_description) =&gt; {
+                    frm.set_value(&quot;title&quot;, title);
+                    frm.set_value(&quot;block_editor_html_rendered&quot;, rendered_content);
+                    frm.set_value(&quot;route&quot;, route);
+                    frm.set_value(&quot;published&quot;, published);
+                    frm.set_value(&quot;meta_title&quot;, meta_title);
+                    frm.set_value(&quot;meta_description&quot;, meta_description);
+                    frm.save();
+                },
+                frm.doc.name,
+            );
+        } else {
+            // If the React app is already mounted in memory, we don't remount. 
+            // We just trigger an update method to push new Frappe data down the tree.
+            editor_manager.update(frm.doc.block_editor_html_internal || &quot;&quot;, frm.doc.name);
+        }
+    }
+});" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frappe/public/js/block_editor_web_page.js</span>
+
+<span class="hljs-keyword">let</span> editor_node = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> editor_manager = <span class="hljs-literal">null</span>;
+
+frappe.<span class="hljs-property">ui</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;Web Page&quot;</span>, {
+    <span class="hljs-attr">setup_editor</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">frm</span>) {
+        <span class="hljs-comment">// We check if the Vite-compiled React bundle has successfully attached </span>
+        <span class="hljs-comment">// the mount function to the global window object. If not, the script fails gracefully</span>
+        <span class="hljs-comment">// and falls back to standard Frappe rendering.</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">mountDMBlockEditor</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Block Editor React bundle is missing.&quot;</span>);
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// We utilize the Frappe form lifecycle to mount our React app.</span>
+        <span class="hljs-comment">// We isolate the React DOM tree inside a dedicated &apos;editor_node&apos; to prevent </span>
+        <span class="hljs-comment">// Frappe&apos;s global jQuery logic from accidentally mutating React&apos;s virtual DOM.</span>
+        <span class="hljs-keyword">if</span> (!editor_manager) {
+            editor_manager = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">mountDMBlockEditor</span>(
+                editor_node,
+                {
+                    <span class="hljs-comment">// Pass Frappe&apos;s current DB state down into React as props.</span>
+                    <span class="hljs-comment">// React treats Frappe&apos;s database as the single source of truth upon initialization.</span>
+                    <span class="hljs-attr">title</span>: frm.<span class="hljs-title function_">get_title</span>() || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">content</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">block_editor_html_internal</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">route</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">route</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">published</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">published</span> || <span class="hljs-number">0</span>,
+                    <span class="hljs-attr">meta_title</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">meta_title</span> || <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">meta_description</span>: frm.<span class="hljs-property">doc</span>.<span class="hljs-property">meta_description</span> || <span class="hljs-string">&quot;&quot;</span>,
+                },
+                <span class="hljs-comment">// The &apos;onChange&apos; callback. Every time React&apos;s state changes (keystrokes), </span>
+                <span class="hljs-comment">// we push the serialized string back into Frappe&apos;s internal DocType state.</span>
+                <span class="hljs-comment">// This ensures Frappe&apos;s native &quot;Save&quot; button still works perfectly if the user clicks it.</span>
+                <span class="hljs-function">(<span class="hljs-params">raw_content</span>) =&gt;</span> {
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;block_editor_html_internal&quot;</span>, raw_content);
+                },
+                <span class="hljs-comment">// The &apos;onClose&apos; callback hides the React overlay, returning the user to the Desk.</span>
+                <span class="hljs-function">() =&gt;</span> {
+                    editor_node.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span>;
+                },
+                <span class="hljs-comment">// The &apos;onSave&apos; callback. When the user clicks the blue &apos;Save&apos; button *inside* React, </span>
+                <span class="hljs-comment">// we push all final metadata up to the Frappe form and trigger a backend save.</span>
+                <span class="hljs-function">(<span class="hljs-params">title, rendered_content, route, published, meta_title, meta_description</span>) =&gt;</span> {
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;title&quot;</span>, title);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;block_editor_html_rendered&quot;</span>, rendered_content);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;route&quot;</span>, route);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;published&quot;</span>, published);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;meta_title&quot;</span>, meta_title);
+                    frm.<span class="hljs-title function_">set_value</span>(<span class="hljs-string">&quot;meta_description&quot;</span>, meta_description);
+                    frm.<span class="hljs-title function_">save</span>();
+                },
+                frm.<span class="hljs-property">doc</span>.<span class="hljs-property">name</span>,
+            );
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// If the React app is already mounted in memory, we don&apos;t remount. </span>
+            <span class="hljs-comment">// We just trigger an update method to push new Frappe data down the tree.</span>
+            editor_manager.<span class="hljs-title function_">update</span>(frm.<span class="hljs-property">doc</span>.<span class="hljs-property">block_editor_html_internal</span> || <span class="hljs-string">&quot;&quot;</span>, frm.<span class="hljs-property">doc</span>.<span class="hljs-property">name</span>);
+        }
+    }
+});</code></pre>
+
+
+
+<p><strong>The Legacy Stack Fallback:</strong>&nbsp;Notice how we manage the&nbsp;<code>content_type</code>&nbsp;toggle in the codebase. If the user switches the&nbsp;<code>content_type</code>&nbsp;dropdown back to &#8220;HTML&#8221; or &#8220;Markdown&#8221;, the script automatically unmounts the React node and restores Frappe&#8217;s standard editor options. This ensures backwards compatibility for older pages that were not built using blocks.</p>
+
+
+
+<h2 class="wp-block-heading">Deep Dive into Serialization</h2>
+
+
+
+<p>This is where the heavy lifting happens. Once React is mounted, the Gutenberg engine needs to parse Frappe&#8217;s raw database string back into a living React AST (Abstract Syntax Tree), allow the user to edit it in a visual canvas, and then serialize it back out.</p>
+
+
+
+<p>To do this effectively and securely, we maintain two distinct, hidden fields in the Frappe&nbsp;Web Page&nbsp;database schema:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>block_editor_html_internal&nbsp;(Source of Truth):</strong>&nbsp;Contains the WordPress block grammar (HTML annotated with JSON comments). This is used strictly to re-hydrate the React editor. It is never shown to the public.</li>
+
+
+
+<li><strong>block_editor_html_rendered&nbsp;(Production Output):</strong>&nbsp;Contains pure, sanitized, static HTML with all CSS utility classes applied. This is what the Frappe Jinja template serves to public visitors.</li>
+</ol>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/src/BlockEditor.tsx
+
+import { parse, serialize, getSaveContent, type BlockInstance } from &quot;@wordpress/blocks&quot;;
+import { BlockEditorProvider, BlockList, WritingFlow } from &quot;@wordpress/block-editor&quot;;
+import { createElement, RawHTML, useState, useRef } from &quot;@wordpress/element&quot;;
+
+export function BlockEditor({ value, onChange, onSave }: BlockEditorProps) {
+  
+  // We lazily initialize the parser only once on component mount. 
+  // 'value' is the raw string from Frappe's DB (e.g., <!-- wp:paragraph --&gt;<p&gt;Hi</p&gt;<!-- /wp:paragraph --&gt;). 
+  // parse() tokenizes this massive string and converts it into a structured array of React BlockInstances.
+  const [blocks, setBlocks] = useState<BlockInstance[]&gt;(() =&gt; {
+    initEditor();
+    return parse(value) ||[];
+  });
+
+  // Every time the user types a letter or drags a block, this function fires.
+  // We serialize the AST back to a WP-commented string and send it to the Frappe JS Bridge.
+  const handleInput = (newBlocks: BlockInstance[]) =&gt; {
+    setBlocks(newBlocks);
+    
+    // Serialization overhead is mitigated by React's batched state updates.
+    const serializedContent = serialize(newBlocks);
+    setIsDirty(serializedContent !== lastSavedRef.current);
+    
+    onChange?.(serializedContent);
+  };
+
+  // When the user hits 'Save', we must generate the final, clean HTML for the public website.
+  // We recursively map over the AST. For each block, we map Gutenberg attributes
+  // into actual frontend CSS classes.
+  const getRenderedHTML = (blocks: BlockInstance[]): string =&gt; {
+    const renderBlocks = (blocks: BlockInstance[]): string =&gt; {
+      return blocks.map((block) =&gt; {
+        // Extract attributes and inject dynamic layout classes (e.g., is-layout-flex)
+        const attributes = {
+          ...block.attributes,
+          className: getBlockContextualClasses(block.name, block.attributes),
+        };
+        
+        const innerHtmlString = block.innerBlocks.length &gt; 0 ? renderBlocks(block.innerBlocks) : &quot;&quot;;
+        
+        // `getSaveContent` executes the block's specific save() React function, 
+        // stripping away WP comments and returning pure, production-ready HTML.
+        return getSaveContent(
+          block.name,
+          attributes,
+          createElement(RawHTML, { children: innerHtmlString }) as any
+        );
+      }).join(&quot;&quot;);
+    };
+
+    return renderBlocks(blocks);
+  };
+
+  // ... (UI Render Logic Omitted for Brevity)
+}" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/src/BlockEditor.tsx</span>
+
+<span class="hljs-keyword">import</span> { parse, serialize, getSaveContent, type <span class="hljs-title class_">BlockInstance</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/blocks&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">BlockEditorProvider</span>, <span class="hljs-title class_">BlockList</span>, <span class="hljs-title class_">WritingFlow</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/block-editor&quot;</span>;
+<span class="hljs-keyword">import</span> { createElement, <span class="hljs-title class_">RawHTML</span>, useState, useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@wordpress/element&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">BlockEditor</span>(<span class="hljs-params">{ value, onChange, onSave }: BlockEditorProps</span>) {
+  
+  <span class="hljs-comment">// We lazily initialize the parser only once on component mount. </span>
+  <span class="hljs-comment">// &apos;value&apos; is the raw string from Frappe&apos;s DB (e.g., &lt;!-- wp:paragraph --&gt;&lt;p&gt;Hi&lt;/p&gt;&lt;!-- /wp:paragraph --&gt;). </span>
+  <span class="hljs-comment">// parse() tokenizes this massive string and converts it into a structured array of React BlockInstances.</span>
+  <span class="hljs-keyword">const</span> [blocks, setBlocks] = useState&lt;<span class="hljs-title class_">BlockInstance</span>[]&gt;(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">initEditor</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">parse</span>(value) ||[];
+  });
+
+  <span class="hljs-comment">// Every time the user types a letter or drags a block, this function fires.</span>
+  <span class="hljs-comment">// We serialize the AST back to a WP-commented string and send it to the Frappe JS Bridge.</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">newBlocks: BlockInstance[]</span>) =&gt; {
+    <span class="hljs-title function_">setBlocks</span>(newBlocks);
+    
+    <span class="hljs-comment">// Serialization overhead is mitigated by React&apos;s batched state updates.</span>
+    <span class="hljs-keyword">const</span> serializedContent = <span class="hljs-title function_">serialize</span>(newBlocks);
+    <span class="hljs-title function_">setIsDirty</span>(serializedContent !== lastSavedRef.<span class="hljs-property">current</span>);
+    
+    onChange?.(serializedContent);
+  };
+
+  <span class="hljs-comment">// When the user hits &apos;Save&apos;, we must generate the final, clean HTML for the public website.</span>
+  <span class="hljs-comment">// We recursively map over the AST. For each block, we map Gutenberg attributes</span>
+  <span class="hljs-comment">// into actual frontend CSS classes.</span>
+  <span class="hljs-keyword">const</span> getRenderedHTML = (<span class="hljs-attr">blocks</span>: <span class="hljs-title class_">BlockInstance</span>[]): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> renderBlocks = (<span class="hljs-attr">blocks</span>: <span class="hljs-title class_">BlockInstance</span>[]): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> blocks.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">block</span>) =&gt;</span> {
+        <span class="hljs-comment">// Extract attributes and inject dynamic layout classes (e.g., is-layout-flex)</span>
+        <span class="hljs-keyword">const</span> attributes = {
+          ...block.<span class="hljs-property">attributes</span>,
+          <span class="hljs-attr">className</span>: <span class="hljs-title function_">getBlockContextualClasses</span>(block.<span class="hljs-property">name</span>, block.<span class="hljs-property">attributes</span>),
+        };
+        
+        <span class="hljs-keyword">const</span> innerHtmlString = block.<span class="hljs-property">innerBlocks</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> ? <span class="hljs-title function_">renderBlocks</span>(block.<span class="hljs-property">innerBlocks</span>) : <span class="hljs-string">&quot;&quot;</span>;
+        
+        <span class="hljs-comment">// `getSaveContent` executes the block&apos;s specific save() React function, </span>
+        <span class="hljs-comment">// stripping away WP comments and returning pure, production-ready HTML.</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">getSaveContent</span>(
+          block.<span class="hljs-property">name</span>,
+          attributes,
+          <span class="hljs-title function_">createElement</span>(<span class="hljs-title class_">RawHTML</span>, { <span class="hljs-attr">children</span>: innerHtmlString }) <span class="hljs-keyword">as</span> any
+        );
+      }).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+    };
+
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">renderBlocks</span>(blocks);
+  };
+
+  <span class="hljs-comment">// ... (UI Render Logic Omitted for Brevity)</span>
+}</code></pre>
+
+
+
+<p>Data enters as a raw string from Frappe, gets tokenized by&nbsp;<code>@wordpress/blocks</code>, is manipulated by the user inside the&nbsp;<code>&lt;BlockList /&gt;</code> canvas, and exits via our custom recursive&nbsp;<code>getRenderedHTML</code>&nbsp;function. This architectural pattern cleanly separates the editor&#8217;s internal state concerns from the public output, ensuring that the frontend website only ever renders clean HTML, requiring zero JavaScript on the client side to display the page.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-300x138.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-768x352.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">The Build Pipeline / Orchestration</h2>
+
+
+
+<p>Combining a Python/Jinja backend with a modern React/TypeScript frontend requires careful orchestration. We cannot simply run a Node.js development server in production; the React application must be compiled into static assets that Frappe&#8217;s bench CLI can serve via Nginx or Werkzeug. </p>
+
+
+
+<p>We achieve this via <strong>Vite</strong>, compiling the React application into distinct bundles placed directly into Frappe&#8217;s standard <code>/public</code> directory.</p>
+
+
+
+<p>Furthermore, we solved a massive design problem during this build phase:&nbsp;<strong>How do we ensure the editor&#8217;s visual styles (colors, spacing, typography) perfectly match the public website&#8217;s styles without writing duplicate CSS?</strong></p>
+
+
+
+<p>In a standard WordPress environment, this is handled by&nbsp;<code>theme.json</code>. Because we don&#8217;t have WordPress, we created a single source of truth (<code>editorSettings.ts</code>) and built a highly custom Vite Virtual Module plugin to dynamically generate CSS at build time.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/vite.config.ts
+
+import { defineConfig, type Plugin } from &quot;vite&quot;;
+import { generateThemeCss } from &quot;./src/utils/generateThemeCss&quot;;
+
+// Vite plugins allow us to intercept imports at compile time. 
+// We create a &quot;virtual&quot; module that doesn't actually exist on the hard drive. 
+function virtualWpThemePlugin(): Plugin {
+  const virtualModuleId = &quot;virtual:wp-theme.css&quot;;
+  const resolvedVirtualModuleId = &quot;\0&quot; + virtualModuleId;
+
+  return {
+    name: &quot;vite-plugin-wp-theme-generator&quot;,
+    resolveId(id) {
+      // If the code requests our virtual CSS file, intercept the resolution.
+      if (id === virtualModuleId) return resolvedVirtualModuleId;
+    },
+    load(id) {
+      // When the React app imports &quot;virtual:wp-theme.css&quot;, Vite triggers this load function.
+      // We parse the JSON editorSettings and dynamically generate thousands of lines 
+      // of CSS variables (--wp--preset--color) and utility classes (.has-black-color) in memory.
+      if (id === resolvedVirtualModuleId) {
+        return generateThemeCss();
+      }
+    },
+  };
+}
+
+export default defineConfig(({ mode }) =&gt; {
+  const isFrontend = process.env.BUILD_TARGET === &quot;frontend&quot;;
+
+  return {
+    plugins:[
+      virtualWpThemePlugin(), 
+      react(),
+      babel({ plugins: [[&quot;babel-plugin-react-compiler&quot;, { target: &quot;18&quot; }]] })
+    ],
+    build: {
+      // We output the compiled React application directly into Frappe's app asset folder.
+      // This allows Frappe's native web server to serve the JS/CSS without a separate Node instance.
+      outDir: &quot;../block_editor_frappe/public/vite&quot;,
+      emptyOutDir: false,
+      cssCodeSplit: false,
+      rollupOptions: {
+        input: isFrontend
+          ? resolve(__dirname, &quot;src/scripts/frontendStyles.ts&quot;)
+          : resolve(__dirname, &quot;src/main.tsx&quot;),
+        output: {
+          // Predictable file naming ensures our Frappe Python backend 
+          // can easily link these exact assets in the Jinja templates without needing complex manifest lookups.
+          entryFileNames: isFrontend ? &quot;js/block_editor_frontend.js&quot; : &quot;js/block_editor_main.js&quot;,
+          assetFileNames: isFrontend ? &quot;css/block_editor_frontend.css&quot; : &quot;css/block_editor_main.css&quot;,
+        },
+      },
+    },
+  };
+});" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/vite.config.ts</span>
+
+<span class="hljs-keyword">import</span> { defineConfig, type <span class="hljs-title class_">Plugin</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite&quot;</span>;
+<span class="hljs-keyword">import</span> { generateThemeCss } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./src/utils/generateThemeCss&quot;</span>;
+
+<span class="hljs-comment">// Vite plugins allow us to intercept imports at compile time. </span>
+<span class="hljs-comment">// We create a &quot;virtual&quot; module that doesn&apos;t actually exist on the hard drive. </span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">virtualWpThemePlugin</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Plugin</span> {
+  <span class="hljs-keyword">const</span> virtualModuleId = <span class="hljs-string">&quot;virtual:wp-theme.css&quot;</span>;
+  <span class="hljs-keyword">const</span> resolvedVirtualModuleId = <span class="hljs-string">&quot;\0&quot;</span> + virtualModuleId;
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;vite-plugin-wp-theme-generator&quot;</span>,
+    <span class="hljs-title function_">resolveId</span>(<span class="hljs-params">id</span>) {
+      <span class="hljs-comment">// If the code requests our virtual CSS file, intercept the resolution.</span>
+      <span class="hljs-keyword">if</span> (id === virtualModuleId) <span class="hljs-keyword">return</span> resolvedVirtualModuleId;
+    },
+    <span class="hljs-title function_">load</span>(<span class="hljs-params">id</span>) {
+      <span class="hljs-comment">// When the React app imports &quot;virtual:wp-theme.css&quot;, Vite triggers this load function.</span>
+      <span class="hljs-comment">// We parse the JSON editorSettings and dynamically generate thousands of lines </span>
+      <span class="hljs-comment">// of CSS variables (--wp--preset--color) and utility classes (.has-black-color) in memory.</span>
+      <span class="hljs-keyword">if</span> (id === resolvedVirtualModuleId) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">generateThemeCss</span>();
+      }
+    },
+  };
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">{ mode }</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> isFrontend = process.<span class="hljs-property">env</span>.<span class="hljs-property">BUILD_TARGET</span> === <span class="hljs-string">&quot;frontend&quot;</span>;
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">plugins</span>:[
+      <span class="hljs-title function_">virtualWpThemePlugin</span>(), 
+      <span class="hljs-title function_">react</span>(),
+      <span class="hljs-title function_">babel</span>({ <span class="hljs-attr">plugins</span>: [[<span class="hljs-string">&quot;babel-plugin-react-compiler&quot;</span>, { <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;18&quot;</span> }]] })
+    ],
+    <span class="hljs-attr">build</span>: {
+      <span class="hljs-comment">// We output the compiled React application directly into Frappe&apos;s app asset folder.</span>
+      <span class="hljs-comment">// This allows Frappe&apos;s native web server to serve the JS/CSS without a separate Node instance.</span>
+      <span class="hljs-attr">outDir</span>: <span class="hljs-string">&quot;../block_editor_frappe/public/vite&quot;</span>,
+      <span class="hljs-attr">emptyOutDir</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">cssCodeSplit</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">rollupOptions</span>: {
+        <span class="hljs-attr">input</span>: isFrontend
+          ? <span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;src/scripts/frontendStyles.ts&quot;</span>)
+          : <span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;src/main.tsx&quot;</span>),
+        <span class="hljs-attr">output</span>: {
+          <span class="hljs-comment">// Predictable file naming ensures our Frappe Python backend </span>
+          <span class="hljs-comment">// can easily link these exact assets in the Jinja templates without needing complex manifest lookups.</span>
+          <span class="hljs-attr">entryFileNames</span>: isFrontend ? <span class="hljs-string">&quot;js/block_editor_frontend.js&quot;</span> : <span class="hljs-string">&quot;js/block_editor_main.js&quot;</span>,
+          <span class="hljs-attr">assetFileNames</span>: isFrontend ? <span class="hljs-string">&quot;css/block_editor_frontend.css&quot;</span> : <span class="hljs-string">&quot;css/block_editor_main.css&quot;</span>,
+        },
+      },
+    },
+  };
+});</code></pre>
+
+
+
+<p>To tie it all together natively, we leverage Frappe&#8217;s&nbsp;<code>after_install</code>&nbsp;hook in&nbsp;<code>hooks.py</code>&nbsp;to automatically trigger an&nbsp;<code>npm install</code>&nbsp;and&nbsp;<code>npm run build</code>&nbsp;via Python&#8217;s&nbsp;<code>subprocess</code>&nbsp;module.</p>
+
+
+
+<p>Code quality is strictly enforced across the language chasm:&nbsp;<code>ruff</code>&nbsp;lints the Python logic, while&nbsp;<code>eslint</code>&nbsp;and&nbsp;<code>prettier</code>&nbsp;ensure the React codebase remains pristine, all bound together by a unified&nbsp;<code>.pre-commit-config.yaml</code>.</p>
+
+
+
+<h2 class="wp-block-heading">State Management: Passing Data Across the Stack</h2>
+
+
+
+<p>The &#8220;distributed state problem&#8221; is the bane of modern hybrid architectures. How do we get the DocType state from a MariaDB row, pass it through a Python controller, feed it into a legacy jQuery client script, and safely inject it into an isolated React context all while ensuring data remains strictly typed?</p>
+
+
+
+<p>We solve this using a unidirectional data flow governed by a global window registry acting as an API boundary.</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="// block_editor_frontend/src/main.tsx
+
+// We declare a global TypeScript interface. This creates a strict contract 
+// so the legacy jQuery application (Frappe Desk) knows exactly what data shapes 
+// it must provide to instantiate the React application.
+declare global {
+  interface Window {
+    mountDMBlockEditor: (
+      element: HTMLElement,
+      props: {
+        content: string;
+        title: string;
+        route: string;
+        published: number;
+        meta_title: string;
+        meta_description: string;
+      },
+      onChange: (content: string) =&gt; void,
+      onClose: () =&gt; void,
+      onSave: (title: string, rendered: string, route: string, published: number, meta_title: string, meta_description: string) =&gt; void,
+      docName: string,
+    ) =&gt; void;
+  }
+}
+
+let root: Root | null = null;
+
+window.mountDMBlockEditor = (element, props, onChange, onClose, onSave, docName) =&gt; {
+  if (!root) {
+    root = createRoot(element); // Initialize the React 18 Root
+  }
+
+  // We destructure the database state passed from Frappe and inject it 
+  // directly into the React BlockEditor as props. React now &quot;owns&quot; the UI state.
+  const { content, title, route, published, meta_title, meta_description } = props;
+
+  const render = (newContent: string, newDocName: string) =&gt; {
+    root?.render(
+      <StrictMode&gt;
+        <BlockEditor
+          key={newDocName} // Changing the key forces a full React remount if the Frappe doc changes
+          value={newContent}
+          title={title}
+          route={route}
+          published={published}
+          meta_title={meta_title}
+          meta_description={meta_description}
+          onChange={onChange}
+          onClose={onClose}
+          onSave={onSave}
+        /&gt;
+      </StrictMode&gt;,
+    );
+  };
+
+  render(content, docName);
+
+  // We return an API object back to the Frappe JS script.
+  // This allows Frappe to programmatically update the React state if the database 
+  // changes via background events, or destroy the React instance entirely to free memory.
+  return {
+    update: render,
+    unmount: () =&gt; {
+      root?.unmount();
+      root = null;
+    },
+  };
+};" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-javascript"><span class="hljs-comment">// block_editor_frontend/src/main.tsx</span>
+
+<span class="hljs-comment">// We declare a global TypeScript interface. This creates a strict contract </span>
+<span class="hljs-comment">// so the legacy jQuery application (Frappe Desk) knows exactly what data shapes </span>
+<span class="hljs-comment">// it must provide to instantiate the React application.</span>
+declare <span class="hljs-variable language_">global</span> {
+  interface <span class="hljs-title class_">Window</span> {
+    <span class="hljs-attr">mountDMBlockEditor</span>: <span class="hljs-function">(<span class="hljs-params">
+      element: HTMLElement,
+      props: {
+        content: string;
+        title: string;
+        route: string;
+        published: number;
+        meta_title: string;
+        meta_description: string;
+      },
+      onChange: (content: string) =&gt; <span class="hljs-keyword">void</span>,
+      onClose: () =&gt; <span class="hljs-keyword">void</span>,
+      onSave: (title: string, rendered: string, route: string, published: number, meta_title: string, meta_description: string) =&gt; <span class="hljs-keyword">void</span>,
+      docName: string,
+    </span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+  }
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">root</span>: <span class="hljs-title class_">Root</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">mountDMBlockEditor</span> = <span class="hljs-function">(<span class="hljs-params">element, props, onChange, onClose, onSave, docName</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!root) {
+    root = <span class="hljs-title function_">createRoot</span>(element); <span class="hljs-comment">// Initialize the React 18 Root</span>
+  }
+
+  <span class="hljs-comment">// We destructure the database state passed from Frappe and inject it </span>
+  <span class="hljs-comment">// directly into the React BlockEditor as props. React now &quot;owns&quot; the UI state.</span>
+  <span class="hljs-keyword">const</span> { content, title, route, published, meta_title, meta_description } = props;
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">render</span> = (<span class="hljs-params">newContent: string, newDocName: string</span>) =&gt; {
+    root?.<span class="hljs-title function_">render</span>(
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">StrictMode</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">BlockEditor</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{newDocName}</span> // <span class="hljs-attr">Changing</span> <span class="hljs-attr">the</span> <span class="hljs-attr">key</span> <span class="hljs-attr">forces</span> <span class="hljs-attr">a</span> <span class="hljs-attr">full</span> <span class="hljs-attr">React</span> <span class="hljs-attr">remount</span> <span class="hljs-attr">if</span> <span class="hljs-attr">the</span> <span class="hljs-attr">Frappe</span> <span class="hljs-attr">doc</span> <span class="hljs-attr">changes</span>
+          <span class="hljs-attr">value</span>=<span class="hljs-string">{newContent}</span>
+          <span class="hljs-attr">title</span>=<span class="hljs-string">{title}</span>
+          <span class="hljs-attr">route</span>=<span class="hljs-string">{route}</span>
+          <span class="hljs-attr">published</span>=<span class="hljs-string">{published}</span>
+          <span class="hljs-attr">meta_title</span>=<span class="hljs-string">{meta_title}</span>
+          <span class="hljs-attr">meta_description</span>=<span class="hljs-string">{meta_description}</span>
+          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{onChange}</span>
+          <span class="hljs-attr">onClose</span>=<span class="hljs-string">{onClose}</span>
+          <span class="hljs-attr">onSave</span>=<span class="hljs-string">{onSave}</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">StrictMode</span>&gt;</span></span>,
+    );
+  };
+
+  <span class="hljs-title function_">render</span>(content, docName);
+
+  <span class="hljs-comment">// We return an API object back to the Frappe JS script.</span>
+  <span class="hljs-comment">// This allows Frappe to programmatically update the React state if the database </span>
+  <span class="hljs-comment">// changes via background events, or destroy the React instance entirely to free memory.</span>
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">update</span>: render,
+    <span class="hljs-attr">unmount</span>: <span class="hljs-function">() =&gt;</span> {
+      root?.<span class="hljs-title function_">unmount</span>();
+      root = <span class="hljs-literal">null</span>;
+    },
+  };
+};</code></pre>
+
+
+
+<p>This unidirectional setup eliminates race conditions. React completely owns the UI state and memory lifecycle, but Frappe remains the single source of truth for the persistent data.</p>
+
+
+
+<p>To serve this to the end user, we utilize Frappe&#8217;s Python override hooks. The backend implementation is intentionally minimal, acting only as a data router:</p>
+
+
+
+<pre class="wp-block-dm-hcb-highlighted-code-block"><button class="dm-hcb-copy hljs" data-code="# block_editor_frappe/overrides/web_page.py
+
+from frappe.website.doctype.web_page.web_page import WebPage
+
+class BlockEditorWebPage(WebPage):
+    def get_context(self, context):
+        super().get_context(context)
+
+        # If the user didn't select &quot;Block Editor&quot;, we fall back to standard Frappe rendering.
+        if self.content_type != &quot;Block Editor&quot;:
+            return
+
+        # Inject the pure, rendered HTML into the Jinja context.
+        # This completely bypasses the need for the frontend to run React to see the page.
+        context.block_editor_content = self.block_editor_html_rendered or &quot;&quot;
+
+        # Point the renderer to our custom Jinja template that includes our Vite CSS assets.
+        context.template = &quot;block_editor_frappe/templates/pages/web_page_block_editor.html&quot;" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg><span>Copy</span></button><code class="hljs language-python"><span class="hljs-comment"># block_editor_frappe/overrides/web_page.py</span>
+
+<span class="hljs-keyword">from</span> frappe.website.doctype.web_page.web_page <span class="hljs-keyword">import</span> WebPage
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BlockEditorWebPage</span>(<span class="hljs-title class_ inherited__">WebPage</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_context</span>(<span class="hljs-params">self, context</span>):
+        <span class="hljs-built_in">super</span>().get_context(context)
+
+        <span class="hljs-comment"># If the user didn&apos;t select &quot;Block Editor&quot;, we fall back to standard Frappe rendering.</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.content_type != <span class="hljs-string">&quot;Block Editor&quot;</span>:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># Inject the pure, rendered HTML into the Jinja context.</span>
+        <span class="hljs-comment"># This completely bypasses the need for the frontend to run React to see the page.</span>
+        context.block_editor_content = <span class="hljs-variable language_">self</span>.block_editor_html_rendered <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&quot;</span>
+
+        <span class="hljs-comment"># Point the renderer to our custom Jinja template that includes our Vite CSS assets.</span>
+        context.template = <span class="hljs-string">&quot;block_editor_frappe/templates/pages/web_page_block_editor.html&quot;</span></code></pre>
+
+
+
+<p>The simplicity of this Python class is the entire point: the React frontend does all the heavy analytical lifting and serialization, and the backend simply serves the resulting static string at light speed.</p>
+
+
+
+<h2 class="wp-block-heading">Limitations and Future Enhancements</h2>
+
+
+
+<p>While I am extemely content with this implementation, but <strong>we must be honest about its current constraints.</strong> Mashing two massive ecosystems together results in inevitable friction points:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>WordPress API Reliance:</strong> Some native Gutenberg blocks (like dynamic Post Grids, Navigation Menus, or Search) attempt to fetch data dynamically via WordPress REST API endpoints (/wp-json/). Because Frappe doesn&#8217;t possess these specific endpoints, those complex dynamic blocks currently fail to render and must be filtered out of the block registry.</li>
+
+
+
+<li><strong>Asset Management Disconnect:</strong> Currently, dragging and dropping an image into the editor embeds it as a Base64 string or relies on external URLs. It completely bypasses Frappe&#8217;s native File Manager DocType. This means images uploaded via the editor don&#8217;t show up in the standard Frappe file list, breaking centralized asset management and potentially inflating the database size.</li>
+
+
+
+<li><strong>Environment Bypasses:</strong> If a user edits the <code>block_editor_html_internal</code> string directly via a Python script or the Frappe REST API (bypassing the React UI), the <code>block_editor_html_rendered</code> field will not update automatically, causing a synchronization mismatch between the database and the public website.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading"><strong>Where do we go from here?</strong></h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Frappe Native Block API Middleware:</strong> We can build a custom Python/JS middleware layer that intercepts Gutenberg&#8217;s outgoing WP REST API calls and maps them to Frappe DocType queries. This would allow a native block to dynamically fetch ERPNext data (e.g., embedding a live, filtered grid of Item DocTypes directly into a Web Page layout). Instead we can also simply create new blocks for our usecase which do not even depend on WordPress APIs and used Frappe&#8217;s  API natively. </li>
+
+
+
+<li><strong>Media Upload Bridging:</strong> We can also add custom React hook that intercepts the block editor&#8217;s image drop event, reroutes the file to Frappe&#8217;s upload_file endpoint, and returns the generated Frappe File URL back to the image block, perfectly synchronizing the two systems. Maybe we can have a Media Library modal equivalent here.</li>
+
+
+
+<li><strong>Code-editor Mode:</strong> Like in WordPress, adding a code editor mode here will be or very helpful for debugging and checking the exact markup generated by the editor.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>Porting the WordPress Gutenberg editor into the Frappe Framework was more than just a pursuit of a &#8220;prettier&#8221; UI; it was a deep dive into reconciling two fundamentally different architectural philosophies. By successfully embedding a <strong>React-based, state-driven editor</strong> into Frappe’s <strong>jQuery and Vue-driven ecosystem</strong>, this project proves that we don&#8217;t have to choose between the robustness of a Python backend and the world-class authoring experience of modern JavaScript libraries.</p>
+
+
+
+<p>While challenges remain, specifically regarding the alignment of asset management and the &#8220;hijacking&#8221; of WordPress-specific API calls, the foundation is solid. This integration opens the door for a new class of Frappe-powered websites: those that demand the <strong>technical rigor of an ERP</strong> and the <strong>aesthetic flexibility of a modern CMS</strong>.</p>
+
+
+
+<p>Ultimately, this project demonstrates that with the right orchestration of build tools and state management, we can bypass the limitations of a &#8220;basic&#8221; editor and provide content creators with a truly professional, block-first experience without leaving the Frappe ecosystem.</p>
+
+
+
+<p></p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+		
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" length="690398" type="video/mp4" />
+
+			</item>
+		<item>
 		<title>Mastering Context with Code Mode AI Agents</title>
 		<link>https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/</link>
 		
@@ -52,7 +851,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="2560" height="672" src="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp" alt="Context overflow in traditional systems" class="wp-image-1345" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-300x79.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1024x269.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-768x201.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1536x403.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-2048x537.webp 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="672" src="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp" alt="Context overflow in traditional systems" class="wp-image-1345" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-300x79.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1024x269.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-768x201.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1536x403.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-2048x537.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
 
 
 
@@ -60,7 +859,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img decoding="async" width="2560" height="1125" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp" alt="Context saving using Code Mode harness" class="wp-image-1346" style="width:780px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-300x132.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1024x450.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-768x337.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1536x675.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-2048x900.webp 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="1125" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp" alt="Context saving using Code Mode harness" class="wp-image-1346" style="width:780px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-300x132.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1024x450.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-768x337.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1536x675.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-2048x900.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
 
 
 
@@ -80,7 +879,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img decoding="async" width="2337" height="606" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp" alt="Traditional tool calling architecture." class="wp-image-1340" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp 2337w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-300x78.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1024x266.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-768x199.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1536x398.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-2048x531.webp 2048w" sizes="(max-width: 2337px) 100vw, 2337px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2337" height="606" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp" alt="Traditional tool calling architecture." class="wp-image-1340" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp 2337w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-300x78.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1024x266.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-768x199.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1536x398.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-2048x531.webp 2048w" sizes="auto, (max-width: 2337px) 100vw, 2337px" /></figure>
 
 
 
@@ -3979,198 +4778,6 @@ Text Domain: my-block-theme
 ]]></content:encoded>
 					
 					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>WordPress Block Editor: Nested Blocks</title>
-		<link>https://lakshyajeet.in/wordpress-block-editor-nested-blocks/</link>
-					<comments>https://lakshyajeet.in/wordpress-block-editor-nested-blocks/#respond</comments>
-		
-		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
-		<pubDate>Mon, 05 May 2025 14:33:43 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<category><![CDATA[ai]]></category>
-		<category><![CDATA[gutenberg]]></category>
-		<category><![CDATA[javascript]]></category>
-		<category><![CDATA[technology]]></category>
-		<category><![CDATA[wordpress]]></category>
-		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=856</guid>
-
-					<description><![CDATA[<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is Nested Blocks. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users. What [&#8230;]</p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>As WordPress developers, we&#8217;ve all felt the power and flexibility that the Block Editor (Gutenberg) brings to the table. One of the more advanced (and incredibly useful) features is <strong>Nested Blocks</strong>. They give us the ability to structure content hierarchically, organize components modularly, and ultimately deliver richer editing experiences to our clients and users.</p>
-
-
-
-<h3 class="wp-block-heading">What Are Nested Blocks?</h3>
-
-
-
-<p>Nested blocks allow us to insert blocks <em>inside</em> other blocks. Think of them as sub-components. For instance, a custom “Team” block might contain multiple “Team Member” blocks. Or a “Testimonial Slider” block could hold several “Testimonial” blocks.</p>
-
-
-
-<p>In technical terms, we achieve this nesting by using WordPress&#8217;s <code>InnerBlocks</code> component inside a custom block.</p>
-
-
-
-<h3 class="wp-block-heading">Why Use Nested Blocks?</h3>
-
-
-
-<p>We use nested blocks when:</p>
-
-
-
-<ul class="wp-block-list">
-<li>We want reusable layout structures (e.g. columns, cards)</li>
-
-
-
-<li>We need to give users more flexibility while keeping them within a defined layout</li>
-
-
-
-<li>We want to group multiple blocks for styling or behavior</li>
-
-
-
-<li>We&#8217;re building container-like blocks (e.g. accordions, tabs, sliders)</li>
-</ul>
-
-
-
-<p>Nested blocks help balance flexibility with structure.</p>
-
-
-
-<h2 class="wp-block-heading">Creating a Block with Nested Blocks</h2>
-
-
-
-<h3 class="wp-block-heading">1. Register the Block</h3>
-
-
-
-<p>We can register our block in <code>block.json</code>.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-{
-  <span class="hljs-string">&quot;apiVersion&quot;</span>: <span class="hljs-number">3</span>,
-  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;my-plugin/section&quot;</span>,
-  <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Section&quot;</span>,
-  <span class="hljs-string">&quot;category&quot;</span>: <span class="hljs-string">&quot;layout&quot;</span>,
-  <span class="hljs-string">&quot;icon&quot;</span>: <span class="hljs-string">&quot;editor-insertmore&quot;</span>,
-  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;A custom section block that allows nested blocks inside.&quot;</span>,
-  <span class="hljs-string">&quot;supports&quot;</span>: {
-    <span class="hljs-string">&quot;html&quot;</span>: <span class="hljs-literal">false</span>
-  },
-  <span class="hljs-string">&quot;editorScript&quot;</span>: <span class="hljs-string">&quot;file:./index.js&quot;</span>
-}
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">2. Block Edit Function with <code>InnerBlocks</code></h3>
-
-
-
-<p>In our <code>index.js</code> file, we’ll use the <code>InnerBlocks</code> component to allow nesting</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-<span class="hljs-keyword">import</span> { registerBlockType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/blocks&apos;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">InnerBlocks</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@wordpress/block-editor&apos;</span>;
-
-<span class="hljs-title function_">registerBlockType</span>(<span class="hljs-string">&apos;myplugin/section&apos;</span>, {
-    <span class="hljs-attr">edit</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">return</span> (
-            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;my-section-block&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">InnerBlocks</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-        );
-    },
-    <span class="hljs-attr">save</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">return</span> (
-            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;my-section-block&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">InnerBlocks.Content</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-        );
-    },
-});
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">Restricting Allowed Blocks (Optional)</h3>
-
-
-
-<p>Sometimes we want to restrict which blocks can be inserted inside our container. Here&#8217;s how we do that using the <code>allowedBlocks</code> prop.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-&lt;<span class="hljs-title class_">InnerBlocks</span>
-    allowedBlocks={[<span class="hljs-string">&apos;core/paragraph&apos;</span>, <span class="hljs-string">&apos;core/image&apos;</span>, <span class="hljs-string">&apos;core/heading&apos;</span>]}
-/&gt;
-</code></pre>
-
-
-
-<p>We can also add placeholders in the templates for better UX.</p>
-
-
-
-<pre class="wp-block-dm-hcb-highlighted-code-block"><code class="hljs language-javascript">
-&lt;<span class="hljs-title class_">InnerBlocks</span>
-    template={[
-        [<span class="hljs-string">&apos;core/heading&apos;</span>, { <span class="hljs-attr">placeholder</span>: <span class="hljs-string">&apos;Section Heading&apos;</span> }],
-        [<span class="hljs-string">&apos;core/paragraph&apos;</span>, { <span class="hljs-attr">placeholder</span>: <span class="hljs-string">&apos;Add your text here...&apos;</span> }]
-    ]}
-/&gt;
-</code></pre>
-
-
-
-<h3 class="wp-block-heading">Gotchas and Best Practices</h3>
-
-
-
-<ul class="wp-block-list">
-<li><strong>Avoid infinite nesting</strong> &#8211; prevent blocks from nesting themselves inside themselves.</li>
-
-
-
-<li><strong>Use <code>templateLock</code></strong> if we want to lock the layout (<code>'all'</code>, <code>'insert'</code>, <code>'false'</code>).</li>
-
-
-
-<li><strong>Use proper CSS scoping</strong> to avoid styling conflicts across blocks.</li>
-</ul>
-
-
-
-<h3 class="wp-block-heading">Conclusion</h3>
-
-
-
-<p>Nested blocks are one of the most powerful tools in our WordPress development toolkit. They allow us to create structured, flexible, and user-friendly experiences for content editors. Whether we’re building reusable components or complex layout systems, mastering <code>InnerBlocks</code> will elevate our block development game.</p>
-
-
-
-<p></p>
-<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-nested-blocks/">WordPress Block Editor: Nested Blocks</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-nested-blocks/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/blog/</loc>
-		<lastmod>2026-03-30T11:51:47+00:00</lastmod>
+		<lastmod>2026-04-28T14:06:06+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
@@ -10,6 +10,10 @@
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-1.webp</image:loc>
 		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-template-hierarchy/</loc>
+		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/wordpress-rest-api-internals/</loc>
@@ -23,19 +27,8 @@
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://lakshyajeet.in/theme-development-in-wordpress-template-hierarchy/</loc>
-		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
-	</url>
-	<url>
 		<loc>https://lakshyajeet.in/introduction-to-wordpress-themes/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://lakshyajeet.in/introduction-to-wordpress/</loc>
-		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
-		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
-		</image:image>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/debugging-in-wordpress-with-xdebug/</loc>
@@ -114,6 +107,20 @@
 		</image:image>
 	</url>
 	<url>
+		<loc>https://lakshyajeet.in/introduction-to-wordpress/</loc>
+		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/day-001-pilot/</loc>
+		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
 		<loc>https://lakshyajeet.in/web-internals-http-ssl-tls/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
@@ -157,13 +164,6 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-5-1.webp</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://lakshyajeet.in/day-001-pilot/</loc>
-		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
-		<image:image>
-			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
@@ -482,6 +482,25 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/porting-gutenberg-to-frappe/</loc>
+		<lastmod>2026-04-28T14:06:06+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp</image:loc>
 		</image:image>
 	</url>
 </urlset>
