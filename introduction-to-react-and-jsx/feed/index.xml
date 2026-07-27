@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Introduction to React and JSX	</title>
-	<atom:link href="https://lakshyajeet.in/introduction-to-react-and-jsx/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/introduction-to-react-and-jsx/</link>
+	<atom:link href="/introduction-to-react-and-jsx/feed/" rel="self" type="application/rss+xml" />
+	<link>/introduction-to-react-and-jsx/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:48:53 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>

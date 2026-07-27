@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Object-Oriented Programming in PHP	</title>
-	<atom:link href="https://lakshyajeet.in/object-oriented-programming-in-php/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/object-oriented-programming-in-php/</link>
+	<atom:link href="/object-oriented-programming-in-php/feed/" rel="self" type="application/rss+xml" />
+	<link>/object-oriented-programming-in-php/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:39:27 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>

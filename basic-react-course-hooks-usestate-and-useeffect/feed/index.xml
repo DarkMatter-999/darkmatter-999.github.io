@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Basic React Course: Hooks — useState and useEffect	</title>
-	<atom:link href="https://lakshyajeet.in/basic-react-course-hooks-usestate-and-useeffect/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/basic-react-course-hooks-usestate-and-useeffect/</link>
+	<atom:link href="/basic-react-course-hooks-usestate-and-useeffect/feed/" rel="self" type="application/rss+xml" />
+	<link>/basic-react-course-hooks-usestate-and-useeffect/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:50:00 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>

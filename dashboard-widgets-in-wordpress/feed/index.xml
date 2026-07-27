@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Dashboard Widgets in WordPress	</title>
-	<atom:link href="https://lakshyajeet.in/dashboard-widgets-in-wordpress/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/dashboard-widgets-in-wordpress/</link>
+	<atom:link href="/dashboard-widgets-in-wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>/dashboard-widgets-in-wordpress/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:44:03 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>

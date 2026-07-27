@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: Day 004: JavaScipt	</title>
-	<atom:link href="https://lakshyajeet.in/day-004-javascipt/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/day-004-javascipt/</link>
+	<atom:link href="/day-004-javascipt/feed/" rel="self" type="application/rss+xml" />
+	<link>/day-004-javascipt/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:38:57 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>

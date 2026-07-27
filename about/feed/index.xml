@@ -8,14 +8,14 @@
 <channel>
 	<title>
 	Comments on: About Me	</title>
-	<atom:link href="https://lakshyajeet.in/about/feed/" rel="self" type="application/rss+xml" />
-	<link>https://lakshyajeet.in/about/</link>
+	<atom:link href="/about/feed/" rel="self" type="application/rss+xml" />
+	<link>/about/</link>
 	<description></description>
 	<lastBuildDate>Wed, 03 Dec 2025 10:07:53 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.9.4</generator>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
 </channel>
 </rss>
