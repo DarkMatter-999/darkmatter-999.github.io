@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://lakshyajeet.in/feed/" rel="self" type="application/rss+xml" />
+	<link>https://lakshyajeet.in/</link>
 	<description></description>
 	<lastBuildDate>Mon, 27 Jul 2026 16:42:57 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,24 +21,24 @@
 	<generator>https://wordpress.org/?v=7.0.2</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/12/nyan-150x150.png</url>
+	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Adding Interactivity on Static WordPress sites</title>
-		<link>/adding-interactivity-on-static-wordpress-sites/</link>
-					<comments>/adding-interactivity-on-static-wordpress-sites/#respond</comments>
+		<link>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/</link>
+					<comments>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/#comments</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 27 Jul 2026 16:37:10 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1402</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1402</guid>
 
 					<description><![CDATA[<p>Learn how to add real-time search and comments to static WordPress sites using Supabase, Web Components, and automated bidirectional sync. Keep WordPress as your CMS while enjoying the speed, security, and zero-runtime-PHP benefits of a fully static site.</p>
-<p>The post <a href="/adding-interactivity-on-static-wordpress-sites/">Adding Interactivity on Static WordPress sites</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/">Adding Interactivity on Static WordPress sites</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">Everyone knows the trade-off, static sites are the holy grail of performance &#8211; no database queries, no PHP processing, no server-side rendering. Just HTML, CSS, and JavaScript served directly from a CDN edge node. They load instantly, handle traffic spikes effortlessly, cost little to nothing to host, and have a near zero attack surface.<br>But the problem is: the web isn&#8217;t static. Users expect to interact with your content like searching content, leaving comments. These things requires a backend.<br>WordPress powers a huge portion of the web because it makes content management easy. The block editor is my favorite among the media library, user roles and taxonomy system. It is also incredibly mature. But WordPress needs a PHP runtime for processing each and every request, MySQL queries to be made within each request.<br>What if we could keep WordPress as our content management layer &#8211; write posts, organize media, use the block editor &#8211; but serve the site as static HTML? That is the question I set to answer with: <a href="https://github.com/DarkMatter-999/wp-static-interactivity">WP Static Interactivity</a>, a WordPress plugin that offloads dynamic features to Supabase, letting you freeze your WordPress site into static HTML while keeping it interactive.</p>
@@ -87,7 +87,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="544" src="/wp-content/uploads/2026/07/split-brain-1024x544.webp" alt="Image showing the &quot;split brain&quot; between WordPress and Supabase" class="wp-image-1408" style="object-fit:cover" srcset="/wp-content/uploads/2026/07/split-brain-1024x544.webp 1024w, /wp-content/uploads/2026/07/split-brain-300x159.webp 300w, /wp-content/uploads/2026/07/split-brain-768x408.webp 768w, /wp-content/uploads/2026/07/split-brain-1536x816.webp 1536w, /wp-content/uploads/2026/07/split-brain-2048x1088.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="544" src="https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-1024x544.webp" alt="Image showing the &quot;split brain&quot; between WordPress and Supabase" class="wp-image-1408" style="object-fit:cover" srcset="https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-1024x544.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-300x159.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-768x408.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-1536x816.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-2048x1088.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -275,7 +275,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="628" src="/wp-content/uploads/2026/07/static-interactivity-settings-1024x628.webp" alt="Admin page for the settings" class="wp-image-1410" srcset="/wp-content/uploads/2026/07/static-interactivity-settings-1024x628.webp 1024w, /wp-content/uploads/2026/07/static-interactivity-settings-300x184.webp 300w, /wp-content/uploads/2026/07/static-interactivity-settings-768x471.webp 768w, /wp-content/uploads/2026/07/static-interactivity-settings-1536x942.webp 1536w, /wp-content/uploads/2026/07/static-interactivity-settings-2048x1256.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="628" src="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-1024x628.webp" alt="Admin page for the settings" class="wp-image-1410" srcset="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-1024x628.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-300x184.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-768x471.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-1536x942.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-2048x1256.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -297,7 +297,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="583" src="/wp-content/uploads/2026/07/static-interactivity-search-1024x583.webp" alt="Search component architecture" class="wp-image-1412" srcset="/wp-content/uploads/2026/07/static-interactivity-search-1024x583.webp 1024w, /wp-content/uploads/2026/07/static-interactivity-search-300x171.webp 300w, /wp-content/uploads/2026/07/static-interactivity-search-768x437.webp 768w, /wp-content/uploads/2026/07/static-interactivity-search-1536x875.webp 1536w, /wp-content/uploads/2026/07/static-interactivity-search-2048x1166.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-1024x583.webp" alt="Search component architecture" class="wp-image-1412" srcset="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-1536x875.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-2048x1166.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -655,7 +655,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="654" src="/wp-content/uploads/2026/07/static-interactivity-architecture-1024x654.webp" alt="Bi-directional Sync Architecture" class="wp-image-1409" srcset="/wp-content/uploads/2026/07/static-interactivity-architecture-1024x654.webp 1024w, /wp-content/uploads/2026/07/static-interactivity-architecture-300x192.webp 300w, /wp-content/uploads/2026/07/static-interactivity-architecture-768x490.webp 768w, /wp-content/uploads/2026/07/static-interactivity-architecture-1536x981.webp 1536w, /wp-content/uploads/2026/07/static-interactivity-architecture-2048x1308.webp 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="654" src="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-1024x654.webp" alt="Bi-directional Sync Architecture" class="wp-image-1409" srcset="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-1024x654.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-300x192.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-768x490.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-1536x981.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-2048x1308.webp 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -825,7 +825,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="608" src="/wp-content/uploads/2026/07/static-interactivity-comments-1024x608.webp" alt="Comment component architecture" class="wp-image-1413" srcset="/wp-content/uploads/2026/07/static-interactivity-comments-1024x608.webp 1024w, /wp-content/uploads/2026/07/static-interactivity-comments-300x178.webp 300w, /wp-content/uploads/2026/07/static-interactivity-comments-768x456.webp 768w, /wp-content/uploads/2026/07/static-interactivity-comments-1536x911.webp 1536w, /wp-content/uploads/2026/07/static-interactivity-comments-2048x1215.webp 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="608" src="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-1024x608.webp" alt="Comment component architecture" class="wp-image-1413" srcset="https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-1024x608.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-300x178.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-768x456.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-1536x911.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-2048x1215.webp 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -1076,26 +1076,26 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 <p class="wp-block-paragraph">The result: a WordPress site that performs like a static site, serves like a static site, and is secure like a static site — but has the interactive features (search and comments) that make a site useful.</p>
-<p>The post <a href="/adding-interactivity-on-static-wordpress-sites/">Adding Interactivity on Static WordPress sites</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/">Adding Interactivity on Static WordPress sites</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/adding-interactivity-on-static-wordpress-sites/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
+					<wfw:commentRss>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Porting Gutenberg to Frappe</title>
-		<link>/porting-gutenberg-to-frappe/</link>
-					<comments>/porting-gutenberg-to-frappe/#respond</comments>
+		<link>https://lakshyajeet.in/porting-gutenberg-to-frappe/</link>
+					<comments>https://lakshyajeet.in/porting-gutenberg-to-frappe/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 28 Apr 2026 14:06:06 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1359</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1359</guid>
 
 					<description><![CDATA[<p>Frappe’s default web page builder is reliable, but it often lacks the structural flexibility of modern block-based editors. In this technical deep dive, I explore how I ported WordPress’s Gutenberg editor into the Frappe ecosystem, reconciling React state management with MariaDB storage and bypassing the limitations of traditional WYSIWYG editors without sacrificing the robustness of the Frappe backend.</p>
-<p>The post <a href="/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">Building content-heavy web pages inside the Frappe Framework has relied on a familiar, battle-tested pipeline: a standard Web Page DocType, a Rich Text editor or serial page builder, and a Jinja template to render it to the end user. It works. It has powered thousands of ERPNext sites, documentation portals, and marketing pages. While it works, having used WordPress&#8217;s block editor, Frappe&#8217;s default editor feels too basic.</p>
@@ -1114,7 +1114,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
 
 
 
@@ -1126,7 +1126,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, /wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, /wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, /wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, /wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
 
 
 
@@ -1144,7 +1144,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, /wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, /wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, /wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, /wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
 
 
 
@@ -1194,7 +1194,7 @@ CREATE POLICY &quot;Anyone can insert comments&quot;
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="583" src="/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, /wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, /wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, /wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -1472,7 +1472,7 @@ export function BlockEditor({ value, onChange, onSave }: BlockEditorProps) {
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, /wp-content/uploads/2026/04/data-flow-300x138.webp 300w, /wp-content/uploads/2026/04/data-flow-768x352.webp 768w, /wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-300x138.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-768x352.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -1877,26 +1877,26 @@ class BlockEditorWebPage(WebPage):
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/porting-gutenberg-to-frappe/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/porting-gutenberg-to-frappe/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
-		<enclosure url="/wp-content/uploads/2026/04/block_editor_frappe.mp4" length="690398" type="video/mp4" />
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" length="690398" type="video/mp4" />
 
 			</item>
 		<item>
 		<title>Mastering Context with Code Mode AI Agents</title>
-		<link>/mastering-context-with-code-mode-ai-agents/</link>
+		<link>https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/</link>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Sun, 29 Mar 2026 20:13:46 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1335</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1335</guid>
 
 					<description><![CDATA[<p>AI agents in software development have evolved from passive text generators to autonomous systems. Code Mode agents reduce token bloat and context rot by dynamically executing scripts, while orchestrator-subagent architectures, skill injection, and secure sandboxing ensure efficient, scalable, and safe AI workflows.</p>
-<p>The post <a href="/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">The integrations for Large Language Models into software development life-cycle has undergone a significant change in a very less time. In the emergent stages, the Language Models functioned as passive text generators or sophisticated autocomplete, relying entirely on constant human prompting and oversight.<br>However, the engineering paradigm has shifted towards autonomous, agentic systems capable of self orchestrating complex software engineering workflows without continuous human intervention. Central to this architecture is the establishment of universal integration frameworks, most notably the Model Context Protocol. </p>
@@ -1911,7 +1911,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="672" src="/wp-content/uploads/2026/03/tradcontext-scaled.webp" alt="Context overflow in traditional systems" class="wp-image-1345" style="width:800px" srcset="/wp-content/uploads/2026/03/tradcontext-scaled.webp 2560w, /wp-content/uploads/2026/03/tradcontext-300x79.webp 300w, /wp-content/uploads/2026/03/tradcontext-1024x269.webp 1024w, /wp-content/uploads/2026/03/tradcontext-768x201.webp 768w, /wp-content/uploads/2026/03/tradcontext-1536x403.webp 1536w, /wp-content/uploads/2026/03/tradcontext-2048x537.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="672" src="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp" alt="Context overflow in traditional systems" class="wp-image-1345" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-300x79.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1024x269.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-768x201.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-1536x403.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-2048x537.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
 
 
 
@@ -1919,7 +1919,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="1125" src="/wp-content/uploads/2026/03/codemodecontext-scaled.webp" alt="Context saving using Code Mode harness" class="wp-image-1346" style="width:780px" srcset="/wp-content/uploads/2026/03/codemodecontext-scaled.webp 2560w, /wp-content/uploads/2026/03/codemodecontext-300x132.webp 300w, /wp-content/uploads/2026/03/codemodecontext-1024x450.webp 1024w, /wp-content/uploads/2026/03/codemodecontext-768x337.webp 768w, /wp-content/uploads/2026/03/codemodecontext-1536x675.webp 1536w, /wp-content/uploads/2026/03/codemodecontext-2048x900.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2560" height="1125" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp" alt="Context saving using Code Mode harness" class="wp-image-1346" style="width:780px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-300x132.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1024x450.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-768x337.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-1536x675.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-2048x900.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
 
 
 
@@ -1939,7 +1939,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2337" height="606" src="/wp-content/uploads/2026/03/codemodetrad.webp" alt="Traditional tool calling architecture." class="wp-image-1340" style="width:800px" srcset="/wp-content/uploads/2026/03/codemodetrad.webp 2337w, /wp-content/uploads/2026/03/codemodetrad-300x78.webp 300w, /wp-content/uploads/2026/03/codemodetrad-1024x266.webp 1024w, /wp-content/uploads/2026/03/codemodetrad-768x199.webp 768w, /wp-content/uploads/2026/03/codemodetrad-1536x398.webp 1536w, /wp-content/uploads/2026/03/codemodetrad-2048x531.webp 2048w" sizes="auto, (max-width: 2337px) 100vw, 2337px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2337" height="606" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp" alt="Traditional tool calling architecture." class="wp-image-1340" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp 2337w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-300x78.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1024x266.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-768x199.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-1536x398.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad-2048x531.webp 2048w" sizes="auto, (max-width: 2337px) 100vw, 2337px" /></figure>
 
 
 
@@ -1963,7 +1963,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2518" height="1293" src="/wp-content/uploads/2026/03/codemode.webp" alt="Code Mode tool calling architecture." class="wp-image-1341" style="width:800px" srcset="/wp-content/uploads/2026/03/codemode.webp 2518w, /wp-content/uploads/2026/03/codemode-300x154.webp 300w, /wp-content/uploads/2026/03/codemode-1024x526.webp 1024w, /wp-content/uploads/2026/03/codemode-768x394.webp 768w, /wp-content/uploads/2026/03/codemode-1536x789.webp 1536w, /wp-content/uploads/2026/03/codemode-2048x1052.webp 2048w" sizes="auto, (max-width: 2518px) 100vw, 2518px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2518" height="1293" src="https://lakshyajeet.in/wp-content/uploads/2026/03/codemode.webp" alt="Code Mode tool calling architecture." class="wp-image-1341" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/codemode.webp 2518w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-300x154.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-1024x526.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-768x394.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-1536x789.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/03/codemode-2048x1052.webp 2048w" sizes="auto, (max-width: 2518px) 100vw, 2518px" /></figure>
 
 
 
@@ -2007,7 +2007,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="/wp-content/uploads/2026/03/subagents.mp4" playsinline></video></figure>
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/03/subagents.mp4" playsinline></video></figure>
 
 
 
@@ -2043,7 +2043,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="/wp-content/uploads/2026/03/canvas.mp4" playsinline></video></figure>
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/03/canvas.mp4" playsinline></video></figure>
 
 
 
@@ -2059,7 +2059,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2493" height="2523" src="/wp-content/uploads/2026/03/dockercodemode.webp" alt="" class="wp-image-1347" style="width:700px" srcset="/wp-content/uploads/2026/03/dockercodemode.webp 2493w, /wp-content/uploads/2026/03/dockercodemode-296x300.webp 296w, /wp-content/uploads/2026/03/dockercodemode-1012x1024.webp 1012w, /wp-content/uploads/2026/03/dockercodemode-768x777.webp 768w, /wp-content/uploads/2026/03/dockercodemode-1518x1536.webp 1518w, /wp-content/uploads/2026/03/dockercodemode-2024x2048.webp 2024w" sizes="auto, (max-width: 2493px) 100vw, 2493px" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="2493" height="2523" src="https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp" alt="" class="wp-image-1347" style="width:700px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp 2493w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-296x300.webp 296w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-1012x1024.webp 1012w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-768x777.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-1518x1536.webp 1518w, https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode-2024x2048.webp 2024w" sizes="auto, (max-width: 2493px) 100vw, 2493px" /></figure>
 
 
 
@@ -2096,25 +2096,25 @@ class BlockEditorWebPage(WebPage):
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/">Mastering Context with Code Mode AI Agents</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
-		<enclosure url="/wp-content/uploads/2026/03/subagents.mp4" length="540218" type="video/mp4" />
-<enclosure url="/wp-content/uploads/2026/03/canvas.mp4" length="838032" type="video/mp4" />
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/03/subagents.mp4" length="540218" type="video/mp4" />
+<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/03/canvas.mp4" length="838032" type="video/mp4" />
 
 			</item>
 		<item>
 		<title>Rust in WordPress: The Architectural overview of CrabOptimize</title>
-		<link>/rust-in-wordpress-craboptimize/</link>
+		<link>https://lakshyajeet.in/rust-in-wordpress-craboptimize/</link>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 26 Feb 2026 05:57:36 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1320</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1320</guid>
 
 					<description><![CDATA[<p>WordPress has relied on server-side PHP and C-libraries for image processing for over two decades. CrabOptimize changes the game by moving this heavy lifting entirely to the user's browser. Explore this technical deep-dive into how we bridge traditional PHP with a modern Rust and WebAssembly (WASM) frontend to deliver blazing-fast, multi-threaded AVIF and WebP optimization.</p>
-<p>The post <a href="/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">WordPress has run on PHP for over two decades. While the jump from PHP 7.4 to the 8.0x series introduced significant performance gains through <strong>Just-In-Time (JIT) compilation</strong>, the language still functions as a high-level manager for <strong>dynamic libraries built on C code</strong> (like GD and ImageMagick) to handle performance-critical tasks. <strong>CrabOptimize</strong> represents an architectural experiment: What if we offload this heavy lifting from the WordPress server to the user&#8217;s browser using Rust and WebAssembly (WASM)?</p>
@@ -2129,7 +2129,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure class="wp-block-video"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="/wp-content/uploads/2026/02/craboptimize.mp4" playsinline></video></figure>
+<figure class="wp-block-video"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.mp4" playsinline></video></figure>
 
 
 
@@ -2209,7 +2209,7 @@ class BlockEditorWebPage(WebPage):
 
 
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:100%">
-<figure class="wp-block-image alignleft size-large is-resized"><img loading="lazy" decoding="async" width="708" height="1024" src="/wp-content/uploads/2026/02/image-3-708x1024.webp" alt="Project workflow overview." class="wp-image-1326" style="width:auto;height:600px" srcset="/wp-content/uploads/2026/02/image-3-708x1024.webp 708w, /wp-content/uploads/2026/02/image-3-207x300.webp 207w, /wp-content/uploads/2026/02/image-3-768x1111.webp 768w, /wp-content/uploads/2026/02/image-3-1062x1536.webp 1062w, /wp-content/uploads/2026/02/image-3.webp 1100w" sizes="auto, (max-width: 708px) 100vw, 708px" /></figure>
+<figure class="wp-block-image alignleft size-large is-resized"><img loading="lazy" decoding="async" width="708" height="1024" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp" alt="Project workflow overview." class="wp-image-1326" style="width:auto;height:600px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-708x1024.webp 708w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-207x300.webp 207w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-768x1111.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1062x1536.webp 1062w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp 1100w" sizes="auto, (max-width: 708px) 100vw, 708px" /></figure>
 </div>
 </div>
 
@@ -3470,24 +3470,24 @@ pub fn convert_to_avif(
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/rust-in-wordpress-craboptimize/">Rust in WordPress: The Architectural overview of CrabOptimize</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
-		<enclosure url="/wp-content/uploads/2026/02/craboptimize.mp4" length="2666376" type="video/mp4" />
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.mp4" length="2666376" type="video/mp4" />
 
 			</item>
 		<item>
 		<title>Building a Kademlia DHT over WebRTC</title>
-		<link>/building-a-kademlia-dht-over-webrtc/</link>
+		<link>https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/</link>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 20 Jan 2026 08:43:19 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1233</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1233</guid>
 
 					<description><![CDATA[<p>Distributed Hash Tables (DHTs) are the backbone of decentralized file systems (like IPFS) and peer-to-peer networks (like BitTorrent). However, implementing one from scratch is often daunting due to the complexity of node discovery, routing, and NAT traversal. The&#160;WebRTC-DHT&#160;project offers a clean, educational implementation of the Kademlia protocol running on Node.js. It leverages&#160;WebRTC&#160;for peer-to-peer data transport [&#8230;]</p>
-<p>The post <a href="/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">Distributed Hash Tables (DHTs) are the backbone of decentralized file systems (like IPFS) and peer-to-peer networks (like BitTorrent). However, implementing one from scratch is often daunting due to the complexity of node discovery, routing, and NAT traversal.</p>
@@ -3588,7 +3588,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1095" height="679" src="/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="/wp-content/uploads/2026/02/image.webp 1095w, /wp-content/uploads/2026/02/image-300x186.webp 300w, /wp-content/uploads/2026/02/image-1024x635.webp 1024w, /wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="auto, (max-width: 1095px) 100vw, 1095px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1095" height="679" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp" alt="Kademlia Architecture Diagram for the project" class="wp-image-1261" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp 1095w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-300x186.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1024x635.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-768x476.webp 768w" sizes="auto, (max-width: 1095px) 100vw, 1095px" /></figure>
 
 
 
@@ -3646,7 +3646,7 @@ map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&apo
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="/wp-content/uploads/2026/02/image-1.webp 815w, /wp-content/uploads/2026/02/image-1-300x292.webp 300w, /wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="auto, (max-width: 815px) 100vw, 815px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="815" height="792" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp" alt="Networking &amp; Hybrid Signalling" class="wp-image-1260" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp 815w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-300x292.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-768x746.webp 768w" sizes="auto, (max-width: 815px) 100vw, 815px" /></figure>
 
 
 
@@ -4130,7 +4130,7 @@ findClosest(targetId, count = this.k) {
 
 
 
-<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="970" height="1030" src="/wp-content/uploads/2026/02/image-2.webp" alt="Iterative Find Node algorithm" class="wp-image-1259" style="width:576px;height:auto" srcset="/wp-content/uploads/2026/02/image-2.webp 970w, /wp-content/uploads/2026/02/image-2-283x300.webp 283w, /wp-content/uploads/2026/02/image-2-964x1024.webp 964w, /wp-content/uploads/2026/02/image-2-768x816.webp 768w" sizes="auto, (max-width: 970px) 100vw, 970px" /></figure>
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="970" height="1030" src="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp" alt="Iterative Find Node algorithm" class="wp-image-1259" style="width:576px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp 970w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-283x300.webp 283w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-964x1024.webp 964w, https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-768x816.webp 768w" sizes="auto, (max-width: 970px) 100vw, 970px" /></figure>
 
 
 
@@ -4655,7 +4655,7 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/">Building a Kademlia DHT over WebRTC</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -4663,8 +4663,8 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 			</item>
 		<item>
 		<title>WordPress Block Themes: Block Themes and Block Patterns Explained</title>
-		<link>/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
-					<comments>/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 13 May 2025 16:28:27 +0000</pubDate>
@@ -4677,7 +4677,7 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=898</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where Block Themes and Block Patterns play a central role in how our sites look and function. Let’s dive into what Block Themes and Block Patterns are, how [&#8230;]</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">As WordPress continues to evolve, so does the way we design and build websites. With the introduction of Full Site Editing (FSE), we’ve entered a new era where <strong>Block Themes</strong> and <strong>Block Patterns</strong> play a central role in how our sites look and function.</p>
@@ -4873,18 +4873,18 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 
 
 <p class="wp-block-paragraph">Block Themes and Block Patterns aren’t just buzzwords—they&#8217;re the future of WordPress. Whether we’re building for clients or crafting our own sites, these tools give us greater flexibility, faster development, and more power over design—all while embracing a no-code/low-code philosophy.</p>
-<p>The post <a href="/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/">WordPress Block Themes: Block Themes and Block Patterns Explained</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Themes: Introduction</title>
-		<link>/wordpress-block-themes-introduction/</link>
-					<comments>/wordpress-block-themes-introduction/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-themes-introduction/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-themes-introduction/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Mon, 12 May 2025 14:58:01 +0000</pubDate>
@@ -4897,7 +4897,7 @@ Value found: <span class="hljs-string">&quot;My value&quot;</span></code></pre>
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=890</guid>
 
 					<description><![CDATA[<p>In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of Block Themes. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of [&#8230;]</p>
-<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">In the world of WordPress, there were lot of changes over the years. One of the most significant advancements has been the introduction of <strong>Block Themes</strong>. As we explore this new concept, we’ll break down what WordPress Block Themes are, how they differ from traditional themes, and why they are essential for the future of web design on WordPress.</p>
@@ -5097,18 +5097,18 @@ Text Domain: my-block-theme
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-themes-introduction/">WordPress Block Themes: Introduction</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-themes-introduction/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-themes-introduction/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Widgets</title>
-		<link>/wordpress-block-editor-widgets/</link>
-					<comments>/wordpress-block-editor-widgets/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-editor-widgets/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-editor-widgets/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Fri, 09 May 2025 14:18:57 +0000</pubDate>
@@ -5121,7 +5121,7 @@ Text Domain: my-block-theme
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=884</guid>
 
 					<description><![CDATA[<p>As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the Block Editor—also known as Gutenberg. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content. What Are Widgets in the [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">As WordPress continues to evolve, one of the most transformative updates in recent years has been the introduction of the <strong>Block Editor</strong>—also known as <strong>Gutenberg</strong>. For us as content creators, developers, and website managers, this shift offers a more visual, flexible, and intuitive way to build pages and manage content.</p>
@@ -5237,18 +5237,18 @@ Text Domain: my-block-theme
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-widgets/">WordPress Block Editor: Widgets</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-widgets/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-widgets/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Formatting Toolbar API</title>
-		<link>/wordpress-block-editor-formatting-toolbar-api/</link>
-					<comments>/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Thu, 08 May 2025 14:34:35 +0000</pubDate>
@@ -5261,7 +5261,7 @@ Text Domain: my-block-theme
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=879</guid>
 
 					<description><![CDATA[<p>As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the Formatting Toolbar API, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks. What Is the Formatting [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">As developers working with WordPress, we’ve seen the shift from the classic editor to the modern Block Editor. One powerful features we get to work with is it the <strong>Formatting Toolbar API</strong>, which allows us to add custom controls to the inline formatting toolbar of rich text fields in our blocks.</p>
@@ -5370,18 +5370,18 @@ Text Domain: my-block-theme
 
 
 <p class="wp-block-paragraph">The <strong>Formatting Toolbar API</strong> gives us a flexible way to extend the WordPress editing experience. Whether we&#8217;re adding highlights, tooltips, or custom shortcodes, this API is a powerful tool in our WordPress development toolkit.</p>
-<p>The post <a href="/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/">WordPress Block Editor: Formatting Toolbar API</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
-		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
-					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
@@ -5394,7 +5394,7 @@ Text Domain: my-block-theme
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
 					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
@@ -5543,10 +5543,10 @@ Text Domain: my-block-theme
 
 
 <p class="wp-block-paragraph">Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

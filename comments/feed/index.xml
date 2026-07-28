@@ -8,10 +8,10 @@
 <channel>
 	<title>
 	Comments for Lakshyajeet&#039;s Blog	</title>
-	<atom:link href="/comments/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lakshyajeet.in/comments/feed/" rel="self" type="application/rss+xml" />
 	<link></link>
 	<description></description>
-	<lastBuildDate>Thu, 04 Dec 2025 09:47:06 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 27 Jul 2026 17:28:29 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
@@ -19,8 +19,36 @@
 	<generator>https://wordpress.org/?v=7.0.2</generator>
 	<item>
 		<title>
+		Comment on Adding Interactivity on Static WordPress sites by Yash		</title>
+		<link>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/#comment-6</link>
+
+		<dc:creator><![CDATA[Yash]]></dc:creator>
+		<pubDate>Mon, 27 Jul 2026 17:28:29 +0000</pubDate>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1402#comment-6</guid>
+
+					<description><![CDATA[Well... this is another comment : )]]></description>
+			<content:encoded><![CDATA[<p>Well&#8230; this is another comment : )</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Adding Interactivity on Static WordPress sites by Lakshyajeet		</title>
+		<link>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/#comment-5</link>
+
+		<dc:creator><![CDATA[Lakshyajeet]]></dc:creator>
+		<pubDate>Mon, 27 Jul 2026 16:49:57 +0000</pubDate>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1402#comment-5</guid>
+
+					<description><![CDATA[Hi! This is a comment!]]></description>
+			<content:encoded><![CDATA[<p>Hi! This is a comment!</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
 		Comment on Advanced Theme Development in WordPress: The Customizer API by Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
+		<link>https://lakshyajeet.in/advanced-theme-development-in-wordpress-the-customizer-api/#comment-3</link>
 
 		<dc:creator><![CDATA[Advanced Theme Development in WordPress: The Customizer API &#8211; Part: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Mon, 07 Apr 2025 15:18:10 +0000</pubDate>
@@ -34,7 +62,7 @@
 		<item>
 		<title>
 		Comment on WordPress Plugin Development Basics by WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog		</title>
-		<link>/wordpress-plugin-development-basics/#comment-2</link>
+		<link>https://lakshyajeet.in/wordpress-plugin-development-basics/#comment-2</link>
 
 		<dc:creator><![CDATA[WordPress Plugin Development Basics: II &#8211; Lakshyajeet&#039;s Personal Blog]]></dc:creator>
 		<pubDate>Wed, 12 Feb 2025 14:25:38 +0000</pubDate>

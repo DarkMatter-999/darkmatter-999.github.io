@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/dm_project/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://lakshyajeet.in/dm_project/feed/" rel="self" type="application/rss+xml" />
+	<link>https://lakshyajeet.in/</link>
 	<description></description>
 	<lastBuildDate>Sun, 18 Jan 2026 07:11:54 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,22 +21,22 @@
 	<generator>https://wordpress.org/?v=7.0.2</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/12/nyan-150x150.png</url>
+	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>WordPress Theme Style Switcher</title>
-		<link>/dm_project/wordpress-theme-style-switcher/</link>
+		<link>https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Thu, 01 Jan 2026 06:45:47 +0000</pubDate>
-				<guid isPermaLink="false">/?post_type=dm_project#038;p=1216</guid>
+				<guid isPermaLink="false">https://lakshyajeet.in/?post_type=dm_project#038;p=1216</guid>
 
 					<description><![CDATA[<p>The WordPress-Theme-Style-Switcher plugin allows users to easily switch between a theme's predefined style variations without reloading the page. It dynamically generates and applies the necessary CSS for each variation, ensuring smooth and conflict-free style changes.</p>
-<p>The post <a href="/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">The&nbsp;<code>WordPress-Theme-Style-Switcher</code>&nbsp;is a&nbsp;WordPress plugin&nbsp;that&nbsp;<em>revolutionizes</em>&nbsp;how users interact with theme styles in WordPress. This plugin empowers site administrators and visitors alike to&nbsp;<strong>effortlessly toggle between a theme&#8217;s predefined style variations</strong>&nbsp;on the fly, without any page reloads. Its unique value lies in its intelligent backend: by dynamically generating and&nbsp;<em>scoping</em>&nbsp;each variation&#8217;s CSS, it ensures&nbsp;<strong>flawless application of styles without conflicts</strong>. Coupled with an intuitive frontend block that offers buttons, dropdowns, or even an invisible mode for custom UIs, and a robust JavaScript API, it provides an unparalleled,&nbsp;<em>persisted</em>&nbsp;user experience. This means greater&nbsp;<strong>design flexibility, enhanced accessibility, and a significantly more engaging browsing experience</strong>&nbsp;for every WordPress site.</p>
@@ -51,7 +51,7 @@
 
 
 
-<figure style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)" class="wp-block-video"><video height="1042" style="aspect-ratio: 1859 / 1042;" width="1859" autoplay controls loop muted src="/wp-content/uploads/2026/01/ThemeStyleSwitcherDemo.webm" playsinline></video></figure>
+<figure style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)" class="wp-block-video"><video height="1042" style="aspect-ratio: 1859 / 1042;" width="1859" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/01/ThemeStyleSwitcherDemo.webm" playsinline></video></figure>
 
 
 
@@ -170,7 +170,7 @@
 
 
 <p class="wp-block-paragraph">Imagine each style variation as a beautifully designed costume for a play. Instead of trying to layer all costumes on top of each other, our plugin creates a unique stage backdrop (the&nbsp;<code>is-style-{slug}</code>&nbsp;class) for&nbsp;<em>each</em>&nbsp;costume. When the&nbsp;<code>is-style-dark</code>&nbsp;backdrop is up, only the &#8216;dark&#8217; costume&#8217;s elements are visible and relevant, even though the &#8216;light&#8217; costume&#8217;s details might technically be &#8220;backstage.&#8221; This elegant solution guarantees that styles are applied precisely where and when they are intended.</p>
-<p>The post <a href="/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -178,14 +178,14 @@
 			</item>
 		<item>
 		<title>DarkMatter WordPress Theme</title>
-		<link>/dm_project/darkmatter-wordpress-theme/</link>
+		<link>https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 21 Dec 2025 06:54:53 +0000</pubDate>
-				<guid isPermaLink="false">/?post_type=dm_project#038;p=1205</guid>
+				<guid isPermaLink="false">https://lakshyajeet.in/?post_type=dm_project#038;p=1205</guid>
 
 					<description><![CDATA[<p>The DarkMatter WordPress theme fully embraces Full Site Editing (FSE) to deliver a visually striking and highly interactive user experience. Underneath its captivating frontend, the theme boasts a modular PHP architecture utilizing autoloading and the Singleton pattern, ensuring scalability and maintainability.</p>
-<p>The post <a href="/dm_project/darkmatter-wordpress-theme/">DarkMatter WordPress Theme</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/">DarkMatter WordPress Theme</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">The&nbsp;DarkMatter WordPress theme&nbsp;<strong>fully embraces Full Site Editing (FSE)</strong>&nbsp;to deliver a visually striking and highly interactive user experience. Underneath its captivating frontend, the theme boasts a&nbsp;<strong>modular PHP architecture</strong>&nbsp;utilizing autoloading and the Singleton pattern, ensuring scalability and maintainability.</p>
@@ -204,7 +204,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large is-resized is-style-default" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img fetchpriority="high" decoding="async" width="1859" height="1038" src="/wp-content/uploads/2026/02/DMFooter.webp" alt="DarkMatter Theme footer" class="wp-image-1266" style="width:800px" srcset="/wp-content/uploads/2026/02/DMFooter.webp 1859w, /wp-content/uploads/2026/02/DMFooter-300x168.webp 300w, /wp-content/uploads/2026/02/DMFooter-1024x572.webp 1024w, /wp-content/uploads/2026/02/DMFooter-768x429.webp 768w, /wp-content/uploads/2026/02/DMFooter-1536x858.webp 1536w" sizes="(max-width: 1859px) 100vw, 1859px" /><figcaption class="wp-element-caption">DarkMatter Theme footer</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large is-resized is-style-default" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img fetchpriority="high" decoding="async" width="1859" height="1038" src="https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter.webp" alt="DarkMatter Theme footer" class="wp-image-1266" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter.webp 1859w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter-300x168.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter-1024x572.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter-768x429.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMFooter-1536x858.webp 1536w" sizes="(max-width: 1859px) 100vw, 1859px" /><figcaption class="wp-element-caption">DarkMatter Theme footer</figcaption></figure>
 
 
 
@@ -270,7 +270,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large is-resized" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img decoding="async" width="1856" height="1036" src="/wp-content/uploads/2026/02/DMArchivePage.webp" alt="Custom Archive Page" class="wp-image-1265" style="width:800px" srcset="/wp-content/uploads/2026/02/DMArchivePage.webp 1856w, /wp-content/uploads/2026/02/DMArchivePage-300x167.webp 300w, /wp-content/uploads/2026/02/DMArchivePage-1024x572.webp 1024w, /wp-content/uploads/2026/02/DMArchivePage-768x429.webp 768w, /wp-content/uploads/2026/02/DMArchivePage-1536x857.webp 1536w" sizes="(max-width: 1856px) 100vw, 1856px" /><figcaption class="wp-element-caption">Custom Archive Page</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large is-resized" style="margin-top:var(--wp--preset--spacing--50);margin-right:0;margin-bottom:var(--wp--preset--spacing--50);margin-left:0"><img decoding="async" width="1856" height="1036" src="https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage.webp" alt="Custom Archive Page" class="wp-image-1265" style="width:800px" srcset="https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage.webp 1856w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage-300x167.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage-1024x572.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage-768x429.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/02/DMArchivePage-1536x857.webp 1536w" sizes="(max-width: 1856px) 100vw, 1856px" /><figcaption class="wp-element-caption">Custom Archive Page</figcaption></figure>
 
 
 
@@ -329,7 +329,7 @@
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/dm_project/darkmatter-wordpress-theme/">DarkMatter WordPress Theme</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/darkmatter-wordpress-theme/">DarkMatter WordPress Theme</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -337,18 +337,18 @@
 			</item>
 		<item>
 		<title>WhyMDB (IMDB Clone)</title>
-		<link>/dm_project/whymdb-imdb-clone/</link>
+		<link>https://lakshyajeet.in/dm_project/whymdb-imdb-clone/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:18:51 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=936</guid>
 
 					<description><![CDATA[<p>An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.</p>
-<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">An IMDb clone built using ReactJS with the TMDB API is a web application that replicates the functionality and user experience of the popular movie and TV show database, IMDb, but it does so by leveraging the power of ReactJS for the front-end development and the TMDB API for fetching and displaying movie and TV show data.<br></p>
-<p>The post <a href="/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/whymdb-imdb-clone/">WhyMDB (IMDB Clone)</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -356,18 +356,18 @@
 			</item>
 		<item>
 		<title>PyLeo</title>
-		<link>/dm_project/pyleo/</link>
+		<link>https://lakshyajeet.in/dm_project/pyleo/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:18:24 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=934</guid>
 
 					<description><![CDATA[<p>A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.</p>
-<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/pyleo/">PyLeo</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">A simple yet effective application designed to remind users to take occasional breaks, promoting digital wellbeing. This app helps reduce eye strain, improve posture, and maintain overall health while working long hours on a computer.<br></p>
-<p>The post <a href="/dm_project/pyleo/">PyLeo</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/pyleo/">PyLeo</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -375,18 +375,18 @@
 			</item>
 		<item>
 		<title>Little Vulkan Engine</title>
-		<link>/dm_project/little-vulkan-engine/</link>
+		<link>https://lakshyajeet.in/dm_project/little-vulkan-engine/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:17:48 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=932</guid>
 
 					<description><![CDATA[<p>A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.</p>
-<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">A small Vulkan-based rendering engine. This engine provides a simple and minimal setup for rendering graphics using Vulkan API, aimed at helping me learn the basics of Vulkan while building an engine from scratch.<br></p>
-<p>The post <a href="/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/little-vulkan-engine/">Little Vulkan Engine</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -394,18 +394,18 @@
 			</item>
 		<item>
 		<title>RayTracer</title>
-		<link>/dm_project/raytracer/</link>
+		<link>https://lakshyajeet.in/dm_project/raytracer/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Sun, 06 Jul 2025 13:17:13 +0000</pubDate>
 				<guid isPermaLink="false">http://archserver.local:8080/?post_type=dm_project&#038;p=926</guid>
 
 					<description><![CDATA[<p>A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
-<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/raytracer/">RayTracer</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">A simple RayTracer implemented in C++ and OpenGL is a computer graphics program that utilizes the C++ programming language for core ray tracing calculations and leverages the OpenGL graphics library for rendering and visualization.</p>
-<p>The post <a href="/dm_project/raytracer/">RayTracer</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/raytracer/">RayTracer</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		

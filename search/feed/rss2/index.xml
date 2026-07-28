@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<atom:link href="/search/feed/rss2/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="https://lakshyajeet.in/search/feed/rss2/" rel="self" type="application/rss+xml" />
+	<link>https://lakshyajeet.in/</link>
 	<description></description>
 	<lastBuildDate>Sun, 26 Jul 2026 11:02:24 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,24 +21,24 @@
 	<generator>https://wordpress.org/?v=7.0.2</generator>
 
 <image>
-	<url>/wp-content/uploads/2025/12/nyan-150x150.png</url>
+	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
 	<title>Lakshyajeet&#039;s Blog</title>
-	<link>/</link>
+	<link>https://lakshyajeet.in/</link>
 	<width>32</width>
 	<height>32</height>
 </image> 
 	<item>
 		<title>Porting Gutenberg to Frappe</title>
-		<link>/porting-gutenberg-to-frappe/</link>
-					<comments>/porting-gutenberg-to-frappe/#respond</comments>
+		<link>https://lakshyajeet.in/porting-gutenberg-to-frappe/</link>
+					<comments>https://lakshyajeet.in/porting-gutenberg-to-frappe/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Tue, 28 Apr 2026 14:06:06 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=1359</guid>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1359</guid>
 
 					<description><![CDATA[<p>Frappe’s default web page builder is reliable, but it often lacks the structural flexibility of modern block-based editors. In this technical deep dive, I explore how I ported WordPress’s Gutenberg editor into the Frappe ecosystem, reconciling React state management with MariaDB storage and bypassing the limitations of traditional WYSIWYG editors without sacrificing the robustness of the Frappe backend.</p>
-<p>The post <a href="/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">Building content-heavy web pages inside the Frappe Framework has relied on a familiar, battle-tested pipeline: a standard Web Page DocType, a Rich Text editor or serial page builder, and a Jinja template to render it to the end user. It works. It has powered thousands of ERPNext sites, documentation portals, and marketing pages. While it works, having used WordPress&#8217;s block editor, Frappe&#8217;s default editor feels too basic.</p>
@@ -57,7 +57,7 @@
 
 
 
-<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
+<figure class="wp-block-video aligncenter"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" autoplay controls muted src="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" playsinline></video></figure>
 
 
 
@@ -69,7 +69,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img fetchpriority="high" decoding="async" width="1024" height="565" src="/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, /wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, /wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, /wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, /wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img fetchpriority="high" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
 
 
 
@@ -87,7 +87,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="565" src="/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, /wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, /wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, /wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, /wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="583" src="/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, /wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, /wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, /wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -415,7 +415,7 @@ export function BlockEditor({ value, onChange, onSave }: BlockEditorProps) {
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, /wp-content/uploads/2026/04/data-flow-300x138.webp 300w, /wp-content/uploads/2026/04/data-flow-768x352.webp 768w, /wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="469" src="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp" alt="Data flow showing the whole workflow" class="wp-image-1370" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-1024x469.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-300x138.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow-768x352.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -820,25 +820,25 @@ class BlockEditorWebPage(WebPage):
 
 
 <p class="wp-block-paragraph"></p>
-<p>The post <a href="/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/porting-gutenberg-to-frappe/">Porting Gutenberg to Frappe</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/porting-gutenberg-to-frappe/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/porting-gutenberg-to-frappe/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
-		<enclosure url="/wp-content/uploads/2026/04/block_editor_frappe.mp4" length="690398" type="video/mp4" />
+		<enclosure url="https://lakshyajeet.in/wp-content/uploads/2026/04/block_editor_frappe.mp4" length="690398" type="video/mp4" />
 
 			</item>
 		<item>
 		<title>WordPress Theme Style Switcher</title>
-		<link>/dm_project/wordpress-theme-style-switcher/</link>
+		<link>https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Thu, 01 Jan 2026 06:45:47 +0000</pubDate>
-				<guid isPermaLink="false">/?post_type=dm_project#038;p=1216</guid>
+				<guid isPermaLink="false">https://lakshyajeet.in/?post_type=dm_project#038;p=1216</guid>
 
 					<description><![CDATA[<p>The WordPress-Theme-Style-Switcher plugin allows users to easily switch between a theme's predefined style variations without reloading the page. It dynamically generates and applies the necessary CSS for each variation, ensuring smooth and conflict-free style changes.</p>
-<p>The post <a href="/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">The&nbsp;<code>WordPress-Theme-Style-Switcher</code>&nbsp;is a&nbsp;WordPress plugin&nbsp;that&nbsp;<em>revolutionizes</em>&nbsp;how users interact with theme styles in WordPress. This plugin empowers site administrators and visitors alike to&nbsp;<strong>effortlessly toggle between a theme&#8217;s predefined style variations</strong>&nbsp;on the fly, without any page reloads. Its unique value lies in its intelligent backend: by dynamically generating and&nbsp;<em>scoping</em>&nbsp;each variation&#8217;s CSS, it ensures&nbsp;<strong>flawless application of styles without conflicts</strong>. Coupled with an intuitive frontend block that offers buttons, dropdowns, or even an invisible mode for custom UIs, and a robust JavaScript API, it provides an unparalleled,&nbsp;<em>persisted</em>&nbsp;user experience. This means greater&nbsp;<strong>design flexibility, enhanced accessibility, and a significantly more engaging browsing experience</strong>&nbsp;for every WordPress site.</p>
@@ -853,7 +853,7 @@ class BlockEditorWebPage(WebPage):
 
 
 
-<figure style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)" class="wp-block-video"><video height="1042" style="aspect-ratio: 1859 / 1042;" width="1859" autoplay controls loop muted src="/wp-content/uploads/2026/01/ThemeStyleSwitcherDemo.webm" playsinline></video></figure>
+<figure style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)" class="wp-block-video"><video height="1042" style="aspect-ratio: 1859 / 1042;" width="1859" autoplay controls loop muted src="https://lakshyajeet.in/wp-content/uploads/2026/01/ThemeStyleSwitcherDemo.webm" playsinline></video></figure>
 
 
 
@@ -972,7 +972,7 @@ class BlockEditorWebPage(WebPage):
 
 
 <p class="wp-block-paragraph">Imagine each style variation as a beautifully designed costume for a play. Instead of trying to layer all costumes on top of each other, our plugin creates a unique stage backdrop (the&nbsp;<code>is-style-{slug}</code>&nbsp;class) for&nbsp;<em>each</em>&nbsp;costume. When the&nbsp;<code>is-style-dark</code>&nbsp;backdrop is up, only the &#8216;dark&#8217; costume&#8217;s elements are visible and relevant, even though the &#8216;light&#8217; costume&#8217;s details might technically be &#8220;backstage.&#8221; This elegant solution guarantees that styles are applied precisely where and when they are intended.</p>
-<p>The post <a href="/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/dm_project/wordpress-theme-style-switcher/">WordPress Theme Style Switcher</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
 		
@@ -980,8 +980,8 @@ class BlockEditorWebPage(WebPage):
 			</item>
 		<item>
 		<title>WordPress Block Editor: Custom Metaboxes and Notices</title>
-		<link>/wordpress-block-editor-custom-metaboxes-and-notices/</link>
-					<comments>/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
+		<link>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/</link>
+					<comments>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/#respond</comments>
 		
 		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
 		<pubDate>Wed, 07 May 2025 14:42:41 +0000</pubDate>
@@ -994,7 +994,7 @@ class BlockEditorWebPage(WebPage):
 		<guid isPermaLink="false">https://lakshyajeet999.wordpress.com/?p=871</guid>
 
 					<description><![CDATA[<p>As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code. Why Metaboxes and Notices Matter Metaboxes allow us to collect custom meta information [&#8230;]</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
 <p class="wp-block-paragraph">As WordPress developers, one of the most powerful capabilities we have is extending the editor experience for content creators. In this post, we’re diving into how we can use the Block Editor to add metaboxes and notices—without relying on legacy PHP code.</p>
@@ -1143,10 +1143,10 @@ class BlockEditorWebPage(WebPage):
 
 
 <p class="wp-block-paragraph">Integrating metaboxes and notices into the Block Editor lets us deliver a far better editorial experience. It’s cleaner, more responsive, and 100% native to Gutenberg. As we continue building modern WordPress solutions, embracing the Block Editor&#8217;s capabilities ensures our tools are future-proof and aligned with WordPress core.</p>
-<p>The post <a href="/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="/">Lakshyajeet&#039;s Blog</a>.</p>
+<p>The post <a href="https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/">WordPress Block Editor: Custom Metaboxes and Notices</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
+					<wfw:commentRss>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -1,528 +1,528 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://lakshyajeet.in/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>/blog/</loc>
+		<loc>https://lakshyajeet.in/blog/</loc>
 		<lastmod>2026-07-27T16:42:57+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
+		<loc>https://lakshyajeet.in/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1-1-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-template-hierarchy/</loc>
-		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
-	</url>
-	<url>
-		<loc>/wordpress-rest-api-internals/</loc>
-		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
-		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1-scaled-1.webp</image:loc>
-		</image:image>
-	</url>
-	<url>
-		<loc>/understanding-wordpress-authentication-cookies-sessions/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-template-hierarchy/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress-themes/</loc>
+		<loc>https://lakshyajeet.in/wordpress-rest-api-internals/</loc>
+		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-scaled-1.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/understanding-wordpress-authentication-cookies-sessions/</loc>
 		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/debugging-in-wordpress-with-xdebug/</loc>
+		<loc>https://lakshyajeet.in/introduction-to-wordpress-themes/</loc>
+		<lastmod>2025-07-06T15:58:58+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/debugging-in-wordpress-with-xdebug/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-11-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-11-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-12-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-12-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-13-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-13-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-14-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-14-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-15-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-15-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-16-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-16-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/introduction-to-wp-cli/</loc>
+		<loc>https://lakshyajeet.in/introduction-to-wp-cli/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-php-coding-conventions/</loc>
+		<loc>https://lakshyajeet.in/wordpress-php-coding-conventions/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/mastering-wordpress-seo-phpunit-testing/</loc>
+		<loc>https://lakshyajeet.in/mastering-wordpress-seo-phpunit-testing/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-9-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-9-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-administration/</loc>
+		<loc>https://lakshyajeet.in/wordpress-administration/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-8-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-8-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-the-essentials/</loc>
+		<loc>https://lakshyajeet.in/wordpress-the-essentials/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-4-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-4-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-5-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-5-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-6-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-6-1-scaled-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-7-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-7-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/getting-started-with-the-wordpress-block-and-site-editor/</loc>
+		<loc>https://lakshyajeet.in/getting-started-with-the-wordpress-block-and-site-editor/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-17.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-17.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1-1-2.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-2.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-2-1-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-3-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress/</loc>
+		<loc>https://lakshyajeet.in/introduction-to-wordpress/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/02/wp-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-001-pilot/</loc>
+		<loc>https://lakshyajeet.in/day-001-pilot/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/day1-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-internals-http-ssl-tls/</loc>
+		<loc>https://lakshyajeet.in/web-internals-http-ssl-tls/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/https-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/https-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-10-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-10-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-internals-dns/</loc>
+		<loc>https://lakshyajeet.in/web-internals-dns/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/dns-1.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/dns-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-7-edited-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-7-edited-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-006-git-from-scratch/</loc>
+		<loc>https://lakshyajeet.in/day-006-git-from-scratch/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/git-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/git-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-005-processes-threads-and-concurrency/</loc>
+		<loc>https://lakshyajeet.in/day-005-processes-threads-and-concurrency/</loc>
 		<lastmod>2025-07-06T15:58:59+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/os-1.jpeg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/os-1.jpeg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-2-1-2.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1-2.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-3-1-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-4-1-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-4-1-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-5-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-5-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/understanding-basic-react-hooks-a-developers-guide/</loc>
+		<loc>https://lakshyajeet.in/understanding-basic-react-hooks-a-developers-guide/</loc>
 		<lastmod>2025-12-04T09:30:18+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/day-002-php/</loc>
+		<loc>https://lakshyajeet.in/day-002-php/</loc>
 		<lastmod>2025-12-04T09:31:38+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/spongebob-rainbow-1.png</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/spongebob-rainbow-1.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-11.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-11.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-003-html-css/</loc>
+		<loc>https://lakshyajeet.in/day-003-html-css/</loc>
 		<lastmod>2025-12-04T09:38:22+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/htmlcss-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/htmlcss-1.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1-1-3.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1-3.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/day-004-javascipt/</loc>
+		<loc>https://lakshyajeet.in/day-004-javascipt/</loc>
 		<lastmod>2025-12-04T09:38:57+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/js-1.jpeg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/js-1.jpeg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/web-development-a-deep-dive/</loc>
+		<loc>https://lakshyajeet.in/web-development-a-deep-dive/</loc>
 		<lastmod>2025-12-04T09:39:15+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/deepdive-1.jpeg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/deepdive-1.jpeg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/object-oriented-programming-in-php/</loc>
+		<loc>https://lakshyajeet.in/object-oriented-programming-in-php/</loc>
 		<lastmod>2025-12-04T09:39:27+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2025/01/oops-1.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2025/01/oops-1.jpg</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics/</loc>
 		<lastmod>2025-12-04T09:40:38+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-ii/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-ii/</loc>
 		<lastmod>2025-12-04T09:40:54+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/internationalization-and-localization-in-wordpress/</loc>
+		<loc>https://lakshyajeet.in/internationalization-and-localization-in-wordpress/</loc>
 		<lastmod>2025-12-04T09:41:02+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-iv/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-iv/</loc>
 		<lastmod>2025-12-04T09:41:24+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-10-1-scaled-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-10-1-scaled-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-iii/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-iii/</loc>
 		<lastmod>2025-12-04T09:41:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-v/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-v/</loc>
 		<lastmod>2025-12-04T09:41:43+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-vi/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-vi/</loc>
 		<lastmod>2025-12-04T09:41:51+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-plugin-development-basics-vii/</loc>
+		<loc>https://lakshyajeet.in/wordpress-plugin-development-basics-vii/</loc>
 		<lastmod>2025-12-04T09:42:06+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/working-with-wordpress-rest-api/</loc>
+		<loc>https://lakshyajeet.in/working-with-wordpress-rest-api/</loc>
 		<lastmod>2025-12-04T09:42:25+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-rest-api-creating-and-retrieving-posts/</loc>
+		<loc>https://lakshyajeet.in/wordpress-rest-api-creating-and-retrieving-posts/</loc>
 		<lastmod>2025-12-04T09:42:33+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/working-with-the-wp_rest_controller-class/</loc>
+		<loc>https://lakshyajeet.in/working-with-the-wp_rest_controller-class/</loc>
 		<lastmod>2025-12-04T09:43:02+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wp-cli-custom-commands/</loc>
+		<loc>https://lakshyajeet.in/wp-cli-custom-commands/</loc>
 		<lastmod>2025-12-04T09:43:12+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/handling-media-with-rest-api/</loc>
+		<loc>https://lakshyajeet.in/handling-media-with-rest-api/</loc>
 		<lastmod>2025-12-04T09:43:27+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/transient-api-and-http-api-in-wordpress/</loc>
+		<loc>https://lakshyajeet.in/transient-api-and-http-api-in-wordpress/</loc>
 		<lastmod>2025-12-04T09:43:45+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/working-with-transient-api/</loc>
+		<loc>https://lakshyajeet.in/working-with-transient-api/</loc>
 		<lastmod>2025-12-04T09:43:55+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/dashboard-widgets-in-wordpress/</loc>
+		<loc>https://lakshyajeet.in/dashboard-widgets-in-wordpress/</loc>
 		<lastmod>2025-12-04T09:44:03+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-wordpress-rewrite-api/</loc>
+		<loc>https://lakshyajeet.in/introduction-to-wordpress-rewrite-api/</loc>
 		<lastmod>2025-12-04T09:44:20+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/rewrite-api-a-practical-usecase/</loc>
+		<loc>https://lakshyajeet.in/rewrite-api-a-practical-usecase/</loc>
 		<lastmod>2025-12-04T09:44:31+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/user-roles-in-wordpress/</loc>
+		<loc>https://lakshyajeet.in/user-roles-in-wordpress/</loc>
 		<lastmod>2025-12-04T09:44:41+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wp-cron-a-comprehensive-guide/</loc>
+		<loc>https://lakshyajeet.in/wp-cron-a-comprehensive-guide/</loc>
 		<lastmod>2025-12-04T09:44:52+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/custom-tables-in-wordpress/</loc>
+		<loc>https://lakshyajeet.in/custom-tables-in-wordpress/</loc>
 		<lastmod>2025-12-04T09:45:01+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-basics/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-basics/</loc>
 		<lastmod>2025-12-04T09:45:31+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-enqueuing-scripts-and-styles/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-enqueuing-scripts-and-styles/</loc>
 		<lastmod>2025-12-04T09:45:41+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-the-loop/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-the-loop/</loc>
 		<lastmod>2025-12-04T09:46:05+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-how-wordpress-enqueues-scripts-and-styles/</loc>
 		<lastmod>2025-12-04T09:46:13+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-custom-sidebars/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-custom-sidebars/</loc>
 		<lastmod>2025-12-04T09:46:24+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-search-page/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-search-page/</loc>
 		<lastmod>2025-12-04T09:46:33+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-web-accessibility/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-web-accessibility/</loc>
 		<lastmod>2025-12-04T09:46:46+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/theme-development-in-wordpress-navigation-menus/</loc>
+		<loc>https://lakshyajeet.in/theme-development-in-wordpress-navigation-menus/</loc>
 		<lastmod>2025-12-04T09:46:56+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-the-customizer-api/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-the-customizer-api/</loc>
 		<lastmod>2025-12-04T09:47:06+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-the-customizer-api-part-ii/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-the-customizer-api-part-ii/</loc>
 		<lastmod>2025-12-04T09:47:16+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-navigation-api-and-pagination-api/</loc>
 		<lastmod>2025-12-04T09:47:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-mastering-conditional-tags/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-mastering-conditional-tags/</loc>
 		<lastmod>2025-12-04T09:47:35+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-child-themes/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-child-themes/</loc>
 		<lastmod>2025-12-04T09:47:45+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-asset-building/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-asset-building/</loc>
 		<lastmod>2025-12-04T09:48:01+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-using-wordpress-scripts/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-using-wordpress-scripts/</loc>
 		<lastmod>2025-12-04T09:48:11+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-theme-initialization-process/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-theme-initialization-process/</loc>
 		<lastmod>2025-12-04T09:48:22+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-2-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/advanced-theme-development-in-wordpress-wp_widget/</loc>
+		<loc>https://lakshyajeet.in/advanced-theme-development-in-wordpress-wp_widget/</loc>
 		<lastmod>2025-12-04T09:48:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/introduction-to-react-and-jsx/</loc>
+		<loc>https://lakshyajeet.in/introduction-to-react-and-jsx/</loc>
 		<lastmod>2025-12-04T09:48:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/understanding-react-components-and-the-virtual-dom/</loc>
+		<loc>https://lakshyajeet.in/understanding-react-components-and-the-virtual-dom/</loc>
 		<lastmod>2025-12-04T09:49:24+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-course-components-states-and-component-lifecycle/</loc>
+		<loc>https://lakshyajeet.in/basic-react-course-components-states-and-component-lifecycle/</loc>
 		<lastmod>2025-12-04T09:49:38+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-course-hooks-usestate-and-useeffect/</loc>
+		<loc>https://lakshyajeet.in/basic-react-course-hooks-usestate-and-useeffect/</loc>
 		<lastmod>2025-12-04T09:50:00+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/basic-react-conditional-rendering-lifting-state-up-and-testing/</loc>
+		<loc>https://lakshyajeet.in/basic-react-conditional-rendering-lifting-state-up-and-testing/</loc>
 		<lastmod>2025-12-04T09:50:07+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-creating-a-custom-block/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-creating-a-custom-block/</loc>
 		<lastmod>2025-12-04T09:50:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-filters-explained/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-block-filters-explained/</loc>
 		<lastmod>2025-12-04T09:50:38+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-supports-explained/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-block-supports-explained/</loc>
 		<lastmod>2025-12-04T09:50:49+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-block-attributes-and-controls/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-block-attributes-and-controls/</loc>
 		<lastmod>2025-12-04T09:50:57+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1-1.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-nested-blocks/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-nested-blocks/</loc>
 		<lastmod>2025-12-04T09:51:05+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-dynamic-and-static-blocks/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-dynamic-and-static-blocks/</loc>
 		<lastmod>2025-12-04T09:51:13+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-custom-metaboxes-and-notices/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-custom-metaboxes-and-notices/</loc>
 		<lastmod>2025-12-04T09:51:22+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-formatting-toolbar-api/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-formatting-toolbar-api/</loc>
 		<lastmod>2025-12-04T09:51:43+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-editor-widgets/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-editor-widgets/</loc>
 		<lastmod>2025-12-04T09:51:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-themes-introduction/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-themes-introduction/</loc>
 		<lastmod>2025-12-04T09:52:04+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/wordpress-block-themes-block-themes-and-block-patterns-explained/</loc>
+		<loc>https://lakshyajeet.in/wordpress-block-themes-block-themes-and-block-patterns-explained/</loc>
 		<lastmod>2025-12-04T09:52:12+00:00</lastmod>
 	</url>
 	<url>
-		<loc>/building-a-kademlia-dht-over-webrtc/</loc>
+		<loc>https://lakshyajeet.in/building-a-kademlia-dht-over-webrtc/</loc>
 		<lastmod>2026-01-21T05:35:53+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/01/dht.jpg</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/01/dht.jpg</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-2.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-2.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/rust-in-wordpress-craboptimize/</loc>
+		<loc>https://lakshyajeet.in/rust-in-wordpress-craboptimize/</loc>
 		<lastmod>2026-02-26T05:57:36+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/craboptimize.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/craboptimize.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/02/image-3.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/02/image-3.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/mastering-context-with-code-mode-ai-agents/</loc>
+		<loc>https://lakshyajeet.in/mastering-context-with-code-mode-ai-agents/</loc>
 		<lastmod>2026-03-30T11:51:47+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/codemodefeat-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/codemodefeat-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/tradcontext-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/tradcontext-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/codemodecontext-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/codemodecontext-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/codemodetrad.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/codemodetrad.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/codemode.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/codemode.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/03/dockercodemode.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/03/dockercodemode.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/porting-gutenberg-to-frappe/</loc>
+		<loc>https://lakshyajeet.in/porting-gutenberg-to-frappe/</loc>
 		<lastmod>2026-07-26T11:02:24+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/04/block-editor-feat-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/block-editor-feat-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/04/rich-text-editor.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/04/frappe-block-editor.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/04/hybrid-architecture-1.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/04/data-flow.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/04/data-flow.webp</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>/adding-interactivity-on-static-wordpress-sites/</loc>
+		<loc>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/</loc>
 		<lastmod>2026-07-27T16:42:57+00:00</lastmod>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/Static-Interactivity.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/Static-Interactivity.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/split-brain-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/split-brain-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/static-interactivity-settings-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-settings-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/static-interactivity-search-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-search-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/static-interactivity-architecture-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-architecture-scaled.webp</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>/wp-content/uploads/2026/07/static-interactivity-comments-scaled.webp</image:loc>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-scaled.webp</image:loc>
 		</image:image>
 	</url>
 </urlset>

@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: WordPress REST API: Creating and Retrieving Posts	</title>
-	<atom:link href="/wordpress-rest-api-creating-and-retrieving-posts/feed/" rel="self" type="application/rss+xml" />
-	<link>/wordpress-rest-api-creating-and-retrieving-posts/</link>
+	<atom:link href="https://lakshyajeet.in/wordpress-rest-api-creating-and-retrieving-posts/feed/" rel="self" type="application/rss+xml" />
+	<link>https://lakshyajeet.in/wordpress-rest-api-creating-and-retrieving-posts/</link>
 	<description></description>
 	<lastBuildDate>Thu, 04 Dec 2025 09:42:33 +0000</lastBuildDate>
 	<sy:updatePeriod>
