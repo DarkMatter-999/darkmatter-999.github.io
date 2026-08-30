@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://lakshyajeet.in/blog/</loc>
-		<lastmod>2026-07-27T16:42:57+00:00</lastmod>
+		<lastmod>2026-08-30T15:54:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://lakshyajeet.in/understanding-wordpress-decoupled-architecture-headless-vs-decoupled-wordpress/</loc>
@@ -523,6 +523,43 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/07/static-interactivity-comments-scaled.webp</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/</loc>
+		<lastmod>2026-08-30T15:54:29+00:00</lastmod>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-part1.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-scaled.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-scaled.jpg</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-matrix-wiring.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-scaled.jpg</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-scaled.webp</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-scaled.webp</image:loc>
 		</image:image>
 	</url>
 </urlset>

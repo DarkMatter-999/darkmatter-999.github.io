@@ -11,13 +11,27 @@
 	<atom:link href="https://lakshyajeet.in/comments/feed/" rel="self" type="application/rss+xml" />
 	<link></link>
 	<description></description>
-	<lastBuildDate>Mon, 27 Jul 2026 17:28:29 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 29 Jul 2026 06:42:27 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=7.0.2</generator>
+	<generator>https://wordpress.org/?v=7.1</generator>
 	<item>
+		<title>
+		Comment on Adding Interactivity on Static WordPress sites by Aakash		</title>
+		<link>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/#comment-7</link>
+
+		<dc:creator><![CDATA[Aakash]]></dc:creator>
+		<pubDate>Wed, 29 Jul 2026 06:42:27 +0000</pubDate>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1402#comment-7</guid>
+
+					<description><![CDATA[And here&#039;s another one.]]></description>
+			<content:encoded><![CDATA[<p>And here&#8217;s another one.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
 		<title>
 		Comment on Adding Interactivity on Static WordPress sites by Yash		</title>
 		<link>https://lakshyajeet.in/adding-interactivity-on-static-wordpress-sites/#comment-6</link>

@@ -12,13 +12,13 @@
 	<atom:link href="https://lakshyajeet.in/search/feed/rss2/" rel="self" type="application/rss+xml" />
 	<link>https://lakshyajeet.in/</link>
 	<description></description>
-	<lastBuildDate>Sun, 26 Jul 2026 11:02:24 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 30 Aug 2026 15:54:29 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=7.0.2</generator>
+	<generator>https://wordpress.org/?v=7.1</generator>
 
 <image>
 	<url>https://lakshyajeet.in/wp-content/uploads/2025/12/nyan-150x150.png</url>
@@ -28,6 +28,437 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Designing and Building My Own Ergonomic Keyboard &#8211; Part 1</title>
+		<link>https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/</link>
+					<comments>https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshyajeet]]></dc:creator>
+		<pubDate>Sun, 30 Aug 2026 15:54:29 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://lakshyajeet.in/?p=1420</guid>
+
+					<description><![CDATA[<p>I built a 46-key ergonomic keyboard from the ground up, from designing the layout in Ergogen and modeling the enclosure in FreeCAD to 3D printing the parts and hand-wiring the switch matrix. It wasn't the cheapest keyboard I could have bought, but it is one that is quite literally mine.</p>
+<p>The post <a href="https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/">Designing and Building My Own Ergonomic Keyboard &#8211; Part 1</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">I spend a fairly big part of my day sitting in front of a computer, and as a software engineer it usually means spending most of that time typing. At some point, I started paying more attention to the ergonomics of my setup, and perhaps a little more attention to my keyboard than I should have, not because the keyboards I own were bad, but more so because I wanted something to be <em>mine</em>. I wanted to design a keyboard around the way I work, the way my hands rest and the way I actually type. The angles, the split layout, the placement of the keys are all there for a reason; they make the keyboard feel more natural to use over a long period of time. And, honestly, building a keyboard from scratch sounded like a much more interesting problem than simply buying another one. It also turned out not to be the cheaper option, but that was never really the point. As a bonus, I got to learn more about the hardware side of things, something software engineers don&#8217;t often get a chance to interact with, and learn how to use CAD to design it.</p>
+
+
+
+<h2 class="wp-block-heading">Choosing the Hardware</h2>
+
+
+
+<p class="wp-block-paragraph">Before designing anything or drawing the first line, there are a few decisions I needed to make. A keyboard is a relatively simple device when you think about it, but there are a few choices we need to make before we start. The switches determine how it feels, the microcontroller determines how it behaves and the physical construction determines how it all comes together.</p>
+
+
+
+<h3 class="wp-block-heading">1. Key Switches</h3>
+
+
+
+<p class="wp-block-paragraph">There are many different types, brands, and feels available, but I&#8217;ll focus on four of the most common switch types here. There are multiple other brands and colors and feels available but these are a few of the standard one.</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Switch</th><th>Type</th><th>Feel</th><th>Sound</th><th class="has-text-align-left" data-align="left">Typical preference</th></tr></thead><tbody><tr><td><strong>Blue</strong></td><td>Clicky</td><td>Tactile + click</td><td>Loud</td><td class="has-text-align-left" data-align="left">People who like pronounced feedback</td></tr><tr><td><strong>Brown</strong></td><td>Tactile</td><td>Tactile, no intentional click</td><td>Moderate</td><td class="has-text-align-left" data-align="left">General-purpose typing</td></tr><tr><td><strong>Red</strong></td><td>Linear</td><td>Smooth</td><td>Relatively quiet</td><td class="has-text-align-left" data-align="left">Fast/smooth keypresses</td></tr><tr><td><strong>Black</strong></td><td>Linear</td><td>Heavier smooth press</td><td>Relatively quiet</td><td class="has-text-align-left" data-align="left">People who prefer more resistance</td></tr></tbody></table></figure>
+
+
+
+<p class="wp-block-paragraph">For my keyboard, I went with <strong>Brown</strong> switches. I wanted some tactile feedback while typing, as I don&#8217;t particularly like the feel of linear switches. That ruled out the Red and Black switches for me. I also find Black switches a little too heavy, especially when you&#8217;re typing on them for an entire day, the extra force adds up. I already own a keyboard with clicky Blue switches, but they are a little too loud for my preference, even when I&#8217;m wearing headphones. Since this keyboard was going to be used for programming for hours at a time, the balance between tactile feedback and noise made Browns feel like the right choice for me.</p>
+
+
+
+<h3 class="wp-block-heading">2. Microcontroller</h3>
+
+
+
+<p class="wp-block-paragraph">The next decision was the brain of the keyboard. I already had a few microcontrollers lying around, so it was less about the &#8220;best&#8221; one to buy and more about figuring out which one made the most sense for my use case.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img fetchpriority="high" decoding="async" width="1024" height="768" src="https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-1024x768.webp" alt="Microcontrollers" class="wp-image-1434" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-1024x768.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-300x225.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-768x576.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-1536x1152.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/08/microcontrollers-2048x1536.webp 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Controller</th><th>Main advantage</th><th>Things to consider</th></tr></thead><tbody><tr><td><strong>ESP32</strong></td><td>Bluetooth/Wi-Fi, powerful</td><td>More than a wired keyboard really needs, limited QMK/ZMK support was a drawback.</td></tr><tr><td><strong>STM32</strong></td><td>Excellent embedded ecosystem, QMK support</td><td>Board/chip choice matters especially when there a low quality clones which  might not match the specs.</td></tr><tr><td><strong>nrf52840</strong></td><td>First class ZMK and QMK support, and wireless.</td><td>Availability and price makes it not the first priority.</td></tr><tr><td><strong>RP2040 / Pico, RP2350 / Pico 2</strong></td><td>Cheap, capable, easy to develop with good QMK support</td><td>No official wireless support even though W variants have wireless capability</td></tr><tr><td><strong>Arduino Nano/Pro Micro</strong></td><td>Excellent QMK support, and very good ecosystem</td><td>Uses AVR ISA, and flash might be a little less.</td></tr></tbody></table></figure>
+
+
+
+<p class="wp-block-paragraph">For this version, I chose <strong>STM32</strong>. The main reason wasn&#8217;t raw processing power, I wasn&#8217;t exactly building a keyboard that needed a powerful CPU. It was the ecosystem around it and how well it fit the firmware stack I wanted to use.</p>
+
+
+
+<p class="wp-block-paragraph">I also deliberately kept wireless as something I could revisit later. The ESP32 makes that tempting, and there are other platforms that are particularly well suited to low-power wireless keyboards, but for the first version I cared more about getting the hardware and ergonomics right than making it wireless on day one. Additionally, battery and BMS adds extra complexity which I didn&#8217;t wish to have right now.</p>
+
+
+
+<h3 class="wp-block-heading">3. How do you actually build the keyboard?</h3>
+
+
+
+<p class="wp-block-paragraph">This is one of the most important decisions, and it is actually two different questions with overlapping answers. The first is about the body: <strong>how do I connect everything together?</strong> There are two main options:</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Custom 3D printed enclosure</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Completely custom</li>
+
+
+
+<li>Easy to iterate on</li>
+
+
+
+<li>Easy to make unusual ergonomic shapes</li>
+
+
+
+<li>requires designing and printing everything yourself.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"><strong>PCB based construction</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Cleaner manufacturing</li>
+
+
+
+<li>Potentially thinner/lighter </li>
+
+
+
+<li>More repeatable </li>
+
+
+
+<li>but requires designing the PCB and usually constrains the physical form more</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Then the second question is, <strong>how do the switches connect</strong>?</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Hand-wiring</strong>: Each switch is electrically wired to the controller.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-7387b849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<p class="wp-block-paragraph">Pros:</p>
+
+
+
+<ul class="wp-block-list">
+<li>excellent for one-off/custom keyboards</li>
+
+
+
+<li>no PCB design required</li>
+
+
+
+<li>very flexible</li>
+
+
+
+<li>easy to experiment</li>
+</ul>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<p class="wp-block-paragraph">Cons:</p>
+
+
+
+<ul class="wp-block-list">
+<li>lots of manual wiring</li>
+
+
+
+<li>messier internally</li>
+
+
+
+<li>harder to reproduce</li>
+</ul>
+</div>
+</div>
+
+
+
+<p class="wp-block-paragraph"><strong>Custom PCB</strong>: The switch sockets/components are mounted directly to a PCB.</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-7387b849 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<p class="wp-block-paragraph">Pros:</p>
+
+
+
+<ul class="wp-block-list">
+<li>much cleaner</li>
+
+
+
+<li>mechanically robust</li>
+
+
+
+<li>easier assembly once designed</li>
+
+
+
+<li>reproducible</li>
+</ul>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<p class="wp-block-paragraph">Cons:</p>
+
+
+
+<ul class="wp-block-list">
+<li>more design work up front</li>
+
+
+
+<li>PCB manufacturing cost</li>
+
+
+
+<li>changes to the layout become more expensive</li>
+</ul>
+</div>
+</div>
+
+
+
+<p class="wp-block-paragraph">Since this was a personal project and I expected to iterate on the design, I chose to 3D print the body and use a more DIY approach internally rather than immediately designing a custom PCB. That gave me the freedom to change the shape, spacing and mounting without having to redesign and manufacture a PCB every time I changed my mind,. It also wasn&#8217;t necessarily <em>easier</em> than designing a PCB; in some ways, getting the CAD right was even harder.</p>
+
+
+
+<p class="wp-block-paragraph">With those decisions out of the way, I finally had enough constraints to start designing the keyboard itself. I knew what switches I wanted, what controller I was going to use, and roughly how I wanted the physical construction to work. Now I could start with the part that mattered most: the layout.</p>
+
+
+
+<h2 class="wp-block-heading">Designing the Layout</h2>
+
+
+
+<p class="wp-block-paragraph">I didn&#8217;t want to start with a conventional rectangular keyboard and simply split it in half. Since the whole point of building a custom keyboard was to make it more comfortable for me. The main typing area follows the way I naturally position my fingers rather than forming a perfect rectangle. That meant experimenting with the position of the keys, the angle of each column, and the placement of the thumb keys until the layout felt natural.</p>
+
+
+
+<p class="wp-block-paragraph">For this, I used <strong>Ergogen</strong>. It gave me a way to describe the keyboard layout parametrically rather than manually placing every key in CAD. I could define the columns, rows, spacing, rotations, and other geometric relationships, and then generate the resulting layout.</p>
+
+
+
+<p class="wp-block-paragraph">One of the first decisions I made was the number of keys. The final design has <strong>46 keys</strong>, which was enough for the keys I use regularly while still allowing me to keep the keyboard compact. The goal wasn&#8217;t to reproduce every key found on a standard keyboard; instead, I wanted the physical layout to contain the keys I actually need and let the firmware handle the rest through layers and custom mappings.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="576" src="https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen-1024x576.webp" alt="Keyboard design open in Ergogen" class="wp-image-1422" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen-1024x576.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen-300x169.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen-768x432.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/ergogen.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="wp-block-paragraph">The interesting part of using Ergogen was that I could treat the keyboard almost like a coordinate system for my hands.</p>
+
+
+
+<p class="wp-block-paragraph">Instead of thinking:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Where should this key go on a standard keyboard?</p>
+</blockquote>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">I could think:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Where does my finger naturally want to move?</p>
+</blockquote>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">That allowed me to experiment with different column angles and key positions. The main typing area follows the natural shape of the fingers rather than forming a perfect rectangle, while the thumb keys are positioned separately so that they can be reached without forcing the hand to move away from its normal resting position.</p>
+
+
+
+<p class="wp-block-paragraph">This was also where I started treating the layout as the foundation for everything that came after. Once the positions of the keys were fixed, those positions would determine the plate, the switch placement, the enclosure, and eventually the physical dimensions of the entire keyboard.</p>
+
+
+
+<h3 class="wp-block-heading">From Ergogen to CAD</h3>
+
+
+
+<p class="wp-block-paragraph">Once I was satisfied with the layout, I generated the plate geometry and the switch positions from Ergogen and moved into <strong>FreeCAD</strong>.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="576" src="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-1024x576.webp" alt="Completed keyboard design in FreeCAD" class="wp-image-1425" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-1024x576.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-300x169.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-768x432.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="wp-block-paragraph">At this point, the keyboard stopped being just a collection of coordinates and started becoming a physical object. I could now work with actual dimensions and begin figuring out how the switches, plates, keycaps, screws, and enclosure would fit together. The important thing here is that I didn&#8217;t design the enclosure first and then try to squeeze the keyboard into it. I started with the thing that mattered most, the <strong>key layout</strong>, and built the physical design around it.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate-1024x576.webp" alt="Baseplate in FreeCAD" class="wp-image-1423" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate-1024x576.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate-300x169.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate-768x432.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/baseplate.webp 1280w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="wp-block-paragraph">That decision ended up influencing almost every part of the final keyboard.</p>
+
+
+
+<p class="wp-block-paragraph">After that, it became an iterative grind spanning a few weeks as I worked through the rest of the design before finally committing to a print. I started with the base plate, where all the switches would sit.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Using the base plate as a reference, I then designed the body around it.</p>
+</blockquote>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body-1024x576.webp" alt="Keyboard body in FreeCAD" class="wp-image-1424" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body-1024x576.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body-300x169.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body-768x432.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-body.webp 1280w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Assembly</h2>
+
+
+
+<p class="wp-block-paragraph">This is the fun part, once all the parts were designed and printed it was time to turn them into an actual keyboard. Since this was a one-off build, I decided to hand-wire the keyboard matrix. </p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="768" src="https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-1024x768.jpg" alt="All parts after printing completed" class="wp-image-1428" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-1024x768.jpg 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-300x225.jpg 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-768x576.jpg 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-1536x1152.jpg 1536w, https://lakshyajeet.in/wp-content/uploads/2026/08/printing-complete-2048x1536.jpg 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="wp-block-paragraph">The basic idea behind a keyboard matrix is fairly simple. Instead of running two wires from every switch directly to the microcontroller, the switches are arranged into <strong>rows and columns</strong>. Each switch connects one row to one column, allowing the microcontroller to identify which key was pressed while using far fewer GPIO pins.</p>
+
+
+
+<p class="wp-block-paragraph">For this build, I first installed all of the switches into the printed plate and then wired the switches together to form the matrix. The rows and columns were routed separately, with a diode added to each switch as part of the matrix circuit.</p>
+
+
+
+<h3 class="wp-block-heading">Wiring the Matrix</h3>
+
+
+
+<p class="wp-block-paragraph">The wiring was probably the most tedious part of the build. With 46 keys, there are a lot of individual connections to make, and keeping track of them becomes increasingly difficult once wires start crossing each other.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="988" height="748" src="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-matrix-wiring.webp" alt="Keyboard matrix wiring diagram" class="wp-image-1426" style="aspect-ratio:1.3208642373427926;width:538px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-matrix-wiring.webp 988w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-matrix-wiring-300x227.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/keyboard-matrix-wiring-768x581.webp 768w" sizes="auto, (max-width: 988px) 100vw, 988px" /><figcaption class="wp-element-caption">Picture credits: <a href="https://jlcpcb.com/blog/custom-keyboard-pcb-precision-fabrication" data-type="link" data-id="https://jlcpcb.com/blog/custom-keyboard-pcb-precision-fabrication">JLCPCB</a></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">I used <strong>1N4148 diodes</strong>, with one diode associated with each switch. The diode orientation is important because it determines the direction in which current is allowed to flow through the matrix. Getting this wrong can result in keys being detected incorrectly or the matrix producing ghosting.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="768" src="https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-1024x768.jpg" alt="Wired matrix" class="wp-image-1429" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-1024x768.jpg 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-300x225.jpg 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-768x576.jpg 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-1536x1152.jpg 1536w, https://lakshyajeet.in/wp-content/uploads/2026/08/matrix-wired-2048x1536.jpg 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3 class="wp-block-heading">Connecting the Microcontroller</h3>
+
+
+
+<p class="wp-block-paragraph">Once the matrix was complete, the remaining wires were connected to the STM32 microcontroller. The row and column lines each go to their respective GPIO pins, and the firmware uses those pins to scan the matrix and determine which key is being pressed.</p>
+
+
+
+<p class="wp-block-paragraph">At this stage, I didn&#8217;t immediately close the keyboard up. Before putting everything inside the case, I tested the matrix and checked the individual connections. With hand-wiring, debugging a problem is much easier when everything is still accessible than when the entire assembly is already screwed together.</p>
+
+
+
+<p class="wp-block-paragraph">I also checked the wiring for continuity and shorts with a multimeter before powering the controller.</p>
+
+
+
+<h3 class="wp-block-heading">Bringing It All Together</h3>
+
+
+
+<p class="wp-block-paragraph">With the switches soldered, the matrix wired, and the controller connected, the keyboard finally started looking like an actual keyboard rather than a collection of printed parts and wires.</p>
+
+
+
+<p class="wp-block-paragraph">This was also the point where all the earlier design decisions had to come together. The plate had to hold the switches securely, the key caps needed enough clearance to move freely, and the enclosure needed enough space underneath to accommodate the wiring and controller.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="768" src="https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-1024x768.webp" alt="" class="wp-image-1431" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-1024x768.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-300x225.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-768x576.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-1536x1152.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-1-2048x1536.webp 2048w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+</blockquote>
+
+
+
+<figure class="wp-block-image aligncenter size-large is-resized"><img loading="lazy" decoding="async" width="2560" height="1240" src="https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-scaled.webp" alt="" class="wp-image-1432" style="width:1026px;height:auto" srcset="https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-scaled.webp 2560w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-300x145.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-1024x496.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-768x372.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-1536x744.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/08/kb-completed-2-edited-2048x992.webp 2048w" sizes="auto, (max-width: 2560px) 100vw, 2560px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p class="wp-block-paragraph">And with that, the first part of the build was complete. What started as a rough idea for an ergonomic keyboard had turned into a physical, fully custom-built device. I designed the layout around my own hands, translated it into a set of CAD models, designed the enclosure around the actual switches and keycaps, 3D printed the parts, and finally hand-wired the whole thing into a working keyboard.</p>
+
+
+
+<p class="wp-block-paragraph">The final result is a <strong>46-key ergonomic keyboard that is quite literally built around the way I work</strong>. There were plenty of small decisions, measurements, iterations, and a whole lot more soldering than I initially expected, but that&#8217;s also what made the project interesting. Every part of the keyboard, from the angle of the keys to the shape of the case, is something I could change because I was designing the entire thing myself.</p>
+
+
+
+<p class="wp-block-paragraph">But getting the hardware working was only half of the project.</p>
+
+
+
+<p class="wp-block-paragraph">A custom keyboard becomes much more interesting when you can also change <strong>what the keys actually do</strong>. In the next part, I&#8217;ll move from the physical build to the software side of the keyboard, including the <strong>microcontroller, QMK, custom keymaps, layers, and the firmware customizations</strong> I made to make the keyboard behave the way I wanted..</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+<p>The post <a href="https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/">Designing and Building My Own Ergonomic Keyboard &#8211; Part 1</a> appeared first on <a href="https://lakshyajeet.in/">Lakshyajeet&#039;s Blog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://lakshyajeet.in/designing-and-building-my-own-ergonomic-keyboard-part-1/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Porting Gutenberg to Frappe</title>
 		<link>https://lakshyajeet.in/porting-gutenberg-to-frappe/</link>
 					<comments>https://lakshyajeet.in/porting-gutenberg-to-frappe/#respond</comments>
@@ -69,7 +500,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img fetchpriority="high" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp" alt="Frappe's Rich text editor" class="wp-image-1366" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/rich-text-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe&#8217;s Rich text editor</figcaption></figure>
 
 
 
@@ -87,7 +518,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="565" src="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp" alt="Frappe Block Editor" class="wp-image-1367" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1024x565.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-300x166.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-768x424.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor-1536x848.webp 1536w, https://lakshyajeet.in/wp-content/uploads/2026/04/frappe-block-editor.webp 1880w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Frappe Block Editor</figcaption></figure>
 
 
 
@@ -137,7 +568,7 @@
 
 
 
-<figure class="wp-block-image aligncenter size-large"><img decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="583" src="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp" alt="React mounting architecture" class="wp-image-1369" srcset="https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-1024x583.webp 1024w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-300x171.webp 300w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1-768x437.webp 768w, https://lakshyajeet.in/wp-content/uploads/2026/04/hybrid-architecture-1.webp 1248w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
